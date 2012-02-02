@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+\title{EE 105: Devices \& Circuits}
+\author{Steve Wang}
+\date{\today}
+\maketitle
+
+\section*{Lab 1}
+\label{sec:1}
+\begin{enumerate}
+\item Dangerous!
+\item Diodes
+  \begin{itemize}
+  \item $I_D = I_S e^{V_D/V_{DD}}$
+  \end{itemize}
+\item (overview of lab)
+\end{enumerate}
+
+\section*{Diodes}
+\label{sec:2}
+[ stuff about back-to-back diodes ]
+
+\section*{Band Theory of Semiconductors}
+\label{sec:3}
+Bohr, Pauli $\implies$ energy bands. From Razavi perspective, silicon
+atoms each have bonds to each other. At absolute zero, all of these
+things are locked in place. You can put a potential across it, and
+none of the electrons can move.
+
+If you heat this thing up, a few electrons become charge carriers and
+leave behind holds. yields electric field, conduction band moves.
+
+Electrons in conduction band are negative or n-type carriers; holes in
+valence band are positive or p-type carriers.
+
+Thermal excitation $\implies$ electron-hole pair (ehp)
+
+In pure silicon (``intrinsic'') the number of n-type carriers ($n$)
+equals the number of p-type carriers ($p$) equals the intrinsic number
+($n_i$). This number is a strong function of the temperature.
+
+\subsection*{Doping}
+\label{sec:3a}
+In general, we do not work with intrinsic silicon -- you intentionally
+muck with the concentrations of n- and p-type carriers through a
+process known as ``doping''.
+
+If you add phosphorus or arsenic (V), they have five valence
+electrons. They contribute an electron and are thus considered donors.
+
+Boron is of group III and has three valence electrons. It generates a
+hole, so it's an acceptor.
+
+This changes the number of n- and p-type carriers in your sample. If
+you dope predominantly with a donor, you make n-type material.
+
+$N_D = \# \text{ donor atoms}/\text{cm}^3 \equiv n$. $N_A = \#
+\text{ acceptor atoms}/\text{cm}^3 \equiv p$. $N_D$ and $N_A$ typically
+vary from $10^{12}$ to $10^{20}$ per cubic centimeter.
+
+PHYSICS MAJIKKS: For intrinsic, it's true that $n = p = n_i$. It's
+actually always true that $np = n_i^2$, even after doping.
+
+% [ note: 241 Cory ]
+
+\end{document}

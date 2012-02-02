@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\begin{document}
+\title{EE 105: Devices \& Circuits}
+\author{Steve Wang}
+\date{\today}
+\maketitle
+
+\section{Stuff}
+\label{sec:1}
+Piazza.
+
+Homework 1.
+
+\subsection{Lab 1}
+\label{sec:1a}
+Goal: Measure voltage on wall plug. Fat blade $\implies$ ground.
+\\ Don't screw up.
+
+\section{Conduction}
+\label{sec:2}
+drift: electric field
+\\
+diffusion: nonuniform concentration gradient
+
+n-type dopants (P, Ar)
+
+p-type dopants (B)
+
+intrinsic silicon (undoped): $n = p = n_i \propto
+T^{3/2}e^{-E_g/k_BT}$
+
+doped: stuff happens to control these concentrations.
+
+If you plot concentration in \# per cubic centimeter vs Temperature,
+we know that $n_i$ is $10^{10}$ at room temperature, goes up to
+$10^{15}$.
+
+Huge change in $n_i$, though. minority carriers affected more by
+temperature. etc.
+
+\subsection{Drift}
+\label{sec:2a}
+
+Drift in solids. terminal velocity, somewhat.
+
+initially, straight line (in log-linear graph). slope called mobility
+($\mu$). $v = \mu E$. Doesn't do that forever. Other things start
+happening as well, and you end up getting a limit.
+
+$\mu$ depends on collisions. higher T $\implies$ lower $\mu$. higher doping
+$\implies$ lower $\mu$.
+
+\subsection{Diffusion}
+\label{sec:2b}
+brownian motion, random walk, statistical mechanics, etc.
+
+Einstein relation: $D/\mu = kT/q$
+
+\section{PN Junction}
+\label{sec:3}
+Diode has two regions, N, P. Two carrier types: n, p. two types of
+conduction: drift, diffusion. 
+
+Ionization from diffusion generates voltage difference, induces
+electric field. Drift pushes electrons back and cancels out
+diffusion. This is equilibrium, i.e. no net flow of electrons or
+holes.
+
+\end{document}
