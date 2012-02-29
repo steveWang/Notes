@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>12.md</title>
+
+</head>
+
+<body>
+
+<script src='file:///home/steve/hackerspace/mathjax/unpacked/MathJax.js?config=default'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+  prefilterMath: function (math,displaymode,script) {
+      math = "\\displaystyle{"+math+"}";
+      return PREFILTER.call(TEX,math,displaymode,script);
+    }
+  });
+});
+</script>
+Traceback (most recent call last):
+  File "/home/steve/local/bin/markdown_py", line 34, in <module>
+    run()
+  File "/home/steve/local/lib64/python2.7/site-packages/markdown/__main__.py", line 81, in run
+    markdown.markdownFromFile(**options)
+  File "/home/steve/local/lib64/python2.7/site-packages/markdown/__init__.py", line 427, in markdownFromFile
+    kwargs.get('encoding', None))
+  File "/home/steve/local/lib64/python2.7/site-packages/markdown/__init__.py", line 368, in convertFile
+    sys.stdout.write(html)
+UnicodeEncodeError: 'ascii' codec can't encode character u'\xf6' in position 699: ordinal not in range(128)
+
+</body>
+</html>

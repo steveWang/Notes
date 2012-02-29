@@ -1,0 +1,83 @@
+<script src='file:///home/steve/hackerspace/mathjax/unpacked/MathJax.js?config=default'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+  prefilterMath: function (math,displaymode,script) {
+      math = "\\displaystyle{"+math+"}";
+      return PREFILTER.call(TEX,math,displaymode,script);
+    }
+  });
+});
+</script>
+<h1>EE 120: Signals and Systems</h1>
+<h2>February 23, 2012.</h2>
+<p><mathjax>$\newcommand{\fourier}{\overset{\mathcal{F}}{\Longleftrightarrow}}$</mathjax></p>
+<p>Continuous-time Fourier transform</p>
+<p>Recall:
+<mathjax>$$X(\omega) = \int_{-\infty}^\infty x(t)e^{-i\omega t}dt
+\\ x(t) = \frac{1}{2\pi}\int_{-\infty}^\infty x(t)e^{i\omega t}dt$$</mathjax></p>
+<p>We developed the inverse Fourier transform using a bizarre identity for
+which we established a way to derive (i.e. perturbation theory).</p>
+<p>Example: Ideal low-pass filter. In the continuous-time story, you do not
+assume any periodicity. Figure out the impulse response of this filter.</p>
+<p><mathjax>$$\frac{1}{2\pi}\int_{-A}^A Be^{i\omega t} = \frac{B}{\pi t}\sin(At)$$</mathjax> (valid
+for <mathjax>$t = 0$</mathjax> as well)</p>
+<p>Okay. Now, how would you plot this? maximum of <mathjax>$\frac{AB}{\pi}$</mathjax>, zeroes at
+<mathjax>$\frac{k\pi}{A} \forall k \in \mathbb{Z}$</mathjax>.</p>
+<p><mathjax>$$H(\omega) = \int h(t) e^{-i\omega t}dt\bigg|_{\omega=0} = \int h(t)dt =
+H(0) = B$$</mathjax>.</p>
+<p>Largest triangle has the same area as the integral over all space.</p>
+<p>Another question. Let <mathjax>$B=1$</mathjax>. What is <mathjax>$\lim_{A\to\infty} h(t)$</mathjax>? Yet another
+Dirac delta (yet another Dirac delta definition).</p>
+<p>Take <mathjax>$g(t)$</mathjax> as a block. What is <mathjax>$G(t)$</mathjax>? It is a sinc function.</p>
+<p>If you dilate in the time domain, you squish the frequency domain, and vice
+versa.
+<mathjax>$$
+\delta(t) \fourier 1
+\\ 1 \fourier 2\pi\delta(\omega)
+\\ e^{i\omega_0t} \fourier 2\pi\delta(\omega-\omega_0)
+\\ \cos(\omega_0t) \fourier \pi(\delta(\omega-\omega_0) + \delta(\omega+\omega_0))
+\\ \sin(\omega_0t) \fourier i\pi(\delta(\omega+\omega_0) - \delta(\omega-\omega_0))
+\\ x(t) \fourier X(\omega)
+\\ x(t-T) \fourier e^{-i\omega T}X(\omega)
+\\ e^{i\omega_0t}x(t) \fourier X(\omega - \omega_0)
+$$</mathjax></p>
+<h2>Multiplication in Time</h2>
+<p><mathjax>$$h(t) = f(t)g(t) \fourier H(\omega)
+\\ f(t) \fourier F(\omega)
+\\ g(t) \fourier G(\omega)$$</mathjax></p>
+<p>Since transforms are not periodic, we have a regular convolution with an
+extra <mathjax>$1/2\pi$</mathjax> term. <mathjax>$H(\omega) = \frac{1}{2\pi}(F * G)(\omega)$</mathjax>.</p>
+<p>Reasoning for convolution leading to multiplication in frequency domain:
+cascade two systems, choose input to be complex exponential. This is an
+eigenfunction, so we have the output response being <mathjax>$F(\omega)G(\omega)$</mathjax>. Now
+choose input to be an impulse. Output is <mathjax>$(f*g)(t)$</mathjax>.</p>
+<h2>INTERMISSION</h2>
+<h2>Amplitude modulation</h2>
+<p>I'm going to start what looks like a new phase of this course, but it's
+hardly anything new and unpredictable. If you understand the CTFT and its
+fundamental properties (what we've talked about so far), you should have no
+problem understanding amplitude modulation.</p>
+<p>One of the things you've experienced by now is that the atmosphere is quite
+unforgiving to audible frequencies. Your voice only transmits over some
+short distance.</p>
+<p>Obvious solution is to shift spectrum to a much higher frequency range. The
+way we do it is to multiply by either a complex exponential or a
+sine/cosine (called a carrier signal). Carries signal of interest. So
+<mathjax>$Y(\omega) = \frac{1}{2\pi}(X * C)(\omega) = X(\omega - \omega_0)$</mathjax>. What
+happens is that <mathjax>$\omega_0$</mathjax> is usually large enough to make transmission
+through the atmosphere possible.</p>
+<p>Ignoring all degradation going through the atmosphere, to retrieve the
+original signal, multiply by the negative carrier frequency (complex
+exponential). Frequencies about zero: baseband frequencies. Shifted
+spectrum of received signal back to baseband.</p>
+<p>aliasing; completely garbles signal.</p>
+<p>Apply low-pass filter at end to capture baseband spectrum. Scale by two to
+recover original signal, complete with amplitude.</p>
+<p>Final observations: we first of all made an assumption that the received
+signal is the same as the transmitted signal. Whole area of communication
+theory that deals with deterioration. Other assumption is that the
+oscillator at the receiver that can generate the exact same frequency as
+the transmitter oscillator and at the same phase.</p>
