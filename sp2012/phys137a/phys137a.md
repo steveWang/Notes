@@ -688,8 +688,99 @@ time-energy uncertainty principle. Time scale for observable quantity:
 width of particle inversely proportional to lifetime.
 
 Let's do a more specific example: consider a wave function given by the
-following gaussian wave packet: $\phi = \frac{e^{-(x - x_0)^2 /
-2a^2}e^{ip_0x/\hbar}}{(\pi a^2)^{1/4}}$. What is the uncertainty in the
-position of the particle?
+following gaussian wave packet: $\phi = \frac{e^{-(x - x_0)^2 / 2a^2}
+e^{ip_0x/\hbar}}{(\pi a^2)^{1/4}}$. What is the uncertainty in the position
+of the particle?
 
 $\sigma_x = \frac{a}{\sqrt{2}}$.
+
+Assume we have an infinite hilbert space. Note that one is represented by
+$\infint dx \abs{xXx}$.
+
+Dirac's bra-ket Notation
+========================
+
+talk about finding eigenvalues and eigenvectors. $\ketbra{i}{j}H_{ij}$.
+
+Note that $\braket{i}{j} = \delta_{ij}$
+
+More bra-ket notation. Basis must span Hilbert space. Completeness
+relation.
+Physics 137A: Quantum Mechanics
+===============================
+Monday, March 19
+----------------
+
+Recaps. Uncertainty principle at multiple places. Showed that if you show
+momentum acting on Gaussian, it's effectively $-\frac{\hbar}{i} \frac{1}{2
+\sigma_x^2} \hat{x}$. Showed that inequality became an equality, so our
+fudging worked just fine.
+
+Time dependence shows up explicitly in some operators; none that we've
+encountered thus far.
+
+Two things to take away: $\pderiv{}{t}\avg{\hat{Q}_H} = \frac{i}{\hbar}
+\avg{\comm{\hat{H}}{\hat{Q}_H}} + \avg{\pderiv{Q_H^\prime}{t}}$. We can use
+this to derive the generalized uncertainty principle: $\sigma_H^2\sigma_Q^2
+\ge \avg{\frac{1}{2i}\comm{H}{\hat{Q}}}^2\implies \sigma_H\sigma_Q \ge
+\frac{\hbar}{2}\abs{\pderiv{\avg{\hat{Q}}}{t}}$. Using this for energy and
+time, we show that we've also got a time-energy uncertainty principle.
+
+Interesting things that aren't stationary: e.g. 2p in hydrogen. Somewhat
+important, since using a laser, one thing you want to do is pump hydrogen
+to an excited state.
+
+Talk about lifetimes being $\delta t \approx \frac{1}{\omega}$.
+
+Bandgaps. Slowing down of atoms. Doppler shift.
+
+More dimensions! Toy models.
+
+Spherical symmetry.
+
+Schrodinger equation in three dimensions: just replace $x$ with
+$\vec{r}$. Thus $\pderiv{}{x} \to \nabla$.
+
+We have a different normalization, now: it's now an integral over ALL
+SPACE. Same reasoning: particle must be *somewhere*. So, as before, we can
+take our wave function and write $\Psi(\vec{r},t) = \psi(\vec{r})
+e^{-iEt/\hbar}$. Plug this in, and we get the time-dependent Schrodinger
+equation.
+
+Solve this equation, and we'll get the stationary states.
+
+Hydrogen atom! Make use of fact that we'll have various conserved
+quantities. This is why we talked about commutators and stuff. Angular
+momentum and stuff.
+
+One very interesting class of problems: $V(r)$ (not $\vec{r}$). For
+instance, $V = \frac{\alpha}{r}$.
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, March 21
+-------------------
+
+Recaps. In 3 dimensions, note that k,p,x are now vectors, and instead of
+$kx$, we have $\vec{k}\cdot \vec{r}$.
+
+Beautifully similar to what we have in one dimension. For many problems
+we'll be interested in, the potential is spherically symmetric.
+
+$$
+2\braKet{\psi}{x^2}{\psi} = \braKet{\psi_1e^{-iE_1t/\hbar} +
+\psi_2e^{-iE_2t/\hbar}}{x^2}{\psi_1e^{-iE_1t/\hbar} +
+\psi_2e^{-iE_2t/\hbar}}
+\\ = \braKet{\psi_1e^{-iE_1t/\hbar}}{x^2}{\psi_1 e^{-E_1t/\hbar}} + 
+\braKet{\psi_1e^{-iE_1t/\hbar}}{x^2}{\psi_2 e^{-E_2t/\hbar}} + 
+\\ \braKet{\psi_2e^{-iE_2t/\hbar}}{x^2}{\psi_1 e^{-E_1t/\hbar}} + 
+\braKet{\psi_2e^{-iE_2t/\hbar}}{x^2}{\psi_2 e^{-E_2t/\hbar}}
+\\ = \braKet{\psi_1}{x^2}{\psi_1} + 
+e^{-i(E_2 - E_1)t/\hbar} \braKet{\psi_1}{x^2}{\psi_2} + 
+\\ e^{-i(E_1 - E_2)t/\hbar} \braKet{\psi_2}{x^2}{\psi_1 } + 
+\braKet{\psi_2}{x^2}{\psi_2}
+\\ = \braKet{\psi_1}{x^2}{\psi_1} + \braKet{\psi_2}{x^2}{\psi_2} +
+2\cos\parens{\frac{(E_2 - E_1)t}{\hbar}} \braKet{\psi_1}{x^2}{\psi_2}
+$$
+
+Solving 3-dimensional separation of variables. Angular equation; radial
+equation. Legendre polynomials. $\ell(\ell + 1)$
