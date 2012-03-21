@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>17.md</title>
+
+</head>
+
+<body>
+
+<script src='file:///home/steve/hackerspace/mathjax/unpacked/MathJax.js?config=default'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+  prefilterMath: function (math,displaymode,script) {
+      math = "\\displaystyle{"+math+"}";
+      return PREFILTER.call(TEX,math,displaymode,script);
+    }
+  });
+});
+</script>
+
+<h1>EE 120: Signals and Systems</h1>
+<h1>More on the <mathjax>$\mathcal{Z}$</mathjax>-transform</h1>
+<p><mathjax>$$
+h(n) \ztrans \hat{H}(z) = \infsum{n} h(n) z^{-n}
+\\ R_h = \text{region of convergence}
+\\ \defequals \set{z \in \cplx \middle| \sum_n \abs{h(n) z^{-n}} &lt; \infty}
+$$</mathjax></p>
+<p>For signals of finite duration, the region of convergence is the entire
+complex plane, minus possibly <mathjax>$r=0$</mathjax> and <mathjax>$r=\infty$</mathjax>.</p>
+<p>Example which was causal, <mathjax>$x(n) = \alpha^n u(n)$</mathjax>. <mathjax>$\hat{X}(z) = \frac{1}{1
+- \alpha z^{-1}}$</mathjax>, <mathjax>$\abs{\alpha} &lt; \abs{z}$</mathjax> (i.e. outside the circle).</p>
+<p>We also had an anticausal example, <mathjax>$q(n) = -\alpha^n u(-n-1)$</mathjax>. <mathjax>$\hat{Q}(z)
+= \frac{1}{1 - \alpha z^{-1}}$</mathjax>, <mathjax>$\abs{z} &lt; \abs{\alpha}$</mathjax> (i.e. inside the
+circle).</p>
+<p>Furthermore, we discussed that a Fourier transform existed if and only if
+the unit circle was contained in the region of convergence.</p>
+<p>Notice that the RoC of a causal system was outside, all the way to
+infinity, while the RoC of an anticausal was inside, all the way to zero.</p>
+<p>We further learned that causal signals are a subset of right-sided signals,
+and anti-causal signals are a subset of left-handed signals.</p>
+<p>So what happens if we shift our signal, i.e. <mathjax>$r(n) = x(n+1)$</mathjax>?</p>
+<p><mathjax>$\hat{R}(z) = z\hat{X}(\omega)$</mathjax>. This is a simple example of what we call
+the time-shift property. You can guess what happens when we shift by an
+arbitrary integer. <mathjax>$x(n-N) \ztrans z^N X(z)$</mathjax>. Note that this is no longer
+causal, but it is still right-sided.</p>
+<p>Notice that now the signal blows up at infinity, so our radius of
+convergence is now <mathjax>$R_r: \abs{\alpha} &lt; \abs{z} &lt; \infty$</mathjax>. The set of
+right-sided signals is a strict superset of the set of causal signals.</p>
+<p>This is the difference between the z-transform of right-sided signals and
+that of causal signals.</p>
+<p>Similarly, with a left-sided signal, we would exclude the origin from the
+RoC.</p>
+<p>There's also a simple way of showing why causal signals are outside of some
+radius of convergence.</p>
+<p>Let x be causal. Its z-transform starts from the earliest possible point,
+i.e. <mathjax>$n = 0$</mathjax>. <mathjax>$\hat{X}(z) = x(0) + \frac{x(1)}{z} + ... $</mathjax>.</p>
+<p>If <mathjax>$\abs{z} = R_1 \in R_x$</mathjax>, I want you to argue why <mathjax>$\abs{z} = R_2$</mathjax>, where
+<mathjax>$R_1 &lt; R_2$</mathjax> is also in the RoC. Reasoning: with larger radii, we have
+smaller values in our absolute sum.</p>
+<p>Right-sided signals: almost identical, except we have a finite number of
+elements on the left, and so infinity must be excluded.</p>
+<p>Once you find the radius at which the sum converges, everything else
+outside also converges.</p>
+<p>Similar argument for anti-causal and left-sided signals.</p>
+<p>So now let's combine these.</p>
+<h2>Example:</h2>
+<p><mathjax>$g(n) = \parens{\frac{1}{2}}^n u(n) - \parens{\frac{3}{2}}^n u(-n-1)$</mathjax></p>
+<p>As done before, we have <mathjax>$\frac{1}{1 - \alpha z^{-1}}$</mathjax> for both values of
+"<mathjax>$\alpha$</mathjax>". Thus our region of convergence is <mathjax>$\frac{1}{2} &lt; \abs{r} &lt;
+\frac{3}{2}$</mathjax> (superposition tells us the corresponding z-transform is
+<mathjax>$\frac{2z}{2z - 1} + \frac{2z}{2z - 3} = \frac{2z(z-1)}{(z-\frac{1}{2})
+(z-\frac{3}{2})}$</mathjax>).</p>
+<p>As you can see, two-sided signals have annular regions for their RoCs.</p>
+<p>Reason for zeroes: if I were to ask you to find the inverse of the system,
+what would you do? Let's say this represents distortion, and you want to
+undo the distortion.</p>
+<p>Also comes into play when you want to plot the frequency response.</p>
+<p>Let's do another</p>
+<h2>Example:</h2>
+<p><mathjax>$h(n) = \expfrac{3}{2}{n}u(n) - \expfrac{1}{2}{n} u(n-1)$</mathjax>. Now we've got
+<strong>nothing</strong> -- there is no overlap between the two regions, so there is
+neither a Z-transform nor a region of convergence. (we would have the same
+expression, but this doesn't hold anywhere.)</p>
+<h2>Intermission</h2>
+<h1>Time Shift Property</h1>
+<p><mathjax>$x(n-N) \to z^{-N}\hat{X}(z)$</mathjax>. What does this do to the region of
+convergence? It can potentially eliminate infinity (if N positive) or zero
+(if N negative), but not both.</p>
+<h1>Convolution Property</h1>
+<p>If you have <mathjax>$h \equiv f \star g \ztrans \hat{H}(z) =
+\hat{F}(z)\hat{G}(z)$</mathjax>. Simple way to show this is by cascading filters and
+feeding in (instead of a complex exponential) <mathjax>$z^n$</mathjax> -- this is identical to
+the eigenfunction property of LTI systems. And what's the RoC? <mathjax>$R_h \supset
+(R_f \cap R_g)$</mathjax> (could be bigger if pole-zero cancellation occurs)</p>
+<p>Think of these poles as dam (damn?) walls.</p>
+<p>If we put this system in cascade with another one such that <mathjax>$q(n) =
+\delta(n) - \frac{1}{2}\delta(n-1)$</mathjax>, <mathjax>$\hat{Q}(z) = \frac{z-\frac{1}{2}}
+{z}$</mathjax>. Since this is a FIR filter, <mathjax>$R_q = \cplx - \set{0}$</mathjax>.</p>
+<p><mathjax>$\hat{A}(z) = \hat{R}(z)\hat{Q}(z) = \frac{2(z-1)}{z - \frac{3}{2}}$</mathjax> . We
+get double pole-cancellation, in fact, so <mathjax>$R_q = \set{z \middle| \abs{z} &lt;
+\frac{3}{2}}$</mathjax>.</p>
+<h1>Time-reversal</h1>
+<p><mathjax>$x(n) \ztrans \hat{X}(z)$</mathjax>. <mathjax>$x(-n) \ztrans ?$</mathjax> Do a variable substitution,
+and then you see that everywhere you had <mathjax>$z$</mathjax>, it's now a <mathjax>$z^{-1}$</mathjax>. Thus
+<mathjax>$x(-n) \ztrans \hat{X}(\frac{1}{z})$</mathjax>. When you correlate this with the
+Fourier-transform story, we got a frequency reversal in the frequency
+domain. Locations of poles and zeroes map to their inverses,
+i.e. <mathjax>$\hat{X}(z_0) \to \hat{X}^\prime(\frac{1}{z_0})$</mathjax>.</p>
+<h1>Multiplication by a complex exponential</h1>
+<p>Presume
+<mathjax>$$
+g(n) \ztrans \hat{G}(z)
+\\ h(n) = z_0^n g(n) \ztrans \hat{H}(z) = ?
+$$</mathjax></p>
+<p><mathjax>$\hat{G}(\frac{z}{z_0})$</mathjax>, after the dust clears. If <mathjax>$p_0$</mathjax> is a pole of
+<mathjax>$\hat{G}$</mathjax>, it moves to <mathjax>$z_0p_0$</mathjax>.</p>
+</body>
+</html>
