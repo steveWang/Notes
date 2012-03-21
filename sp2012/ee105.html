@@ -1,0 +1,1214 @@
+<script src='file:///home/steve/hackerspace/mathjax/unpacked/MathJax.js?config=default'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+  prefilterMath: function (math,displaymode,script) {
+      math = "\\displaystyle{"+math+"}";
+      return PREFILTER.call(TEX,math,displaymode,script);
+    }
+  });
+});
+</script>
+
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Wednesday, January 18, 2012.</h2>
+<p>semiconductor physics. 3-terminal devices.</p>
+<h1>Admin Stuff</h1>
+<p>Office hours:
+ * 512 Cory.
+ * W 2-3, F 10:30-11:30, by appointment.
+Labs:
+ * 353 Cory.
+ * Partner.
+ * No food.
+Grading:
+ * Homework 20
+ * Midterm  20
+ * Final    30
+ * Lab      20
+ * Project  10
+Extra credit.
+Cheating: strongly discouraged.</p>
+<p>bspace, Piazza, web page.</p>
+<h1>Overview</h1>
+<p>Device Physics
+ * bandgap, dopants, PN, etc.
+Linearization
+ * operating point
+ * local derivatives
+time/frequency domain analysis
+ * Heaviside: ODE -&gt; algebra
+ * Bode
+ * Feedback &lt;-&gt; stability
+I/O impedances</p>
+<h1>Device Physics</h1>
+<h2>Bohr</h2>
+<p>Hydrogen spectrum. (plots of intensity vs. frequency. Spectral lines)</p>
+<p>Quantized energy levels of electrons orbiting atoms. Bohr model, so to
+speak: difference of energies would result in the emission of a photon
+at a specific frequency, which generates a specific wavelength/color.</p>
+<p>Si: 1s2 2s2 2p6 3s2 3p2</p>
+<h2>Pauli Exclusion Principle</h2>
+<p>twinning</p>
+<p>crystal
+ * N atoms. silicon: 5 \cdot 10^{22} per cubic centimeter.
+ * N splits per level. Turn effectively into bands.</p>
+<p>valence band, conduction band. zero-energy is somewhere, 8 eV away.</p>
+<p>At absolute zero, in semiconductors (and insulators), the valence band
+is full, and the conduction band is empty.</p>
+<p>Conductivity of this material @ T=0 is basically 0. Resistivity is
+essentially infinite, i.e. electrons can't move.</p>
+<p>Slight chance electrons can jump to a different energy level. In their
+place, they leave "holes". now we have non-zero conductivity and
+finite resistivity.</p>
+<p>The behavior of this follows Fermi-Dirac statistics. i.e. The
+probability of one of these energy levels being full depends on the
+energy and the temperature.</p>
+<p>(you have your standard Fermi distribution)</p>
+<p>k_B T = 26 meV @ room temperature.
+n_i = 10^{10} electron/hole pairs per cubic centimeter.</p>
+<h2>Bandgaps:</h2>
+<p>Si:          1.1 eV, 1.1 um
+Ge:          0.67
+GaAs:        1.4,    0.8 um
+C (diamond): 5.5
+GaN:         3.4,    0.35 um</p>
+<p>E = hc/λ
+λ = hc/E = 1.2 um-eV/E</p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Friday, January 20, 2012.</h2>
+<p>Lab 1
+ * Dangerous!
+ * Diodes
+   + <mathjax>$I_D = I_S e^{V_D/V_{DD}}$</mathjax>
+EE 105: Devices &amp; Circuits
+==========================
+Monday, January 23, 2012.</p>
+<hr />
+<p>Lab 1
+ * Dangerous!
+ * Diodes
+   + <mathjax>$I_D = I_S e^{V_D/V_{DD}}$</mathjax>
+EE 105: Devices &amp; Circuits
+==========================
+Wednesday, January 25, 2012.</p>
+<hr />
+<p>Oscilloscope:
+ * Frequency
+ * Amplitude / scale
+ * DC offset
+ * Trigger</p>
+<p>DO NOT PRESS [ autoscale ]. Nobody who knows how to use an oscilloscope
+uses autoscale.</p>
+<h1>Built-in potential V₀</h1>
+<p>High-level: why are we studying PN-junction? It's central to every
+semiconductor device we have. NPN-junction, MOSFET. Basically same thing,
+but one new thing. Field-effect.</p>
+<p>Everything you need to know about these devices aside from field-effect is
+in the PN-junction.</p>
+<p>From last time, if we have a junction, there are more N-type carriers on
+the N side, and vice versa. Concentration profiles look like Nd ≈ 10¹⁷,
+peak concentration of other carriers is much less. Reversed on the P side.</p>
+<p>Huge gradient from N-type carriers, so they want to flow. However, they
+leave behind a difference in electric charge – electric potential
+generated, so we have a resulting electric field (E = -∇V).</p>
+<p>In order to have charge neutrality, we have to have that drift and
+diffusion current cancel each other out perfectly. True for both carrier
+types and on both sides. True everywhere. Can't be net charge flow in
+equilibrium.</p>
+<p>In terms of concentration, we have gradients. Something happens; we don't
+know the actual shape.</p>
+<p>So... If we assume that this is an abrupt junction (so, as fabricated,
+there is a uniform concentration of N on one side, uniform concentration of
+P on the other side – NOT the way real world is; doping is graded),
+J{drift} = -J{diffusion} for hole currents, qpμ{p}E = qD{p}∇p. Now talking
+about number of carriers vs. number of coulombs. E = -∇V, so we can make
+this substitution to eliminate E. Using the Einstein relation, we get that
+V(x₂) - V(x₁) = (D{p}/μ{p})ln(p(x₂)/p(x₁). Therefore: V{D} = (k{B}T/q)
+ln(N{A}N{D}/n{i}²). This is the built-in potential.</p>
+<p>If a photon comes in with a λ &lt; λ{crit}, i.e. hc/λ ≥ E{g}, it'll create an
+electron-hole pair. Contributions to n{p} and p{p}.</p>
+<p>Characteristic lifetime measured in ns → ms, depending on parameters such
+as doping: heavier doping ⇒ shorter lifetime. Defects, surfaces. If an
+electron wanders over and sees the edge of the depletion region, it gets
+shot back by the electric field.</p>
+<p>Thermocouple, similar sort of thing. Vaguely similar. Probably similar.</p>
+<p>So what about minority carriers? Right at the edge of the depletion region,
+it's going to be essentially 0.</p>
+<p>lifetime ⇒ diffusion length L{n}, L{p}. Minority carrier diffusion current
+across edge of depletion region.</p>
+<p>qD{n}∇n + qD{p}∇p. Approximate ∇n as n{p}/L{n}, ∇p as p{n}/L{p}.</p>
+<p>So the actual current I{diff.min.carriers at edge of dep. reg} =
+Aq(D{n}n{p}/L{n} + D{p}p{n}/L{p})</p>
+<p>[ n{p} = n{i}²/N{A}, p{n} = n{i}²/N{D} ]</p>
+<p>= Aqn{i}²(D{n}/(N{A}L{n}) + D{p}/(N{D}L{p})) = I{drift}. Eq 2.99.</p>
+<h2>Reverse bias Is</h2>
+<p>At zero bias (V{D}=0), I{drif} + I{diff} = 0 = I{D} (current on diode). In
+reverse bias, V{D} &lt; 0. We're increasing the electric field, so I{diff} →
+0. I{diode} = I{drift} = I{s} (saturation current)</p>
+<p>For V{D} &lt; 3k{B}T/q, this might happen.</p>
+<p>[ talk about what lifetime and diffusion length means. ]</p>
+<p>One last thing to point out: saturation current depends on n{i}². Diode
+leakage current is a huge function of temperature, as a result.</p>
+<p>Linear increase in charge ⇒ quadratic increase in voltage.</p>
+<p>Going through and deriving equations is tedious. Not terribly
+educational. Results: with a voltage V{D} applied, width of the depletion
+region W = X{n} + X{p} = [2ε(V₀-VD)/q (1/NA + 1/ND)]^{1/2}.</p>
+<p>x{n} = W/(1+N{D}/N{A}). x{p} = W/(1+N{A}/N{D}).</p>
+<h2>Forward bias</h2>
+<p>exponential current-stuffs.
+EE 105: Devices &amp; Circuits
+==========================
+Friday, January 27, 2012.</p>
+<hr />
+<p>Everywhere inside there you've got fixed trapped charges. Some number of P
+or As charges per cc. We only draw them in the depletion region because
+this is the region where they're actually exposed. (balanced with free
+electron for charge neutrality outside of the depletion region -- inside
+depletion region, no charge neutrality, which generates a very nice
+electric field.)</p>
+<p>Integration allows us to figure out what the built-in voltage is.</p>
+<p>peak electric field as function of size of depletion region. Do a numeric
+integral! E{max} is a function of x{n} and dopant and so on. We're not
+going to do this; you can find it in your 130 textbook if you want. W, the
+total width of the depletion region, x{n} + x{p}, is equal to √(2εV₀/q
+(1/N{A} + 1/N{D})⁻¹).</p>
+<p>Once you've got that W, you know that capacitance is equal to εA/d. C =
+εA/W = ε/√(εV₀/q (1/N{A} + 1/N{D})⁻¹) = √(εq/(2V₀) N{A}N{D}/(N{A} +
+N{D})). Freshman physics.</p>
+<p>All of this stays the same, except we replace V₀ with V₀ - V{D}.</p>
+<p>AC{j0}/√(1 - stuff)</p>
+<p>reverse bias:</p>
+<pre><code>V{D} &lt; 0, increasing E field, increasing W, decreasing C,
+decreasing diffusion, increasing barrier height.
+</code></pre>
+<p>forward bias:</p>
+<pre><code>V{D} &gt; 0, decreasing E field, decreasing W, increasing C,
+increasing diffusion, decreasing barrier height.
+</code></pre>
+<p>The model breaks down at some point. C{j0}[F/m²].</p>
+<p>Varactor: variable capacitor.</p>
+<p>electric breakdown: avalanche. lightning.</p>
+<p>zener breakdown: </p>
+<p>Electrons are somewhat like ball bearings, and holes are somewhat like
+bubbles. Initially, when you put these things together, the electrons float
+across. This barrier appears because of electric field and stuff and grows
+until it's big enough to keep electrons and holes from diffusing
+across. Less and less energy as you go up. Probability of having energy is
+exponential. It's less, but it's not zero. Every 26 meV I go up, I decrease
+by a factor of e. Every 60, I decrease by a factor of 10.</p>
+<p>The drift current is, these guys are wandering around. There's not many of
+them on the p-side, etc. One of them wanders to the edge and gets shot to
+the other side. Minority carriers that get too close to the edge.</p>
+<p>all these things bend. conduction band on either side, distance between
+fermi levels is, again, qv{r}. larger energy barrier.</p>
+<p>thermal excitation. barrier even higher. probability gone down even
+further. shut off diffusion of majority carriers. nothing done to change
+diffusion of minority carriers.</p>
+<p>zener: electrons actually want to move this way. all drawn in this
+region. if i dope junctions heavily enough, i shrink depletion region
+sufficiently and make the potential bigger. it's more stretched, and they
+physically get closer. if this is narrow enough, i'll get an electron
+that'll actually tunnel across this barrier. quantum tunneling, wave
+function having some probability. black magics.</p>
+<p>equations 2.91 — 2.99. " provable. "</p>
+<p>Forward bias ⇒ reduced barrier height. That's the big handwave.</p>
+<p>Last time, we talked about the diffusion we get or the drift current due to
+minority carriers near the edge. We said that at equilibrium, I{drift} =
+-I{S}; I{S} = qAn²{i} and more stuff</p>
+<p>So we derived this, we also know that I{drift} + I{diff} = 0, since we're
+at equilibrium. Therefore I{diff} (V{D} = 0) = I{S}, and we know that
+diffusion current is exponential in this barrier energy thingy. So you've
+got to get I{diff} = I{s} e^{V{D}/V{th}}. So now I{d} = I{drift} + I{diff}
+= I{S}(e^{stuff} - 1).</p>
+<p>Turn-on voltage. If I've got a diode with I{S} = 10⁻¹⁵ (an ideal diode) at
+room temperature, what's the current going to be? 0 at no applied voltage;
+at +26mV, I{D} = 10⁻¹⁵(e-1); et cetera sequantur.
+EE 105: Devices &amp; Circuits
+==========================
+Monday, January 30, 2012.</p>
+<hr />
+<p>graphing iv curve. turn-on voltage. exponentials look the same. Curve just
+shifts to right. No such thing as a turn-on voltage for a diode without
+context.</p>
+<h1>SPICE</h1>
+<p>All right. So. Now, let me say a little bit about SPICE. Every company has
+their own flavor of spice. All of those trees trace their origin back to
+Cory Hall. Don Peterson and his group. Simulation program, integrated
+circuit emphasis. Used all over: electromechanical systems, mems, thermal
+systems, biological systems, etc. Anyway, SPICE is so widely used because
+it was built by people who needed to use it. Also, it was put in public
+domain. Good things come out of putting things in public domain.</p>
+<p>SPICE. What is it? The idea is that you've got a core program that
+implements models of device physics (and these evolve over time) that
+different companies (and there's a framework where you can build your own
+understanding of device physics)</p>
+<p>level 1 through 200 or something like that for MOSFETs. Extensible device
+physics modeling here for these things.</p>
+<p>There's a net list or schematic that says how are these hooked up, the
+concept of having nodes with node voltages (natural for circuits people to
+think about) – you get to do it graphically in LTSpice.</p>
+<p>It does generate inside of there and spit out a net list.</p>
+<p>And then there's device model statements in there, like 2M3904. That's a
+particular BJT that you've got that you're using in the lab. It has
+particular parameters that then go in and get used by the device physics
+inside of this thing.</p>
+<p>When you create the model for the 3904, you're using the parameters,
+e.g. doping levels and more.</p>
+<p>And then there's a whole bunch of simulation engines that live inside of
+this that take all this stuff and spit out a bunch of results.</p>
+<p>Since you've got LTSpice, there's a graphical interface. There's also
+text-based stuff, esp. the .op files.</p>
+<p>So. <em>.op</em>, probably the most important one, this one is a nonlinear coupled
+equation solver. The idea is you wire it with some circuit, and you run .op
+on that, and it tells you what the voltage is going to be on that
+thing. Bottom line is, you've got a nonlinear equation here. Fundamentally,
+you're stuck with this transcendental equation. Pretty much have to use
+numerical methods for that.</p>
+<p>This gives you a "DC" (static) operating point. Most important because it's
+often the one people ignore, and they don't understand why fancier
+simulations aren't giving them the results they expect.</p>
+<p>Single most important thing to do is check what the DC voltages are at each
+node (<em>starts with the power supply</em>), and see if they match up with your
+internal model.</p>
+<p>Then, <em>.fran</em> does nonlinear time-varying ordinary differential equation
+solution. Very broad class, but with nodal analysis, you've got these
+nonlinear equations, and you throw a capacitor in there, and all of a
+sudden you've got dynamics.</p>
+<p><em>.ac</em> is the linearized transfer function you get from a defined input to a
+defined output. How much is the output going to wiggle, and how much does
+it depend on frequency? This is where we're going to spend most of the
+semester.</p>
+<p>So that's what SPICE does. The linearization, by the way, if I plot I-V on
+a particular scale, you know that you're operating within an approximate
+range. One way to solve circuits like this is to use first-order Taylor
+approximation.</p>
+<p>[ talk about what we'll have to do for our homework ]</p>
+<p>What you find is as long as your signals are small, you don't have too much
+error.</p>
+<p>On the homework, this is your first introduction to the idea.</p>
+<h1>Zeners</h1>
+<p>Most zeners that you buy are actually avalanche diodes that don't actually
+use the zener effect. What if you had a diode that had a region of very low
+doping in between the P and N regions (PIN ⇒ P-Insulator-N)? Holds up very
+well against reverse bias. Could be used in power supplies. Not too useful
+any more, since power is actually precious. Also works with AC
+voltage. Step one, put it through a diode to rectify it, then put it
+through a resistor, then through a zener, a cap to flatten things out. Very
+useful power supply.</p>
+<p>[ talk about solar cells. Optimum value, talks about quadrants in which
+  devices operate. Most in Q1/3. Solar cells in Q4. ]</p>
+<p>Schottky discovered this effect that when you have a metal-silicon
+junction, you get a similar effect to what we see with N+-P+. It's slightly
+different. You have the conduction band for the metal, and you actually get
+the band bending, and your N-type semiconductor ends up with its electrons
+right there.</p>
+<p>It turns out when you do this, this barrier is lower. The result is you
+don't need to put very much forward bias on these things for the electrons
+to overcome the barrier. High current at low forward bias. Also fast. One
+thing we haven't discussed is speed. Turns out, it takes a while for most
+diodes to recombine. And while they're recombining, you've still got
+current flowing through these things.</p>
+<p>So instead of dropping 500mV with a silicon diode, you could drop 50mV with
+a Schottky. And of course if you want this thing to be a regulated voltage,
+you throw on yet another diode.</p>
+<p>Any questions on diodes? All right. Now I'm going to draw some more
+diodes. But that's because we're going to start talking about bipolar
+junction transistors. So. Recall: if I have an N+-P device with 10¹⁷ and
+10¹⁵. When I put it in forward bias, I get a big flood of electrons flowing
+one way and holes flowing the other way, and it's driven by diffusion as
+per Fick's Law.</p>
+<p>So forward bias, I've got I{n} is roughly 100x I{p}. That's basically all
+we need to recall.</p>
+<p>So let's say we make two of these junctions in the same substrate. So I
+have a p-type substrate, and I'm going to connect a voltage of that of say
+.5V. I'm going to diffuse in an N+ region at much higher carrier
+concentration, and I'm going to put another one right next to it. Also,
+take potential up to 10V reverse bias on the left side. What does this look
+like? We've got a depletion region, mostly in the P-side, since that's more
+lightly doped. Very small in the N-side.</p>
+<p>So which way does the electron go? Electric field from depletion region is
+set up such that it's trying to shove all these electrons back. Reverse
+bias. Turns out very few holes are going to show up. There are some. Now,
+I'm going to take the right side, and we're going to ground it. Forward
+bias.</p>
+<p>Now I've got this massive current of electrons pouring out of this
+thing. What's going to happen when they hit this barrier? They get shot
+right across the depletion region. Huge concentration of electrons here.</p>
+<p>It turns out the current from the P-side is much much smaller. Tiny trickle
+of p-type going back in. Huge gradient going down toward it. Diffusion
+toward it, and once they hit it, there's drift.</p>
+<p>AT&amp;T labs were the first to do this. Germanium substrate with insulating
+structure. emitter + collector on base. Figures we use today use same
+labeling.
+EE 105: Devices &amp; Circuits
+==========================
+Wednesday, February 1, 2012</p>
+<hr />
+<p>Diodes
+ * Small signal model</p>
+<pre><code> The idea is that nonlinearities are a pain, and you can basically use
+ a first-order Taylor approximation -- locally, everything is flat.
+
+ You may recall from basic physics, if you're trying to find some f(x),
+ find some f₀ that you know, then write f(x) as f₀ + Δx. Technically,
+ you'd use Newton linearization. Works great very close to the point,
+ i.e in the case of small-signal.
+
+ In particular, for a diode, ID = IsV^{VDD/Vth} (ideal diode). If I can
+ find a bias point, operating point, or whatever, and I've found some
+ point on this curve, then I can say for small variations around VD*,
+ we can use a small-signal variation about the operating point. It's
+ going to technically cause nonlinear variation, but with a small
+ enough signal, we can ignore the effects of higher-order
+ terms. Convention says that lower-case means small signal. Presumably
+ upper-case means large-signal, then.
+
+ total distortion you get from nonlinear terms that we threw out tends
+ to be listed as a spec. Human ears like some forms of distortion more
+ than other, so some people prefer tube amps over transistor amps.
+
+ Local coordinate system: good approximation close to the
+ center. Probably a good idea to check higher-order terms start
+ becoming non-negligible.
+</code></pre>
+<ul>
+<li>
+<p>PTAT</p>
+<p>Proportional to absolute temperature. Very useful circuit to
+ build. The central idea is this: if I have a diode, and I shove some
+ current I₀ through it, that's going to give me some voltage VD₁. If I
+ have some other diode, and I shove nI₀ through that diode, if these
+ two diodes are identical, I'll get some other voltage VD₂. If I
+ consider the difference between these voltages as Vx, Vx = VD₂ - VD₁ =
+ VT(ln n). The difference between these two voltages, then, is
+ proportional to temperature in Kelvin.</p>
+</li>
+<li>
+<p>Voltage doubler</p>
+<p>Charge pump: charge in parallel, discharge in series. Cap to smooth
+ things out, zener to limit.</p>
+</li>
+</ul>
+<p>BJT physics</p>
+<pre><code>Recall: PN-junction. Next to no minority carriers in reverse
+bias. Base-emitter junction, base-collector junction.
+</code></pre>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Friday, February 3, 2012</h2>
+<p>So, in talking to some of you about hte homework, I realized there's at
+least one thing on there. When I say ideal diode, I mean <em>exponential
+response of current to voltage</em>. Thinking about region of operation, small
+signal model for 3-terminal devices.</p>
+<h1>Simple model for BJTs</h1>
+<p>If we consider a diode, and it looks like something, there's a bunch of
+regions of operation of this diode. Power supplies: operating in vastly
+different regions of said diode. If we're sitting in some zone and increase
+bias voltage, what do we expect current change to be?</p>
+<p>dI{D}/dV{T} = I{D}/V{T}.</p>
+<p>rare that we care about something past second decimal point.</p>
+<p>Small signal model in a particular region of operation. In region, I look
+at conductance of diode (reciprocal of small signal resistance V{T}/I{D}).</p>
+<p>So let's get back to the bipolar transistor, and, as we said, last time, if
+I've got an N-type junction and a P-type junction, some depletion region in
+there, some point called x₁, the concentration of carriers depends on
+bias. Forward bias: magnitude of currents roughly proportional to magnitude
+of doping.</p>
+<p>Reverse bias, if P has a lower voltage than N, we've got a huge field, shut
+down diffusion current, and any minority carrier can't diffuse
+across. Increased energy barrier, made a cliff there, so when an electron
+hits the cliff, it gets shot across. Minority concentration effectively 0:
+any thermal noise causes them to get shot to the other side.</p>
+<p>Let's say we've got two of these regions put back to back. NPN
+transistor. Let's say we put this through a 1k resistor. Forward bias on
+one PN junction. At that voltage, that causes 1 mA of current to flow
+through this device. [ roughly where we were last time ]</p>
+<p>n(x₁) = n{p₁}exp[V{BE}/V{T}]  { n{p₁} = n²{i}/N{A} }
+n(x₂) = 0</p>
+<p>Formula for diffusion current is J = D{n}(-q∇n)</p>
+<p>transistor is magical: not very much base current: there's some holes
+flowing across this junction, but orders of magnitude less than electrons
+flowing. Also electron-hole recombination going on, so those need to be
+replenished.</p>
+<p>Essentially, you've got a small current controlling a much larger
+current. Magical.</p>
+<p>We've got a system. In particular operating conditions, this is 0.6V, and
+the output is equal to 9V. This current I{C} in here depends exponentially
+on my bias voltage. What happens if I increase this bias voltage by 26 mV?
+Factor of e.
+EE 105: Devices &amp; Circuits
+==========================
+Monday, February 6, 2012</p>
+<hr />
+<p>Few words about lab 2. Talk about BJTs, region of operation, \alpha, \beta,
+small signal model, early effects. Monday's section, not everyone was able
+to finish. You can go in to the lab any time during the day or night;
+encouraged to do that. Seem to not like to leave cabinet unlocked, will try
+to change that. Shouldn't take too long to finish. Report this time, will
+give powerpoint template, circuits schematic.</p>
+<p>Dopant diffusion (implant 8) 8-in or 12-in. 200mm or 300mm in diameter;
+thickness is around 650 to 800 microns.</p>
+<p>For bipolar, they start with a p-type wafer. Grow an n-type region on top
+of that. And then use ion implantation and diffusion to make this
+p-type. So now you've got a p-type wafer, lightly-doped n-type (heavily
+underneath), and they're all surrounded by p-type material. Most negative
+voltage, so we're never getting forward bias.</p>
+<p>Forward active region of operation.</p>
+<pre><code>         BE In
+  +---+-------+----------+
+  |   |Rev    |   Fwd    |
+  +---+-------+----------+
+</code></pre>
+<p>BC In |Rev|Cutoff |Forward   |
+      |   |       |active    |
+      +---+-------+----------+
+      |Fwd|Reverse|Saturation|
+      |   |active |          |
+      +---+-------+----------+</p>
+<p>N^+PN^+, wouldn't care which way you ran. Work just the same. Curves would
+be the same. Called reverse active.</p>
+<p>We talked about this last time: let's say I increase V{be} by \delta
+V{be}by 26mV. The 26mV here means that I increase I{c} by some \delta I{c}.
+That will cause a decrease in voltage. \partial V{ce}/\partialV{bd}.</p>
+<p>Operating point: where you first bias a device All of the extra \delta s
+represent your small signal.
+EE 105: Devices &amp; Circuits
+==========================
+Wednesday, February 8, 2012</p>
+<hr />
+<p>Talk about RC, LC circuits. If I have a step function that goes from 0 to
+some current I, I know the differential equation that governs the current
+on this thing is I/C = dV/dt. Pretty straightforward.</p>
+<p>Recall RC = τ. There's some voltage that I'm heading to. The thing I want
+you to internalize and regurgitate is that the initial slope is where I
+want to get in τ seconds.</p>
+<h2>Small-signal model (SSM)</h2>
+<p>Fleming diode: hot filament + plate (1904). Forest diode: hot filament +
+grid + plate (1906): three terminal device. Section where he talks about
+the physics of the device. Hilarious.</p>
+<p>1948: point-contact transistor. BJT. Three-terminal device. Pretty quickly
+after that, people figured out the JFET. Consider N-type material with good
+N+ connections to it. Now a resistor. Can calculate resistance based on
+geometry + doping.</p>
+<p>Now, put in a P+ material here and make this your gate electrode. By
+playing with the voltage, we can manipulate the width of the depletion
+region. Pinch-off: maximum current you effectively can get. All four of
+these devices have the same picture: three-terminal devices, you've got
+some control voltage, some output voltage, and there's some output
+current. And in every case, I can make a device with some V{supply}, a
+resistor, and increasing V{in} causes an increase in I{out}, which causes a
+decrease in V{out}. So if I plot V{out} vs. V{in}, I get some kind of a
+curve that looks vaguely like logistic decay (?). So that's why we care so
+much about the two control parameters.</p>
+<p>I(V{in}, V{out}) = string(V{in})weak(V{out}).</p>
+<p>∂I/∂V{in} = g{m}: transconductance, ∂I/∂V{out} = g{o}: output conductance;
+therefore resistance r{o} = 1/g{o}</p>
+<p>We want g{m} to be large and g{o} to be small. Gain is ∂V{out}/∂V{in}.</p>
+<p>g{m} = ∂I{c}/∂V{BE} = I{C}/V{T}
+EE 105: Devices &amp; Circuits
+==========================
+Friday, February 10, 2012</p>
+<hr />
+<p>I{c} = I{s} e^{V{be}/V{T}}(1 + V{out}/V{A})
+V{out} = V{cc} - RI{s}e^{V{be}/V{T}}(1 + V{out}/V{A})</p>
+<p>Don't try to take V{in} up to V{cc}. Explosions bad.</p>
+<p>Nice and analytic. This is a transcendental expression. Have to solve
+iteratively (e.g. via linearization). Voltage gain = dV{out}/dV{in}, which
+is roughly V{out}/V{in}.
+I{c}(V{be},V{ce}) = I{c}<em> + i{c} =I{c}(V{be}</em>,V{ce}*)+g{m}v{be}+v{ce}/r{p}
+Asterisk refers at operating point (small signal model).</p>
+<p>g{m} = ΔI/ΔV. g{o} = ΔI/ΔV{ce} ⇒r{o} = ΔV/Δ{I}.</p>
+<p>equation of tangent plane at that point.</p>
+<p>This is my new circuit now. That looks like voltage controlled current
+source (g{m}v{be}) with a collector node, an emitter node, base node,
+etc. So the real device is linearization + operating point + higher order
+terms we ignore.</p>
+<p>So what does that mean when we look at that thing? There's other things in
+there. There's a voltage source. What does that voltage source look like
+that's supplying V{cc}? A real voltage source has some source resistance on
+it, and so if I want to look at my output voltage here, then I get that the
+current I = (V{out}-V{cc})/R{s} for this device. Actual IV relationship of
+this non-ideal voltage source. The linear version of this is dI/dV{out},
+which is 1/R{s} = g{out}. r{out} = 1/g{out} = R{s}. Any voltage source gets
+replaced in the small signal model by an R{s}. R{s} = 0 ⇒ ground
+("small-signal ground").</p>
+<p>Similarly, by the same argument, a current source also turns, at small
+signals, into an R{s}. An ideal current source has a parallel resistance of
+∞. If R{s} is infinite, this turns into the empty set: an open circuit. No
+current flows into it no matter what voltage change you make.</p>
+<p>Steps: Replace voltage source with a ground, replace transistor with
+linearized version current source and resistor in parallel, emitter
+grounded. Large signal turns into a short. Voltage source called little
+v{be}. Both of these go to ground. If we have some source resistance, that
+would be R{c}. We ignore because it's usually many orders of magnitude
+larger than source resistance.</p>
+<p>Kirchoff's current laws. g{m}v{be} + v{o}/R{out} = 0. We'll do this a lot
+of times.</p>
+<p>So we have v{o}/v{be} = -g{m}R{out} ≡ A. G{M} =∂I{o}/∂V{I}
+G{out} = ∂I{o}/∂V{out} = 1/R{out}.</p>
+<p>g{o} ≠ I{c}/V{ce}. Definitely not. It's the derivative of the curve. Don't
+make that mistake.</p>
+<p>Metal-oxide semiconductors. Used to have metal gates, but now have silicon
+gates. Not really metal, but they're heavily doped, so it looks like it.</p>
+<p>BJT: I{c} = I{s}e^{V{be}/V{T}}(1 + V{ce}/V{A}).</p>
+<p>MOS: I{D} = C{1}(V{gs}-V{th})²(1 + v{ds}/v{a}). Exact analogues. Another
+three-terminal device, weak function of input, strong function of output.</p>
+<p>BJTs are much better, but MOS you can fit many more on a chip.</p>
+<p>So same weak function part (early effect and all) and strong function part
+(but now it's a quadratic, not an exponential). Normally,v{gs}-v{th} is
+about a couple hundred millivolts (whereas V{T} is 26mV @ room temp).</p>
+<p>g{o} = ∂I{o}/∂V{DS} = 1/V{A}I{D}, r{o} = V{A}/I{D}. Instead of talking
+about V{A} in the MOS world, we talk about λ ≡ 1/V{A}. Consider λ as
+percent change per volt. So if it's .1, it's changing 10% per volt. etc.</p>
+<p>changes from n-type to p-type locally. you put a field across there, and
+you have a mobility as they move. the oxide capacitance here is critical in
+determining how that happens. smaller gap =&gt; larger capacitance.</p>
+<p>I{D} = μ{n}C{ox}/2 (V{gs}-V{th})²(1 + λV{DS})
+EE 105: Devices &amp; Circuits
+==========================
+Monday, February 13, 2012</p>
+<hr />
+<h2>Physics of MOSFETs</h2>
+<p>Discovered and patented in 1927. Going to be black magic for just a
+minute. For now: recall, in a reverse-biased diode,when we have a voltage
+source that makes the N-side more positive than the P-side, it takes the
+existing depletion region and pushes the carriers away and expands the
+depletion region. Capacitance as a function of V₀ = C{j₀}/√(1 +
+V{A}/V{D}). C vs. V{r}looks vaguely concave down.</p>
+<p>What happens now if we make the same structure but put an insulator between
+them? I've still got an N-region and a P-region, but now I'm going to put a
+nearly perfect insulator in the middle (typically SiO₂ in the old
+days). The fact that silicon dioxide forms a tight, stable oxide with
+silicon (high temps) is the main reason why silicon took off.Germanium, not
+so much.</p>
+<p>Putting a voltage across, you largely get the same things happening. Still
+have depletion region expanding. We can call this something oxide
+silicon. If you dope it sufficiently, it looks like a metal. Fermi level
+goes up, electrons go into the conduction band.</p>
+<p>Polycrystal silicon: "metal". We still experience the same sort of
+curve. If I go positive enough on the voltage, we'll see a very abrupt
+shift to a higher capacitance level. Turns out this happens in both the
+forward as well as reverse direction. Capacitance is just oxide
+capacitance. What happens is that I end up bending the bands and make the
+insulator locally n-type. Discovered + patented by Lillian Field in 1927.</p>
+<p>The result of this is that I can make a device where I've got a p-type
+substrate, infuse in two places an n+ region, and I put this gate
+(typically n+ silicon) on top of a layer of SiO₂. You generally take teh
+substrate and put it at the lowest level.</p>
+<p>If we put a positive voltage, we get a resistance between the two
+sides. Since this is a capacitor, I don't have to put any current directly
+into the gate to make it work.</p>
+<p>Right now, if you look at the charge density σ[C/cm²] = #cbe/cm²</p>
+<p>Separation between the source and drain is length of the transistor. The
+width into the board is called W, the width of the transistor. This is
+telling me that I've got a sheet of charge. If I put a potential across,
+charge moves. σ = C{ox}(V{GS}-V{thresh}). V{gs}&gt;V{th}.</p>
+<p>V{G} on gate, V{D} on drain. Assume for now that V{D} ≪ V{GS}-V{th}
+(overdrive voltage). We can say, then, that our charge density under the
+gate is as stated above, our electric field is just potential V{DS}/L, and
+we get a velocity out of this v=μ{n}E. So now we can just puzzle out what
+the current has to be. The current I{D} = σ[C/cm²]W[cm] ⇒ [C/cm] v[cm/s] ⇒
+[C/s] = [A]</p>
+<p>I = C{ox)(V{gs} - V{th})Wμ{n}V{DS}/L = μ{n}C{ox}W/L(V{GS}-V{th})V{DS}</p>
+<p>μ{n}C{ox}: Fabrication process &amp; materials dependent.
+W/L      : geometry.
+V{GS}-V{th}: also fab process?</p>
+<p>So now we've made ourselves a resistor. Sometimes people draw this as a
+resistor with a gate (when it's used as a resistor).</p>
+<p>R{on} = V{DS}/I{D}. calculations result in 5Ω.</p>
+<p>V{G} - V{chann} - V{th} ⇒ V{cc} - V{th}. 〈σ〉 = average charge density in
+channel. 〈σ〉 =C{ox}(V{gs} - ½V{DS} - V{th}).</p>
+<p>So now, if I plug that in, do the same calculation, then I get I{D} =
+μ{N}C{ox}(V{GS} - ½V{DS} - V{th})V{ds}</p>
+<p>r{on} = 1/g{on}. Slope in there is g{on}. As we increase V{gs}, we increase
+charge density and max allowed electric field.</p>
+<p>V{ds,max} = V{gs} - V{th}. I{d,max} = μ{n}C{ox}/2 W/L (V{gs} - V{th})². So
+now we're getting close. We've got this quadratic behavior of V{gs}.</p>
+<p>Where does this come from? As I increase V{gs}, charge density increases
+linearly. Also increasing linearly is the amount I can put on the drain.</p>
+<p>As you're increasing V{gs}, you're increasing energy density.
+EE 105: Devices &amp; Circuits
+==========================
+Monday, February 27, 2012</p>
+<hr />
+<h2>Body effect, Current mirrorers, Voltage followers</h2>
+<p>We know that MOSFETs actually have 4 terminals: gate, source, drain, and
+body (biasing the P-). By now, in the MOS, if I'm looking at voltage,
+<mathjax>$\Phi$</mathjax> as a function of x going straight down the gate, in the p-type
+substrate, I've got some <mathjax>$\Phi_p$</mathjax>, short the gate with the substrate, get
+some potential across the oxide. Finally, bring gate voltage up enough that
+I bring the surface potential <mathjax>$\Phi_s$</mathjax> to the point that it's equal in
+magnitude but opposite in sign so we go from having n-type to having p-type
+in the channel.</p>
+<p>In particular, let's keep the source grounded, but let's assume that we're
+going to put a different voltage on the bulk, and that's <mathjax>$V_{SB}$</mathjax>. So first
+off, if I make the source lower than the bulk (<mathjax>$V_{BS} &gt; 0$</mathjax>; source lower
+potential than body). You generally do NOT forward bias source/body
+diode. In general, you reverse-bias the source/body diode.</p>
+<p>What's going on? You're making your transistors in a p-type substrate. You
+make a bunch of different transistors. Somewhere on there you've got your
+p-type contact. If you do anything with that NMOS transistor (aside from
+set source to ground), you are going to have a bias on this junction.</p>
+<p>In particular, when you make your source follower, if you make it with a
+single transistor and a resistor, you get to hook the bulk and the source
+together in your ALD1106. Current source: MOSFET (ground
+substrate). Positive <mathjax>$V_{SB}$</mathjax> bias for upper device, and for other device,
+<mathjax>$V_{BS} = 0$</mathjax>. The whole point of MOS electrostatics was so that we could
+write down what <mathjax>$V_{th}$</mathjax> was.</p>
+<h2><mathjax>$V_{SB} &gt; 0$</mathjax>: What was the effect on <mathjax>$V_{th}$</mathjax>?</h2>
+<p>assume grounded source, putting <mathjax>$V_{SB}$</mathjax> bias. </p>
+<p>I know what I need to get inversion, I've got <mathjax>$\Phi_p$</mathjax>. Turns out the
+formula we had before (what the charge is and what we're going to include
+in there).</p>
+<p>What you get is that <mathjax>$V_{th,0} = V_{FB} - 2\Phi_p + \frac{1}{C_ox} \sqrt{
+2q \epsilon_s N_A (-2\Phi_p)}$</mathjax>.</p>
+<p>(we now call <mathjax>$\sqrt{ 2q \epsilon_s N_A (-2\Phi_p)}$</mathjax> <mathjax>$Q_{dep,0}$</mathjax>)</p>
+<p>So now we get that <mathjax>$V_{th} = V_{th,0} + \frac{1}{C_ox}\sqrt{2q \epsilon_s
+N_A (-2\Phi_p + V_SB)} - \frac{1}{C_ox}Q_{dep,0}$</mathjax>.</p>
+<p>And so what I get is that <mathjax>$V_{th} = V_{th,0} + \gamma(\sqrt{-2\Phi_p +
+V_{SB}} - \sqrt{-2\Phi_p})$</mathjax>, <mathjax>$\gamma \equiv \frac{1}{C_ox}\sqrt{2q
+\epsilon_s N_A}$</mathjax>. <mathjax>$\gamma \approx 0.5 [\sqrt{V}]$</mathjax>.</p>
+<p>In particular, you've got a figure on your datasheet that shows (with the
+gate-drain hooked together and source grounded and applying a potential
+difference <mathjax>$V_{SB}$</mathjax> between the source and body) a plot of <mathjax>$V_{GS}$</mathjax>
+vs. <mathjax>$I_D$</mathjax> at various values of <mathjax>$V_{SB}$</mathjax>.</p>
+<p>Remember <mathjax>$I_D = \frac{\mu_n C_{ox}}{2}\frac{W}{L}\left(V_{GS} - V_{th}
+\right)^2(1 + \lambda V_{DS})$</mathjax> (where <mathjax>$V_{GS} &gt; V_{th}$</mathjax>, <mathjax>$V_{DS} &gt; V_{GS} -
+V{th} = V_{DSAT}$</mathjax>).</p>
+<p>Not quite quadratic -- superquadratic, rather. So. This is <mathjax>$V_{th,0}$</mathjax>, and
+you did this measurement in lab 4. If you put 12V here, then you know that
+you're going to end up with a larger threshold voltage, and it takes off.</p>
+<p>This is called the body effect. </p>
+<p>If I start with an n-type in separate wells, they can have separate body
+substrates. Normally, I can have the p-well down to ground, but if I'm
+doing something where I'm stacking these devices (i.e. in a chain;
+cascaded), your source follower with a current follower node, <mathjax>$V_{in}$</mathjax> is
+tied to the drain of this transistor down there.</p>
+<p>Triple-well process, where you can make PMOS transistors in my n-type
+substrate. Put p+ on either side. Both of these two transistors in the same
+bulk. Various dopings for isolation of wells, so we can make separate body
+contacts for each of them. These days, you throw a lot of different dopants
+to make all sorts of things. Not the luxury you have in older / cheaper
+processes. You'll have to deal with the fact that one of your transistors
+likely won't be made in a well.</p>
+<h2>Mirrors</h2>
+<p>Diode connected. You do the same thing with a MOSFET, I still have a
+two-terminal device. With a BJT, I had an exponential relationship with
+current; with a MOSFET, current goes quadratically. When you make a current
+mirror, it's very common to use a resistor. Stuff about current vs. bias
+voltage. If you want a mA of current, you just have to set your resistor to
+go through a specific point (linearization with transcendental equations).</p>
+<p><mathjax>$V = IR$</mathjax>, or equivalently, <mathjax>$\vec{J} = \sigma \vec{E}$</mathjax>.</p>
+<p>A resistor is a pretty lousy current source.
+EE 105: Devices &amp; Circuits
+==========================
+Wednesday, February 29, 2012</p>
+<hr />
+<p>Lab 5
+Lab 5 reports
+body offset
+impedance of passives
+amplifier types
+in/out resistance</p>
+<p>Lab 5 parts 1-4: do the experiment during week 7, turn in report during
+week 8. Parts 5-6: folded into week 8.</p>
+<p>Handout: rubric regarding specifications of lab report.</p>
+<h2>Body offset?</h2>
+<p>Recall stuff.</p>
+<h2>Passives</h2>
+<p><mathjax>$I = C\deriv{V}{t}$</mathjax>, <mathjax>$V = L\deriv{I}{t}$</mathjax>. <mathjax>$V = V_0\sin(\omega t)
+\implies \deriv{V}{t} = \omega V_0\cos(\omega t) \implies I = C\omega
+V_0\cos(\omega t)$</mathjax>. <mathjax>$"R" \equiv Z = \frac{V}{I} = \frac{V_0\sin\omega
+t}{C\omega V_0\cos(\omega t)}$</mathjax>. <mathjax>$\abs{Z} = \frac{1}{\omega C}$</mathjax>.</p>
+<p>We can do a similar thing and get <mathjax>$\abs{Z_L} = \omega L$</mathjax>. On the homework,
+we're supposed to plot magnitude of impedance vs frequency on a log-log
+plot.</p>
+<h1>Amplifier types</h1>
+<h2>Voltage amplifier</h2>
+<p>You'd like input resistance to be very large (ideally
+infinite), and output resistance to be very small (ideally zero). <mathjax>$A_v =
+\frac{v_o}{v_{in}}$</mathjax></p>
+<h2>Current amplifier</h2>
+<p><mathjax>$A_i = \frac{i_o}{i_{in}}$</mathjax>. Here, we want our output impedance to be infinite
+and our input impedance to be infinite. <mathjax>$A_i = \frac{i_o}{i_{in}}$</mathjax></p>
+<h2>Transconductance amplifier</h2>
+<p>Mixed. Voltage in, current out. Ideally input and output impedances
+infinite. <mathjax>$G = \frac{i_o}{v_{in}}$</mathjax></p>
+<h2>Finally, transresistance amplifier.</h2>
+<p>Output resistance 0, input resistance 0 (ideally). <mathjax>$R = \frac{v_o}{i_{in}}$</mathjax></p>
+<p>+-----+-------+-------+
+|O / I|   V   |   I   |
++-----+-------+-------+
+|  V  |0<mathjax>$A_v$</mathjax> | 0 R 0 |
++-----+-------+-------+
+|  I  |  <mathjax>$G$</mathjax>  | <mathjax>$A_i$</mathjax>0|
++-----+-------+-------+</p>
+<h2>Input/output resistance.</h2>
+<p>On the input, you'll have some <mathjax>$R_s$</mathjax>. You'll have some <mathjax>$R_{out}$</mathjax>. You'll
+have some output load actuator, and it'll have some load resistance
+<mathjax>$R_L$</mathjax>. Both input and load resistances reduce our gain, which is
+unfortunate.</p>
+<p>Microphone and speaker.</p>
+<p>Microphone impedance: electrets that have <mathjax>$R_s &gt; 1M$</mathjax> (JFET typically has on
+the order of <mathjax>$1k$</mathjax>). Could have voice coil that has an <mathjax>$R_s$</mathjax> on the order of
+<mathjax>$1\Omega$</mathjax>. So that can vary.</p>
+<p>On the speaker side.</p>
+<p>Voice coils. Anywhere from 4, 8, 16 <mathjax>$\Omega$</mathjax> for common speakers. Or you
+can be fancy and use electrostatics (rub graphite on mylar film, put
+between two fine sheets of metal, put voltage between the sheets, move
+mylar back and forth. Really hurts when you touch both sides.)</p>
+<p>Depends what combination of speaker/microphone you've got in order to
+decide what values you want.</p>
+<p>So let's say we've purchased a bare electret microphone (no integrated JFET
+that you'd normally find with these things). So let's say <mathjax>$R_s \equiv
+1M\Omega$</mathjax>, <mathjax>$V_o = 20mV$</mathjax> @ desired input volume. You've found a speaker,
+it's a standard 8 <mathjax>$\Omega$</mathjax> voice coil speaker, and you've decided that you
+want 1W of power from this speaker (dissipated). So <mathjax>$P = \frac{V^2} {2R}
+\implies V = 4V$</mathjax> (sinusoidal input). Suppose you take some bias voltage,
+and you stick it into a common emitter amplifier.</p>
+<p>Take <mathjax>$\beta \equiv 200$</mathjax>, <mathjax>$V_A \equiv 50V$</mathjax>, <mathjax>$I_s \equiv 1 pA$</mathjax>.</p>
+<p>Two issues: huge output resistance relative to load resistance, voltage
+division, so output voltage isn't really 5V.</p>
+<p>Voltage follower would work just fine. But here's the problem: I have this
+thing biased @ 5V, voltage drop maybe 0.8V, so we've got half an amp
+flowing through a resistor.</p>
+<p>Any reason why we need that speaker directly coupled to the output?
+Nope. (buffer?!) decoupling, DC-blocking, big, infinite &lt;- all describing
+some capacitor that we use to block out the DC signal. We want its
+impedance to be small relative to 8<mathjax>$\Omega$</mathjax>. So we'd like <mathjax>$\frac{1}{\omega
+C} \ll 8\Omega \implies C \gg \frac{1}{\omega 8\Omega}$</mathjax>. Frequency of
+interest of a good system is 20 Hz to 20 kHz, or 120-120k rad/sec. high
+frequencies aren't worrisome. So we want C <mathjax>$\gg \frac{1}{120 rad/sec \cdot 8
+\Omega} \implies C \gg 1 mF$</mathjax>.</p>
+<p>I still have this problem that I've got my amplifier, and I've got an 8
+<mathjax>$\Omega$</mathjax> load here, so I'd still like to stick something in there such that
+our output resistance is much less than 8 <mathjax>$\Omega$</mathjax>, and <mathjax>$R_in \gg 1k$</mathjax> (for
+"much greater than", factor of 10 is roughly sufficient).</p>
+<p>So we have yet another with <mathjax>$r_\pi$</mathjax>, so we need to put in yet another
+unity-gain buffer (totally different specs regarding impedance, though).
+EE 105: Devices &amp; Circuits
+==========================
+Friday, March 2, 2012</p>
+<hr />
+<p>Standard diode bridge, allows you to efficiently convert AC to
+DC. Full-wave rectifier. So now you've got your diode bridge going,
+typically, to some bypass capacitor, and then back those into a regulator,
+and you've already seen the very simplest regulator is just a
+reverse-biased zener diode. And then you've got your regulated supply out.</p>
+<p>You can imagine with your regulator, you can actually set the voltage this
+thing regulates. One common regulator, actually, is a comparator driving a
+MOSFET. Feedback-controlled regulator. So now, the amount of current I pull
+out of the transformer depends on what load I hang off of it.</p>
+<p>There's no direct relationship between symbols for ground.</p>
+<h1>LAST TIME:</h1>
+<p>If I have a voltage amplifier, I know that this thing has some input
+impedance <mathjax>$R_{in}$</mathjax>, some voltage source that has some output impedance
+<mathjax>$R_{out}$</mathjax>, and we have some gain. And then I have a voltage source. It has
+some intrinsic source resistance <mathjax>$R_s$</mathjax>.</p>
+<p>For a voltage amplifier, to make it ideal, our input impedance should be
+infinite. Real systems, 10 <mathjax>$M\Omega$</mathjax> is pretty common. For very fancy
+systems, 1 <mathjax>$G\Omega$</mathjax>. Beyond that, you get very weird effects.</p>
+<p>Basically, you get that <mathjax>$V_{in} = \frac{R_{in}}{R_{in} + R_s}}V_s$</mathjax>;
+<mathjax>$V_{out} = AV_s\frac{R_{in}}{R_{in} + R_s}\frac{R_L}{R_L + R_{out}}$</mathjax>. This
+is assuming that <mathjax>$R_s \ll R_{in}$</mathjax>, <mathjax>$R_{out} \ll R_L$</mathjax>.</p>
+<p>We can do the exact same thing for current. We start out with our source,
+and we'd like to build an amplifier such that we see all of that
+current. The only way to guarantee that is by having <mathjax>$R_{in}$</mathjax> just be a
+short.</p>
+<h2>Intrinsic Gain</h2>
+<p>We looked at common-emitter amplifiers, and we know that the gain is <mathjax>$g_m$</mathjax>
+multiplied by the resistance. So what if instead of putting a resistance
+there, I put a perfect current source? What's the gain now? The way to do
+this is draw the small-signal model, and normally, if we have a resistor up
+there, we draw that resistance up to an AC ground. If I put a current
+source there, I still draw that resistance. But if this is an ideal current
+source (i.e. infinite output impedance), then this goes away.</p>
+<p>So if I use conservation of current, <mathjax>$g_m v_i + \frac{1}{R_o} v_o = 0
+\implies \frac{v_o}{v_i} = -g_m r_o$</mathjax>.</p>
+<p>So both the MOSFET and the BJT, this is the gain for an ideal current
+source (intrinsic gain). You can make a current source that has a much much
+bigger input impedance than <mathjax>$r_o$</mathjax>, and then this becomes a pretty good
+approximation.</p>
+<p>For BJT, we have that <mathjax>$g_m = \frac{I_C}{V_T}$</mathjax>, <mathjax>$v_o = \frac{V_A}{I_c}$</mathjax>;
+<mathjax>$g_m r_o = \frac{v_A}{V_t} &gt; 1000$</mathjax>.</p>
+<p>We will see things like <mathjax>$\frac{1}{g_m}$</mathjax> in parallel with <mathjax>$r_o$</mathjax>. So just for
+completeness with the MOSFET, there are many ways to write <mathjax>$g_m$</mathjax>. <mathjax>$g_m =
+\frac{2I_D}{V_{D,SAT}}$</mathjax>; <mathjax>$r_o = \frac{1}{\lambda I_D}$</mathjax>. So <mathjax>$g_m r_o =
+\frac{2}{\lambda V_{D,SAT}}$</mathjax>. <mathjax>$\lambda$</mathjax>, for your transistors is like
+0.02, 0.01. For this class, whenever you see <mathjax>$g_m r_o$</mathjax>, you may assume that
+<mathjax>$g_m r_o \gg 10$</mathjax>.</p>
+<p>So <mathjax>$r_o$</mathjax> is a device parameter, and when you put the device in a circuit,
+you start talking about the input and output resistance of that circuit. In
+particular, if you think of two different examples, might be using in
+common-emitter with emitter grounded.</p>
+<p>Find operating point, draw small signal model, find <mathjax>$\frac{v_i}{i_i}$</mathjax>. That
+gives you your <mathjax>$r_o, g_m, r_\pi$</mathjax>. So now we draw our small-signal model,
+and clearly <mathjax>$v_i = i_i r_\pi$</mathjax> in this simple circuit.</p>
+<p>[ insert derivation here. ]</p>
+<p><mathjax>$$
+v_i - v_o = i_i r_\pi = v_{in}
+\\ v_o = v_i - i_i r\pi, v_{be} = v_i - v_o
+\\ \frac{1}{R_x} v_o - g_m v_{be - \frac{1}{r\pi}v_{be} = 0
+\\ \frac{1}{R_x}v_o = \left(g_m + \frac{1}{r_\pi}\right)i_i r_\pi
+\\ r_{in} = r_\pi + (\beta + 1)R_x
+$$</mathjax>
+EE 105: Devices &amp; Circuits
+==========================
+Monday, March 5, 2012</p>
+<hr />
+<p>Last time: real amplifiers; idealized model.</p>
+<p>Result is you get two voltage dividers.</p>
+<p>Similarly, you'll get a voltage divider on the output.</p>
+<p>On the lab, in addition to doing parts 5 and 6 from last time's, you'll be
+designing an amplifier.</p>
+<p>Output buffer, etc. The idea is to give you some additional sense as to why
+you care.</p>
+<p><mathjax>$V_i = V_{BE} + V_{out}$</mathjax>. <mathjax>$V_{BE} = I_i r_\pi$</mathjax>. <mathjax>$V_{out} = I_x R_x$</mathjax>. So we
+get that <mathjax>$V_i = i_i r_\pi + i_x R_x$</mathjax>. <mathjax>$i_x = i_i + g_m V_{BE} = i_i + g_m
+i_i r_\pi = i_i(1 + g_m r_\pi) = i_i(1 + \beta)$</mathjax>. This matches what we
+know.</p>
+<p>Plugging this back in, we have <mathjax>$v_i = i_i r_pi + i_i(1 + \beta)R_x$</mathjax>, and
+<mathjax>$R_{in} = \frac{v_i}{i_i} = r_\pi + (1 + \beta)R_x$</mathjax>. <mathjax>$R_{in} = \frac{\beta
+V_T}{I_C} + (1 + \beta)(r_o \parallel R_E) = \frac{\beta V_T}{I_C^*} + (1 +
+\beta)(\frac{V_A}{I_C^*} \parallel \frac{V_E^*}{I_C^*})$</mathjax></p>
+<p>(<mathjax>$r_o = \frac{V_A}{I_C^*}$</mathjax>, <mathjax>$R_E = \frac{V_E^*}{I_C^*}$</mathjax>)</p>
+<p>So this is equivalent to <mathjax>$\frac{\beta V_T}{I_C^*}(1 +
+\beta)\frac{V_C^*}{I_C}$</mathjax>.</p>
+<p>When looking for output impedance, input is not moving. <mathjax>$R_{out} = r_\pi
+\parallel r_o \parallel R_E \parallel \frac{1}{g_m} \approx
+\frac{1}{g_m}$</mathjax>. So why do we care about input and output impedance? From a
+high level point of view, affects gain of amplifier.</p>
+<h1>Amplifier Gain</h1>
+<p>Taylor + IFT. <mathjax>$I_o(V_I, V_o)$</mathjax>. Nonlinear. Find operating point: <mathjax>$(V_I^*,
+V_o^*)$</mathjax>. And current at that point is 0. You can generalize this, but let's
+ignore that for now.</p>
+<p>We also know that from Taylor, if we know an operating point, we can
+approximate this with linearization (valid close to operating point).</p>
+<p><mathjax>$I_o(V_I, V_i) = I_o(V_I^*, V_o^*) + \pderiv{I_o}{V_I}V_I +
+\pderiv{I_o}{V_o}V_o$</mathjax>. x<mathjax>$G_m v_i + G_o v_o = 0$</mathjax>.</p>
+<p><mathjax>$$A_v = -G_m R_o$$</mathjax> This is still true of many systems outside of circuits.</p>
+<p>Specific operating point will lead to no current flow -- no imbalance to
+correct.</p>
+<p>Apply <mathjax>$v_o$</mathjax>, calculate <mathjax>$i_o$</mathjax>, <mathjax>$v_i$</mathjax> shorted. <mathjax>$G_m = \frac{g_m}{V_i}\bigg|
+_{V_o=0}$</mathjax></p>
+<p>Do the same later: apply <mathjax>$v_i$</mathjax>, calculate <mathjax>$i_o$</mathjax> with <mathjax>$v_o$</mathjax> shorted.</p>
+<p>So... let's do a simple example that we already know the answer to.</p>
+<p>We are going to wiggle around the operating point that we found.</p>
+<p>In this simple case, our transconductance is 0, so we just have <mathjax>$R_o =
+\frac{V_o}{I_o}\bigg|_{V_i=0} = r_o \parallel R_D$</mathjax>. So now let's make it a
+little harder. Bipolar emitter source degeneration: bunch of reasons to do
+it. One is that it stabilizes the gain.</p>
+<p>On the homework this week, you'll see that the same circuit for bipolar, if
+the source degeneration is 0, if you vary process (<mathjax>$I_s$</mathjax>, <mathjax>$V_A$</mathjax>, <mathjax>$\beta$</mathjax>,
+<mathjax>$\mu_n$</mathjax>, <mathjax>$C_{ox}$</mathjax>, <mathjax>$V_{th}$</mathjax>, <mathjax>$\lambda$</mathjax>), voltage (<mathjax>$V_{CC}$</mathjax>, <mathjax>$V_{DD}$</mathjax>),
+temperature (also, heating) -- "PVT".
+EE 105: Devices &amp; Circuits
+==========================
+Wednesday, March 7, 2012</p>
+<hr />
+<p>potatoes</p>
+<p><mathjax>$G_m$</mathjax>, <mathjax>$G_o$</mathjax>, <mathjax>$R_o$</mathjax>, <mathjax>$A_v$</mathjax>.</p>
+<p>Graph of <mathjax>$I_C$</mathjax> vs <mathjax>$V_{CE}$</mathjax>.</p>
+<p>Process variation: <mathjax>$I_s$</mathjax> and other values varying by some amount. Process:
+<mathjax>$I_s$</mathjax> varies <mathjax>$2^{\pm 1}$</mathjax>; Voltage: <mathjax>$V_{DD}$</mathjax> varies <mathjax>$\pm 10\%$</mathjax>; Temperature:
+<mathjax>$T$</mathjax> varies <mathjax>$\pm 10$</mathjax> (this affects values most -- <mathjax>$I_s$</mathjax> depends heavily on
+<mathjax>$n_i$</mathjax> which is a strong function of temperature)</p>
+<p>One solution for discrete amplifiers: emitter degeneration (source). You
+put a resistor at your emitter. You know that if <mathjax>$R_E$</mathjax> is very small, it'll
+look as if it isn't there, and if it's very large, you get a follower (of
+sorts). A change in the emitter current goes directly to the collector
+currrent.</p>
+<p><mathjax>$G_m \sim \frac{1}{R_E}$</mathjax> as <mathjax>$R_E$</mathjax> large, and as <mathjax>$R_E$</mathjax> small, <mathjax>$G_m \sim
+g_m$</mathjax>. So what do I do? I draw the small signal model. I'm going to do it
+for the MOS case so we can ignore <mathjax>$r_\pi$</mathjax> (which doesn't actually change
+anything).</p>
+<p>more potatoes -- no current flowing, because they have no potential.</p>
+<p>some textbooks are between the math and the potato.</p>
+<p>derivations, more derivations.</p>
+<p>Remember <mathjax>$A_v = -G_m R_o$</mathjax> whether it's bipolar or MOS, which is equal to
+<mathjax>$-\frac{g_m}{1 + g_M R_s}\parens{R_o\parallel r_o(1 + g_m R_s)}$</mathjax>. So if
+<mathjax>$R_s \gg \frac{1}{g_m}$</mathjax>, we get <mathjax>$A_v \approx -\frac{R_D}{R_S} = -\frac{R_C}
+{R_E}$</mathjax>. So you'll often make five resistors next to each other, and that</p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Friday, March 9, 2012</h2>
+<ul>
+<li>lab hints</li>
+<li>LTSpice</li>
+<li>BJT tester<ul>
+<li>in digital voltmeter.</li>
+</ul>
+</li>
+<li>MOS test?<ul>
+<li>simplest thing to do, connect gate and drain to 100k resistor to Vdd,
+  make sure that's 0.7 V.</li>
+</ul>
+</li>
+</ul>
+<h1>Frequency response</h1>
+<p>First thing: make sure we agree what the equivalent resistance is of two
+resistors in parallel and in series. Equivalent resistance of the two is
+the maximum of the two. Maximum error is 50%. In parallel, we use minimum
+of the two. Also max error of 50%.</p>
+<p>Worst-case error happens when your impedances are equal in magnitude.</p>
+<p>So right now, that's what you do.</p>
+<p>In particular, if you have an R and a C in parallel, and you want to know
+what impedance I see, what the magnitude of that impedance is, I'm just
+going to take the minimium of the magnitude of the impedances, which is
+simply <mathjax>$\min(R, \frac{1}{\omega C}$</mathjax>. On a log-log plot, we draw R = 1k,
+<mathjax>$\frac{1}{\omega C}$</mathjax> -- on a log-log plot, that's a straight line with
+slope -1. SO that's <mathjax>$\frac{1}{\omega C}$</mathjax>. Since we're considering these in
+parallel, always take the lower line. There's some error (off by
+<mathjax>$\sqrt{2}$</mathjax>), but that doesn't really matter.</p>
+<p>Tempted to draw capacitive load to <mathjax>$V_{dd}$</mathjax>, but it doesn't really
+matter. All it means is that it's shorting out a resistor at high
+frequencies.</p>
+<p>One more review thing from last time: potatoes?</p>
+<p>Comparing amplifiers. <mathjax>$A_v = -g_m(R_c\parallel r_o)$</mathjax>. In general, this is
+<mathjax>$-g_mR_c$</mathjax>. Once we add in a resistance, we have <mathjax>$R_o = R_c \parallel r_o(1
++ g_mR_E)$</mathjax>; <mathjax>$G_m = \frac{g_m}{1+g_mR_E}$</mathjax>; <mathjax>$A_v = -G_mR_o = -\frac{R_c}
+{R_E}$</mathjax>.</p>
+<p>Gain from base to collector is going to be -10.
+EE 105: Devices &amp; Circuits
+==========================
+Wednesday, March 14, 2012</p>
+<hr />
+<p>PNP, PMOS</p>
+<p>For the PNP, we have</p>
+<pre><code>E P+ (highest doping)
+B N
+C P
+</code></pre>
+<p>(depletion region between B and C; E at higher potential <mathjax>$V_{cc}$</mathjax>; EB
+forward-biased, BC reverse-biased. Large hole current now going straight
+across, small number of holes that recombine; small electron current.</p>
+<p>Still current multiplication. The arrow is drawn from positive to negative.</p>
+<p><mathjax>$\abs{I_c} = \abs{I_s} e^{\abs{V_{BE}}/V_T}\parens{1 + \frac{\abs{V_{CE}}}
+{V_A}}$</mathjax></p>
+<p>We need that <mathjax>$V_{BE} &lt; 0$</mathjax>. Similarly, <mathjax>$V_{CE} &lt; 0$</mathjax>. Finally, <mathjax>$I_c &lt; 0$</mathjax>, so
+<mathjax>$I_s$</mathjax> must also be negative. Reasoning: to get forward active, we have
+holes flooding in; we want the junction to be reverse-biased so there's a
+field that naturally pushes holes and electrons back. But then, with this
+upper forward-biased diode, we have electrons flooding across.</p>
+<p>So what's the result of this? If we plot, we're going to find that you
+actually need <mathjax>$V_{CE} &lt; V_{CE,sat}$</mathjax></p>
+<p>Region before you hit forward-active. Looks like with NPN, except our axes
+are both negative, now.</p>
+<p>Now, if you're in your local coordinate system (sitting at your bias
+point), now the question is if I make a small change in <mathjax>$V_{CE}$</mathjax>, I am
+going to have a positive <mathjax>$I_C$</mathjax>. Purpose: small-signal model will look exactly
+the same as in the NPN.</p>
+<pre><code>             VDD
+           ___|___
+          [       ]
+__________=========_____________
+   \_P+_/           \_P+|N+_/
+</code></pre>
+<p>Pretty close to flat-band, but not quite. As I make this more negative,
+surface is going to start getting depleted of electrons, and I am going to
+expose the positive carriers. Eventually, it's going to bend down far
+enough that the surface potential crosses zero, so right at the surface,
+I'll start seeing mobile holes.</p>
+<p>And when it bends down even further (i.e. <mathjax>$-\Phi_n$</mathjax>). As long as this drain
+is a little more negative than the source, all of the holes are going to
+want to flow that way. I need that <mathjax>$V_{DS} &lt; V_{GS} - V_{th}$</mathjax>. etc. With
+our graph, again, we have negative axes. In this case, <mathjax>$V_{GS} &lt; V_{th} &lt;
+0$</mathjax> -- consider that <mathjax>$\abs{V_{GS}} &gt; \abs{V_{th}}$</mathjax>. Pulldown.</p>
+<p>Again, in our local coordinate system, this looks identical to what we
+saw before (with NMOS).</p>
+<p>The thing I want you to remember is that all four of these devices, and in
+fact JFETs, and in fact vacuum tubes, and everything else, all of them
+looks like this: control (pops between curves), output (looks more or less
+linear), in all of them, positive change in voltage means positive
+differential change in current (whether positive current getting
+bigger or negative change becoming less negative).</p>
+<p>Result: if I draw a PNP common-emitter, the small-signal model is just a
+mirror image of what we're used to. Positive input means output goes
+down. Small positive change on input voltage: less current flowing in
+resistor, so output goes down. So in both cases: small positive change in
+input means output goes down.</p>
+<p>CMOS inverter: NMOS tied to a PMOS. (gates connected, drains connected)</p>
+<p>Similarly, if I've got a <mathjax>$V_{BN}$</mathjax> and a <mathjax>$V_i$</mathjax>, then what do I get? <mathjax>$R_{out}
+= R \parallel R_{DN}$</mathjax>; <mathjax>$R_{DN} = g_{m2}r_{o2}r_{o1}$</mathjax>. The last one before
+we move on is two PMOS on top of two NMOS. You can make very high gains
+doing this.</p>
+<p>Let's talk a little bit about Oliver Heaviside. Difficult person to get
+along with, but amazing guy.</p>
+<p>Suppose we've got a serise RC circuit. <mathjax>$i_c = C\pderiv{V_o}{t}$</mathjax>; <mathjax>$i_R =
+\frac {V_i - V_o}{R}$</mathjax>. So <mathjax>$RC\pderiv{V_o}{t} = \Delta V_i - V_o$</mathjax>. If we
+assume <mathjax>$V_i = V_x\sin(\omega t)$</mathjax>, we know that <mathjax>$V_o = V_A\sin(\omega t) +
+V_B\cos(\omega t)$</mathjax>; <mathjax>$\pderiv{V_o}{t} = \omega V_A\cos\omega t - \omega
+V_B\sin\omega t$</mathjax>. The only way there can be a solution of the equation
+means that the sum and cosine coefficients have to balanced (method of
+undetermined coefficients).</p>
+<p>cosine and sine axes: real and imaginary. Math works out beautifully.
+EE 105: Devices &amp; Circuits
+==========================
+Friday, March 16, 2012</p>
+<hr />
+<p>MT2 - Friday in class. OBONNS. Right before spring break.</p>
+<p>Heaviside, <mathjax>$H(j\omega)$</mathjax>, Spice, emitter/source impedance, single-pole
+systems.</p>
+<h1>Heaviside</h1>
+<p>Energy-storing elements correspond to poles. Derivatives of output.</p>
+<p><mathjax>$x + jy \equiv Re^{j\theta}$</mathjax>. That angle <mathjax>$\theta$</mathjax> just corresponds directly
+to the phase of the sine wave.</p>
+<p>So when you go through and replace all these derivatives by a <mathjax>$j\omega$</mathjax>
+term to rotate you 90 degrees and scale you appropriately according to the
+frequency, and you transform this whole thing, the next short-hand is when
+people get tired of writing <mathjax>$j\omega$</mathjax>, they start calling it <mathjax>$s$</mathjax>. This then
+starts looking like a polynomial in <mathjax>$s$</mathjax>.</p>
+<p>At the end of the day, when we solve for gain (<mathjax>$V_o/V_i$</mathjax>, it then becomes a
+ratio of two polynomials in <mathjax>$s$</mathjax>. This is our transfer function. At the end
+of the day, we have <mathjax>$R(s)e^{i\theta(s)}$</mathjax>. If I've got a linear system
+that's defined by a differential equation relating derivatives of the
+inputs to derivatives of the outputs, the magnitude of the vector
+corresponds to the magnitude amplification of a sine, and the phase
+corresponds to the phase shift of the same sine.</p>
+<p>There are some beautiful things people have done.</p>
+<p>Clearly, from this, <mathjax>$R = \abs{H(j\omega)}$</mathjax>, <mathjax>$\theta = \angle
+H(j\omega)$</mathjax>. This is pretty powerful. It means that as long as I've got a
+linear system, I can get this transfer function. From that one function, I
+can tell you what the corresponding output is for any input.</p>
+<p>So that's the magic that Oliver Heaviside gave to us. Heaviside was the guy
+who used this to solve differential equations for circuits. Laplace didn't
+know that his integral could be used to solve differential equations.</p>
+<h1>SPICE</h1>
+<p>Spice does all these different analyses. It does a DC or operating point
+analysis. Operating point says we'll solve nonlinear algebraic equations
+(i.e. no time-variance). Capacitors are open, and inductors are shorted
+(i.e. <mathjax>$\omega = 0$</mathjax>. You've seen that, and it takes your nonlinear circuit
+and figures out that when you put in a particular set of DC biases, it'll
+go through and tell you the whole system is operating here.</p>
+<p>That's .op.</p>
+<p>DC is just a sweep of those, It's just a sequence of .op samples.</p>
+<p>If you pick a particular operating point, at that operating point, we have
+a linearized model of the transistor. Once we pick the bias point, we can
+take derivatives, and make this nonlinear device into circuits made of
+linear components.</p>
+<p>Once we've taken the linearization, now we have an (linear!) ordinary
+time-invariant differential equation. You can either solve this yourself or
+have SPICE do it. For simple circuits, you'll get the same answer as
+SPICE. For complex circuits, you'd get the same answer if you had the
+time.</p>
+<p>AC analysis: Bode plot of linearized system -- linearized around a
+particular operating point. In particular, different operating points
+correspond to completely different Bode plots.</p>
+<p>Most SPICEs allow you to vary multiple voltage sources simultaneously.</p>
+<p>You tell AC what amplitude you want. In AC, you use a start and end
+frequency, step size (how many per decade), linear / logarithmic;
+somewhere, there's a source. And all this does is scale the output. That's
+something to keep in mind: just because .ac tells you something is going to
+work, that doesn't mean it will.</p>
+<p>TO capture this, that's transient analysis. Transient is the full nonlinear
+time-varying differential equation. There's still ordinary differential
+equations (they're not partial differential equations), but they're no
+longer linear.</p>
+<p>Transient actually is your best guess as to what's going to show up on the
+oscilloscope.</p>
+<p>.ac gives you an idea of what a sinusoid will look like.</p>
+<p>It turns out, by the way, that this concept works for way more than
+integrated circuits. You can use the same tools to compose mechanical
+elements in MEMS devices. Came up with SUGAR (doesn't stand for
+anything). Worked fine.</p>
+<p>Back to looking at impedance. So we saw that when you look down into the
+drain of a transistor at some <mathjax>$R_s$</mathjax> or into the collector of a BJT at some
+<mathjax>$R_E$</mathjax>, <mathjax>$R_o = r_o(1 + g_mR_s) \approsx g_mr_mR_s$</mathjax>. So what if I'm looking
+up at a drain resistance? How do we do this? Find an operating point, draw
+small signal model, apply small signal test voltage, calculate values.</p>
+<p>The key thing to note here is that you don't know how the current splits
+between devices, but all of it goes through <mathjax>$R_D$</mathjax>. So the voltage at the
+drain is equal to <mathjax>$i_xR_D$</mathjax>. We also know that <mathjax>$V_{GS} = 0 - V_x$</mathjax>, and
+<mathjax>$V_{DS} = i_xR_D - V_x$</mathjax>. So if we do KCL at <mathjax>$V_x$</mathjax>, the sum of all currents
+entering that node has to be zero, so <mathjax>$i_x + g_m v_{gs} + \frac{1}{ro}
+v_{ds} = 0$</mathjax>. We want to find <mathjax>$R_{out} = \frac{V_{out}}{i_x} = \frac{1}{g_m}
+\parens{1 + \frac{R_D}{r_o}}\parens{\frac{1}{1 + \frac{1}{g_m
+r_o}}$</mathjax>. Roughly <mathjax>$1/g_m (R_D \ll r_o)$</mathjax>; <mathjax>$R_D/g_mr_o (R_D \gg r_o)$</mathjax></p>
+<p>Good idea on your exams is to check your formulas and make sure everything
+you're adding together has the same unit.</p>
+<p>SO: what we see is that if you put something on the source, it looks bigger
+when seen from the drain, and when you put something on the drain, it looks
+smaller when seen from the source.</p>
+<p>Good midterm question is "looking into each of these nodes, what impedance
+do I see?"</p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Monday, March 19, 2012</h2>
+<p>Single-pole systems, Bode plots. Homework, just posted solutions. Would
+encourage to treat homework as midterm. Sit down and see what you get.</p>
+<p>Midterm covers everything. Stuff on homework, stuff on the labs. MOS
+physics. A little about potential in the cross-section of a MOS device.</p>
+<p>That midterm is not a perfect reflection of what you're going to see.</p>
+<p>If we just look at our amplifier with some output resistance driving some
+load (perhaps resistive), then it's certainly in parallel. Whether you make
+this a MOS or bipolar amplifier with capacitances to ground or some fixed
+voltage, there's always going to be some intrinsic capacitance.</p>
+<p>You know your gain is the <mathjax>$g_m$</mathjax> times the output impedance. We know
+impedance of capacitors goes down with frequency, etc. So what you end up
+with is a very common thing: current source of <mathjax>$G_mv_i$</mathjax> in parallel with
+<mathjax>$R_{out}$</mathjax> and <mathjax>$C_{load}$</mathjax>. If we do KCL in this circuit, the sum of current
+in the three branches is equal to zero. We know <mathjax>$i = C\pderiv{V}{t}$</mathjax>, and
+as Master Heaviside teaches us, derivatives are just rotations by ninety
+degrees. Thus our current is <mathjax>$C\pderiv{V}{t} \equiv j\omega CV$</mathjax>; since we
+get tired of writing <mathjax>$j\omega$</mathjax> all the time, we call this <mathjax>$sCV$</mathjax>.</p>
+<p>So we have <mathjax>$R_{cc}$</mathjax> @ <mathjax>$V_0$</mathjax>. Our transfer function, remember, is <mathjax>$H(\omega)
+= \frac{V_o}{V_i} = \frac{-G_m}{\frac{1}{R_{out} + sC_{load}}} = \frac{-G_m
+R_{out}}{1 + sR_{out}C_{load}}$</mathjax>.</p>
+<p>So we've got several cases for <mathjax>$\abs{H(j\omega)} = \abs{\frac{-G_m R_{out}}
+{1 + j\omega R_{out} C_{load}}}$</mathjax>: either <mathjax>$\omega \ll \frac{1}{R_{out}
+C_{load}}$</mathjax>, in which case it's just <mathjax>$G_m R_{out}$</mathjax>; or <mathjax>$\omega = \frac{1}
+{R_{out}C_{load}}$</mathjax>, in which case it's roughly divided by <mathjax>$\sqrt{2}$</mathjax>; or
+<mathjax>$\omega \gg \frac{1} {R_{out}C_{load}}$</mathjax>, in which case it's just <mathjax>$\frac{
+G_m}{\omega C_{load}}$</mathjax>.</p>
+<p>Unity gain frequency (i.e. <mathjax>$\abs{H(j\omega_u)} = 1$</mathjax>)? <mathjax>$\omega_u = \frac{G_m
+}{C_{load}}$</mathjax>. This bottom one, this is basically just <mathjax>$G_m Z_{cap}$</mathjax>, which
+happens to also be the unity-gain frequency. So the gain above that point
+just happens to be <mathjax>$\frac{\omega_u}{\omega}$</mathjax></p>
+<p>The fun thing about EE is that you get to work with systems that span many
+many decades of frequencies.</p>
+<p>Four simple formulas for single-pole systems:</p>
+<p><mathjax>$$
+A_{v,0} = A_v = \abs{H(j\omega)} = G_m R_{out}
+\\ \omega_p = \frac{1}{R_{out} C_{load}}
+\\ \omega_u = \frac{G_m}{C_{load}}
+\\ \omega_u = A_{v,0}\omega_p
+$$</mathjax></p>
+<p>So once we've got <mathjax>$\omega_u$</mathjax> and <mathjax>$A_{v,0}$</mathjax>, we can get <mathjax>$\omega_p$</mathjax>. If we
+know the pole frequency and the load, we know that <mathjax>$G_m = \omega_u
+C_{load}$</mathjax>. We can find everything given just a handful of values.</p>
+<p><mathjax>$G_m = \frac{I_c}{V_T} = \frac{1 \mu A}{26 mV}$</mathjax>. Now if I said 1 nA, no
+way.</p>
+<p>Plots of magnitude for single-pole systems. Got to be able to draw this in
+sleep by the time you take midterm (roughly constant at <mathjax>$A_{v,0}$</mathjax> until
+<mathjax>$\omega_p$</mathjax>; drops off linearly and hits 1 at <mathjax>$\omega_u$</mathjax>.</p>
+<p>Trading off DC gain for low-frequency gain accuracy.</p>
+<p>So what happens if we increase <mathjax>$R_o$</mathjax>? DC gain goes up, poles frequency goes
+down, and nothing happens at unity gain frequency.</p>
+<p>And if we increase <mathjax>$C_{load}$</mathjax>? We shift the graph to the left. Generally
+bad -- all things being equal, you'd like to have as much bandwidth as
+possible. Also, increasing <mathjax>$R_o$</mathjax> is good.</p>
+<p>The last parameter we get to control is <mathjax>$G_m$</mathjax>. Note that there's no effect
+on <mathjax>$\omega_p$</mathjax>. It just lifts the curve up directly. This is a great
+thing. However, the problem is that it costs you power.</p>
+<p>All right. All right. So that's single-pole systems. Very simple, but very
+important.</p>
+<p>So let's go back to the transient response. We haven't talked about phase
+yet. So how do we calculate the angle of <mathjax>$H(j\omega)$</mathjax>? When <mathjax>$\omega \ll
+\omega_p$</mathjax>, then our phase is effectively <mathjax>$\pi$</mathjax> (assume that sign of <mathjax>$G_m$</mathjax>
+is positive).</p>
+<p>When <mathjax>$\omega \gg \omega_p$</mathjax>, what happens? We get a <mathjax>$\frac{\pi}{2}$</mathjax>: in the
+denominator, the second term dominates, so this is roughly <mathjax>$\frac{-1}{j} =
+j$</mathjax>.</p>
+<p>How do we get there? When <mathjax>$\omega = \omega_p$</mathjax>, we get roughly <mathjax>$\frac{3\pi}
+{4}$</mathjax>.</p>
+<p>Consider: all we're doing is increasing the imaginary component relative to
+the real component (which is negative!), so this certainly goes through the
+motions and hits <mathjax>$\infty$</mathjax> when we reach <mathjax>$\theta \equiv \frac{\pi}{2}$</mathjax>.</p>
+<p>Problem: radians vs degrees; wraparound; modulo 360 or <mathjax>$2\pi$</mathjax>. If you're
+caring about phase, you're probably talking about stability.</p>
+<p>You all know how to draw the phase; the interval spanning from one decade
+before to one decade after <mathjax>$\omega_p$</mathjax> defines our linear region.</p>
+<p>For Bode plot, straight line approximation; fine. However, accuracy demands
+that we consider the actual numerical values (not going to be drawn): just
+examine the unit circle and reference triangles, and use small signal
+approximation.</p>

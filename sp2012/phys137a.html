@@ -1,0 +1,606 @@
+<script src='file:///home/steve/hackerspace/mathjax/unpacked/MathJax.js?config=default'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+  prefilterMath: function (math,displaymode,script) {
+      math = "\\displaystyle{"+math+"}";
+      return PREFILTER.call(TEX,math,displaymode,script);
+    }
+  });
+});
+</script>
+
+<h1>Physics 137A: Quantum Mechanics</h1>
+<h2>Wednesday, January 18</h2>
+<p>Wick Haxton
+haxton@berkeley.edu
+431 Old LeConte</p>
+<p>GSI: Grant Larsen
+420B Old LeConte
+larsen.ge@berkeley.edu</p>
+<p>Decide office hours during discussion next week.</p>
+<h1>Generic Introduction</h1>
+<p>special relativity; new theory returns to old theory as some ε→0.
+ℏ = h/2π (Planck's constant – angular momentum).</p>
+<p>(E₁-E₂)̱\bar{E} = (E₁-E₂)/(p²/2m)&gt;(πℏ/pd)² ≈10^{-69}
+ℏ = h/2π = 1.05·10^{-34} J·s
+Physics 137A: Quantum Mechanics
+===============================
+Friday, January 20</p>
+<hr />
+<h1>Historical review</h1>
+<p>Planck: energy is infinite. (remove this paradox by quantization
+of all matter.)</p>
+<p>T{blackbody} &gt; T{environment} → radiates</p>
+<p>encountered contradiction by looking at higher and higher energy modes
+in the box.</p>
+<p>Incorrect implicit assumption was that energy is not continuous
+(i.e. arrives in discrete "packets").</p>
+<p>(dimensional analysis)</p>
+<p>[ Planck radiation formula. ]</p>
+<p>[ photoelectric effect also consistent with quantization of light. ]</p>
+<p>de Broglie: particles behaving as waves, in addition to waves behaving as
+particles.</p>
+<p>(double-slit experiment)</p>
+<p>"NOT an effect due to the interference of different photons passing
+through the two slits. lower the light intensity so that on average
+only one photon is in flight at one time. The intensity pattern is
+still produced once the experiment is carried out long enough to
+accumulate counts → the interference effect is a property of a single
+photon. BUT pattern disappears if one slit is closed."</p>
+<p>(superposition of multiple states.)</p>
+<p>(Schrödinger's wave equation. blah. Dirac's relativistic version)</p>
+<p>(uncertainty &amp; conjugate bases)</p>
+<p>(fourier analyses, more about uncertainty)</p>
+<h2>Schrödinger's wave equation</h2>
+<p>iℏ(∂ψ(x,t)/∂t) = [-(ℏ²/2m)(∂²/∂x² + V(x)] ψ(x,t) = H(x)ψ(x,t)
+[ only one-dimensional, so far ]</p>
+<p>Operators now written with a circumflex.
+Physics 137A: Quantum Mechanics
+===============================
+Monday, January 23</p>
+<hr />
+<p>Use of Mathematica/Matlab/WolframAlpha encouraged for homework.</p>
+<p>Recap. Talk about <em>how</em> uncertain, measured by product of two related
+properties, e.g. momentum + position Schrödinger's equation.</p>
+<p>Classical mechanics teaches us (incorrectly!) that physics is
+deterministic. This is actually just the most likely path that you can
+follow from point a to point b.</p>
+<p>The issue is that we have Heisenberg's uncertainty principle, so it is
+impossible to precisely know momentum and position simultaneously.</p>
+<p>three primary interpretations of QM
+ * Einstein - deterministic (hidden variables). Wrong.
+   + "God does not play dice."
+   + Not enough information to fully ascertain position of particle;
+     must be an issue with the theory.
+ * Copenhagen (Bohr) - nondeterministic. Widely accepted.
+   + "orthodox position", 
+   + Actually does exist in all possible results simultaneously until
+     measurement is made and wavefunction is collapsed.
+ * "agnostic position": who cares?</p>
+<p>variance is 〈(Δi)²〉 = 〈i²〉 - 〈i〉²</p>
+<h1>Physics 137A: Quantum Mechanics</h1>
+<h2>Wednesday, January 25</h2>
+<p>Discrete distributions and somesuch.</p>
+<p>moments and stuff. mean: first moment. variance: roughly second
+moment. skewness: third moment. kurtosis (wtf?): fourth moment.</p>
+<p>Moments are the analogue of derivatives for distributions. Sort
+of. You also have derivatives, which aren't very useful, usually.</p>
+<p>stuff with normalizing wave function, |ψ|² = ψ*ψ, etc.
+Physics 137A: Quantum Mechanics
+===============================
+Friday, January 27</p>
+<hr />
+<p>Talk about using WolframAlpha to compute integrals.</p>
+<p>blah, complex numbers. |Ψ|² ≡ ΨΨ*</p>
+<p>Satisfying Schrödinger's equation in itself guarantees that
+normalizing at a fixed point in time guarantees normalization for all
+time.</p>
+<p>[ derivations, consulting of notes. Correcting of errors. ]</p>
+<p>[ working out expectation of momentum from the wave function. ]</p>
+<p>〈v〉 = (d/dt)〈x〉 = [ℏ/im ∂/∂x]{Ψ}Ψ*
+m〈v〉 = 〈p〉
+\hat{p} = [ℏ/i ∂/∂x]</p>
+<p>〈Ô〉 ≡ ∫[Ô]{Ψ}Ψ*dx</p>
+<p>ΔxΔp ≥ ℏ/2
+e^{ip·x}</p>
+<p>Fourier transform of the Gaussian:
+P(x) = 1/(√(2π)σ) e^{-x²/(2σ²)} = 1/(2π) ∫[cos(px/ℏ) e^{-p²σ²/(2ℏ²)}]∂(p/h)
+Physics 137A: Quantum Mechanics
+===============================
+Monday, January 30</p>
+<hr />
+<p>Nothing that hasn't already been covered in statistical mechanics.</p>
+<p>fourier transform blah blah blah</p>
+<p>quaternions and stuff</p>
+<p>Stationary states ⇔ solving the Schrödinger equation (time independent).</p>
+<p>iℏ ∂Ψ/∂t = (-ℏ²/2m ∂²/∂² + V(x))Ψ
+         = (T + V)Ψ
+V = V(x,t) = V(x)
+Ψ(x,t) = Ψ(x)e^{-iEt/ℏ}</p>
+<p>Eliminated time dependence with Fourier transform.</p>
+<p>Time independent Schrodinger equation:
+EΨ′(x) = [-ℏ²/2m ∂²/∂x² + V(x)]Ψ′(x)
+Ψ(x,t) = Ψ′(x) e^{-iEt/ℏ}</p>
+<p>Probability density is fixed over time. Very strong statement.</p>
+<p>Such a solution is called a stationary state because the probability
+density is independent of time. i.e. V(x,t) → V(x)</p>
+<p>First big idea, stationary states.
+〈Ĥ〉 = ∫Ψ⁺ĤΨdx</p>
+<p>σ{Ĥ} = 〈H²〉 - 〈H〉² = 0. Stationary states have definite
+energy. Eigenvalues.
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, February 1</p>
+<hr />
+<p>REMINDER: surfaces ⇒ boundaries.</p>
+<p>Mostly duplicated information.</p>
+<p>variance in energy is 〈H²〉 - 〈H〉² = 0.</p>
+<p>proof of orthogonality; partial integrations and stuff. For two
+different eigenvectors.</p>
+<p>〈2|\hat{O}|1〉.</p>
+<p>If you combine results with other results, we have a Krönecker delta.
+∫Ψ*{i}Ψ{j} = δ{ij}.</p>
+<p>The basic idea is that if you just focus on the time-independent
+Schrödinger equation, it's quite powerful and used over and over again
+in quantum mechanics.</p>
+<ul>
+<li>First idea is time-independent solutions of the Schrödinger equation.</li>
+<li>Basis vectors don't change over time.</li>
+<li>Second idea is stationary states or eigenvalues or whatever (definite
+   energy).</li>
+<li>Basis vectors are eigenvectors.</li>
+<li>Third idea is orthogonality.</li>
+<li>These basis vectors are orthonormal.</li>
+<li>Fourth idea is completeness.</li>
+<li>This basis is a complete basis.</li>
+</ul>
+<p>parity? arbitrary coordinates. V(x) is infinite outside the well, 0
+inside the boundaries. We want to know how to solve that equation with
+quantum mechanics. blah blah blah, construct Fourier series
+already. Nothing interesting.</p>
+<p>Ψ(x) = Asin(kx) + Bcos(kx).</p>
+<p>We want our divergence to be 0. Continuous, zero at boundaries. Must
+be zero at boundaries. THESE ARE BASIC BOUNDARY CONDITIONS.
+½ka = π/2 + ℓπ  (ℓ ∈ \mathbb{N})
+  a = (2ℓ+1)π/k</p>
+<p>blah, constructing fourier series still
+Physics 137A: Quantum Mechanics
+===============================
+Friday, February 3</p>
+<hr />
+<p>Observations:</p>
+<ul>
+<li>
+<p>Eigenvalues discrete</p>
+<p>⇔ imposed by boundary conditions
+ Ψ(x) = 0 at x = a/2, -a/2.</p>
+</li>
+<li>
+<p>wavefunction with En ∝ n²</p>
+</li>
+</ul>
+<h1>Properties</h1>
+<ul>
+<li>Even/odd states under reflection around origin</li>
+<li>
+<p>V(x) = V(-x).</p>
+</li>
+<li>
+<p>Wave functions differ by the number of nodes.</p>
+</li>
+<li>
+<p>n - 1 = # nodes.</p>
+</li>
+<li>
+<p>Wave functions are orthonormal. 〈Ψ{m}|Ψ{n}〉</p>
+</li>
+<li>Wave functions are also complete.</li>
+</ul>
+<p>blarg, constructing fourier series (finally) and bra-ket notation
+(only now?).
+Physics 137A: Quantum Mechanics
+===============================
+Monday, February 6</p>
+<hr />
+<p>Anything prepared in an eigenstate stays in an eigenstate. But what if we
+don't prepare our state in this way?</p>
+<p>You can expand this wave function in terms of this complete basis, and you
+have to write down the initial equations that you got. Guess. That guess is
+right. iℏ∂/∂t Φ = [-ℏ²/2m ∂²/∂x² + V] Φ</p>
+<p>iℏ ∑a{n}Ψ{n}(-iEn/ℏ)exp(-iEnt/ℏ) = ∑[a{n}exp(-iEnt/ℏ)[-ℏ²/2m d²/dx² + V(x)]Ψ{n}]</p>
+<h1>Summary</h1>
+<h1>V(x,t) = V(x)</h1>
+<h1>We solve for special stationary states ⇔ [-ℏ²/2m d²/dx² + V]Ψ = EΨ ⇒</h1>
+<p>complete set {Ψ, E} n ∈ N
+  |Ψ|² = |Ψ|² end of time</p>
+<h1>General solution</h1>
+<p>Φ = ∑aΨ</p>
+<p>〈Φ|H|Φ〉 = ∑|a{n}|²E{n}</p>
+<p>stuff with conjugates and whatnot.
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, February 8</p>
+<hr />
+<p>Harmonic oscillator</p>
+<pre><code>V(x)| __          ____
+    |/  \        /
+    |    |   ___/
+    |    \__/
+    |_________________
+                     x
+</code></pre>
+<p>This potential is symmetric in momentum and position. A wave packet in
+coordinate space, if you Fourier-transform it, is the same wave packet is
+momentum space. Has this property that if you want to do many-body physics
+(not in this class) and use as a basis the harmonic oscillator, then you
+get nice stuff that happens. One of the great things about the harmonic
+oscillator is that, say you have 3 particles. Three coordinates describing
+them. Most of the time, you're not interested in said coordinates, but
+rather what the wave function looks like. Take out center-of-mass
+motion. You have the same problem in general many-body theory. Excitations
+in nucleus, whatever. Would love to have a big set of basis states where
+you could write things down simply and just work with the interesting
+part. The harmonic oscillator allows you to do that. For all these reasons
+this problem is actually important, but you don't see them in the
+textbook. tl;dr: this makes life easier when you get to harder problems.</p>
+<p>You recognize such a potential because of springs. W = kx²/2. Because the
+potential is quadratic, the restoring force is linear. You can calculate
+the frequency omega ≡ √(k/m)</p>
+<p>Let's start by writing down the time-independent Schrödinger
+equation. There's a potential term, and that we'll write as ½momega². What prof
+is going to do is straight out of the book, so don't take notes. Cool.</p>
+<p><strong>Adding 0 and multiplying by 1: most useful math tricks.</strong></p>
+<p><strong>Addition/subtraction: physicist's worst nightmare.</strong></p>
+<p><strong>Regularization: it is your best friend.</strong>
+Physics 137A: Quantum Mechanics
+===============================
+Friday, February 10</p>
+<hr />
+<p>So, last time we were doing a harmonic oscillator. Calculation takes two
+full lectures. Energy has to be quantized. Good first start. Lots of
+motivation for the harmonic oscillator. Useful in general for lots of
+different interactions. The first step is to define the time-independent
+solutions. First thing to do is to introduce a dimensionless coordinate.</p>
+<p>Talk about solution to simple harmonic oscillator. Why it must be a finite
+polynomial (actually, no good reason -- it's just easier). how to get said
+finite polynomial. numerator has to vanish. result must be either odd or
+even. it's in the math. working out hermite polynomials by hand. haven't
+even gotten around to the closed-form version.</p>
+<p>(n+1)(n+2)T(n+2) = (2n+1 - 2E/ℏomega)T(n)</p>
+<p>δ(nm)√π 2ⁿn!. Orthogonal.</p>
+<p>Recurrence relation. H{n+1} = 2yH{n} - 2n(H{n-1}.</p>
+<p>dⁿH{n}/dn = 2nH{n-1}.</p>
+<p>Now you just have to go ahead and plug in this formula into our wave
+function. It's just a whole lot of algebra, so Haxton will just write down
+the result instead of possibly getting it wrong. Will probably be in the
+text.</p>
+<p>You have to choose either a₀ or a₁ to be 0. Choosing both yields a useless
+result.</p>
+<p>blarg, orthog basis saves time.</p>
+<p><strong>Protip: You can violate energy conservation as long as you don't do it
+too much.</strong>
+|x| &gt; √(ℏ/momega (2n+1)) ⇒ ∫Ψ*x²Ψdx.</p>
+<p>whenever you have an x that is more than twice its root-mean-square, you
+are violating mathematics. Which is great. This happens 11% of the
+time. This is excellent.</p>
+<p>Next Monday: calculating expectation value of p².
+Physics 137A: Quantum Mechanics
+===============================
+Monday, February 13</p>
+<hr />
+<p>Hermite relations:
+∫Hm(y)Hn(y)e⁻{y²/₂}dy = √π 2ⁿ n! δ{nm}
+H{n+1} = 2yH{n} - 2nH{n-1}
+dH{n}/dy = 2nH{n-1}.</p>
+<p>〈x²〉n = ∫Ψ*(x)x xΨ(x)dx. Use recurrence relation, then use first
+relation.</p>
+<p>〈p²〉 = momegaℏ²(2n+1)/2. 〈T〉 = 〈p²〉/2m = ℏω/2 (2n+1)/2</p>
+<p>σ{x}σ{p} = ℏ/2 (2n+1) ≥ ℏ/2 (n guaranteed to be non-negative)</p>
+<p>Barrier presentation. Potential greater than energy.</p>
+<p>Talk about free particles.
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, February 15</p>
+<hr />
+<p>Recap: free particle schrödinger equation has a set of solutions. \Psi(x) =
+1/√(2π)e^{ikx}. |Ψ(x)|² = 1/2π. Not normalizable. Analogous to sin, cos
+functions in a box. -∞ &lt; k &lt; ∞. <em>both signs</em>. E{k} = ℏ²k²/2m</p>
+<p>Finite a box. from -πa to πa.</p>
+<p>e^{ikx} as our wave functions.</p>
+<p>Boundary conditions: e^{-ikπa} = e^{ikπa}. PERIOD ≡ 1/a; freq ≡ a by
+construction.</p>
+<p>We now have a discrete set of wave functions over a finite width. We know
+how to normalize this. Do what we would normally do. Our interval is (as
+stated earlier) [-π/a,π/a]. blah, demonstration of orthonormality. Take
+limit as a → ∞.</p>
+<p>talk about boxes. lots of handwaving. sucky explanation of δ(r).</p>
+<p>Now that we have our δ (finally!) we can just write down the answer. Or
+not.</p>
+<p>When all the dust clears, what do you get? What we've discovered from these
+arguments is that we wanted to get these a{k}. So we had the right idea,
+(not really) and we worked out the math by hand and had to check for
+orthonormality as opposed to completeness.</p>
+<p>We naturally get a(k′). "If you squint at this, it looks just like our
+Krönecker delta."</p>
+<p>The final step is that we write the solution. Evolves just as you expected
+it to be. Plug it back into the Schrödinger equation.</p>
+<p>(blarg, this is the Fourier transform. Finally. The <em>obvious</em> way to do the
+problem.)</p>
+<p>wave packets, momentum composition. blah blah blah, you can show that
+they're equivalent, etc.
+Physics 137A: Quantum Mechanics
+===============================
+Friday, February 17</p>
+<hr />
+<h1>finite square well???</h1>
+<h1>pset -&gt;</h1>
+<pre><code>week from Monday.
+</code></pre>
+<h1>midterm -&gt;</h1>
+<pre><code>no  δ function potential.
+yes δ-function ⇔ Fourier
+up to bound-state square well
+</code></pre>
+<h1>notes -&gt;</h1>
+<pre><code>Saturday
+</code></pre>
+<h1>schedules/accommodations -&gt; Thursday?</h1>
+<p>fourier transform! fourier transform!</p>
+<h1>Finite square well (finally)</h1>
+<p>We'll set some zero energy, and a potential that has a depth of -V₀. This
+is the base of our well. My wells are always symmetric around the origin,
+and they always have width a. So we've got two regions: E &gt; 0 and E &lt; 0.</p>
+<p>Negative energy: "is bound". It's just a shift of our ground. No physics
+involved whatsoever. So we want to solve this problem. We'll do both bound
+state and continuum solutions for this thing.</p>
+<p>Curvature of the wave function corresponds to energy. If I look at the
+energy (relative to 0) of the first and second eigenstates, the energy gaps
+are going to be smaller than higher up.</p>
+<p>Not an infinite number of energies, since it's not an infinite well. Gets
+increasingly compact on the way up.</p>
+<p>Continuous stuff.</p>
+<p>Let's first consider stuff in our well. We've got two regions: x&lt;-a/2,
+x&gt;a/2, and -a/2 &lt; x &lt; a/2. The first part is the free SE. Nothing
+interesting there.
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, February 22</p>
+<hr />
+<p>No cheatsheet. Won't need it. Mostly qualitative questions. One really hard
+question for bored people. Five points. Believe it or not, we're catching
+up on the homework. Too much turmoil, so these will just be in the
+discussion sections.</p>
+<p>So what we were doing last time, we were halfway through the wave
+function. Derivatives have to be continuous, functions must be
+continuous.</p>
+<p>We know is that wave functions either break down into odd solutions or even
+solutions. So solve each separately.</p>
+<p>Standard solving of ordinary differential equations: write down general
+form, then enforce boundary conditions.</p>
+<p>\kappa is pre-propagation, so doesn't know about potential. k is
+propagation.</p>
+<p>Remember that this only gives us half of the solutions.
+Physics 137A: Quantum Mechanics
+===============================
+Monday, February 27</p>
+<hr />
+<p><mathjax>$\let\onabla\nabla
+\renewcommand{\vec}[1]{\overset{\rightharpoonup}{#1}}
+\renewcommand{\nabla}{\vec{\onabla}}
+\newcommand{\div}{\vec{\onabla}}
+\newcommand{\tens}[1]{\overset{\rightharpoonup\hspace-6pt\rightharpoonup}{\mathbf{#1}}}$</mathjax>
+Talk about solving transcendental equations by plotting. More room for
+bound states as blue line gets larger. Intersections correspond to
+eigenstates. If you're deep down in the bottom of an finite well, it should
+look like an infinite well. Your probability of penetrating into the
+forbidden region is governed by an exponential in <mathjax>$\kappa$</mathjax>.</p>
+<p>Zero-energy bound state (parameter <mathjax>$V_0 a^2$</mathjax> very small) corresponds to an
+arbitrarily weak potential and arbitrarily wide well.</p>
+<p>Similarly, the <mathjax>$\delta$</mathjax> potential corresponds to <mathjax>$a \to 0$</mathjax>, <mathjax>$V_0
+\to \infty$</mathjax>.</p>
+<p>Talk about how the wave function has continuous zeroth and first
+derivatives at boundaries.</p>
+<p>Tunnelling makes the sun work.
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, February 29</p>
+<hr />
+<h1>Physics 137A: Quantum Mechanics</h1>
+<h1>Transmission, Reflection, Tunneling</h1>
+<h2>Friday, March 2</h2>
+<p>if we include in our finite basis wave numbers k_n = n\pi/b such that n \gg
+b/a can resove bump.</p>
+<p>idea: use large basis in n, construct stationary states numerically.</p>
+<p>Fourier basis complete over interval.</p>
+<p>Stationary state satisfies S.E.
+Physics 137A: Quantum Mechanics
+===============================
+Monday, March 5</p>
+<hr />
+<p>Handing back of exams.</p>
+<p>One repeat problem on next midterm.</p>
+<h1>Chapter 3</h1>
+<p>Departure from this point; beginning of chapter 3.</p>
+<p>Last time was a brief introduction. What we did Friday: Up to now:
+differential equation to stationary states. But limiting!</p>
+<p>Friday: Found them numerically: basis, then truncated: Physics. You have to
+match truncation with Physics you want to capture in the problem.</p>
+<p>Numerically diagonalized approximate stationary states.</p>
+<p>Why? Fun applications; introduced notions of matrix form of <mathjax>$T + V$</mathjax>,
+vectors as solutions to time-independent Schr\"odinger equation.</p>
+<p>vectors: <mathjax>$\alpha_i\ket{x_i}$</mathjax>; inner products: <mathjax>$\braket{\alpha}{\beta}
+\equiv \alpha^\dagger \beta$</mathjax>: linear transformations/operators: <mathjax>$\op{
+\alpha}$</mathjax> (must be Hermitian, even). Representable by a matrix.</p>
+<p>Our vector spaces are usually infinite. This should not confuse you.</p>
+<p>Quantum vector spaces (Hilbert spaces -- this is technically a lie --
+Hilbert spaces in this sense do not contain the zero matrix, nor are they
+closed under anything -- it's really more of a k-sphere): examples:
+infinite square well: <mathjax>$\sqrt{\frac{2}{a}} e^{i\pi nx/a}$</mathjax></p>
+<p>So we know some things about these products. The point about QM is that not
+all possible functions are allowable. We know we want to be able to
+calculate expectation values of things, which we measure. It's a real
+number. Spectral theorem.</p>
+<p><mathjax>$\braket{\psi_m}{\psi_n} = \delta_{mn}$</mathjax></p>
+<p>What do we do when eigenvalues are degenerate?
+ a) Curl up into a ball and cry.
+ b) Ignore said fact.
+ c) Mathematica</p>
+<p>orthonormal basis.
+Physics 137A: Quantum Mechanics
+===============================
+Friday, March 9</p>
+<hr />
+<p>Quaternions:</p>
+<p>[1 0]  [-i 0]  [0 -1]  [0 i]
+[0 1], [ 0 i], [1  0], [i 0]</p>
+<p>1       i       j      k</p>
+<p>\sum_k e_k \ket{\psi_k}</p>
+<p>[x,p] = xp - px
+Physics 137A: Quantum Mechanics
+===============================
+Monday, March 12</p>
+<hr />
+<p>Recap: spectral theorem; completeness of eigenfunctions.</p>
+<p>Dirac orthonormality (consider Fourier transform)</p>
+<p>Now it gets a little more interesting. Suppose we have some wave packet
+(the book calls this generalized statistical interpretation). Not this
+example, but the next which will be important. Will tell when you can label
+with more than one quantum number.</p>
+<p>Reason why this is being done is because you can start thinking about
+operators abstractly. Fact that you know the general theorems that go with
+any operator, etc.</p>
+<p>Let's go through and see what he means by this idea of a generalized
+statistical interpretation. Consider operator H (hamiltonian). We'll have
+some wave packet <mathjax>$\Phi\equiv \alpha_i\ket{\phi_i}$</mathjax>. The expansion of this
+is simply <mathjax>$\braKet{\Phi}{H}{\Phi}$</mathjax>.</p>
+<p>There will be an eigenspectrum corresponding to all the possible outcomes
+of a measurement. You'll wind up getting this completeness relationship,
+where the probabilities correspond to the coefficients.</p>
+<p>probability of a particle being at a specific point means nothing in
+continuous case -- rather, we have to speak of it being found in some
+interval.</p>
+<p>Let's write out this idea of simultaneous measurements and commuting
+operators.</p>
+<p>So now let's go ahead and compute that the commutator is zero.</p>
+<p>Another way to measure how different these eigenvectors are is to see
+whether these matrices commute or not. If they commute, they have a common
+set of eigenvectors. Commuting means <mathjax>$XZ - ZX = 0$</mathjax>. So we want to look at <mathjax>$XZ
+- ZX$</mathjax> (a commutator, denoted by <mathjax>$[X,Z]$</mathjax>).</p>
+<p>So what does this look like between <mathjax>$\hat{x}$</mathjax> and <mathjax>$\hat{p}$</mathjax>? We have product
+rule coming into play... yielding <mathjax>$[x,p] \equiv i\hbar$</mathjax>.</p>
+<p>We'll use this to derive <mathjax>$\Delta x\Delta p = \hbar/2$</mathjax>.</p>
+<p>Recall: given an observable A and a state <mathjax>$\ket{Ψ}$</mathjax>, the expected value is
+<mathjax>$\braKet{\Psi}{A}{\Psi}$</mathjax>. We also saw that the variance was <mathjax>$E(x^2) -
+E(x)^2$</mathjax>, so in this case <mathjax>$\sigma^2 = \braKet{\Psi}{A^2}{\Psi} -
+\braKet{\Psi}{A}{\Psi}^2$</mathjax>.</p>
+<p>Wednesday, what we're going to do is try some derivation of what the
+uncertainty principle looks like in general.
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, March 14</p>
+<hr />
+<p>playing around with uncertainty principle; derivation through (commutator +
+anticommutator)/2. Consideration of Cauchy-Schwarz inequality. Schwarz
+inequality becomes equality in certain cases.
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, March 14</p>
+<hr />
+<p>Uncertainty relation: what is its meaning? How do you measure a particle?
+Observations disturb state.</p>
+<p>Uncertainty principle is why we exist. Hydrogen atom: proton surrounded by
+some electron orbit. THe size of the proton is roughly <mathjax>$10^{-15} m$</mathjax>, or one
+fm (fermi, as we come to know it). THe electron sits a distance <mathjax>$a_0$</mathjax> (Bohr
+radius) away from the proton, roughly <mathjax>$5 \cdot 10^{-11}$</mathjax>. Pauli exclusion
+principle leads to repulsive force. 1931: Ehrenfest postulated. Later,
+1967: Freeman Dyson along with collaborator A. Lenard proved that this
+causes normal force: matter would be much squishier.</p>
+<p>H = T + V. We know <mathjax>$T = \frac{p^2}{2m}$</mathjax>, and V is given by <mathjax>$-\frac{e^2}{r
+4\pi\epsilon_0}$</mathjax>. We thus have <mathjax>$\int d^3x \Psi^*\parens{-\frac{\hbar^2}
+{2m}\nabla^2 \Psi}$</mathjax>. This is roughly <mathjax>$R$</mathjax>. Then we know the kinetic energy,
+which is the sum of all the momenta, <mathjax>$\frac{1}{2m}\avg{p_x^2 + p_y^2 +
+p_z^2} = \frac{1}{2m}3\frac{\hbar^2}{4R^2} \approx \frac{3}{8}
+\frac{\hbar^2}{mR^2}$</mathjax>. So <mathjax>$\avg{H} \approx \frac{3}{8}\frac{\hbar^2}{mR^2}
+- \frac{e^2}{R4\pi\epsilon_0}$</mathjax>. <mathjax>$\pderiv{}{R}\avg{H} = 0$</mathjax>. Therefore <mathjax>$R =
+  \frac{3}{4}\frac{\hbar^2}{mc\alpha}$</mathjax>. </p>
+<p>Two good examples of generalizing uncertainty in text. Decay,
+travel.</p>
+<p>There's another uncertainty relation that's common to write down, i.e. the
+time-energy uncertainty principle. Time scale for observable quantity:
+width of particle inversely proportional to lifetime.</p>
+<p>Let's do a more specific example: consider a wave function given by the
+following gaussian wave packet: <mathjax>$\phi = \frac{e^{-(x - x_0)^2 / 2a^2}
+e^{ip_0x/\hbar}}{(\pi a^2)^{1/4}}$</mathjax>. What is the uncertainty in the position
+of the particle?</p>
+<p><mathjax>$\sigma_x = \frac{a}{\sqrt{2}}$</mathjax>.</p>
+<p>Assume we have an infinite hilbert space. Note that one is represented by
+<mathjax>$\infint dx \abs{xXx}$</mathjax>.</p>
+<h1>Dirac's bra-ket Notation</h1>
+<p>talk about finding eigenvalues and eigenvectors. <mathjax>$\ketbra{i}{j}H_{ij}$</mathjax>.</p>
+<p>Note that <mathjax>$\braket{i}{j} = \delta_{ij}$</mathjax></p>
+<p>More bra-ket notation. Basis must span Hilbert space. Completeness
+relation.
+Physics 137A: Quantum Mechanics
+===============================
+Monday, March 19</p>
+<hr />
+<p>Recaps. Uncertainty principle at multiple places. Showed that if you show
+momentum acting on Gaussian, it's effectively <mathjax>$-\frac{\hbar}{i} \frac{1}{2
+\sigma_x^2} \hat{x}$</mathjax>. Showed that inequality became an equality, so our
+fudging worked just fine.</p>
+<p>Time dependence shows up explicitly in some operators; none that we've
+encountered thus far.</p>
+<p>Two things to take away: <mathjax>$\pderiv{}{t}\avg{\hat{Q}_H} = \frac{i}{\hbar}
+\avg{\comm{\hat{H}}{\hat{Q}_H}} + \avg{\pderiv{Q_H^\prime}{t}}$</mathjax>. We can use
+this to derive the generalized uncertainty principle: <mathjax>$\sigma_H^2\sigma_Q^2
+\ge \avg{\frac{1}{2i}\comm{H}{\hat{Q}}}^2\implies \sigma_H\sigma_Q \ge
+\frac{\hbar}{2}\abs{\pderiv{\avg{\hat{Q}}}{t}}$</mathjax>. Using this for energy and
+time, we show that we've also got a time-energy uncertainty principle.</p>
+<p>Interesting things that aren't stationary: e.g. 2p in hydrogen. Somewhat
+important, since using a laser, one thing you want to do is pump hydrogen
+to an excited state.</p>
+<p>Talk about lifetimes being <mathjax>$\delta t \approx \frac{1}{\omega}$</mathjax>.</p>
+<p>Bandgaps. Slowing down of atoms. Doppler shift.</p>
+<p>More dimensions! Toy models.</p>
+<p>Spherical symmetry.</p>
+<p>Schrodinger equation in three dimensions: just replace <mathjax>$x$</mathjax> with
+<mathjax>$\vec{r}$</mathjax>. Thus <mathjax>$\pderiv{}{x} \to \nabla$</mathjax>.</p>
+<p>We have a different normalization, now: it's now an integral over ALL
+SPACE. Same reasoning: particle must be <em>somewhere</em>. So, as before, we can
+take our wave function and write <mathjax>$\Psi(\vec{r},t) = \psi(\vec{r})
+e^{-iEt/\hbar}$</mathjax>. Plug this in, and we get the time-dependent Schrodinger
+equation.</p>
+<p>Solve this equation, and we'll get the stationary states.</p>
+<p>Hydrogen atom! Make use of fact that we'll have various conserved
+quantities. This is why we talked about commutators and stuff. Angular
+momentum and stuff.</p>
+<p>One very interesting class of problems: <mathjax>$V(r)$</mathjax> (not <mathjax>$\vec{r}$</mathjax>). For
+instance, <mathjax>$V = \frac{\alpha}{r}$</mathjax>.
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, March 21</p>
+<hr />
+<p>Recaps. In 3 dimensions, note that k,p,x are now vectors, and instead of
+<mathjax>$kx$</mathjax>, we have <mathjax>$\vec{k}\cdot \vec{r}$</mathjax>.</p>
+<p>Beautifully similar to what we have in one dimension. For many problems
+we'll be interested in, the potential is spherically symmetric.</p>
+<p><mathjax>$$
+2\braKet{\psi}{x^2}{\psi} = \braKet{\psi_1e^{-iE_1t/\hbar} +
+\psi_2e^{-iE_2t/\hbar}}{x^2}{\psi_1e^{-iE_1t/\hbar} +
+\psi_2e^{-iE_2t/\hbar}}
+\\ = \braKet{\psi_1e^{-iE_1t/\hbar}}{x^2}{\psi_1 e^{-E_1t/\hbar}} + 
+\braKet{\psi_1e^{-iE_1t/\hbar}}{x^2}{\psi_2 e^{-E_2t/\hbar}} + 
+\\ \braKet{\psi_2e^{-iE_2t/\hbar}}{x^2}{\psi_1 e^{-E_1t/\hbar}} + 
+\braKet{\psi_2e^{-iE_2t/\hbar}}{x^2}{\psi_2 e^{-E_2t/\hbar}}
+\\ = \braKet{\psi_1}{x^2}{\psi_1} + 
+e^{-i(E_2 - E_1)t/\hbar} \braKet{\psi_1}{x^2}{\psi_2} + 
+\\ e^{-i(E_1 - E_2)t/\hbar} \braKet{\psi_2}{x^2}{\psi_1 } + 
+\braKet{\psi_2}{x^2}{\psi_2}
+\\ = \braKet{\psi_1}{x^2}{\psi_1} + \braKet{\psi_2}{x^2}{\psi_2} +
+2\cos\parens{\frac{(E_2 - E_1)t}{\hbar}} \braKet{\psi_1}{x^2}{\psi_2}
+$$</mathjax></p>
+<p>Solving 3-dimensional separation of variables. Angular equation; radial
+equation. Legendre polynomials. <mathjax>$\ell(\ell + 1)$</mathjax></p>
