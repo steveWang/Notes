@@ -1,4 +1,4 @@
-<script src='file:///home/steve/hackerspace/mathjax/unpacked/MathJax.js?config=default'></script>
+<script src='https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=default,http://steveWang.github.com/Notes/config/local'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
 var TEX = MathJax.InputJax.TeX;
@@ -110,11 +110,13 @@ Outline) -- great for self-study because every problem is solved.</p>
 * Causality
   + Basically, no dependence on future values.
 - If two inputs are identical to some point, then their outputs
-  must also be identical to that same point.</p>
+  must also be identical to that same point.
+EE 120: Signals and Systems
+===========================
+January 19, 2012.</p>
+<hr />
 </li>
 </ul>
-<h1>EE 120: Signals and Systems</h1>
-<h2>January 19, 2012.</h2>
 <h2>More on causality</h2>
 <p>(proof by contradiction of previous example)</p>
 <p>(input zero up to a certain point, but the output is nonzero before said
@@ -176,9 +178,11 @@ auto-correlation. convolution of a signal with itself.)</p>
 <p><mathjax>$y(n) = \alpha y(n-1) + x(n)$</mathjax>.  causal, <mathjax>$y(-1) = 0$</mathjax>.</p>
 <p>(geometric sum; BIBO stability depends on magnitude of \alpha being less
 than
-1.)</p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>January 24, 2012.</h2>
+1.)
+EE 120: Signals and Systems
+===========================
+January 24, 2012.</p>
+<hr />
 <h1>LTI Systems and Frequency Response</h1>
 <p>Freq. response: <mathjax>$H(\omega)$</mathjax>
 (continuous-time?)</p>
@@ -268,7 +272,7 @@ etc. Second derivatives. ]</p>
 <mathjax>$y(-N) = ... = y(n) = 0$</mathjax></p>
 <p><mathjax>$(\abs{\alpha} &lt; 1)$</mathjax></p>
 <p><mathjax>$$h_{N}(n) = \alpha h_{N}(n-N) + \delta(n) = !(n % N) &amp;&amp; \alpha^{n/N}.
-H_{N}(\omega)\\ = \sum\alpha^{k}e^{-i\omega Nk} (k \from 0 \to \infty)
+H_{N}(\omega)\\ = \sum_{k=0}^\infty\alpha^{k}e^{-i\omega Nk}
   \sum(\alpha e^{-i\omega N})^k = 1/(1-\alpha e^{-i\omega N})
 \\ \abs{H_{N}(\omega)} = \abs{e^{i\omega N}/(e^{i\omega N} - \alpha)}
 $$</mathjax></p>
@@ -286,9 +290,11 @@ well.</p>
 <p><mathjax>$G(\omega) = \int g(t)e^{-i\omega t}dt
    \\ = 1/(\alpha  + i\omega ).
    \\ = 1/(i\omega  - (-\alpha ))$</mathjax></p>
-<p><mathjax>$\sqrt{\omega ^2 + \alpha ^2}$</mathjax></p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>January 31, 2012.</h2>
+<p><mathjax>$\sqrt{\omega ^2 + \alpha ^2}$</mathjax>
+EE 120: Signals and Systems
+===========================
+January 31, 2012.</p>
+<hr />
 <p>Homework should be out today. Yes, there are homeworks in this class.</p>
 <p>analog system procedure for figuring out frequency response of
 systems.</p>
@@ -365,9 +371,11 @@ not very interesting.</p>
 \frac{1}{p} \braket{x}{\psi_l}$</mathjax>.</p>
 <p>synthesis equation, analysis equation:</p>
 <p><mathjax>$x(n) = \sum X_k e^{ik\omega_0n}$</mathjax>
-<mathjax>$X(n) = \sum x_k e^{-ik\omega_0n}$</mathjax></p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>February 2, 2012.</h2>
+<mathjax>$X(n) = \sum x_k e^{-ik\omega_0n}$</mathjax>
+EE 120: Signals and Systems
+===========================
+February 2, 2012.</p>
+<hr />
 <h1>DTFS</h1>
 <p><mathjax>$x(n) = \sum X_k e^{ik\omega_0n}$</mathjax>. The complex exponentials form a basis
 for <mathjax>$\mathbb{C}^2$</mathjax>. The way we define inner products for signals is exactly
@@ -377,9 +385,11 @@ functions guaranteed to be both periodic in time as well as frequency.</p>
 <p><mathjax>$x(n) = cos(n)$</mathjax> not periodic in discrete time <mathjax>$\implies$</mathjax> no DTFS.</p>
 <p>Evidently there will be a quiz on Tue, since pset is due on Wed.</p>
 <p>Consider what it means to send discrete-time periodic signals through
-LTI systems.</p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>February 7, 2012.</h2>
+LTI systems.
+EE 120: Signals and Systems
+===========================
+February 7, 2012.</p>
+<hr />
 <p>CTFS:</p>
 <p>periodic if <mathjax>$x(t+p) = x(t) \exists p \in R$</mathjax>. Smallest positive <mathjax>$p$</mathjax> is
 called the fundamental period. Fundamental frequency <mathjax>$\omega_0 \equiv
@@ -440,9 +450,11 @@ t/3))/2$</mathjax>. <mathjax>$\psi_1 = \psi_{-1} = \frac{1}{2}$</mathjax>.</p>
 <mathjax>$\frac{\sin(k\omega_0\Delta/2)}{pk\pi\Delta/2}$</mathjax></p>
 <p>What happens if I want to approximate a signal that has finite energy? What
 should the coefficients <mathjax>$\alpha_k$</mathjax> be?</p>
-<p>orthogonal projection! Least squares!</p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>February 9, 2012.</h2>
+<p>orthogonal projection! Least squares!
+EE 120: Signals and Systems
+===========================
+February 9, 2012.</p>
+<hr />
 <h1>Discrete-time Fourier transform</h1>
 <p>Discrete aperiodic signals. The DTFT can also handle discrete-time periodic
 signals, provided that we make use of Dirac deltas in the frequency
@@ -485,9 +497,11 @@ frequency <mathjax>$\omega$</mathjax> to the function <mathjax>$h$</mathjax>.</p
 variable <mathjax>$\omega$</mathjax> which happen to be periodic with period <mathjax>$2\pi$</mathjax>.</p>
 <h1>Ideal discrete-time Low-pass Filter</h1>
 <p>Impulse response <mathjax>$h(n) = \frac{1}{2\pi}\int H(\omega)e^{i\omega n}d\omega$</mathjax>.</p>
-<p><mathjax>$\frac{B}{\pi n} \sin(An)$</mathjax></p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>February 16, 2012.</h2>
+<p><mathjax>$\frac{B}{\pi n} \sin(An)$</mathjax>
+EE 120: Signals and Systems
+===========================
+February 16, 2012.</p>
+<hr />
 <h2>Discrete-Time Fourier Transform: continued</h2>
 <p>Recall the ideal low-pass filter. In time-domain, it had some
 discontinuities. In freq domain, it was NOT absolutely summable. However,
@@ -586,9 +600,11 @@ say, is a square pulse wave thingy.</p>
 <p>easy way of carrying out circular convolution: take one of the two
 functions, keep one replica (e.g. the one from <mathjax>$-\pi$</mathjax> to <mathjax>$\pi$</mathjax>), and then
 do a regular convolution with the other function. advice: choose the
-flipped + shifted signal for elimination of replicas.</p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>February 21, 2012.</h2>
+flipped + shifted signal for elimination of replicas.
+EE 120: Signals and Systems
+===========================
+February 21, 2012.</p>
+<hr />
 <h1>Circular convolution wrap-up</h1>
 <p><mathjax>$h(n) = \frac{B}{\pi n} \sin(An) \fourier H(\omega) = u(n+A)-u(n-A)$</mathjax>.
 (ideal low-pass filter and its impulse response)</p>
@@ -692,9 +708,11 @@ and also half the maximum value.</p>
 \frac{1}{\Delta^2 + t^2}$</mathjax>. Turns out <mathjax>$\alpha=1$</mathjax>.</p>
 <p>This is a Cauchy probability density function.</p>
 <p>(names for dirac delta: generalized function, distribution. Look up theory
- of distributions)</p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>February 23, 2012.</h2>
+ of distributions)
+EE 120: Signals and Systems
+===========================
+February 23, 2012.</p>
+<hr />
 <h2>Continuous-time Fourier transform</h2>
 <p>Recall:
 <mathjax>$$X(\omega) = \int_{-\infty}^\infty x(t)e^{-i\omega t}dt
@@ -761,9 +779,11 @@ recover original signal, complete with amplitude.</p>
 signal is the same as the transmitted signal. Whole area of communication
 theory that deals with deterioration. Other assumption is that the
 oscillator at the receiver that can generate the exact same frequency as
-the transmitter oscillator and at the same phase.</p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>February 28, 2012.</h2>
+the transmitter oscillator and at the same phase.
+EE 120: Signals and Systems
+===========================
+February 28, 2012.</p>
+<hr />
 <h1>AM Continued</h1>
 <p>(review of what we just did)</p>
 <h2>Recall:</h2>
@@ -802,9 +822,11 @@ side-band suppressed carrier.</p>
 <p>Each player is allocated a piece of real estate along the frequency axis.</p>
 <h2>Quadrature multiplexing</h2>
 <p>The way we can do this is by exploiting the orthogonality of cosine and
-sine. What's being transmitted is the sum of the two.</p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>March 1, 2012.</h2>
+sine. What's being transmitted is the sum of the two.
+EE 120: Signals and Systems
+===========================
+March 1, 2012.</p>
+<hr />
 <h1>Sampling of CT Signals</h1>
 <p>Now we have to differentiate between frequency in radians per second
 (<mathjax>$\omega$</mathjax>), and frequency in radians per sample (<mathjax>$\Omega$</mathjax>). Our sampling
@@ -928,9 +950,11 @@ that.</p>
 <mathjax>$\omega_0$</mathjax>. The sampling signal <mathjax>$Q(\omega)$</mathjax> will have an impulse train
 separated by <mathjax>$\omega_s$</mathjax>. When we convolve this and apply a low-pass filter,
 we have just one remaining frequency at <mathjax>$\omega_0-\omega_s = -\frac
-{\omega_0}{2}$</mathjax>.</p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>March 6, 2012.</h2>
+{\omega_0}{2}$</mathjax>.
+EE 120: Signals and Systems
+===========================
+March 6, 2012.</p>
+<hr />
 <h1>Sampling Cont'd</h1>
 <p>We are still in the first of three blocks (where we take a continuous-time
 signal and create a discrete-time signal).</p>
@@ -954,9 +978,11 @@ fulfill the conditions of the Nyquist sampling theorem (no aliasing), and
 your reconstruction period is the same as your sampling period.</p>
 <p>Then you know that your output is equal <mathjax>$\frac{G}{T} H_d\parens{ \omega T}
 X_c(\omega)$</mathjax>. The equivalent LTI filter is simply <mathjax>$\frac{G}{T} nH_d \parens{
-\omega T}$</mathjax></p>
-<h1>EE 120: Signals and Systems</h1>
-<h2>March 8, 2012.</h2>
+\omega T}$</mathjax>
+EE 120: Signals and Systems
+===========================
+March 8, 2012.</p>
+<hr />
 <p>Spoke about sampling, impulse train, conditions under which signal can be
 recovered -- if band-limited, and frequency high enough, we can recover
 with a low-pass filter.</p>
@@ -1025,9 +1051,11 @@ often), and evaluating the integral, we get a linear combination of sinc
 functions.</p>
 <p>It turns out these coefficients are the values of the signal at the sampled
 points. That isn't obvious yet. After some algebraic manipulations, we can
-finally see that this whole thing is just <mathjax>$x_c(kT_s)$</mathjax>.</p>
-<h1>EE 120: Signals and Systems</h1>
-<h1><mathjax>$\mathcal{Z}$</mathjax> Transform</h1>
+finally see that this whole thing is just <mathjax>$x_c(kT_s)$</mathjax>.
+EE 120: Signals and Systems
+===========================
+<mathjax>$\mathcal{Z}$</mathjax> Transform
+=======================</p>
 <p>Something we've been brushing under the carpet for a while is the set of
 signals in which the Fourier transform is not defined.</p>
 <p>So the Z transform is defined for discrete-time LTI systems. (discrete
@@ -1187,7 +1215,7 @@ convergence. </p>
 <p>We have a few minutes, so let me talk about the distinctions between causal
 signals and right-sided signals (and also anticausal / left-sided).</p>
 <p>So let's say we take a right-sided but not causal signal. Now the RoC is
-outside of radius <mathjax>$\alpha$</mathjax>, but now you have to exclude <mathjax>$\infinity$</mathjax>.</p>
+outside of radius <mathjax>$\alpha$</mathjax>, but now you have to exclude $\infty.</p>
 <p>Similarly, for left-sided signals, you'd then exclude 0.
 EE 120: Signals and Systems
 ===========================

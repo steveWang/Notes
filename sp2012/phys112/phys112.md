@@ -671,10 +671,7 @@ the H theorem, the chemical potential is equal in all accessible states.
 What is chemical potential? It is a measure of the concentration! (verify
 by working out -τ ∂σ/∂N). A lot of work for a very simple result. But this
 is much more powerful. We will use this to look at batteries, equilibrium
-in various systems.
-
-
-MIDTERM: Friday the 24th. 8:10-9:00. Why Friday and not Monday? Turns out
+in various systems.MIDTERM: Friday the 24th. 8:10-9:00. Why Friday and not Monday? Turns out
 there is an important workshop on dark matter in UCLA. There is a potential
 problem: Monday the 20th is President's day, so no class, no office
 hours. Proposition: Tuesday the 21st, we have extended office hours from
@@ -821,11 +818,11 @@ C{p} = (∂Q/∂τ){p} = T(∂σ/∂τ){p}
 
 Thus C{v} = C{p} + τ(∂σ/∂P·∂P/∂τ)
 
-lpha ≡ 1/V ∂V/∂τ. "volume coefficient of expansion"
+\alpha ≡ 1/V ∂V/∂τ. "volume coefficient of expansion"
 
 κ ≡ -1/V ∂V/∂p "isothermal compressibility"
 
-Therefore C{p} - C{v} = Vτ(lpha²/κ)
+Therefore C{p} - C{v} = Vτ(\alpha²/κ)
 
 What's needed to calculate entropy
 
@@ -878,7 +875,7 @@ Clausius statement for 2nd law of thermodynamics: effectively, Carnot
 engine is maximally efficient, given τ₁, τ₂. (q₂/q₁ ≤ τ₂/τ₁)
 
 Joule-Thomson process: H = U + PV ⇒ H₁ = H₂ if dQ = 0.
-μ ≡ V/C{p} (τlpha - 1)
+μ ≡ V/C{p} (τ\alpha - 1)
 Physics 112: Statistical Mechanics
 ==================================
 Chemical Potential. Feb 22, 2012
