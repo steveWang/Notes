@@ -20,6 +20,7 @@ special relativity; new theory returns to old theory as some ε→0.
 
 (E₁-E₂)̱\bar{E} = (E₁-E₂)/(p²/2m)>(πℏ/pd)² ≈10^{-69}
 ℏ = h/2π = 1.05·10^{-34} J·s
+
 Physics 137A: Quantum Mechanics
 ===============================
 Friday, January 20
@@ -70,6 +71,7 @@ iℏ(∂ψ(x,t)/∂t) = [-(ℏ²/2m)(∂²/∂x² + V(x)] ψ(x,t) = H(x)ψ(x,t)
 [ only one-dimensional, so far ]
 
 Operators now written with a circumflex.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, January 23
@@ -100,6 +102,7 @@ three primary interpretations of QM
  
 variance is 〈(Δi)²〉 = 〈i²〉 - 〈i〉²
 
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, January 25
@@ -114,6 +117,7 @@ Moments are the analogue of derivatives for distributions. Sort
 of. You also have derivatives, which aren't very useful, usually.
 
 stuff with normalizing wave function, |ψ|² = ψ*ψ, etc.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Friday, January 27
@@ -141,6 +145,7 @@ e^{ip·x}
 
 Fourier transform of the Gaussian:
 P(x) = 1/(√(2π)σ) e^{-x²/(2σ²)} = 1/(2π) ∫[cos(px/ℏ) e^{-p²σ²/(2ℏ²)}]∂(p/h)
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, January 30
@@ -175,6 +180,7 @@ First big idea, stationary states.
 
 σ{Ĥ} = 〈H²〉 - 〈H〉² = 0. Stationary states have definite
 energy. Eigenvalues.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, February 1
@@ -220,6 +226,7 @@ be zero at boundaries. THESE ARE BASIC BOUNDARY CONDITIONS.
   a = (2ℓ+1)π/k
 
 blah, constructing fourier series still
+
 Physics 137A: Quantum Mechanics
 ===============================
 Friday, February 3
@@ -248,6 +255,7 @@ Properties
 
 blarg, constructing fourier series (finally) and bra-ket notation
 (only now?).
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, February 6
@@ -274,6 +282,7 @@ Summary
 〈Φ|H|Φ〉 = ∑|a{n}|²E{n}
 
 stuff with conjugates and whatnot.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, February 8
@@ -316,6 +325,7 @@ is going to do is straight out of the book, so don't take notes. Cool.
 **Addition/subtraction: physicist's worst nightmare.**
 
 **Regularization: it is your best friend.**
+
 Physics 137A: Quantum Mechanics
 ===============================
 Friday, February 10
@@ -360,6 +370,7 @@ are violating mathematics. Which is great. This happens 11% of the
 time. This is excellent.
 
 Next Monday: calculating expectation value of p².
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, February 13
@@ -380,6 +391,7 @@ relation.
 Barrier presentation. Potential greater than energy.
 
 Talk about free particles.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, February 15
@@ -422,6 +434,7 @@ problem.)
 
 wave packets, momentum composition. blah blah blah, you can show that
 they're equivalent, etc.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Friday, February 17
@@ -465,6 +478,7 @@ Continuous stuff.
 Let's first consider stuff in our well. We've got two regions: x<-a/2,
 x>a/2, and -a/2 < x < a/2. The first part is the free SE. Nothing
 interesting there.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, February 22
@@ -489,6 +503,7 @@ form, then enforce boundary conditions.
 propagation.
 
 Remember that this only gives us half of the solutions.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, February 27
@@ -514,10 +529,12 @@ Talk about how the wave function has continuous zeroth and first
 derivatives at boundaries.
 
 Tunnelling makes the sun work.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, February 29
 ----------------------
+
 Physics 137A: Quantum Mechanics
 ===============================
 Transmission, Reflection, Tunneling
@@ -533,6 +550,7 @@ idea: use large basis in n, construct stationary states numerically.
 Fourier basis complete over interval.
 
 Stationary state satisfies S.E.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, March 5
@@ -580,6 +598,7 @@ What do we do when eigenvalues are degenerate?
  c) Mathematica
 
 orthonormal basis.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Friday, March 9
@@ -594,6 +613,7 @@ Quaternions:
 \sum_k e_k \ket{\psi_k}
 
 [x,p] = xp - px
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, March 12
@@ -647,6 +667,7 @@ E(x)^2$, so in this case $\sigma^2 = \braKet{\Psi}{A^2}{\Psi} -
 
 Wednesday, what we're going to do is try some derivation of what the
 uncertainty principle looks like in general.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, March 14
@@ -655,6 +676,7 @@ Wednesday, March 14
 playing around with uncertainty principle; derivation through (commutator +
 anticommutator)/2. Consideration of Cauchy-Schwarz inequality. Schwarz
 inequality becomes equality in certain cases.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, March 14
@@ -706,6 +728,7 @@ Note that $\braket{i}{j} = \delta_{ij}$
 
 More bra-ket notation. Basis must span Hilbert space. Completeness
 relation.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, March 19
@@ -755,6 +778,7 @@ momentum and stuff.
 
 One very interesting class of problems: $V(r)$ (not $\vec{r}$). For
 instance, $V = \frac{\alpha}{r}$.
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, March 21
