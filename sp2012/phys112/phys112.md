@@ -63,6 +63,7 @@ Clickers:
   particular class. Largely duplicated from the syllabus. ]
 
 [ note to self: 277 Cory ]
+
 Physics 112: Statistical Mechanics
 ==================================
 Kinetic Theory 1 / Probabilities. January 23, 2012
@@ -118,6 +119,7 @@ walls of container.
 
 Entropy as a measure of the state of disorder of a system. Modern
 definition: σ = -∑pi log(pi). 0 if in one state, max if flat distribution.
+
 Physics 112: Statistical Mechanics
 ==================================
 Kinetic Theory 2 / Probabilities. January 25, 2012
@@ -169,6 +171,7 @@ add up to 1. Probabilities cannot be negative.
  * Actually a lie.
 
 Moments. Stuff.
+
 Physics 112: Statistical Mechanics
 ==================================
 Kinetic Theory 3 / Probabilities. January 27, 2012
@@ -248,6 +251,7 @@ space. Hence for a sum, the characteristic functions multiply and the logs
 of characteristic functions add.
 
 Central limit theorem: Cool if our variables actually are independent.
+
 Physics 112: Statistical Mechanics
 ==================================
 Entropy and Stuff. January 30, 2012
@@ -348,6 +352,7 @@ function has to go to 0 at the wall.
 That's just a particle in a box. If you ask yourself what is the momentum
 of this particle, this particle is actually a series of two momenta. It
 does not have a well-defined momentum, since it is going back and forth.
+
 Physics 112: Statistical Mechanics
 ==================================
 Entropy and Stuff. Feb 1, 2012
@@ -447,6 +452,7 @@ distribution (_of microstates_). Else you have a nonzero divergence in more
 than one state.
 
 Sterling approximation: number of states goes to a gaussian.
+
 Physics 112: Statistical Mechanics
 ==================================
 Entropy and Stuff. Feb 3, 2012
@@ -500,6 +506,7 @@ Solve for U: U = Aexp(2σ/3N)V^{⁻²/₃}.
 τ = ∂U/∂σ = 2U/3N ⇔ U = 3NkT/2.
 
 p = -∂U/∂V = 2U/3V ⇔ pV = Nτ ≡ NkT.
+
 Physics 112: Statistical Mechanics
 ==================================
 Entropy and Stuff. Feb 6, 2012
@@ -559,6 +566,7 @@ Thus we have Ω√(2MU)³ⁿ⁻¹/ℏ³ⁿ.
 δ has dimension of 1/p. ∫δ(x)dP = 1
 
 Sackur Tetrode formula: entropy of an ideal gas. S/k = N(log(n₀/n) + 5/2)
+
 Physics 112: Statistical Mechanics
 ==================================
 Entropy and Stuff. Feb 8, 2012
@@ -618,6 +626,7 @@ extremum of this function is.
 ∂log(g₁)/∂U₁ = ∂log(g₂)/∂U₂.
 ∂σ₁/∂U₁ = ∂σ₂/∂U₂.
 1/τ₁ = 1/τ₂.
+
 Physics 112: Statistical Mechanics
 ==================================
 Equilibrium, Thermodynamics, Potential. Feb 10, 2012
@@ -721,6 +730,7 @@ How do we measure entropy experimentally? There is a problem with assuming
 ideal gas: not valid close to absolute zero. For that matter,
 Sackur-tetrode is not valid at absolute zero. The classical approximation
 breaks down when n > n{Q}.
+
 Physics 112: Statistical Mechanics
 ==================================
 Macroscopic Thermodynamics. Feb 13, 2012
@@ -767,6 +777,7 @@ Working through the math,
 Specific heats: ∂Q/∂T while holding various parameters constant.
 
 Adiabatic vs. isothermal expansion. γ ≡ C{p}/C{v}.
+
 Physics 112: Statistical Mechanics
 ==================================
 Macroscopic Thermodynamics. Feb 15, 2012
@@ -840,6 +851,7 @@ dU = C{v}dτ + (τ∂P/∂τ - P)dV
 
 Example van der Waals gas (particle interactions):
 (P + a/v²)(v-b) = k{B}N{A}τ (v ≡ V/ν
+
 Physics 112: Statistical Mechanics
 ==================================
 Applications of Classical Thermodynamics. Feb 17, 2012
@@ -876,6 +888,7 @@ engine is maximally efficient, given τ₁, τ₂. (q₂/q₁ ≤ τ₂/τ₁)
 
 Joule-Thomson process: H = U + PV ⇒ H₁ = H₂ if dQ = 0.
 μ ≡ V/C{p} (τ\alpha - 1)
+
 Physics 112: Statistical Mechanics
 ==================================
 Chemical Potential. Feb 22, 2012
@@ -906,6 +919,7 @@ Chemical Potential. Feb 22, 2012
 
 Most common state is such that the sum of chemical potentials is equal to
 zero. $\mu_{i} = \tau \log (n/n_{Q_i})$.
+
 Physics 112: Statistical Mechanics
 ==================================
 Chemical Potential. Feb 27, 2012
@@ -976,6 +990,7 @@ temperature, the two states are equiprobable with 50%.
 The second example we will take is the Maxwell distribution, where a
 particle in a gas in contact with a reservoir (which can be the rest of the
 gas). To be continued on Wednesday.
+
 Physics 112: Statistical Mechanics
 ==================================
 Boltzmann Distribution. Feb 29, 2012
@@ -1075,6 +1090,7 @@ A very powerful tool. More technical, but important.
 
 5.3 Fluctuations
 ================
+
 Physics 112: Statistical Mechanics
 ==================================
 Partition Function. Mar 2, 2012
@@ -1161,6 +1177,7 @@ probability of having two systems in the same state is negligible. The
 error we accumulate is due to fewer terms appearing in the sum.
 
 In other words, we have very weak correlation coefficients.
+
 Physics 112: Statistical Mechanics
 ==================================
 Ideal gas, Gibbs distribution: Mar 5, 2012
@@ -1245,6 +1262,7 @@ N}{\tau}}$
 Gibbs Distribution
 ==================
 Exchange not only energy, but also particles.
+
 Physics 112: Statistical Mechanics
 ==================================
 Gibbs Distribution: Mar 7, 2012
@@ -1317,6 +1335,7 @@ $-\epsilon$)
 Ionized impurities in a semiconductor: K&K p370. Doping. Donor: tends to
 have one more electron; acceptor: tends to have one fewer electron. $\mu$
 (Fermi level) determined by electron concentration in semiconductor.
+
 Physics 112: Statistical Mechanics
 ==================================
 Gibbs Grand Partition Function: Mar 9, 2012
@@ -1424,6 +1443,7 @@ absolutely enormous.
 So we say that the Bosons like to travel in flux.
 
 Physicist joke: astronomers are fermions, particle physicists are bosons.
+
 Physics 112: Statistical Mechanics
 ==================================
 What is Minimized; Black Body: Mar 12, 2012
@@ -1530,6 +1550,7 @@ interested in the direction of the photons, we integrate on solid angle and
 we get $u_\omega d\omega = u_vdv = \frac{\8\pi hv^3dv}{c^3(\exp(hv/\tau) -
 1)$. I would like you to be able to derive this from first principles,
 rather than rote memorization.
+
 Physics 112: Statistical Mechanics
 ==================================
 Black Body: Mar 14, 2012
@@ -1654,6 +1675,7 @@ of number of states using quantum numbers. Of course, same result.
 
 Flux through an aperture. Do not forget cosine factor: volume of oblique
 cylinder is $cdtdA\cos\theta$.
+
 Physics 112: Statistical Mechanics
 ==================================
 Black Body: Mar 16, 2012
@@ -1746,6 +1768,7 @@ d\omega$, which comes directly from the counting of states. Since $\omega$
 is of the order of $\frac{\tau}{\hbar}$, we get here that the number goes
 as $T^3$. Of course, when I'm looking at energy, I have one extra factor of
 temperature ($\tau \equiv k_B T$), and that's where $T^4$ comes in.
+
 Physics 112: Statistical Mechanics
 ==================================
 Black Body: Mar 21, 2012
@@ -1871,6 +1894,7 @@ If we have something that is diffraction-limited, then $\Delta \theta \sim
 situations in astronomy. We'll do that rapidly at the beginning of next
 lecture. I will also probably speak about phonons on Friday, and we'll see
 if we can start the Fermi-Dirac/Bose-Einstein.
+
 Physics 112: Statistical Mechanics
 ==================================
 Black bodies and phonons: Mar 23, 2012
