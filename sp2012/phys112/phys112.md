@@ -6,6 +6,7 @@ January 18, 2012
 Organization
 -----------
 Goals
+
  * Deeper understanding of concepts: less mysterious.
    + Entropy
    + Free energy
@@ -29,6 +30,7 @@ Goals
    + History
 
 Participation
+
  * Focus: Conceptual Understandidng
    + We learn by construction/reconstruction of your mental models.
    + This process is both intensely personal and social (learn through
@@ -57,6 +59,7 @@ Participation
   + Office hours (come with questions)
 
 Clickers:
+
 * Systematic use in class begins Mon, Jan 23.
 
 [ More boring administrative stuff; not particularly unique to this
@@ -69,12 +72,14 @@ Physics 112: Statistical Mechanics
 Kinetic Theory 1 / Probabilities. January 23, 2012
 --------------------------------------------------
 Details:
+
  * clickers
  * homework -- due in LeConte reading room
  * webcasts
  * Discussion sections
 
 Ideal Gas
+
  * particle interaction leads to thermal equilibrium.
  * particle probability distributions are independent
  * particle systems where interaction time ≪ mean free time between
@@ -88,9 +93,9 @@ How to describe large systems.
 ------------------------------
  * very large
  * at finite temperature – not at rest
-   + velocity v ≈ 300m/s @ 300K.
+   + velocity $v \approx 300$m/s @ 300K.
  * Constant collisions
-   + mean free path λ ≈ 0.1 μm.
+   + mean free path $\lambda \approx 0.1$ μm.
  * Probabilistic description. 1 particle
    + Classically
 	 - Have to track both position and velocity/momentum.
@@ -118,7 +123,8 @@ Pressure as a measure of energy density or "average" force per unit area on
 walls of container.
 
 Entropy as a measure of the state of disorder of a system. Modern
-definition: σ = -∑pi log(pi). 0 if in one state, max if flat distribution.
+definition: $\sigma = -\sum p_i \log p_i$. 0 if in one state, max if flat
+distribution.
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -180,71 +186,83 @@ Kinetic Theory 3 / Probabilities. January 27, 2012
 Various probability stuffs. Continuous distirbutions. Sum/average of
 independent events. Central limit theorem.
 
-  P(s) ≥ 0, ∑ P(s) = 1
-  〈y〉 = ∑y(s)P(s) [ this is the first moment. ]
-
-  y(s) = 35 δ{i,k}. 〈y〉 = ∑ 35δ{i,k} = 35/38.
+$$
+  P(s) \ge 0, \sum P(s) = 1
+  \\ \avg{y} = \sum y(s)P(s) \text{ [ this is the first moment. ]}
+  \\ y(s) = 35 \delta_{ik}. \avg{y} = \sum 35\delta_{ik} = 35/38.
+$$
 
 Variance:
-  σ² = 〈(y(s) - 〈y〉)²〉 = 〈y²〉 - 2〈y〈y〉〉+ 〈y〉² = 〈y²〉 - 〈y〉²
 
-root mean square (rms) ≡ standard deviation
+  $\sigma^2 = \avg{(y(s) - 〈y})^2 = \avg{y^2} - 2\avg{y\avg{y}} + \avg{y}^2
+  = \avg{y^2} - \avg{y}^2$
+
+root mean square (rms) $\equiv$ standard deviation
 
 Independence. Usually, if I have two random variables, x and y, the
-probability of P(x,y) = P(x|y)P(y) ≠ P(x) × P(y). We say we have
-independence iff P(x,y) = P(x)P(y). In other words, P(x|y) = P(x).
+probability of $P(x,y) = P(x|y)P(y) \neq P(x) \times P(y)$. We say we have
+independence iff $P(x,y) = P(x)P(y)$. In other words, $P(x|y) = P(x)$.
 
 You can define a correlation coefficient to be
-  (x - 〈x〉)(y - 〈y〉)/(σxσy).
+  $\frac{(x - \avg{x})(y - \avg{y})/(\sigma_x\sigma_y)$.
 
-Independence ⇒ ρ = 0. Converse not necessarily true.
+Independence $ ⇒ \rho = 0$. Converse not necessarily true.
 
 Continuous distributions. Histograms. The case where a variable is
 continuous. We now have probability _densities_.
 
-  f(x)dx = g(y)dy = f(x,y)(dx/dy)dy.
-  f(x) ≥ 0, ∑f(x)dx = 1.
+$$
+  f(x)dx = g(y)dy = f(x,y)\deriv{x}{y}dy.
+  f(x) \ge 0, \sum f(x)dx = 1.
+$$
 
 Moments: we can define moments in exactly the same way as before.
-The moment of a variable y(x)
+The moment of a variable $y(x)$
 
-〈y(x)〉 = ∫y(x)f(x)dx.
-  μ = 〈x〉 = ∫xf(x)dx.
-  σ² = 〈x²〉 - 〈x〉² = ∫x²f(x)dx - (∫xf(x)dx)².
+$$
+\avg{y(x)} = \int y(x)f(x)dx.
+\\ \mu = \avg{x} = \int xf(x)dx.
+\\ \sigma^2 = \avg{x²} - \avg{x}² = \int x^2 f(x)dx - \parens{\int xf(x)dx}^2.
+$$
 
-f(x,y)dxdy = g(x)dx h(y)dy. Factoring works the same way, if our
+$f(x,y)dxdy = g(x)dx h(y)dy$. Factoring works the same way, if our
 variables are independent.
 
 Normal distributions: Gaussian.
 
-It is very important to put the differential element (dx or dy) because the
-function changes depending on what the differential element is. The
-histogram depends on what variable you choose to plot. If I choose x or x²,
-my histogram will be different. Usually.
+It is very important to put the differential element ($dx$ or $dy$) because
+the function changes depending on what the differential element is. The
+histogram depends on what variable you choose to plot. If I choose $x$ or
+$x^2$, my histogram will be different. Usually.
 
 The mean is in the middle of a normal distribution because the third
 moment is 0.
 
-Full-width half maximum (FWHM) ≈ 2.3σ
+Full-width half maximum (FWHM) $\approx 2.3\sigma$
 
 A is called the mode, i.e. the maximum. In a distribution with nonzero skew
 (like the Maxwell-Boltzmann), the mode is different from the mean.
 
 mean: location.
+
 standard deviation: width.
+
 skewness: symmetry.
+
 kurtosis: peakedness.
 
 Fourier transform is the characteristic function. The log of this is stuff
 with cumulants.
 
 Sum of random variables:
-x ≡ y + z
-〈x〉 = 〈y〉 + 〈z〉.
-σ²x = σ²y + σ²z + 2ρσyσz.
-Independence ⇒ ρ = 0; σ²x = σ²y + σ²z
 
-h(x)dx = (f*g)(x)dx ⇒ the cumulants add!
+$$
+x \equiv y + z
+\\ \avg{x} = \avg{y} + \avg{z}.
+\\ \sigma^2_x = \sigma^2_y + \sigma^2_z + 2\rho\sigma_y\sigma_z.
+\\ \text{Independence} \implies \rho = 0; \sigma^2_x = \sigma^2_y + \sigma^2_z
+\\ h(x)dx = (f*g)(x)dx \implies \text{the cumulants add!}
+$$
 
 Proof: Convolution in original space is equivalent to product in Fourier
 space. Hence for a sum, the characteristic functions multiply and the logs
@@ -263,15 +281,18 @@ First one is due today, second one is posted.
 Central Limit Theorem
 =====================
 
-Taking N independent random variables x{i} of average μ₀ and of variance
-σ₀², the experimental average A = (1/N)∑x{i}.  f(A)dA →(N→∞)
-1/(√(2π)σ)exp(-(A-μ)²/2σ²)dA; μ = μ₀, σ² = σ₀²/N.
+Taking N independent random variables $x_i$ of average $\mu_0$ and of
+variance $\sigma_0^2$, the experimental average $A = \frac{1}{N}\sum
+x_{i}$. $f(A)dA → \lim_{N\to\infty} \frac{1}{\sqrt{2\pi}σ}
+\exp(-\frac{(A-\mu)^2}{2\sigma^2})dA; \mu = \mu_0, \sigma^2 =
+\frac{\sigma_0^2}{N}.$
 
-This is different from 〈A〉, which would just be an integral.
+This is different from $\avg{A}$, which would just be an integral.
 
-The other thing is that σ² = σ₀²/N. The variance decreases as 1/N, or the
-standard deviation decreases as 1/√N. This is fairly typical of stochastic
-processes, where the relative width decreases as 1/√N. Overall width will
+The other thing is that $\sigma^2 = \frac{\sigma_0^2}{N}$. The variance
+decreases as $\frac{1}{N}$, or the standard deviation decreases as
+$\frac{1}{\sqrt{N}}$. This is fairly typical of stochastic processes, where
+the relative width decreases as $\frac{1}{\sqrt{N}}$. Overall width will
 increase if you don't normalize, but relative width decreases.
 
 The relative widths of kurtosis and skewness go to zero as we add more
@@ -281,7 +302,8 @@ Consequences for Thermodynamics
 -------------------------------
 
 Because of large number of particles, averages are very peaked around mean.
- * System well characterized by mean = ",macroscopic quantity".
+
+ * System well characterized by mean = "macroscopic quantity".
  * Fluctuations are very small.
  * Not a lot of difference between most probable value, mean value,
    and experimental value.
@@ -301,6 +323,7 @@ States of a System
 Not covering spins. ALso, marginal definition of entropy.
 
 (mostly chapters 1 and 2 of Kittel and Kroemer)
+
  * States / COnfigurations
  * Probabilities fo States
    + Fundamental assumptions
@@ -323,6 +346,7 @@ It's amazing that a guy like that who contributed so much to modern physics
 was unsure of himself.
 
 Configuration = Macroscopic specification of system
+
  * Macroscopic Variables
    + Extensive: U, S, F, H, V, N (not normalized)
    + Intensive: T, P, μ (chemical potential)
@@ -335,6 +359,7 @@ Many microstates (states) correspond to a single macrostate
 Quantum Mechanics in 1 transparency
 -----------------------------------
 Fundamental postulates
+
  * State of one particle is characterized by a wave function.
  * Probability distribution = |Ψ(x,t)|^2 with 〈Ψ|Ψ〉 = ∫{Ψ(x)*}Ψ(x)dx = 1.
  * Physical quantity → Hermitian operator.
@@ -361,6 +386,7 @@ Entropy and Stuff. Feb 1, 2012
 REMINDER: states ⇒ microstates; configurations ⇒ macrostates.
 
 Overview:
+
  * Discrete states
  * Isolated system in equilibrium
 
@@ -380,6 +406,7 @@ vibrating string.
 
 [ clicker question regarding distance between momentum states. Talk
   about Uncertainty principle. ]
+
 ℏ/2L: distance between momentum states.
 
 quantization comes from the combination of both the eigenvalue equation as
@@ -406,8 +433,8 @@ If I have a spin of 1, it can point up, nowhere, or down. The photon, which
 is massless, is spin 1 with 2 spin states. (exception: usu. spin s ⇒ 2s+1
 states.)
 
-ε = mB, where m = magnetic moment, B = magnetic field. emission of photons,
-directions of spin.
+$\epsilon = mB$, where m = magnetic moment, B = magnetic field. emission of
+photons, directions of spin.
 
 Important implication in medicine: MRI is the magnetic resonance
 imaging. Uses this property to see where the spins of the hydrogen
@@ -428,6 +455,7 @@ Consequences
 ------------
 
 Probability of a configuration:
+
  * Probability of configuration: simple counting problem, normalized.
 
 This allows us to compute probabilities of configurations. This method is
@@ -437,29 +465,29 @@ very awkward, cumbersome, difficult to implement, and so on.
 Entropy
 =======
 
-σ = -∑p log p= -H. H = Negentropy = Information (Shannon).
+$\sigma = -\sum p log p = -H$. H = Negentropy = Information (Shannon).
 
 For an isolated system in equilibrium: identical to Kittel. In classical
-thermodynamics, definition usually used is dQ = TdS.
+thermodynamics, definition usually used is $dQ = TdS$.
 
 Basically, we have a nondeterministic finite-state machine (weighted
 probabilities and all) being run many times simultaneously. H theorem tells
 us it will reach equilibrium i.e. all currents will cancel.
 
-Γ{rs} = Γ{sr} ⇒ H theorem. Symmetry of the transition rate will cause the
-evolution of the probabilities to converge eventually to a flat
-distribution (_of microstates_). Else you have a nonzero divergence in more
-than one state.
+$\Gamma_{rs} = \Gamma{sr} ⇒ \text{ H theorem}$. Symmetry of the transition
+rate will cause the evolution of the probabilities to converge eventually
+to a flat distribution (_of microstates_). Else you have a nonzero
+divergence in more than one state.
 
-Sterling approximation: number of states goes to a gaussian.
+Stirling approximation: number of states goes to a Gaussian.
 
 Physics 112: Statistical Mechanics
 ==================================
 Entropy and Stuff. Feb 3, 2012
 ------------------------------
 
-homework #2:
-exp(u² - 2ρuv + v²) ⇒ exp(u² + (v-ρu)² - ρ²u²)
+homework problem #2:
+$\exp(u² - 2ρuv + v²) ⇒ exp(u² + (v-ρu)² - ρ²u²)$
 
 Counting States: Discrete States
 ================================
@@ -470,42 +498,45 @@ temperature are, we have PV = NkT and U = 3NkT/2.
 Density of spatial states per unit phase space
 ----------------------------------------------
 
-Phase space: Position space (x) ⊗ (p) Momentum space.
+Phase space: Position space (x) $\otimes$ (p) Momentum space.
 
-Density of quantum states (orbital states) is 1/ℏⁿ per particle (n ≡
-dimensions). That is, if I have a volume in the phase space, I can count
-the number of orbital states for one particle by dividing this volume by ℏ³
-(in three dimensions).
+Density of quantum states (orbital states) is $\frac{1}{h^n}$ per particle
+(n ≡ dimensions). That is, if I have a volume in the phase space, I can
+count the number of orbital states for one particle by dividing this volume
+by $h^3$ (in three dimensions).
 
-The volume of the phase space is just the integral of (1/ℏ³)d³xd³p.
+The volume of the phase space is just the integral of $\frac{d^3 x d^3 p}{h³}$.
 
 Ideal Gas
 ---------
 
 Now consider N particles in weak interactions. Total energy U is
-constant. g = ∏∫d³xd³p/ℏ³ⁿ. Insert a δ(∑p{i}²/2M - U). Basically imposing
-that the total energy of my system is U. The product of dx{i} will give
-Vⁿ. So there is no problem there. But what about the d³p{i}δ(∑...)?
-Imposing some of the p{i}²/2n to be equal to U. I'm looking now at the
-surface of a sphere with a certain radius.
+constant. $g = \Pi \int \frac{d^3 xd^3 p}{h^{3N}}$. Insert a $\delta(\sum
+\frac{p_{i}^2}{2M} - U)$. Basically imposing that the total energy of my
+system is U. The product of $dx_i$ will give $V^N$. So there is no problem
+there. But what about the $d^3 p_i \delta(\sum...)$? Imposing some of the
+$\frac{p_i^2}{2N}$ to be equal to $U$. I'm looking now at the surface of a
+sphere with a certain radius.
 
 If we have one particle in one dimension, we have only one momentum
-space. In large dimensions, g ∝ VⁿU^{³⁽ⁿ⁻¹⁾/₂}/h³ⁿ.
+space. In large dimensions, $g \propto \frac{V^NU^{3(N-1)/2}}{h^{3N}}$.
 
 [ Reasoning: for momentum integral: we need to conserve energy. ]
 
 [ We are basically speaking of the surface of a volume in 3N-space. ]
 
-σ = S/k = log(g) = log(VⁿU^{³ⁿ/₂}) + constant
-  = nlog(V) + 3Nlog(U)/2 + constant.
+$\sigma = \frac{S}{k} = \log(g) = \log(V^N U^{3N/2}) + \text{const}
+  = N\log(V) + \frac{3N}{2}\log(U) + \text{const}.$
 
-In that case, can write dU = TdS - pdV. Or, if you prefer, τdσ - pdV.
+In that case, can write $dU = TdS - pdV$. Or, if you prefer, $\tau d\sigma
+- pdV$.
 
-Solve for U: U = Aexp(2σ/3N)V^{⁻²/₃}.
+Solve for U: $U = A\exp(2\sigma/3N)V^{-2/3}$.
 
-τ = ∂U/∂σ = 2U/3N ⇔ U = 3NkT/2.
+$\tau = \pderiv{U}{\sigma(V, \sigma, N)} = \frac{2U}{3N} \iff U =
+\frac{3NkT}{2}$.
 
-p = -∂U/∂V = 2U/3V ⇔ pV = Nτ ≡ NkT.
+$p = -\pderiv{U(V, \sigma, N)}{V} = \frac{2U}{3V} \iff pV = N\tau ≡ NkT$.
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -516,7 +547,8 @@ Entropy and Stuff. Feb 6, 2012
 
 So far:
 -------
-σ = -∑\p log p   ✓
+
+$\sigma = -\sum p \log p$ ✓
 
 H theorem: with an isolated system, probabilities of states evolve to being
 equal.
@@ -525,23 +557,27 @@ Consequence of the H theorem: If I am looking at the probability of a
 configuration, the probability is equal to (states in configuration) /
 (total states)
 
-σ = log (g{t}) (mathematically equivalent to the first statement)
+$\sigma = \log (g_t)$ (mathematically equivalent to the first statement)
 
 Counting of states to get the entropy.
 
 Density of orbitals (quantum spatial wave functions) in phase space is
-1/ℏ**{d} (dimension of space)
+$\frac{1}{h^d}$ (dimension of space)
 
-Once again: phase space ≡ position space (x) ⊗ (p) momentum space. Good way
-to compute the number of spatial states. degrees of freedom (spin,
-rotation, vibration).
+Once again: phase space $\equiv$ position space (x) $\otimes$ (p) momentum
+space. Good way to compute the number of spatial states. degrees of freedom
+(spin, rotation, vibration).
 
 Number of states g(spatial states) of a system of energy U in a volume
-V is g ∼ U^(³ⁿ/₂)Vⁿ = exp(σ). τ ≡ kT, σ ≡ S/k
-τ = ∂U/∂σ)y ⇒ U = (3/2)Nτ
-P = -∂U/∂V)σ ⇒ PV = Nτ
 
-Just as natural, if not more so, to work with σ(U,V) ≡ log(VⁿU^(³ⁿ/₂)).
+V is $g ∼ U^{3N/2}V^N = \exp(\sigma). \tau \equiv kT, \sigma \equiv \frac{S}{k}$
+
+$\tau = \pderiv{U}{\sigma}|_V \implies U = \frac{3}{2}N\tau$
+
+$P = -\pderiv{U}{V}|_\sigma \implies PV = N\tau$
+
+Just as natural, if not more so, to work with $\sigma(U,V) \equiv
+\log(V^N U^(3N/2))$.
 
 **We must be careful to note, when working with partial derivatives,
   which variables we are keeping constant.**
@@ -549,38 +585,42 @@ Just as natural, if not more so, to work with σ(U,V) ≡ log(VⁿU^(³ⁿ/₂))
 This is a very useful way of defining pressure and temperature once we have
 counted states.
 
-τ = 1/(∂σ/∂U)V,n, p = τ∂σ/∂V)U,n
+$\tau = \frac{1}{\pderiv{\sigma}{U}|_{V,N}}, p = \tau \pderiv{\sigma}{V}|_{U,N}$
 
-We were starting with the phase space for our n particles. d³ⁿxd³ⁿp/(ℏ³ⁿ):
-density of our states. We want to then integrate over the volume, but we
-choose the states such that U fixed. Represents in our 3n-dimensional
-momentum space a sphere.
+We were starting with the phase space for our $N$ particles: $\frac{d^{3N}x
+d^{3N}p}{h^{3N}}$: density of our states. We want to then integrate over
+the volume, but we choose the states such that U fixed. Represents in our
+3N-dimensional momentum space a sphere.
 
-δ[√(∑∑p²{ik}) - √(2MU)]. Take advantage of filtering effect of δ.
+$\delta[\sqrt{\sum\sum p^2_{ik} - \sqrt{2MU}]$. Take advantage of sifting
+property of $\delta$.
 
-radius of sphere in 3N momentum space. r has dimension r^{d-1}. In the
-general case, we'll have Ω³ⁿr³ⁿ⁻¹.
+radius of sphere in 3N momentum space. r has dimension $r^{d-1}$. In the
+general case, we'll have $\Omega^{3N}r^{3N-1}$.
 
-Thus we have Ω√(2MU)³ⁿ⁻¹/ℏ³ⁿ.
+Thus we have $\frac{\Omega^{3N}\sqrt{(2MU)^{3N-1}}}{h^{3N}}$.
 
-δ has dimension of 1/p. ∫δ(x)dP = 1
+$\delta$ has dimension of $\frac{1}{p}$. $\int \delta(x)dp = 1$
 
-Sackur Tetrode formula: entropy of an ideal gas. S/k = N(log(n₀/n) + 5/2)
+Sackur Tetrode formula: entropy of an ideal gas. $\frac{S}{k} =
+N(\log(\frac{n_Q}{n}) + 5/2)$
 
 Physics 112: Statistical Mechanics
 ==================================
 Entropy and Stuff. Feb 8, 2012
 ------------------------------
 
-Divide g{t} by a missing N!, which is from indistinguishability of
+Divide $g_{t}$ by a missing $N!$, which is from indistinguishability of
 particles / quantum states. Also, experiments were off by a very large
 factor.
 
-g{t} = Ω{3N}√(2MΔU)V^{N}U^{3(N-1)/2}/(N!ℏ^{3N})
+$g_t = \Omega_{3N}\sqrt{2M\Delta U}V^N U^{3(N-1)/2}/(N!h^{3N})$
 
 Quantum density. What remains of our counting states.
-σ = N(log(n{Q}/n+5/2).
-n = N/V, n{Q} = (2πM/ℏ² 2U/3N)^{3/2}
+
+$\sigma = N(\log(n_Q/n) + 5/2)$.
+
+$n = N/V$, $n{Q} = \parens{\frac{2\pi M}{h²} \frac{2U}{3N}}^{3/2}$
 
 Free expansion of gas (isolated system ⇒ no particle/heat exchange): final
 temperature = initial temperature.
@@ -594,38 +634,45 @@ Equilibrium, Thermodynamics, Potential
 
 RECALL:
 
-1/τ =  ∂σ/∂U|V,N
-p/τ =  ∂σ/∂V|U,N
-μ/τ = ­∂σ/∂N|U,V
+$\frac{1}{\tau} = \pderiv{\sigma}{U}|_{V,N}$
 
-For an ideal gas in 3space:
-U = (3/2)Nτ
-τ ≡ kT
-pV = Nτ
+$\frac{p}{\tau} = \pderiv{\sigma}{V}|_{U,N}$
+
+$\frac{\mu}{\tau} = -\pderiv{\sigma}{N}|_{U,V}$
+
+For an ideal gas in 3-space:
+
+$$
+U = \frac{3}{2}N\tau
+\\ \tau \equiv kT
+\\ pV = N\tau
+$$
 
 States of a combination of two systems
 --------------------------------------
 
 Take 2 systems and put them in contact.
 
-Put them in weak interactions U = U₁ + U₂, V = V₁ + V₂, N = N₁ + N₂
+Put them in weak interactions $U = U_1 + U_2, V = V_1 + V_2, N = N_1 + N_2$
 
-Number of states g₁(U₁,V₁,N₁), g₂(U₂,V₂,N₂). Weak interaction ⇒ quantum
-states are not modified.
+Number of states $g_1(U_1,V_1,N_1)$, $g_2(U_2,V_2,N_2)$. Weak interaction ⇒
+quantum states are not modified.
 
 How many states do we have in the combined system?
-g₁g₂
+$g_1g_2$
 
 What is the configuration of maximum probability? The number of states in
-g(U₁,V₁,N₁)/g{t}. Take a derivative with respect to U₁ to see where the
-extremum of this function is.
+$g(U_1,V_1,N_1)/g_t$. Take a derivative with respect to $U_1$ to see where
+the extremum of this function is.
 
-∂g₁/∂U₁ g₂ + g₁ ∂g₂/∂U₁ ≡ 0.
-∂g₁/∂U₁ g₂ - g₁ ∂g₂/∂U₂ = 0.
-(¹/g₁)∂g₁/∂U₁ = (¹/g₂)∂g₂/∂U₂.
-∂log(g₁)/∂U₁ = ∂log(g₂)/∂U₂.
-∂σ₁/∂U₁ = ∂σ₂/∂U₂.
-1/τ₁ = 1/τ₂.
+$$
+\pderiv{g_1}{U_1} g_2 + g_1 \pderiv{g_2}{U_1} ≡ 0.
+\\ \pderiv{g_1}{U_1} g_2 - g_1 \pderiv{g_2}{U_2} = 0.
+\\ \frac{1}{g_1}\pderiv{g_1}{U_1} = \frac{1}{g_2}\pderiv{g_2}{U_2}.
+\\ \pderiv{\log(g_1)}{U_1} = \pderiv{\log(g_2)}{U_2}.
+\\ \pderiv{\sigma_1}{U_1} = \pderiv{\sigma_2}{U_2}.
+\frac{1}{\tau_1} = \frac{1}{\tau_2}.
+$$
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -638,9 +685,11 @@ Equilibrium, Thermodynamics, Potential. Feb 10, 2012
 
 At the end of last lecture, we were considering two systems which can
 exchange energy, volume, particles. We were asking ourselves what was the
-most probable configuration U₁,V₁,N₁. ∂σ₁/∂U₁ = ∂σ₂/∂U₂ ≡ 1/τ. Similarly,
-∂σ₁/∂V₁ = ∂σ₂/∂V₂ = p/τ. ∂σ₁/∂N₁ = ∂σ₂/∂N₂ = -μ/τ (μ for one species) –
-definitions.
+most probable configuration $U_1,V_1,N_1$. $\pderiv{\sigma_1}{U_1} =
+\pderiv{\sigma_2}{U_2} \equiv \frac{1}{\tau}$. Similarly,
+$\pderiv{\sigma_1}{V_1} = \pderiv{\sigma_2}{V_2} = \frac{p}{\tau},
+\pderiv{\sigma_1}{N_1} = \pderiv{\sigma_2}{N_2} = -\frac{\mu}{\tau}$ ($\mu$
+for one species) – definitions.
 
 The configuration of maximum probability share the same pressure,
 temperature, potential.
@@ -659,13 +708,13 @@ because most probable configuration by default is greater than what you
 started with before". This is approximate because they are speaking about
 the most probable configuration.
 
-σ{max} < σ; σ{max} ≈ σ (very very close, though, because our probability
-distribution is very peaked. This is why Kittel and Kroemer is merely an
-approximation)
+$\sigma_{\max} < \sigma; \sigma_{\max} \approx \sigma$ (very very close,
+though, because our probability distribution is very peaked. This is why
+Kittel and Kroemer is merely an approximation)
 
 In practice, it does not really matter, since this is a good enough
-approximation for the systems that we work with: σ-σ{max} ≪ σ =
-N(log(n{Q}/n)+5/2) [Sackur tetrode formula].
+approximation for the systems that we work with: $\sigma-\sigma{max} \ll
+\sigma = N(\log\frac{n_{Q}}{n}+5/2)$ [Sackur tetrode formula].
 
 Kittel & Kroemer does recognize that, but it is presented in a slightly
 confusing manner.
@@ -678,9 +727,11 @@ diffusion. Determined by species of particles. However, at equilibrium, by
 the H theorem, the chemical potential is equal in all accessible states.
 
 What is chemical potential? It is a measure of the concentration! (verify
-by working out -τ ∂σ/∂N). A lot of work for a very simple result. But this
-is much more powerful. We will use this to look at batteries, equilibrium
-in various systems.MIDTERM: Friday the 24th. 8:10-9:00. Why Friday and not Monday? Turns out
+by working out $-\tau \pderiv{\sigma}{N}$). A lot of work for a very simple
+result. But this is much more powerful. We will use this to look at
+batteries, equilibrium in various systems. 
+
+MIDTERM: Friday the 24th. 8:10-9:00. Why Friday and not Monday? Turns out
 there is an important workshop on dark matter in UCLA. There is a potential
 problem: Monday the 20th is President's day, so no class, no office
 hours. Proposition: Tuesday the 21st, we have extended office hours from
@@ -702,8 +753,9 @@ equal).
 
 The first law comes directly from our definition
 
-dσ = 1/τ dU + p/τ dV -∑μ/τ dN. Now, I can multiply by τ and we get
-dU = τdσ - pdV + ∑μdN: change in energy = heat - work + chemical work
+$d\sigma = \frac{1}{\tau} dU + \frac{p}{\tau} dV -\sum \frac{\mu}{\tau}
+dN$. Now, I can multiply by $\tau$ and we get $dU = \tau d\sigma - pdV +
+\sum \mu dN$: change in energy = heat - work + chemical work
 
 You can have many different expressions, but basically, this is a
 consequence of our definition.
@@ -713,11 +765,12 @@ non-equilibrium configuration to equilibrium, its entropy will increase.
 
 Third law: entropy is zero at zero temperature (or log of number of states
 occupied) ⇒ method to compute entropy.
-	If there is only one ground state, at zero temperature, all of the
-	particles will be in this ground state (not fermions) and there is only
-	one state. p₀ = 1; p{i} = 0 ⇒ σ = 0. If there are several ground
-	states, this is degenerate; you will have a log g, where g is the
-	number of ground states.
+
+If there is only one ground state, at zero temperature, all of the
+particles will be in this ground state (not fermions) and there is only
+one state. $p_0 = 1; p_i = 0 \implies \sigma = 0$. If there are several
+ground states, this is degenerate; you will have a $\log g$, where $g$ is
+the number of ground states.
 
 Fermions: all of particles cannot be in the ground state. What you should
 remember is that at zero temperature, there is one (or several) ways to put
@@ -727,9 +780,9 @@ Thermodynamic identities. Rewrite slides in different ways depending on
 what are your independent variables.
 
 How do we measure entropy experimentally? There is a problem with assuming
-ideal gas: not valid close to absolute zero. For that matter,
-Sackur-tetrode is not valid at absolute zero. The classical approximation
-breaks down when n > n{Q}.
+ideal gas: not valid close to absolute zero. For that matter, Sackur
+Tetrode is not valid at absolute zero. The classical approximation breaks
+down when $n > n_Q$.
 
 Physics 112: Statistical Mechanics
 ==================================
