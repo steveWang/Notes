@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>25.md</title>
+
+</head>
+
+<body>
+
+<script src='https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=default,https://raw.github.com/steveWang/Notes/master/config/local.js'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+  prefilterMath: function (math,displaymode,script) {
+      math = "\\displaystyle{"+math+"}";
+      return PREFILTER.call(TEX,math,displaymode,script);
+    }
+  });
+});
+</script>
+<h1>Physics 112: Statistical Mechanics</h1>
+<h1>Black bodies and phonons: Mar 23, 2012</h1>
+<p>What I would like to do today, if you've looked at the homework for next
+week, is finish black body radiation -- in particular stars -- and to speak
+of phonons in a crystal. So, uhm, let's start with a simple question: a
+star like the sun is to a first approximation a black body. Is the
+radiation across the disk constant, brightening at the limb, or dimming at
+the limb?</p>
+<p>Experimentally, it looks constant, roughly. Why is this?  This is coming
+from the fact that for black body radiation, the radiation is
+isotropic. When we ask ourselves what is the amount of light that reaches
+our photodetector in a time <mathjax>$dt$</mathjax>, this is basically <mathjax>$u(\nu, \theta, \phi)
+d\nu d\Omega dA cdt$</mathjax>.</p>
+<p>So if I take my sun, essentially what is happening is that I am looking at
+a radiation shell of thickness <mathjax>$cdt$</mathjax>.</p>
+<p>So that's one way of thinking about it: does not depend on angle. Another
+way of considering it: area <mathjax>$dA$</mathjax>. Whatever emerges from this area is
+independent of the angle. What I receive in my eye is not proportional to
+<mathjax>$dA$</mathjax> but rather <mathjax>$dA\cos\theta$</mathjax> (<mathjax>$\cos\theta$</mathjax> is normal to my line of
+sight).</p>
+<p>So apparent radiation is constant all over the disk, if I have a black
+body, which is radiating isotropically, where I am not depending on
+<mathjax>$\theta$</mathjax> and <mathjax>$\phi$</mathjax>. That is why the disk of the sun is basically constant
+luminosity, the moon is constant luminosity.</p>
+<p>Why are we considering the sun a black body? The black body occurs in
+thermal equilibrium when the photons (of a star), at least those very close
+to the edge, are scattering so much that they are in thermal
+equilibrium. Basically, this is coming from the fact that the photons are
+scattering very much. It is not an exact black body for the following
+reason: the sun is surrounded by its corona. When photons are coming
+through that region, they are absorbed at certain frequencies. We have
+absorption line at certain frequencies. By the way, that's how we
+discovered helium: absorption lines we had no idea existed; was discovered
+by looking at the sun through a spectrograph.</p>
+<p>Essentially, that's a black body: photons in equilibrium.</p>
+<p>Maybe 10 years ago, there was a professor from Ohio State (or something
+like that) who published a full-page ad of the New York Times (which was twice
+his monthly salary) how people talking about the Big Bang don't understand
+anything about anything. Whole argument was that since this is not coming
+from an oven with a small hole, this was just silly. Argued that stars were
+not black bodies.</p>
+<p>It shows you that people can get very emotional spending twice two months'
+salary on a full-page ad in the New York Times.</p>
+<p>Now, an interesting question is: what happens if the sun in practice is not
+also a black body with very defined edges? The density in the sun goes down
+as the radius increases; one over the mean free path does something like
+<mathjax>$\rho\sigma$</mathjax>. The emissivity of the sun, therefore, as a function of
+radius, is 1 very close to 0, and dies off at some point. This leads to
+limb darkening. And by looking precisely at the intensity as a function of
+the radius, you can have an idea of the mean free path, and of therefore
+the density. That is how we mapped the density at the edges of the sun.</p>
+<p>If <mathjax>$u$</mathjax> (energy density) is a function of the radius, then <mathjax>$cdt$</mathjax> at the
+edges has more energy than <mathjax>$cdt$</mathjax> at the edges. There is a whole field of
+stellar astronomy devoted to this kind of stuff.</p>
+<p>So any way. This kind of simple question (why the sun appears to be of
+constant luminosity despite it being a sphere) is interesting and not
+totally trivial to answer. Related to the isotropic behavior of the black
+body.</p>
+<h2>Solid angles and surfaces at emission/reception</h2>
+<p>Showed last time these simple geometric relationships. The one at the
+bottom is related to refraction and comes from the fact that the angle
+<mathjax>$\theta_D$</mathjax> at some radius R goes as <mathjax>$\frac{\lambda}{R}$</mathjax>. So the solid angle
+goes as <mathjax>$\frac{\lambda^2}{R^2}$</mathjax>, and the area of my detector goes as <mathjax>$\pi
+R^2$</mathjax>,and so <mathjax>$\Omega_r A_r \sim \lambda^2$</mathjax>.</p>
+<p>This has an interesting consequence. Suppose that I am looking at a totally
+diffuse object, e.g. the microwave background. If I have a
+diffraction-limited telescope, how does the radiation I receive depend on
+the diameter of my telescope? (i.e. how does the received energy depend on
+the diameter of a diffraction-limited telescope?) Does it increase or stay
+constant?</p>
+<p>It indeed stays constant, for the following reason: the portion that I see
+of this diffuse object is my <mathjax>$\Omega_r$</mathjax>. Therefore the area at emission is
+just <mathjax>$\Omega_r d^2 = A_e$</mathjax>. Now whhat is received is also proportional to
+the solid angle of my telescope, i.e. <mathjax>$I_\nu d\nu \Omega_e A_e$</mathjax>. So that is
+equal to <mathjax>$I_\nu d\nu \frac{A_r}{d^2} \Omega_r d^2 = I_\nu d\nu \lambda^2$</mathjax>.</p>
+<p>If I am looking, however, at a point object (i.e. something significantly
+small), that is not correct. That is why astronomers go for very large
+telescopes; to capture as much light as possible.</p>
+<p>So if you have a diffuse emitter, it [increasing area] does not change the
+power. Size of microscope is not important in terms of power, but is
+definitely important if you're trying to look at ripples from fluctuations
+in temperature of microwave background. Larger telescope means more detail,
+better angular resolution.</p>
+<p>This leads to a number of interesting results. For instance: if the sun is
+a black body, the amount of radiation that I get in my telescope is a
+measure of its diameter. More exactly, apparent diameter (i.e. diameter
+divided by distance) of the star. So let's take a star that emits power
+(absolute luminosity) <mathjax>$L$</mathjax> isotropically. If I am now trying to look at the
+apparent luminosity <mathjax>$\ell$</mathjax>, this is <mathjax>$\frac{\text{Power received}}{\text{Area
+of telescope}}$</mathjax>. Since our object is much smaller than the telescope, this
+does depend on area of the telescope. This is the apparent luminosity. I
+can compute that and say "look, my star is emitting a power L over the
+whole <mathjax>$4\pi$</mathjax> solid angle, so over my unit solid angle it emits
+<mathjax>$\frac{L}{4\pi}$</mathjax>. So what do I see? <mathjax>$\frac{L}{4\pi}\frac{A^2}{d^2}$</mathjax>. So
+<mathjax>$\ell = \frac{L}{4\pi}\frac{1}{d^2}$</mathjax>. So for a black body, <mathjax>$L = 4\pi r_e^2
+\sigma_B T^4$</mathjax>. That's my Stefan-Boltzmann law. So <mathjax>$\ell = \frac{4\pi
+r_e^2}{4\pi d^2} \sigma_B T^4 = \expfrac{r_e}{d}{2}\sigma_B
+T^4$</mathjax>.</p>
+<p>There are a number of objects that are vibrating or exploding (so they are
+changing their diameters and often also their temperatures). So we can do
+the same thing with supernovae. If we look at <mathjax>$\deriv{\ell}{t}$</mathjax>, we have
+two terms: <mathjax>$\frac{2 r_e \deriv{r_e}{t}}{d^2}$</mathjax> and <mathjax>$\frac{r_e^2}{d^2}
+\sigma_B 4T^3 \deriv{T}{t}$</mathjax>. We can measure both of these changes over
+time, so now if we make a spherical approximation, I can get
+<mathjax>$\deriv{r_e}{t} = \deriv{r_\perp}{t} = \deriv{r_\parallel}{t}$</mathjax>. We can
+measure this last derivative by Doppler shift. If we assume that, then we
+can measure the distance. And that is how we measure distance to stars that
+are too far to see parallaxes and how we are able to measure the expansion
+of the universe.</p>
+<p>Pretty clever method. It relies on this assumption, which if a star is
+vibrating, is not an unreasonable assumption. It is a much less rigorous
+assumption if you have an explosion, since stability varies.</p>
+<p>We used this method for supernova 1987A to check that it was indeed (at the
+same distance as) the Magellanic cloud.</p>
+<p>Another little thing that radio astronomers do is related to the antenna
+temperature. This is very simple, actually: <mathjax>$I_\nu d\nu dA d\Omega =
+\frac{c}{c^3}\frac{2h\nu^3 d\nu}{e^{h\nu/\tau}-1}$</mathjax>. If <mathjax>$\frac{h\nu}{\tau}
+\ll 1$</mathjax>, <mathjax>$e^{h\nu/\tau} - 1 \sim \frac{h\nu}{\tau}$</mathjax>. so this goes to
+<mathjax>$\frac{\tau}{c^2} \nu^2 d\nu dA_e d\Omega_e$</mathjax>. If our telescope is
+diffraction-limited, then we know that this is roughly <mathjax>$2\tau
+\frac{\nu^2}{c^2} d\nu \lambda^2$</mathjax>. So <mathjax>$I_\nu d\nu dA d\Omega \sim 2\tau
+d\nu$</mathjax>, which means that the amount of power received by my telescope is
+<mathjax>$2\tau d\nu$</mathjax> (independent of area of object since this is a diffuse object,
+and we are diffraction-limited). So the amount of power received is just
+<mathjax>$\tau$</mathjax>; <mathjax>$k_B T$</mathjax>. Antenna temperature is just amount of power at low
+frequency.</p>
+</body>
+</html>
