@@ -24,10 +24,6 @@
  *  limitations under the License.
  */
 
-MathJax.Hub.Config({
-	TeX: { extensions: ["AMSsymbols"] }
-});
-
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
   var TEX = MathJax.InputJax.TeX;
 
