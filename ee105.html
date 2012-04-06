@@ -1,16 +1,5 @@
-<script src='mathjax/unpacked/MathJax.js?config=default'></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-var TEX = MathJax.InputJax.TeX;
-var PREFILTER = TEX.prefilterMath;
-TEX.Augment({
-  prefilterMath: function (math,displaymode,script) {
-      math = "\\displaystyle{"+math+"}";
-      return PREFILTER.call(TEX,math,displaymode,script);
-    }
-  });
-});
-</script>
+<div class='wrapper'>
+<p><a name='1'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Wednesday, January 18, 2012.</h2>
 <p>semiconductor physics. 3-terminal devices.</p>
@@ -76,18 +65,21 @@ C (diamond): 5.5
 GaN:         3.4,    0.35 um</p>
 <p>E = hc/λ
 λ = hc/E = 1.2 um-eV/E</p>
+<p><a name='2'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Friday, January 20, 2012.</h2>
 <p>Lab 1
  * Dangerous!
  * Diodes
    + <mathjax>$I_D = I_S e^{V_D/V_{DD}}$</mathjax></p>
+<p><a name='3'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Monday, January 23, 2012.</h2>
 <p>Lab 1
  * Dangerous!
  * Diodes
    + <mathjax>$I_D = I_S e^{V_D/V_{DD}}$</mathjax></p>
+<p><a name='4'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Wednesday, January 25, 2012.</h2>
 <p>Oscilloscope:
@@ -154,6 +146,7 @@ region W = X{n} + X{p} = [2ε(V₀-VD)/q (1/NA + 1/ND)]^{1/2}.</p>
 <p>x{n} = W/(1+N{D}/N{A}). x{p} = W/(1+N{A}/N{D}).</p>
 <h2>Forward bias</h2>
 <p>exponential current-stuffs.</p>
+<p><a name='5'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Friday, January 27, 2012.</h2>
 <p>Everywhere inside there you've got fixed trapped charges. Some number of P
@@ -218,6 +211,7 @@ got to get I{diff} = I{s} e^{V{D}/V{th}}. So now I{d} = I{drift} + I{diff}
 <p>Turn-on voltage. If I've got a diode with I{S} = 10⁻¹⁵ (an ideal diode) at
 room temperature, what's the current going to be? 0 at no applied voltage;
 at +26mV, I{D} = 10⁻¹⁵(e-1); et cetera sequantur.</p>
+<p><a name='6'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Monday, January 30, 2012.</h2>
 <p>graphing iv curve. turn-on voltage. exponentials look the same. Curve just
@@ -333,6 +327,7 @@ toward it, and once they hit it, there's drift.</p>
 <p>AT&amp;T labs were the first to do this. Germanium substrate with insulating
 structure. emitter + collector on base. Figures we use today use same
 labeling.</p>
+<p><a name='7'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Wednesday, February 1, 2012</h2>
 <p>Diodes
@@ -384,6 +379,7 @@ labeling.</p>
 <pre><code>Recall: PN-junction. Next to no minority carriers in reverse
 bias. Base-emitter junction, base-collector junction.
 </code></pre>
+<p><a name='8'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Friday, February 3, 2012</h2>
 <p>So, in talking to some of you about hte homework, I realized there's at
@@ -426,6 +422,7 @@ current. Magical.</p>
 the output is equal to 9V. This current I{C} in here depends exponentially
 on my bias voltage. What happens if I increase this bias voltage by 26 mV?
 Factor of e.</p>
+<p><a name='9'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Monday, February 6, 2012</h2>
 <p>Few words about lab 2. Talk about BJTs, region of operation, \alpha, \beta,
@@ -459,6 +456,7 @@ V{be}by 26mV. The 26mV here means that I increase I{c} by some \delta I{c}.
 That will cause a decrease in voltage. \partial V{ce}/\partialV{bd}.</p>
 <p>Operating point: where you first bias a device All of the extra \delta s
 represent your small signal.</p>
+<p><a name='10'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Wednesday, February 8, 2012</h2>
 <p>Talk about RC, LC circuits. If I have a step function that goes from 0 to
@@ -490,6 +488,7 @@ much about the two control parameters.</p>
 therefore resistance r{o} = 1/g{o}</p>
 <p>We want g{m} to be large and g{o} to be small. Gain is ∂V{out}/∂V{in}.</p>
 <p>g{m} = ∂I{c}/∂V{BE} = I{C}/V{T}</p>
+<p><a name='11'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Friday, February 10, 2012</h2>
 <p>I{c} = I{s} e^{V{be}/V{T}}(1 + V{out}/V{A})
@@ -547,6 +546,7 @@ percent change per volt. So if it's .1, it's changing 10% per volt. etc.</p>
 you have a mobility as they move. the oxide capacitance here is critical in
 determining how that happens. smaller gap =&gt; larger capacitance.</p>
 <p>I{D} = μ{n}C{ox}/2 (V{gs}-V{th})²(1 + λV{DS})</p>
+<p><a name='12'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Monday, February 13, 2012</h2>
 <h2>Physics of MOSFETs</h2>
@@ -608,6 +608,7 @@ now we're getting close. We've got this quadratic behavior of V{gs}.</p>
 <p>Where does this come from? As I increase V{gs}, charge density increases
 linearly. Also increasing linearly is the amount I can put on the drain.</p>
 <p>As you're increasing V{gs}, you're increasing energy density.</p>
+<p><a name='17'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Monday, February 27, 2012</h2>
 <h2>Body effect, Current mirrorers, Voltage followers</h2>
@@ -679,6 +680,7 @@ voltage. If you want a mA of current, you just have to set your resistor to
 go through a specific point (linearization with transcendental equations).</p>
 <p><mathjax>$V = IR$</mathjax>, or equivalently, <mathjax>$\vec{J} = \sigma \vec{E}$</mathjax>.</p>
 <p>A resistor is a pretty lousy current source.</p>
+<p><a name='18'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Wednesday, February 29, 2012</h2>
 <p>Lab 5
@@ -763,6 +765,7 @@ our output resistance is much less than 8 <mathjax>$\Omega$</mathjax>, and <math
 "much greater than", factor of 10 is roughly sufficient).</p>
 <p>So we have yet another with <mathjax>$r_\pi$</mathjax>, so we need to put in yet another
 unity-gain buffer (totally different specs regarding impedance, though).</p>
+<p><a name='19'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Friday, March 2, 2012</h2>
 <p>Standard diode bridge, allows you to efficiently convert AC to
@@ -827,6 +830,7 @@ v_i - v_o = i_i r_\pi = v_{in}
 \\ \frac{1}{R_x}v_o = \left(g_m + \frac{1}{r_\pi}\right)i_i r_\pi
 \\ r_{in} = r_\pi + (\beta + 1)R_x
 $$</mathjax></p>
+<p><a name='20'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Monday, March 5, 2012</h2>
 <p>Last time: real amplifiers; idealized model.</p>
@@ -875,6 +879,7 @@ it. One is that it stabilizes the gain.</p>
 the source degeneration is 0, if you vary process (<mathjax>$I_s$</mathjax>, <mathjax>$V_A$</mathjax>, <mathjax>$\beta$</mathjax>,
 <mathjax>$\mu_n$</mathjax>, <mathjax>$C_{ox}$</mathjax>, <mathjax>$V_{th}$</mathjax>, <mathjax>$\lambda$</mathjax>), voltage (<mathjax>$V_{CC}$</mathjax>, <mathjax>$V_{DD}$</mathjax>),
 temperature (also, heating) -- "PVT".</p>
+<p><a name='21'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Wednesday, March 7, 2012</h2>
 <p>potatoes</p>
@@ -900,6 +905,7 @@ anything).</p>
 <mathjax>$-\frac{g_m}{1 + g_M R_s}\parens{R_o\parallel r_o(1 + g_m R_s)}$</mathjax>. So if
 <mathjax>$R_s \gg \frac{1}{g_m}$</mathjax>, we get <mathjax>$A_v \approx -\frac{R_D}{R_S} = -\frac{R_C}
 {R_E}$</mathjax>. So you'll often make five resistors next to each other, and that</p>
+<p><a name='22'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Friday, March 9, 2012</h2>
 <ul>
@@ -939,6 +945,7 @@ frequencies.</p>
 + g_mR_E)$</mathjax>; <mathjax>$G_m = \frac{g_m}{1+g_mR_E}$</mathjax>; <mathjax>$A_v = -G_mR_o = -\frac{R_c}
 {R_E}$</mathjax>.</p>
 <p>Gain from base to collector is going to be -10.</p>
+<p><a name='23'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Wednesday, March 14, 2012</h2>
 <p>PNP, PMOS</p>
@@ -1010,6 +1017,7 @@ V_B\sin\omega t$</mathjax>. The only way there can be a solution of the equation
 means that the sum and cosine coefficients have to balanced (method of
 undetermined coefficients).</p>
 <p>cosine and sine axes: real and imaginary. Math works out beautifully.</p>
+<p><a name='24'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Friday, March 16, 2012</h2>
 <p>MT2 - Friday in class. OBONNS. Right before spring break.</p>
@@ -1079,7 +1087,7 @@ elements in MEMS devices. Came up with SUGAR (doesn't stand for
 anything). Worked fine.</p>
 <p>Back to looking at impedance. So we saw that when you look down into the
 drain of a transistor at some <mathjax>$R_s$</mathjax> or into the collector of a BJT at some
-<mathjax>$R_E$</mathjax>, <mathjax>$R_o = r_o(1 + g_mR_s) \approsx g_mr_mR_s$</mathjax>. So what if I'm looking
+<mathjax>$R_E$</mathjax>, <mathjax>$R_o = r_o(1 + g_mR_s) \approx g_mr_mR_s$</mathjax>. So what if I'm looking
 up at a drain resistance? How do we do this? Find an operating point, draw
 small signal model, apply small signal test voltage, calculate values.</p>
 <p>The key thing to note here is that you don't know how the current splits
@@ -1089,7 +1097,7 @@ drain is equal to <mathjax>$i_xR_D$</mathjax>. We also know that <mathjax>$V_{GS
 entering that node has to be zero, so <mathjax>$i_x + g_m v_{gs} + \frac{1}{ro}
 v_{ds} = 0$</mathjax>. We want to find <mathjax>$R_{out} = \frac{V_{out}}{i_x} = \frac{1}{g_m}
 \parens{1 + \frac{R_D}{r_o}}\parens{\frac{1}{1 + \frac{1}{g_m
-r_o}}$</mathjax>. Roughly <mathjax>$1/g_m (R_D \ll r_o)$</mathjax>; <mathjax>$R_D/g_mr_o (R_D \gg r_o)$</mathjax></p>
+r_o}}}$</mathjax>. Roughly <mathjax>$1/g_m (R_D \ll r_o)$</mathjax>; <mathjax>$R_D/g_mr_o (R_D \gg r_o)$</mathjax></p>
 <p>Good idea on your exams is to check your formulas and make sure everything
 you're adding together has the same unit.</p>
 <p>SO: what we see is that if you put something on the source, it looks bigger
@@ -1097,6 +1105,7 @@ when seen from the drain, and when you put something on the drain, it looks
 smaller when seen from the source.</p>
 <p>Good midterm question is "looking into each of these nodes, what impedance
 do I see?"</p>
+<p><a name='25disc'></a></p>
 <p>Discussion today!</p>
 <p>Techniques in finding impedance, then homework.</p>
 <p>Probably will be okay, but if not, stop me, and I'll explain.</p>
@@ -1107,6 +1116,7 @@ into the drain of the top MOSFET? <mathjax>$r_{o2} + (1 + g_{m2}v_{o2})r_{o1}$</
 <p>Here, impedance is the ratio between voltage and current. You need two
 things to explain electrical conductivity. You need both voltage and
 current. The relationship is called impedance.</p>
+<p><a name='25'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Monday, March 19, 2012</h2>
 <p>Single-pole systems, Bode plots. Homework, just posted solutions. Would
@@ -1187,6 +1197,7 @@ before to one decade after <mathjax>$\omega_p$</mathjax> defines our linear regi
 that we consider the actual numerical values (not going to be drawn): just
 examine the unit circle and reference triangles, and use small signal
 approximation.</p>
+<p><a name='26'></a></p>
 <h1>EE 105: Devices &amp; Circuits</h1>
 <h2>Wednesday, March 21, 2012</h2>
 <p>Midterm Friday; OBONNS.</p>
@@ -1245,3 +1256,130 @@ two MOSFETs, so you'd get something like <mathjax>$\frac{g_m r_o}{1 + g_m r_o}$<
 you're lucky, this looks something like <mathjax>$0.9 - 0.999$</mathjax>.</p>
 <p>All right. So here's a couple of good ones to think about. (various
 practice circuits)</p>
+<p><a name='27'></a></p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Monday, April 2, 2012</h2>
+<p>Spice files for the lab, etc.</p>
+<p>The lab is a high-gain bipolar amplifier with a PMOS load on it. Two ways
+to do this. When we learn about intrinsic impedances, we see why we put the
+cascode in the common gate thingy.</p>
+<p><mathjax>$A_v = -G_m R_o$</mathjax>. <mathjax>$G_m = g_{m4}$</mathjax>, and <mathjax>$R_o = r_{o1a} \parallel
+r_{o3}\parens{1 + g_m(r_{o4} \parallel r_{\pi 3})}$</mathjax>. <mathjax>$r_{o4} \gg r_\pi
+\implies r_{o4} \parallel r_\pi \approx r_\pi$</mathjax>.</p>
+<p>Our output is just <mathjax>$r_{o1a}$</mathjax>. So now we know that our gain is <mathjax>$-g_{m4}
+r_{o1a}$</mathjax>, or roughly <mathjax>$-\frac{V_A}{V_T} \sim -1000$</mathjax>.</p>
+<p>Comments on how low frequencies might be more difficult to measure --
+gain too great.</p>
+<p>Result on frequency response? I've got <mathjax>$g_m$</mathjax>, <mathjax>$R_o$</mathjax>, and <mathjax>$C_L$</mathjax>. Now I'm
+taking that from <mathjax>$20k \to 2M$</mathjax>. Other than that, my single-pole system is
+the same.</p>
+<p>How to bias? The answer is almost feedback. In general, when you have an
+amplifier like this, you have some big high-gain region. If you can figure
+out a way to put a resistor around this thing and set the input equal to
+the input at <mathjax>$V_c$</mathjax>, then it self-biases and the thing operates around that
+point. For MOS, that works great. For bipolar, we've got this huge output
+impedance, so we need to make our feedback resistor large.</p>
+<p>Gain is now <mathjax>$-\frac{R_f}{R_{in}}$</mathjax>, which is made of ratio of passive
+components, which means you can make a very accurate gain. Very insensitive
+to PVT variation. Unity-gain frequency stays the same, and it keeps a nice
+constant gain over a very large bandwidth. Turns out, also causes problems
+with stability. There might actually be a little bump, and that could turn
+your amplifier into an oscillator.</p>
+<p>Why is the second transistor in there? Not for the 2x gain. Rather, it's to
+reduce the base-collector voltage. You get something called Miller
+multiplication.</p>
+<p>Intrinsic capacitance. Intrinsic to the thing that makes BJTs work is the
+PN-junction. Fundamentally, these things have two capacitors that you
+cannot get away from. For historical reasons, the base-collector junction
+capacitance is <mathjax>$C_\mu$</mathjax>, and the base-emitter junction capacitance is
+<mathjax>$C_\pi$</mathjax>. For the MOSFET, intrinsic to the operation of this device is
+having a gate that induces a charge in a channel. Cannot make a MOSFET
+without making this capacitor. We've got <mathjax>$C_{ox}$</mathjax>, which is in terms of
+<mathjax>$F/m^2$</mathjax>. We have charge <mathjax>$Q = WLC_{ox}(V_{GS} - V_{th})$</mathjax>. We don't need any
+charge in there until we cross this threshold, and above that, it looks
+linear (ramp).</p>
+<p>So in the linear region, you've got that the source and drain are roughly
+the same voltage. So you end up with <mathjax>$C_{gs} \approx C_{gd} \approx
+\frac{1}{2} WL C_{ox}$</mathjax>. Intrinsically, changing the gate has negligible
+effect. <mathjax>$C_{gs} = \frac{2}{3} WL C_{ox}$</mathjax> and <mathjax>$C_{gd} = 0$</mathjax> intrinsically: no
+matter what you do, you cannot get away from this. The <mathjax>$2/3$</mathjax> is because
+this is not uniform: it has some shape.</p>
+<p>There are also extrinsic capacitances which are overlap. Looking at the
+field lines, there's an overlap capacitance. Overlap multiplied by
+width. <mathjax>$C^\prime_{gd} = WC^\prime_{ox}$</mathjax></p>
+<p><a name='28'></a></p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Wednesday, April 4, 2012</h2>
+<p>Why we like to use active loads: give us nice flat voltage regions, as
+opposed to passive loads.</p>
+<p>So now we have two currents for two devices. If I tie them together, then
+the magnitudes have to equal each other. The only place this happens is
+where the two curves cross.</p>
+<p>What else: biasing, gain figure. Miller. Feedback.</p>
+<h2>Miller capacitance</h2>
+<p>Suppose I have an amplifier with gain A from <mathjax>$v_i to v_o$</mathjax>. Small signal, so
+<mathjax>$v_o = Av_i$</mathjax>. If I measure a current across some impedance, we know <mathjax>$v =
+iZ$</mathjax>. What's going to happen if I plug that same impedance Z between the
+input and output of the amplifier?</p>
+<p>We'll have some <mathjax>$i_i$</mathjax>, and across this Z, I have <mathjax>$v_i$</mathjax> on one side, and
+<mathjax>$Av_i$</mathjax> on the other side. So I get <mathjax>$v_i - Av_i = i_i Z$</mathjax>, so <mathjax>$Z_{in} =
+\frac{v_i}{i_i} = \frac{Z}{1 - A}$</mathjax>. So that means in particular that if you
+do something like this (where the magnitude of the gain is approximately a
+million), what's the input impedance I see? Roughly a millionth of what it
+would be. A <mathjax>$M\Omega$</mathjax> resistor therefore starts looking like a single
+ohm. The idea is that if I raise this up a little bit, a ton more scurrent
+is flowing through it than it looks.</p>
+<p>Also see gains close to 1: impedance gets very large. So what happens if
+I've got a capacitor across an amplifier? <mathjax>$Z_{in} = \frac{\frac{1}{sC}}{1-A}
+= \frac{1}{sC(1-A)} = \frac{1}{sC_{miller}}$</mathjax>. Therefore <mathjax>$C_{miller} =
+(1-A)C$</mathjax>. This is known as Miller multiplication.</p>
+<p>So let's look at a bipolar transistor and think about what the input
+capacitance looks like if I've got an ideal current source load on
+it. Recall this has two junctions in it (<mathjax>$C_{je,0}, C_{jc,0}$</mathjax>, which you
+know how to calculate from area and doping like you did on midterm 1),
+which are <em>very</em> dependent on bias. For the 2N3904, the zero-bias values
+look like <mathjax>$4\text{pF}, 8\text{pF}$</mathjax>. In the model, under bias, these get
+called <mathjax>$C_\mu, C_\pi$</mathjax>. <mathjax>$C_\mu = \frac{C_{jc,0}}{\sqrt{1 - \frac{V_{BE}}
+{V_{0, CE}}}}$</mathjax>, <mathjax>$C_\pi = \frac{C_{j,e,0}}{\sqrt{1 - \frac{V_{BE}}{V_{D,
+BE}}}}$</mathjax>.</p>
+<p><mathjax>$A_v = -G_m R_o = -\frac{V_A}{V_T} \sim -1000$</mathjax>. So <mathjax>$C_{jn} = C_\pi +
+(1-A) C_\mu \approx 25 pF + (1 + 1000) 2pF \approx 2 nF$</mathjax>.</p>
+<p>Similarly, for the MOS, <mathjax>$C_{gs} \approx 300 fF, C_{gd} \approx 100
+fF$</mathjax>. Taking <mathjax>$\lambda = 0.1, V_{D,SAT} = 0.4V$</mathjax>, what do we get? <mathjax>$C_{in} =
+C_{gs} + (1 - A) C_{gd}$</mathjax>; <mathjax>$A = -g_m r_o = -\frac{2}{\lambda V_{DSAT}} =
+-50$</mathjax>. So my input capacitance is <mathjax>$300 fF + 5100 fF = 5400 fF$</mathjax>. These
+capacitances start adding more poles.</p>
+<p>(possibility of negative capacitance?)</p></div><div class='pos'></div>
+<script src='mathjax/unpacked/MathJax.js?config=default'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+  prefilterMath: function (math,displaymode,script) {
+      math = "\\displaystyle{"+math+"}";
+      return PREFILTER.call(TEX,math,displaymode,script);
+    }
+  });
+});
+
+var a  = document.getElementsByTagName('a'),
+    ll = a.length;
+if (ll > 0) {
+  var div = document.getElementsByClassName('pos')[0];
+  div.style.float = 'right';
+  div.style.position = 'fixed';
+  div.style.background = '#FFF';
+  div.style.fontSize = '90%';
+  div.style.top = '10%';
+  div.style.right = '5%';
+  for (var i = 0; i < ll; i++) {
+    div.innerHTML += '<a href="\#' + a[i].name + '">'
+                     + a[i].parentElement.nextElementSibling
+                           .nextElementSibling.innerText
+                     + '</a><br />';
+  }
+  var div = document.getElementsByClassName('wrapper')[0];
+  div.style.width = '50%';
+}
+</script>

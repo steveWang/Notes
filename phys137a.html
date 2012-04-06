@@ -1,16 +1,5 @@
-<script src='mathjax/unpacked/MathJax.js?config=default'></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-var TEX = MathJax.InputJax.TeX;
-var PREFILTER = TEX.prefilterMath;
-TEX.Augment({
-  prefilterMath: function (math,displaymode,script) {
-      math = "\\displaystyle{"+math+"}";
-      return PREFILTER.call(TEX,math,displaymode,script);
-    }
-  });
-});
-</script>
+<div class='wrapper'>
+<p><a name='1'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Wednesday, January 18</h2>
 <p>Wick Haxton
@@ -25,6 +14,7 @@ larsen.ge@berkeley.edu</p>
 ℏ = h/2π (Planck's constant – angular momentum).</p>
 <p>(E₁-E₂)̱\bar{E} = (E₁-E₂)/(p²/2m)&gt;(πℏ/pd)² ≈10^{-69}
 ℏ = h/2π = 1.05·10^{-34} J·s</p>
+<p><a name='2'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Friday, January 20</h2>
 <h1>Historical review</h1>
@@ -55,6 +45,7 @@ photon. BUT pattern disappears if one slit is closed."</p>
 <p>iℏ(∂ψ(x,t)/∂t) = [-(ℏ²/2m)(∂²/∂x² + V(x)] ψ(x,t) = H(x)ψ(x,t)
 [ only one-dimensional, so far ]</p>
 <p>Operators now written with a circumflex.</p>
+<p><a name='3'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Monday, January 23</h2>
 <p>Use of Mathematica/Matlab/WolframAlpha encouraged for homework.</p>
@@ -76,6 +67,7 @@ impossible to precisely know momentum and position simultaneously.</p>
      measurement is made and wavefunction is collapsed.
  * "agnostic position": who cares?</p>
 <p>variance is 〈(Δi)²〉 = 〈i²〉 - 〈i〉²</p>
+<p><a name='4'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Wednesday, January 25</h2>
 <p>Discrete distributions and somesuch.</p>
@@ -84,6 +76,7 @@ moment. skewness: third moment. kurtosis (wtf?): fourth moment.</p>
 <p>Moments are the analogue of derivatives for distributions. Sort
 of. You also have derivatives, which aren't very useful, usually.</p>
 <p>stuff with normalizing wave function, |ψ|² = ψ*ψ, etc.</p>
+<p><a name='5'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Friday, January 27</h2>
 <p>Talk about using WolframAlpha to compute integrals.</p>
@@ -101,6 +94,7 @@ m〈v〉 = 〈p〉
 e^{ip·x}</p>
 <p>Fourier transform of the Gaussian:
 P(x) = 1/(√(2π)σ) e^{-x²/(2σ²)} = 1/(2π) ∫[cos(px/ℏ) e^{-p²σ²/(2ℏ²)}]∂(p/h)</p>
+<p><a name='6'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Monday, January 30</h2>
 <p>Nothing that hasn't already been covered in statistical mechanics.</p>
@@ -122,6 +116,7 @@ density is independent of time. i.e. V(x,t) → V(x)</p>
 〈Ĥ〉 = ∫Ψ⁺ĤΨdx</p>
 <p>σ{Ĥ} = 〈H²〉 - 〈H〉² = 0. Stationary states have definite
 energy. Eigenvalues.</p>
+<p><a name='7'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Wednesday, February 1</h2>
 <p>REMINDER: surfaces ⇒ boundaries.</p>
@@ -156,6 +151,7 @@ be zero at boundaries. THESE ARE BASIC BOUNDARY CONDITIONS.
 ½ka = π/2 + ℓπ  (ℓ ∈ \mathbb{N})
   a = (2ℓ+1)π/k</p>
 <p>blah, constructing fourier series still</p>
+<p><a name='8'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Friday, February 3</h2>
 <p>Observations:</p>
@@ -188,6 +184,7 @@ be zero at boundaries. THESE ARE BASIC BOUNDARY CONDITIONS.
 </ul>
 <p>blarg, constructing fourier series (finally) and bra-ket notation
 (only now?).</p>
+<p><a name='9'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Monday, February 6</h2>
 <p>Anything prepared in an eigenstate stays in an eigenstate. But what if we
@@ -205,6 +202,7 @@ right. iℏ∂/∂t Φ = [-ℏ²/2m ∂²/∂x² + V] Φ</p>
 <p>Φ = ∑aΨ</p>
 <p>〈Φ|H|Φ〉 = ∑|a{n}|²E{n}</p>
 <p>stuff with conjugates and whatnot.</p>
+<p><a name='10'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Wednesday, February 8</h2>
 <p>Harmonic oscillator</p>
@@ -238,6 +236,7 @@ is going to do is straight out of the book, so don't take notes. Cool.</p>
 <p><strong>Adding 0 and multiplying by 1: most useful math tricks.</strong></p>
 <p><strong>Addition/subtraction: physicist's worst nightmare.</strong></p>
 <p><strong>Regularization: it is your best friend.</strong></p>
+<p><a name='11'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Friday, February 10</h2>
 <p>So, last time we were doing a harmonic oscillator. Calculation takes two
@@ -268,6 +267,7 @@ too much.</strong>
 are violating mathematics. Which is great. This happens 11% of the
 time. This is excellent.</p>
 <p>Next Monday: calculating expectation value of p².</p>
+<p><a name='12'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Monday, February 13</h2>
 <p>Hermite relations:
@@ -280,6 +280,7 @@ relation.</p>
 <p>σ{x}σ{p} = ℏ/2 (2n+1) ≥ ℏ/2 (n guaranteed to be non-negative)</p>
 <p>Barrier presentation. Potential greater than energy.</p>
 <p>Talk about free particles.</p>
+<p><a name='13'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Wednesday, February 15</h2>
 <p>Recap: free particle schrödinger equation has a set of solutions. \Psi(x) =
@@ -308,6 +309,7 @@ it to be. Plug it back into the Schrödinger equation.</p>
 problem.)</p>
 <p>wave packets, momentum composition. blah blah blah, you can show that
 they're equivalent, etc.</p>
+<p><a name='14'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Friday, February 17</h2>
 <h1>finite square well???</h1>
@@ -340,6 +342,7 @@ increasingly compact on the way up.</p>
 <p>Let's first consider stuff in our well. We've got two regions: x&lt;-a/2,
 x&gt;a/2, and -a/2 &lt; x &lt; a/2. The first part is the free SE. Nothing
 interesting there.</p>
+<p><a name='15'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Wednesday, February 22</h2>
 <p>No cheatsheet. Won't need it. Mostly qualitative questions. One really hard
@@ -356,6 +359,7 @@ form, then enforce boundary conditions.</p>
 <p>\kappa is pre-propagation, so doesn't know about potential. k is
 propagation.</p>
 <p>Remember that this only gives us half of the solutions.</p>
+<p><a name='16'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Monday, February 27</h2>
 <p><mathjax>$\let\onabla\nabla
@@ -375,8 +379,10 @@ arbitrarily weak potential and arbitrarily wide well.</p>
 <p>Talk about how the wave function has continuous zeroth and first
 derivatives at boundaries.</p>
 <p>Tunnelling makes the sun work.</p>
+<p><a name='17'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Wednesday, February 29</h2>
+<p><a name='18'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h1>Transmission, Reflection, Tunneling</h1>
 <h2>Friday, March 2</h2>
@@ -385,6 +391,7 @@ b/a can resove bump.</p>
 <p>idea: use large basis in n, construct stationary states numerically.</p>
 <p>Fourier basis complete over interval.</p>
 <p>Stationary state satisfies S.E.</p>
+<p><a name='19'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Monday, March 5</h2>
 <p>Handing back of exams.</p>
@@ -416,6 +423,7 @@ number. Spectral theorem.</p>
  b) Ignore said fact.
  c) Mathematica</p>
 <p>orthonormal basis.</p>
+<p><a name='20'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Friday, March 9</h2>
 <p>Quaternions:</p>
@@ -424,6 +432,7 @@ number. Spectral theorem.</p>
 <p>1       i       j      k</p>
 <p>\sum_k e_k \ket{\psi_k}</p>
 <p>[x,p] = xp - px</p>
+<p><a name='21'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Monday, March 12</h2>
 <p>Recap: spectral theorem; completeness of eigenfunctions.</p>
@@ -461,11 +470,13 @@ E(x)^2$</mathjax>, so in this case <mathjax>$\sigma^2 = \braKet{\Psi}{A^2}{\Psi}
 \braKet{\Psi}{A}{\Psi}^2$</mathjax>.</p>
 <p>Wednesday, what we're going to do is try some derivation of what the
 uncertainty principle looks like in general.</p>
+<p><a name='22'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Wednesday, March 14</h2>
 <p>playing around with uncertainty principle; derivation through (commutator +
 anticommutator)/2. Consideration of Cauchy-Schwarz inequality. Schwarz
 inequality becomes equality in certain cases.</p>
+<p><a name='23'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Wednesday, March 14</h2>
 <p>Uncertainty relation: what is its meaning? How do you measure a particle?
@@ -502,6 +513,7 @@ of the particle?</p>
 <p>Note that <mathjax>$\braket{i}{j} = \delta_{ij}$</mathjax></p>
 <p>More bra-ket notation. Basis must span Hilbert space. Completeness
 relation.</p>
+<p><a name='24'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Monday, March 19</h2>
 <p>Recaps. Uncertainty principle at multiple places. Showed that if you show
@@ -536,6 +548,7 @@ quantities. This is why we talked about commutators and stuff. Angular
 momentum and stuff.</p>
 <p>One very interesting class of problems: <mathjax>$V(r)$</mathjax> (not <mathjax>$\vec{r}$</mathjax>). For
 instance, <mathjax>$V = \frac{\alpha}{r}$</mathjax>.</p>
+<p><a name='25'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Wednesday, March 21</h2>
 <p>Recaps. In 3 dimensions, note that k,p,x are now vectors, and instead of
@@ -559,3 +572,98 @@ e^{-i(E_2 - E_1)t/\hbar} \braKet{\psi_1}{x^2}{\psi_2} +
 $$</mathjax></p>
 <p>Solving 3-dimensional separation of variables. Angular equation; radial
 equation. Legendre polynomials. <mathjax>$\ell(\ell + 1)$</mathjax></p>
+<p><a name='26'></a></p>
+<h1>Physics 137A: Quantum Mechanics</h1>
+<h2>Friday, March 23</h2>
+<p>???</p>
+<p><a name='27'></a></p>
+<h1>Physics 137A: Quantum Mechanics</h1>
+<h2>Monday, April 2</h2>
+<p>for small r, the singular parts have to be equal. We know that <mathjax>$U_l$</mathjax> looks
+like <mathjax>$Ar^{l+1} + Br^{-l}$</mathjax>. The second term has to be zero, since that
+would diverge.</p>
+<p>First example we can solve: analogue of infinite square well. Inifnite
+potential beyond <mathjax>$r = a$</mathjax>. Conceptually: confinement of particle in 3-D. Now
+confined in three dimensions.</p>
+<p>Introduce wave number <mathjax>$k = \frac{\sqrt{2mE}}{\hbar}$</mathjax>. <mathjax>$\deriv{^2 u}{r^2} =
+\bracks{\frac{l(l+1)}{r^2} - k^2}u$</mathjax>. <mathjax>$u(r) = A\sin kr + B\cos kr$</mathjax>. B must
+be zero, since wave function is zero at origin. At <mathjax>$r = a$</mathjax>, wave function
+must also vanish. So we must have <mathjax>$ka = n\pi$</mathjax>. So you have your
+quantization, so your energies are <mathjax>$E = \frac{\hbar^2 k^2 a^2}{2ma^2} =
+\frac{\hbar^2 n^2 \pi^2}{2ma^2}$</mathjax>. We've learned that the difference between
+one-dimensional and three-dimensional case is angular momentum, but there
+is no angular momentum in an s wave. So this looks very similar to infinite
+square well: we just have the additional boundary condition that <mathjax>$u(0) =
+0$</mathjax>.</p>
+<p>So the total solution for this, <mathjax>$\Psi_{nlm}(\vec{r}) = \sqrt{\frac{2}{a}}
+Y_{00}(nx) \frac{\sin(n\pi r/a)}{r} = \sqrt{\frac{2}{a}}\frac{\sin(n\pi
+r/a)}{\sqrt{4\pi}{r}}$</mathjax>.</p>
+<p>spherical bessel function -- sinc?</p>
+<p><mathjax>$\Psi_{n00}(\vec{r} = \frac{1}{\sqrt{2\pi a}}\frac{n\pi}{a} \sinc(\frac
+{nr}{a}) = n\sqrt{\frac{\pi}{2}} \frac{1}{a^{3/2}} J_0(\kappa r); \kappa
+\equiv \frac{n\pi}{a}$</mathjax></p>
+<p><mathjax>$J_0$</mathjax> is our spherical Bessel function. Two places: scattering (coming in
+with plane wave, outgoing wave is spherically symmetric wave function that
+spreads out from the scatterer, so write as plane wave and stuff
+(e.g. <mathjax>$e^{i\vec{k}\cdot \vec{r}} = \sum_{lm} Y_{lm}(\theta, \phi)Y^*_{lm}
+(\theta_k, \phi_k)$</mathjax> -- turns into a Bessel function).</p>
+<p>General problem we actually wanted to solve: <mathjax>$\bracks{\deriv{^2}{r^2} + k^2
+- \frac{\ell(\ell + 1)}{r^2}}u_\ell(r) = 0$</mathjax>. This leads to
+  <mathjax>$\bracks{r^2\deriv{^2}{r^2} + 2r\deriv{}{r} + k^2r^2 - \ell(\ell + 1)}
+  R_{n\ell} = 0 \implies \bracks{k^2r^2\deriv{^2}{k^2r^2} + 2kr\deriv{}{kr}
+  + k^2r^2 - \ell(\ell + 1)} R_{n\ell} \\ = 0 = \bracks{z^2\deriv{^2}{z^2} +
+  2z\deriv{}{z} + z^2 - \ell(\ell + 1)} R_{n\ell}(z)$</mathjax>.</p>
+<p>Indeed, there are two classes of solutions: "good" and "bad"
+solutions. General form is going to be <mathjax>$R_{n\ell}(kr) = AJ_\ell(kr) +
+Bn_\ell (kr)$</mathjax>. <mathjax>$n_\ell$</mathjax> is a different spherical Bessel function that is
+poorly-behaved, Another set of Bessel functions called the spherical Hankel
+functions. This is one particular case where they map onto sinusoids; the
+case where they map onto complex exponentials corresponds to the Hankel
+functions.</p>
+<p>The <mathjax>$J_\ell$</mathjax> are our good solutions; the <mathjax>$n_\ell$</mathjax> (<mathjax>$n_0 =
+-\frac{\cos(x)}{x}$</mathjax>) are our bad functions.</p>
+<p><mathjax>$J_1(x) = \frac{\sin x}{x^2} - \frac{\cos x}{x}$</mathjax>, <mathjax>$n_1(x) = -\frac{\cos
+x}{x^2} - \frac{\sin x}{x}$</mathjax>. Recursion formula (not in the book): <mathjax>$f_{\ell
++ 1}(x) = \frac{2\ell + 1}{x}f_\ell(x) - f_{\ell-1}(x)$</mathjax>.</p>
+<p>For small x, <mathjax>$J_\ell(x) \approx \frac{x^\ell}{(2\ell + 1)!!}$</mathjax>.</p>
+<p>Note that in the general case, <mathjax>$AJ_\ell(ka) = 0$</mathjax>. Eigenvalue problem for
+all <mathjax>$\ell$</mathjax>. So what you need to do is find the math tables. Find the
+<mathjax>$B_{n\ell}$</mathjax>, which are the <mathjax>$n^{th}$</mathjax> zeros of the <mathjax>$\ell^{th}$</mathjax> spherical
+Bessel functions.</p>
+<p><a name='28'></a></p>
+<h1>Physics 137A: Quantum Mechanics</h1>
+<h2>Friday, April 6</h2>
+<p>Radial ball; no longer imposing the restriction that <mathjax>$V(0) = \infty$</mathjax>.</p></div><div class='pos'></div>
+<script src='mathjax/unpacked/MathJax.js?config=default'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+  prefilterMath: function (math,displaymode,script) {
+      math = "\\displaystyle{"+math+"}";
+      return PREFILTER.call(TEX,math,displaymode,script);
+    }
+  });
+});
+
+var a  = document.getElementsByTagName('a'),
+    ll = a.length;
+if (ll > 0) {
+  var div = document.getElementsByClassName('pos')[0];
+  div.style.float = 'right';
+  div.style.position = 'fixed';
+  div.style.background = '#FFF';
+  div.style.fontSize = '90%';
+  div.style.top = '10%';
+  div.style.right = '5%';
+  for (var i = 0; i < ll; i++) {
+    div.innerHTML += '<a href="\#' + a[i].name + '">'
+                     + a[i].parentElement.nextElementSibling
+                           .nextElementSibling.innerText
+                     + '</a><br />';
+  }
+  var div = document.getElementsByClassName('wrapper')[0];
+  div.style.width = '50%';
+}
+</script>

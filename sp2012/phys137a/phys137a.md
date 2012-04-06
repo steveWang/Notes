@@ -1,3 +1,5 @@
+<a name='1'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, January 18
@@ -20,6 +22,8 @@ special relativity; new theory returns to old theory as some ε→0.
 
 (E₁-E₂)̱\bar{E} = (E₁-E₂)/(p²/2m)>(πℏ/pd)² ≈10^{-69}
 ℏ = h/2π = 1.05·10^{-34} J·s
+
+<a name='2'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -72,6 +76,8 @@ iℏ(∂ψ(x,t)/∂t) = [-(ℏ²/2m)(∂²/∂x² + V(x)] ψ(x,t) = H(x)ψ(x,t)
 
 Operators now written with a circumflex.
 
+<a name='3'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, January 23
@@ -103,6 +109,8 @@ three primary interpretations of QM
 variance is 〈(Δi)²〉 = 〈i²〉 - 〈i〉²
 
 
+<a name='4'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, January 25
@@ -117,6 +125,8 @@ Moments are the analogue of derivatives for distributions. Sort
 of. You also have derivatives, which aren't very useful, usually.
 
 stuff with normalizing wave function, |ψ|² = ψ*ψ, etc.
+
+<a name='5'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -145,6 +155,8 @@ e^{ip·x}
 
 Fourier transform of the Gaussian:
 P(x) = 1/(√(2π)σ) e^{-x²/(2σ²)} = 1/(2π) ∫[cos(px/ℏ) e^{-p²σ²/(2ℏ²)}]∂(p/h)
+
+<a name='6'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -180,6 +192,8 @@ First big idea, stationary states.
 
 σ{Ĥ} = 〈H²〉 - 〈H〉² = 0. Stationary states have definite
 energy. Eigenvalues.
+
+<a name='7'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -227,6 +241,8 @@ be zero at boundaries. THESE ARE BASIC BOUNDARY CONDITIONS.
 
 blah, constructing fourier series still
 
+<a name='8'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Friday, February 3
@@ -256,6 +272,8 @@ Properties
 blarg, constructing fourier series (finally) and bra-ket notation
 (only now?).
 
+<a name='9'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, February 6
@@ -282,6 +300,8 @@ Summary
 〈Φ|H|Φ〉 = ∑|a{n}|²E{n}
 
 stuff with conjugates and whatnot.
+
+<a name='10'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -325,6 +345,8 @@ is going to do is straight out of the book, so don't take notes. Cool.
 **Addition/subtraction: physicist's worst nightmare.**
 
 **Regularization: it is your best friend.**
+
+<a name='11'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -371,6 +393,8 @@ time. This is excellent.
 
 Next Monday: calculating expectation value of p².
 
+<a name='12'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, February 13
@@ -391,6 +415,8 @@ relation.
 Barrier presentation. Potential greater than energy.
 
 Talk about free particles.
+
+<a name='13'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -434,6 +460,8 @@ problem.)
 
 wave packets, momentum composition. blah blah blah, you can show that
 they're equivalent, etc.
+
+<a name='14'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -479,6 +507,8 @@ Let's first consider stuff in our well. We've got two regions: x<-a/2,
 x>a/2, and -a/2 < x < a/2. The first part is the free SE. Nothing
 interesting there.
 
+<a name='15'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, February 22
@@ -503,6 +533,8 @@ form, then enforce boundary conditions.
 propagation.
 
 Remember that this only gives us half of the solutions.
+
+<a name='16'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -530,10 +562,14 @@ derivatives at boundaries.
 
 Tunnelling makes the sun work.
 
+<a name='17'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, February 29
 ----------------------
+
+<a name='18'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -550,6 +586,8 @@ idea: use large basis in n, construct stationary states numerically.
 Fourier basis complete over interval.
 
 Stationary state satisfies S.E.
+
+<a name='19'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -599,6 +637,8 @@ What do we do when eigenvalues are degenerate?
 
 orthonormal basis.
 
+<a name='20'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Friday, March 9
@@ -613,6 +653,8 @@ Quaternions:
 \sum_k e_k \ket{\psi_k}
 
 [x,p] = xp - px
+
+<a name='21'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -668,6 +710,8 @@ E(x)^2$, so in this case $\sigma^2 = \braKet{\Psi}{A^2}{\Psi} -
 Wednesday, what we're going to do is try some derivation of what the
 uncertainty principle looks like in general.
 
+<a name='22'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, March 14
@@ -676,6 +720,8 @@ Wednesday, March 14
 playing around with uncertainty principle; derivation through (commutator +
 anticommutator)/2. Consideration of Cauchy-Schwarz inequality. Schwarz
 inequality becomes equality in certain cases.
+
+<a name='23'></a>
 
 Physics 137A: Quantum Mechanics
 ===============================
@@ -729,6 +775,8 @@ Note that $\braket{i}{j} = \delta_{ij}$
 More bra-ket notation. Basis must span Hilbert space. Completeness
 relation.
 
+<a name='24'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Monday, March 19
@@ -779,6 +827,8 @@ momentum and stuff.
 One very interesting class of problems: $V(r)$ (not $\vec{r}$). For
 instance, $V = \frac{\alpha}{r}$.
 
+<a name='25'></a>
+
 Physics 137A: Quantum Mechanics
 ===============================
 Wednesday, March 21
@@ -808,3 +858,90 @@ $$
 
 Solving 3-dimensional separation of variables. Angular equation; radial
 equation. Legendre polynomials. $\ell(\ell + 1)$
+
+<a name='26'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Friday, March 23
+----------------
+???
+
+<a name='27'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Monday, April 2
+---------------
+
+for small r, the singular parts have to be equal. We know that $U_l$ looks
+like $Ar^{l+1} + Br^{-l}$. The second term has to be zero, since that
+would diverge.
+
+First example we can solve: analogue of infinite square well. Inifnite
+potential beyond $r = a$. Conceptually: confinement of particle in 3-D. Now
+confined in three dimensions.
+
+Introduce wave number $k = \frac{\sqrt{2mE}}{\hbar}$. $\deriv{^2 u}{r^2} =
+\bracks{\frac{l(l+1)}{r^2} - k^2}u$. $u(r) = A\sin kr + B\cos kr$. B must
+be zero, since wave function is zero at origin. At $r = a$, wave function
+must also vanish. So we must have $ka = n\pi$. So you have your
+quantization, so your energies are $E = \frac{\hbar^2 k^2 a^2}{2ma^2} =
+\frac{\hbar^2 n^2 \pi^2}{2ma^2}$. We've learned that the difference between
+one-dimensional and three-dimensional case is angular momentum, but there
+is no angular momentum in an s wave. So this looks very similar to infinite
+square well: we just have the additional boundary condition that $u(0) =
+0$.
+
+So the total solution for this, $\Psi_{nlm}(\vec{r}) = \sqrt{\frac{2}{a}}
+Y_{00}(nx) \frac{\sin(n\pi r/a)}{r} = \sqrt{\frac{2}{a}}\frac{\sin(n\pi
+r/a)}{\sqrt{4\pi}{r}}$.
+
+spherical bessel function -- sinc?
+
+$\Psi_{n00}(\vec{r} = \frac{1}{\sqrt{2\pi a}}\frac{n\pi}{a} \sinc(\frac
+{nr}{a}) = n\sqrt{\frac{\pi}{2}} \frac{1}{a^{3/2}} J_0(\kappa r); \kappa
+\equiv \frac{n\pi}{a}$
+
+$J_0$ is our spherical Bessel function. Two places: scattering (coming in
+with plane wave, outgoing wave is spherically symmetric wave function that
+spreads out from the scatterer, so write as plane wave and stuff
+(e.g. $e^{i\vec{k}\cdot \vec{r}} = \sum_{lm} Y_{lm}(\theta, \phi)Y^*_{lm}
+(\theta_k, \phi_k)$ -- turns into a Bessel function).
+
+General problem we actually wanted to solve: $\bracks{\deriv{^2}{r^2} + k^2
+- \frac{\ell(\ell + 1)}{r^2}}u_\ell(r) = 0$. This leads to
+  $\bracks{r^2\deriv{^2}{r^2} + 2r\deriv{}{r} + k^2r^2 - \ell(\ell + 1)}
+  R_{n\ell} = 0 \implies \bracks{k^2r^2\deriv{^2}{k^2r^2} + 2kr\deriv{}{kr}
+  + k^2r^2 - \ell(\ell + 1)} R_{n\ell} \\ = 0 = \bracks{z^2\deriv{^2}{z^2} +
+  2z\deriv{}{z} + z^2 - \ell(\ell + 1)} R_{n\ell}(z)$.
+
+Indeed, there are two classes of solutions: "good" and "bad"
+solutions. General form is going to be $R_{n\ell}(kr) = AJ_\ell(kr) +
+Bn_\ell (kr)$. $n_\ell$ is a different spherical Bessel function that is
+poorly-behaved, Another set of Bessel functions called the spherical Hankel
+functions. This is one particular case where they map onto sinusoids; the
+case where they map onto complex exponentials corresponds to the Hankel
+functions.
+
+The $J_\ell$ are our good solutions; the $n_\ell$ ($n_0 =
+-\frac{\cos(x)}{x}$) are our bad functions.
+
+$J_1(x) = \frac{\sin x}{x^2} - \frac{\cos x}{x}$, $n_1(x) = -\frac{\cos
+x}{x^2} - \frac{\sin x}{x}$. Recursion formula (not in the book): $f_{\ell
++ 1}(x) = \frac{2\ell + 1}{x}f_\ell(x) - f_{\ell-1}(x)$.
+
+For small x, $J_\ell(x) \approx \frac{x^\ell}{(2\ell + 1)!!}$.
+
+Note that in the general case, $AJ_\ell(ka) = 0$. Eigenvalue problem for
+all $\ell$. So what you need to do is find the math tables. Find the
+$B_{n\ell}$, which are the $n^{th}$ zeros of the $\ell^{th}$ spherical
+Bessel functions.
+
+<a name='28'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Friday, April 6
+---------------
+Radial ball; no longer imposing the restriction that $V(0) = \infty$.

@@ -1,16 +1,5 @@
-<script src='mathjax/unpacked/MathJax.js?config=default'></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-var TEX = MathJax.InputJax.TeX;
-var PREFILTER = TEX.prefilterMath;
-TEX.Augment({
-  prefilterMath: function (math,displaymode,script) {
-      math = "\\displaystyle{"+math+"}";
-      return PREFILTER.call(TEX,math,displaymode,script);
-    }
-  });
-});
-</script>
+<div class='wrapper'>
+<p><a name='1'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>January 17, 2012.</h2>
 <ul>
@@ -112,6 +101,7 @@ Outline) -- great for self-study because every problem is solved.</p>
   must also be identical to that same point.</p>
 </li>
 </ul>
+<p><a name='2'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>January 19, 2012.</h2>
 <h2>More on causality</h2>
@@ -176,6 +166,7 @@ auto-correlation. convolution of a signal with itself.)</p>
 <p>(geometric sum; BIBO stability depends on magnitude of \alpha being less
 than
 1.)</p>
+<p><a name='3'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>January 24, 2012.</h2>
 <h1>LTI Systems and Frequency Response</h1>
@@ -216,6 +207,7 @@ is probably defined. Let <mathjax>$x(n) \equiv e^{i\omega n}$</mathjax> (a pure 
 circle. <mathjax>$e^{i\omega}$</mathjax> is a point on the unit circle, so we can represent it
 with a vector.</p>
 <p>Consider graphically.</p>
+<p><a name='4'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>January 26, 2012.</h2>
 <p>numerator is 1, denominator is length of vector <mathjax>$e^{i\omega} -
@@ -286,6 +278,7 @@ well.</p>
    \\ = 1/(\alpha  + i\omega ).
    \\ = 1/(i\omega  - (-\alpha ))$</mathjax></p>
 <p><mathjax>$\sqrt{\omega ^2 + \alpha ^2}$</mathjax></p>
+<p><a name='5'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>January 31, 2012.</h2>
 <p>Homework should be out today. Yes, there are homeworks in this class.</p>
@@ -365,6 +358,7 @@ not very interesting.</p>
 <p>synthesis equation, analysis equation:</p>
 <p><mathjax>$x(n) = \sum X_k e^{ik\omega_0n}$</mathjax>
 <mathjax>$X(n) = \sum x_k e^{-ik\omega_0n}$</mathjax></p>
+<p><a name='6'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>February 2, 2012.</h2>
 <h1>DTFS</h1>
@@ -377,6 +371,7 @@ functions guaranteed to be both periodic in time as well as frequency.</p>
 <p>Evidently there will be a quiz on Tue, since pset is due on Wed.</p>
 <p>Consider what it means to send discrete-time periodic signals through
 LTI systems.</p>
+<p><a name='7'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>February 7, 2012.</h2>
 <p>CTFS:</p>
@@ -384,7 +379,8 @@ LTI systems.</p>
 called the fundamental period. Fundamental frequency <mathjax>$\omega_0 \equiv
 \frac{2\pi}{p}$</mathjax>.</p>
 <p>Can also write <mathjax>$p = 2\pi/\omega_0$</mathjax>. In discrete-time, writing it this way
-was dangerous, since depending on <mathjax>$\omega_0$</mathjax>, <mathjax>$p$</mathjax> may or may not be an integer.</p>
+was dangerous, since depending on <mathjax>$\omega_0$</mathjax>, <mathjax>$p$</mathjax> may or may not be an
+integer.</p>
 <p>For discrete-time signals, the constant signal was periodic with <mathjax>$p=1$</mathjax>.
 <mathjax>$x(t) = 1 \forall t \in Z$</mathjax>?</p>
 <p>What about the signal <mathjax>$x(t) = 1 \forall t \in R$</mathjax>? The fundamental period is
@@ -430,7 +426,7 @@ Analysis equation:  <mathjax>$X_k = (1/p)\int x_k\exp(-ik\omega_0 t)$</mathjax>.
 <p>How do I show that <mathjax>$\braket{\psi_k}{\psi_l} = 0 (k\neq l)$</mathjax>? Just evaluate
 the integral. We get an exponential with period p, integrated over a period
 p? Looks like 0 to me.</p>
-<p>Example: <mathjax>$X(t) = cos(\pi t/3)$</mathjax>. <mathjax>$(\exp(i\pi t/3) + \exp(-i\pi
+<p>Example: <mathjax>$X(t) = \cos(\pi t/3)$</mathjax>. <mathjax>$(\exp(i\pi t/3) + \exp(-i\pi
 t/3))/2$</mathjax>. <mathjax>$\psi_1 = \psi_{-1} = \frac{1}{2}$</mathjax>.</p>
 <p><mathjax>$q(t) = \sum\delta(t-\ell p) = \sum Q_k \exp(ik\omega_0t)$</mathjax>
 <mathjax>$\delta(t) = \deriv{u(t)}{t}$</mathjax></p>
@@ -440,6 +436,7 @@ t/3))/2$</mathjax>. <mathjax>$\psi_1 = \psi_{-1} = \frac{1}{2}$</mathjax>.</p>
 <p>What happens if I want to approximate a signal that has finite energy? What
 should the coefficients <mathjax>$\alpha_k$</mathjax> be?</p>
 <p>orthogonal projection! Least squares!</p>
+<p><a name='8'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>February 9, 2012.</h2>
 <h1>Discrete-time Fourier transform</h1>
@@ -485,6 +482,7 @@ variable <mathjax>$\omega$</mathjax> which happen to be periodic with period <ma
 <h1>Ideal discrete-time Low-pass Filter</h1>
 <p>Impulse response <mathjax>$h(n) = \frac{1}{2\pi}\int H(\omega)e^{i\omega n}d\omega$</mathjax>.</p>
 <p><mathjax>$\frac{B}{\pi n} \sin(An)$</mathjax></p>
+<p><a name='9'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>February 16, 2012.</h2>
 <h2>Discrete-Time Fourier Transform: continued</h2>
@@ -586,6 +584,7 @@ say, is a square pulse wave thingy.</p>
 functions, keep one replica (e.g. the one from <mathjax>$-\pi$</mathjax> to <mathjax>$\pi$</mathjax>), and then
 do a regular convolution with the other function. advice: choose the
 flipped + shifted signal for elimination of replicas.</p>
+<p><a name='10'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>February 21, 2012.</h2>
 <h1>Circular convolution wrap-up</h1>
@@ -692,6 +691,7 @@ and also half the maximum value.</p>
 <p>This is a Cauchy probability density function.</p>
 <p>(names for dirac delta: generalized function, distribution. Look up theory
  of distributions)</p>
+<p><a name='11'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>February 23, 2012.</h2>
 <h2>Continuous-time Fourier transform</h2>
@@ -761,6 +761,7 @@ signal is the same as the transmitted signal. Whole area of communication
 theory that deals with deterioration. Other assumption is that the
 oscillator at the receiver that can generate the exact same frequency as
 the transmitter oscillator and at the same phase.</p>
+<p><a name='12'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>February 28, 2012.</h2>
 <h1>AM Continued</h1>
@@ -802,6 +803,7 @@ side-band suppressed carrier.</p>
 <h2>Quadrature multiplexing</h2>
 <p>The way we can do this is by exploiting the orthogonality of cosine and
 sine. What's being transmitted is the sum of the two.</p>
+<p><a name='13'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>March 1, 2012.</h2>
 <h1>Sampling of CT Signals</h1>
@@ -928,6 +930,7 @@ that.</p>
 separated by <mathjax>$\omega_s$</mathjax>. When we convolve this and apply a low-pass filter,
 we have just one remaining frequency at <mathjax>$\omega_0-\omega_s = -\frac
 {\omega_0}{2}$</mathjax>.</p>
+<p><a name='14'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>March 6, 2012.</h2>
 <h1>Sampling Cont'd</h1>
@@ -954,6 +957,7 @@ your reconstruction period is the same as your sampling period.</p>
 <p>Then you know that your output is equal <mathjax>$\frac{G}{T} H_d\parens{ \omega T}
 X_c(\omega)$</mathjax>. The equivalent LTI filter is simply <mathjax>$\frac{G}{T} nH_d \parens{
 \omega T}$</mathjax></p>
+<p><a name='15'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>March 8, 2012.</h2>
 <p>Spoke about sampling, impulse train, conditions under which signal can be
@@ -1025,7 +1029,9 @@ functions.</p>
 <p>It turns out these coefficients are the values of the signal at the sampled
 points. That isn't obvious yet. After some algebraic manipulations, we can
 finally see that this whole thing is just <mathjax>$x_c(kT_s)$</mathjax>.</p>
+<p><a name='16'></a></p>
 <h1>EE 120: Signals and Systems</h1>
+<h2>March 13, 2012.</h2>
 <h1><mathjax>$\mathcal{Z}$</mathjax> Transform</h1>
 <p>Something we've been brushing under the carpet for a while is the set of
 signals in which the Fourier transform is not defined.</p>
@@ -1188,7 +1194,9 @@ signals and right-sided signals (and also anticausal / left-sided).</p>
 <p>So let's say we take a right-sided but not causal signal. Now the RoC is
 outside of radius <mathjax>$\alpha$</mathjax>, but now you have to exclude $\infty.</p>
 <p>Similarly, for left-sided signals, you'd then exclude 0.</p>
+<p><a name='17'></a></p>
 <h1>EE 120: Signals and Systems</h1>
+<h2>March 15, 2012.</h2>
 <h1>More on the <mathjax>$\mathcal{Z}$</mathjax>-transform</h1>
 <p><mathjax>$$
 h(n) \ztrans \hat{H}(z) = \infsum{n} h(n) z^{-n}
@@ -1294,7 +1302,9 @@ this (albeit in parts).</p>
 <p>Note that radius of convergence isn't changing.</p>
 <p>Will leave it to you to figure out what the transform of <mathjax>$r^n \cos(\omega_0
 n) u(n)$</mathjax> is.</p>
+<p><a name='18'></a></p>
 <h1>EE 120: Signals and Systems</h1>
+<h2>March 22, 2012.</h2>
 <h1>Upsampling property</h1>
 <p><mathjax>$$
 x(n) \mapsto \uparrow N \mapsto y(n) = \begin{cases}
@@ -1311,7 +1321,7 @@ happened in frequency? We contracted in the frequency domain. You get that
 even from here. If I remind you of an example we did eons ago, <mathjax>$y(n) =
 \alpha y(n-1) + x(n)$</mathjax> had a frequency response of <mathjax>$G(\omega) = \frac{1}{1 -
 \alpha e^{-i\omega}}$</mathjax>. If I change this to the parameters of <mathjax>$y(n) = \alpha
-y(n-N) + x(n)$</mathjax>, <mathjax>$H(\omega) = \frac{1}{1 - \alpha e^{i\omega N}$</mathjax>. But if you
+y(n-N) + x(n)$</mathjax>, <mathjax>$H(\omega) = \frac{1}{1 - \alpha e^{i\omega N}}$</mathjax>. But if you
 compare <mathjax>$g(n) = \alpha^n u(n)$</mathjax> with <mathjax>$h(n) = \alpha^{nN} u(n)$</mathjax>, we've
 already seen this.</p>
 <p>So when you upsample, you have the <mathjax>$z$</mathjax> raised to the <mathjax>$n^{th}$</mathjax> power.</p>
@@ -1332,18 +1342,17 @@ is 2, you can use a double-circle or double-x).</p>
 <h1>Differentiation</h1>
 <p>Another property that's actually very important is differentiation in Z. So
 suppose you've transformed <mathjax>$x \ztrans \hat{X}(z)$</mathjax>. What is <mathjax>$\deriv{\hat{X}}
-{z}$</mathjax>? <mathjax>$-z\deriv{\hat{X}}{z} \ztrans n(x(n)$</mathjax>.</p>
+{z}$</mathjax>? <mathjax>$-z\deriv{\hat{X}}{z} \ztrans n x(n)$</mathjax>.</p>
 <h2>Example:</h2>
 <p><mathjax>$g(n) = n\alpha^n u(n) \ztrans \hat{G}(z) = ?$</mathjax></p>
 <p>If you want to make this look like the original form, just multiply top and
 bottom by <mathjax>$z^{-2}$</mathjax>. Very important point: extension to higher derivatives.</p>
 <p>So what happens as we increase this? What does this mean?</p>
 <p>We can decompose any rational z transform into a linear composition of
-lower-order terms. Fundamental theorem of
-algebra. Proposition: suppose we've got a transfer function. We've got a
-numerator over a denominator. We can factor the numerator and
-denominator. You also learned that whenever you do this, you can break
-apart the ratio in terms of a sum.</p>
+lower-order terms. Fundamental theorem of algebra. Proposition: suppose
+we've got a transfer function. We've got a numerator over a denominator. We
+can factor the numerator and denominator. You also learned that whenever
+you do this, you can break apart the ratio in terms of a sum.</p>
 <p>Note that this starts breaking when you have degeneracy (i.e. systems with
 duplicate poles). So from this qualitative argument, it should not surprise
 you if I tell you that the only way you can get a rational Z-transform is
@@ -1357,7 +1366,7 @@ rational iff x(n) is a linear combination of terms <mathjax>$n^k \alpha^n u(n)$<
 transform. We're not going to learn a formal inverse Z-transform; we're
 just going to use various heuristics (not unlike solving differential
 equations).</p>
-<p>In general, inverse z-transform requires a contour integral (complex
+<p>In general, the inverse z-transform requires a contour integral (complex
 analysis) and thus is not a required in this class.</p>
 <p>Now, if you believe this, we've got several things: <mathjax>$n^k\alpha^n u(n)$</mathjax>,
 LCCDEs, and rational Z-transforms. They form a family.</p>
@@ -1385,3 +1394,197 @@ find. <mathjax>$\hat{X} = \log(1 + \alpha z^{-1}$</mathjax>. Determine <mathjax>
 <p>(<mathjax>$\frac{(-1)^{n-1} \alpha^n}{n}u(n-1)$</mathjax>)</p>
 <p>You can also use (to check) Taylor expansion centered at 1: <mathjax>$\log(1 +
 \lambda) = \sum_{n=1}^\infty \frac{(-1)^{n+1} \lambda^n}{n}$</mathjax>.</p>
+<p><a name='19'></a></p>
+<h1>EE 120: Signals and Systems</h1>
+<h2>April 2, 2012.</h2>
+<p>We finished talking about the relationship between LCCDEs and
+Z-transforms. A little later -- either next lecture or next week -- we're
+going to talk about how to solve Z-transforms this way. Convenience:
+convolutions turn into multiplications (which are almost always easier to
+do than convolutions). Z-transforms turn difference equations into
+algebraic expressions.</p>
+<p>Properties:</p>
+<h1>Initial Value Theorem</h1>
+<p>If you have a causal discrete-time signal x (which means <mathjax>$x(n) = 0, n &lt;
+0$</mathjax>), and suppose I'm looking at its Z-transform. <mathjax>$X(z) = \sum_{n=0}^\infty
+x(n)z^{-n} = x(0) + \frac{x(1)}{z} + \frac{x(2)}{z^2} +
+...$</mathjax>. <mathjax>$\lim_{z\to\infty} \hat{X}(z) = x(0)$</mathjax>, ergo the name initial-value
+theorem. Simple to prove; sometimes helpful when you have a rational
+function or some other signal which you happen to know is causal. You can
+also massage this expression to get the other values.</p>
+<p>Obv. does not work for FT: in that case, <mathjax>$z$</mathjax> always on unit circle.</p>
+<p>Dancing around inverse Z-transforms: <mathjax>$x(n) = \frac{1}{2\pi i} \oint
+\hat{X}(z) z^{n-1} dz$</mathjax> (contour integral). We are not going to use this
+(i.e. forget about it).</p>
+<h1>The ways we invert:</h1>
+<ul>
+<li>Inspection</li>
+</ul>
+<p>If I ask you what the inverse transform is of <mathjax>$\frac{1}{1 - \alpha
+z^{-1}}$</mathjax>, we know the result, depending on whether <mathjax>$\abs{\alpha}$</mathjax> is
+greater or smaller than <mathjax>$\abs{z}$</mathjax>.</p>
+<p>Now consider <mathjax>$\hat{X}(z) = \frac{1}{3}z - \frac{1}{2} + 2z^{-1}$</mathjax>. We can
+decompose this FIR into its contributing values.</p>
+<ul>
+<li>Power Series Method</li>
+</ul>
+<p>We can use the equivalent power series and just transform it term by term.
+(we could also get some of these via time-reversal and inspection).</p>
+<ul>
+<li>Long Division</li>
+</ul>
+<p>Recall rational transforms correspond to functions that have difference
+equations.</p>
+<p>Suppose <mathjax>$\hat{G}(z) = \frac{z}{z-1}$</mathjax>. Doing the long division the usual way
+(i.e. by <mathjax>$z-1$</mathjax>) will yield the causal signal <mathjax>$u(n)$</mathjax>. Doing long division a
+different way (i.e. by <mathjax>$1-z$</mathjax>) will yield the anticausal signal <mathjax>$-u(-n-1)$</mathjax>.</p>
+<p>The point is that you have flexibility with respect to how you do the long
+divison, and each of them will give you a different corresponding one-sided
+signal.</p>
+<p>Recall: a signal cannot be causal if its transfer function
+diverges. However, the number of samples to the left corresponds to the
+order of growth of the transfer function (as a polynomial).</p>
+<h1>Rational Transform Pole-Zero Book-keeping</h1>
+<p>Suppose I have a transfer function <mathjax>$\hat{H}(z) = \frac{A(z)}{B(z)}$</mathjax>, where
+<mathjax>$A$</mathjax> is <mathjax>$m^{th}$</mathjax> order, and <mathjax>$B$</mathjax> is <mathjax>$n^{th}$</mathjax> order. If <mathjax>$M &lt; N$</mathjax>, H is strictly
+proper. If <mathjax>$M \le N$</mathjax>, H is proper. ANd if <mathjax>$M &gt; N$</mathjax>, H is improper.</p>
+<p>For <mathjax>$M &lt; N$</mathjax>, there are <mathjax>$N$</mathjax> finite poles (counting multiplicities), <mathjax>$M$</mathjax>
+finite zeros, and <mathjax>$N-M$</mathjax> zeros at infinity.</p>
+<p>For <mathjax>$M = N$</mathjax>, there are <mathjax>$M = N$</mathjax> finite poles, <mathjax>$M = N$</mathjax> finite zeros. No
+activity at infinity.</p>
+<p>For <mathjax>$M &gt; N$</mathjax>, there are <mathjax>$M$</mathjax> finite zeros, <mathjax>$N$</mathjax> finite poles. and <mathjax>$M-N$</mathjax> poles
+at infinity.</p>
+<p>In any of these cases, the number of poles equals the number of zeros. The
+difference is always what is happening at infinity.</p>
+<h1>Back to power series</h1>
+<p><mathjax>$\hat{F}(z) = e^{\frac{1}{z}}$</mathjax>. Just use the Taylor series for the
+exponential function. Falls into place.</p>
+<h1>Partial Fraction Expansion</h1>
+<p>Again we are speaking of a rational Z-transform. You've studied partial
+fractions in calculus. It's no different here, really. However, this
+partial fraction must be proper. If not, just do long division until it's
+in that form.</p>
+<h2>Case I: Simple Poles</h2>
+<p>Best case is when all finite poles are simple (i.e. order 1).</p>
+<p>(remember: causal signal means that the RoC must be outside the outermost
+pole.)</p>
+<p>So what happens if I ignore the causality constraint and instead add the
+constraint that the signal is BIBO stable? We get a different equation,
+which is now a two-sided signal, and nothing blows up.</p>
+<p><a name='20'></a></p>
+<h1>EE 120: Signals and Systems</h1>
+<h2>April 4, 2012.</h2>
+<h1>Partial Fraction Expansions (Cont'd)</h1>
+<h2>The case of multiple poles:</h2>
+<p>Example: <mathjax>$\hat{G}(z) = \frac{z^2}{\parens{z-\frac{1}{2}}^2(z-2)}$</mathjax>.</p>
+<p>Remember, double-pole at <mathjax>$\frac{1}{2}$</mathjax> (for this, we can do the
+double-cross), and a pole at 2. How many possible regions of convergence
+can we have? 3.</p>
+<p>Now let's try to find the impulse response. Before you can do that, you
+need to break this rational transfer function into a combination of first
+and second-order terms. We're not going to carry this all the way to the
+impulse response, but we are going to break it up.</p>
+<p>Any time you have a multiple pole, you have to write the expansion in terms
+of the first order term plus the second order term (or <mathjax>$Az + B$</mathjax> in the
+numerator).</p>
+<p>The trick at the end is to differentiate and evaluate at the multiple pole.</p>
+<p>Assume causal system. Determine <mathjax>$g(n)$</mathjax>. Linear combination of the inverse
+Z-transforms, since this is a linear operator. Differentiation property to
+derive inverse transform of second term.</p>
+<h1>Transient, steady-state systems</h1>
+<h2>Steady-State and Transient Decomposition of DT-LTI System Responses</h2>
+<p>We're going to talk in this course about two ways of decomposing the
+responses of DT systems. One of these is decomposing into transient (which
+dies out in the long term) and steady-state (long-term dominant)
+components.</p>
+<p>Starting with a causal system. First-order IIR filter, single pole at the
+origin. Since <mathjax>$\alpha$</mathjax> is inside the unit circle, this system is BIBO
+stable.</p>
+<p>Simple question: here's your system h, it's got some impulse response, I
+apply a step function to it.</p>
+<p>Once again, remember that partial fraction expansion <em>requires</em> that you
+have a strictly proper fraction. You may need to pull out some of your
+zeros to make the fraction strictly proper (or do long division).</p>
+<p>The end result is the transform <mathjax>$y(n) = \frac{1}{1-\alpha} u(n) -
+\frac{\alpha}{1 - \alpha} \alpha^n u(n)$</mathjax>. The first term is our
+steady-state response. It does not go away with time. The second term is
+the transient response. It </p>
+<p>Thus we can decompose any signal into a transient portion and a
+steady-state portion.</p>
+<p><strong>If a system is BIBO-stable <em>and</em> causal, all of its poles are inside the
+unit circle.</strong></p>
+<p>Question: a BIBO-stable and causal DT-LTI system has all its poles inside
+the unit circle. Why is that?</p>
+<p>The RoC must be outside of the outermost pole (result of causality). It is
+also BIBO stable, so it must include the unit circle. Thus the outermost
+pole must be inside the unit circle, so all other poles must also be inside
+the unit circle.</p>
+<p>Transient is any part that dies out at infinity, while steady-state is
+anything that is either steady or growing. Notions of dominance (separate
+but connected closely to transient/steady-state analysis). Dominance is
+tied to the long-term behavior (i.e. which term dominates when <mathjax>$n$</mathjax> large?)</p>
+<p>Back to the original setup: <mathjax>$x(n) = u(n) \implies y(n) = \frac{\alpha}
+{\alpha-1} \alpha^n u(n) + \frac{1}{1-\alpha} u(n)$</mathjax>. What if <mathjax>$x(n) = 1$</mathjax>
+(for all time)?</p>
+<p>Since this system has settled, we have just the steady-state component.</p>
+<p>We want to get to the continuous-time story. What if the input signal is a
+constant signal 1? We get as output our steady-state result. What this
+means is that the system is unable to distinguish between the constant
+signal 1 and the unit step which kicks in at <mathjax>$n=0$</mathjax> if you wait long
+enough.</p>
+<p>All this talk about complex exponentials was really just a discussion
+regarding steady-state. Non-stable pole (always one on the unit circle),
+which is going to dominate the response.</p>
+<p>Now that you have this connection, you don't have to solve for the
+coefficient (if the system is BIBO-stable). All you have to do is figure
+out the transient portion.</p>
+<p>Deferring ZIZO until next week.</p>
+<h2>Example</h2>
+<p>Consider the causal system described by <mathjax>$y(n) = \frac{5}{6}y(n-1) -
+\frac{1}{6} y(n-2) + x(n)$</mathjax>. Determine the unit step response of the system.</p>
+<p>Transform everything. Remember that <mathjax>$\hat{H}(z) = \frac{\hat{Y}}{\hat{X}}$</mathjax>.</p>
+<p>(linear algebra approach:</p>
+<p>Looks like <mathjax>$\lambda^n$</mathjax>.</p>
+<p>Thus <mathjax>$Y^n = \frac{5}{6}Y^{n-1} - \frac{1}{6}Y^{n-2}$</mathjax>.</p>
+<p><mathjax>$$
+y^2 = \frac{5}{6}y - \frac{1}{6}y
+\\ y^2 - \frac{5}{6}y + \frac{1}{6}y = 0
+\\ y = -\frac{1}{2}, -\frac{1}{3}
+$$</mathjax></p>
+<p>These are our eigenvalues. Some linear combination of these two
+exponentials will give us our initial conditions (i.e. <mathjax>$y(0) = 1$</mathjax>, <mathjax>$y(-1) =
+y(-2) = 0$</mathjax>). That is, <mathjax>$y = a_0 \parens{-\frac{1}{2}}^n + a_1 \parens{-\frac{1}{3}}^n$</mathjax>
+)</p></div><div class='pos'></div>
+<script src='mathjax/unpacked/MathJax.js?config=default'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+  prefilterMath: function (math,displaymode,script) {
+      math = "\\displaystyle{"+math+"}";
+      return PREFILTER.call(TEX,math,displaymode,script);
+    }
+  });
+});
+
+var a  = document.getElementsByTagName('a'),
+    ll = a.length;
+if (ll > 0) {
+  var div = document.getElementsByClassName('pos')[0];
+  div.style.float = 'right';
+  div.style.position = 'fixed';
+  div.style.background = '#FFF';
+  div.style.fontSize = '90%';
+  div.style.top = '10%';
+  div.style.right = '5%';
+  for (var i = 0; i < ll; i++) {
+    div.innerHTML += '<a href="\#' + a[i].name + '">'
+                     + a[i].parentElement.nextElementSibling
+                           .nextElementSibling.innerText
+                     + '</a><br />';
+  }
+  var div = document.getElementsByClassName('wrapper')[0];
+  div.style.width = '50%';
+}
+</script>

@@ -1,16 +1,5 @@
-<script src='mathjax/unpacked/MathJax.js?config=default'></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-var TEX = MathJax.InputJax.TeX;
-var PREFILTER = TEX.prefilterMath;
-TEX.Augment({
-  prefilterMath: function (math,displaymode,script) {
-      math = "\\displaystyle{"+math+"}";
-      return PREFILTER.call(TEX,math,displaymode,script);
-    }
-  });
-});
-</script>
+<div class='wrapper'>
+<p><a name='1'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h2>Introduction -- January 17, 2012</h2>
 <h2>Course Information</h2>
@@ -130,6 +119,7 @@ not going to be a mechanism unlike anything else.</p>
 <p>Part of understanding QM is coming to terms psychologically with this
 superposition of states, the existence in more than one state
 simultaneously.</p>
+<p><a name='2'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h2>Qubits, Superposition, &amp; Measurement -- January 19, 2012</h2>
 <h2>Quantization:</h2>
@@ -214,6 +204,7 @@ principle and all).</p>
   uncertainty. Uncertainty ranges from 1 to <mathjax>$\sqrt{2}$</mathjax>.</p>
 <p>Specifically, Heisenberg's uncertainty principle: <mathjax>$S(\alpha_0) + S(\beta_0)
 \ge \sqrt{2}$</mathjax>. (<mathjax>$\alpha_0$</mathjax>, <mathjax>$\beta_0$</mathjax> correspond to a conjugate basis)</p>
+<p><a name='3'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h2>Multiple-qubit Systems -- January 24, 2012</h2>
 <p>Snafu with the projections, so lecture will be on the whiteboard! Will
@@ -243,6 +234,7 @@ of the two qubits has a definite state. All you can say is that the
 two qubits together are in a certain state.</p>
 <p>Rotational invariants of Bell states -- maximally entangled in all
 orthogonal bases.</p>
+<p><a name='4'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h2>Entanglement, EPR, Bell's Experiment -- January 26, 2012</h2>
 <p>Ignore Q4 on HW2. Probably.</p>
@@ -332,9 +324,11 @@ understand these concepts that Einstein would have given anything to
 understand. Isn't this remarkable?</p>
 <p>When you actually do these experiments, they turn out to refute the
 entire plan Einstein had.</p>
+<p><a name='5'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h2>Quantum Gates -- January 31, 2012</h2>
 <p>GATES, MORE GATES.</p>
+<p><a name='6'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h2>Revisiting Axioms of Quantum Mechanics -- Feb 2, 2012</h2>
 <p>We're going to be revisiting, over the next few lectures, the axioms
@@ -431,6 +425,7 @@ cannot be maximally entangled with multiple qubits.
 unclear. When this was happening in the early 90s, we'd spend a lot of
 time figuring these things out. It was not easy. We'll need some more
 concepts, though.</p>
+<p><a name='7'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h2>Observables, Schrodinger's equation -- Feb 7, 2012</h2>
 <h1>Observable</h1>
@@ -514,6 +509,7 @@ matrix of eigenvalues. You can check that this is a unitary matrix.</p>
 t/\hbar)$</mathjax>. Nothing to be scared by. Look, we're exponentiating a matrix,
 but that's nothing to be worried about.</p>
 <p>Suppose <mathjax>$\psi(0)$</mathjax> = <mathjax>$\ket{0}$</mathjax>, and you wanted to know <mathjax>$\psi(t)$</mathjax>.</p>
+<p><a name='8'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h2>Schrödinger's Equation -- Feb 9, 2012</h2>
 <p>Had the sense last time that some of you might not remember all of your
@@ -635,6 +631,7 @@ special conditions of the system, but rather generally.</p>
 be a linear function of H (aH + b), b must be 0, and a must be a constant
 (in fact, Planck's constant).</p>
 <p>Symmetry plays a very strong role in the way this comes about.</p>
+<p><a name='9'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h2>Continuous Quantum States, Free particle in 1D, Heisenberg Relation</h2>
 <h2>Feb 14, 2012</h2>
@@ -740,6 +737,7 @@ functions. So if you want to go from the position basis to the momentum
 basis, you take a Fourier transform. In other words, this is roughly
 equivalent to what we do when we go from the sign basis to the bit basis,
 or vice versa (what a Hadamard gate does).</p>
+<p><a name='10'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h2>Free particles, Uncertainty, Quantization</h2>
 <h2>Feb 21, 2012</h2>
@@ -829,6 +827,7 @@ time dependence as an afterthought (to each eigenvector).</p>
 <h1>COMING UP</h1>
 <p>We'll solve this problem using this very strategy. We know what the
 eventual answer looks like: ∑e^{-iEt/ℏ}|ψ(x)〉</p>
+<p><a name='11'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h2>Quantization, Particle in a box, Implementing Qubits</h2>
 <h2>Feb 23, 2012</h2>
@@ -960,6 +959,7 @@ is normalized. use the <mathjax>$\int (sin^2 + cos^2) = 2\int (sin^2)$</mathjax>
 see how to implement a qubit. To implement a qubit, you would restrict the
 energy to be small enough to be in the first two modes. And then you would
 let zero be one qubit and one be the other.</p>
+<p><a name='12'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h1>Quantum Algorithms</h1>
 <h2>Feb 28, 2012</h2>
@@ -1109,6 +1109,7 @@ the sign basis (namely, between conjugate bases). This is our quantum
 Fourier transform, most likely.</p>
 <p>What we'll do next time is understand the transformation corresponding to
 performing a Hadamard on every individual qubit.</p>
+<p><a name='13'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h1>Quantum Algorithms</h1>
 <h2>Mar 1, 2012</h2>
@@ -1126,6 +1127,7 @@ n}$</mathjax> (an n-fold tensor product of 1-fold Hadamards). Suppose <mathjax>$
 n}\ket{0^n}$</mathjax>. What's the output? <mathjax>$\sum_{\ket{x}\in \{0,1\}^n} \frac{1}
 {\sqrt{2}^n}\ket{x}$</mathjax>. Suppose <mathjax>$u$</mathjax> is some n-bit string. Now what's the
 output?</p>
+<p><a name='14'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h1>Quantum Algorithms</h1>
 <h2>Mar 6, 2012</h2>
@@ -1222,6 +1224,7 @@ wanted to measure it, one way to measure it would be to throw it away and
 never interact with it again.</p>
 <p>Claim: Measuring in the standard basis is equivalent to doing a CNOT, and
 then continuing.</p>
+<p><a name='15'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h1>Simon's Algorithm</h1>
 <h2>Mar 8, 2012</h2>
@@ -1284,6 +1287,7 @@ that our output is a random <mathjax>$y$</mathjax> such that <mathjax>$y \cdot s
 \frac{1}{\sqrt{2}}(-1)^{s \ cdot y}$</mathjax>. Now, we can see that this is equal to
 zero if <mathjax>$s \cdot y = 1$</mathjax> and two if <mathjax>$s \cdot y = 0$</mathjax>. Therefore the only
 values remaining in this superposition are those such that <mathjax>$s \cdot y = 0$</mathjax>.</p>
+<p><a name='16'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h1>Quantum Algorithms</h1>
 <h2>Mar 13, 2012</h2>
@@ -1338,6 +1342,7 @@ sometimes, if you see things too slowly, it's hard to understand. So next
 time, I'll work hard to make sure that you see the big picture. So if
 there's one lecture where you come in and think that you're going to be
 fully alert, next time should be it.</p>
+<p><a name='17'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h1>Quantum Factoring</h1>
 <h2>Mar 15, 2012</h2>
@@ -1438,6 +1443,7 @@ the gcd... and eventually, from the subroutine, we get r.</p>
 <p>Note that what we stressed here was the quantum part of this algorithm. If
 you wish, you can see the details of the modular arithmetic: chapter 0
 in CS170 text. For those of you who have the background, last chapter.</p>
+<p><a name='18'></a></p>
 <h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
 <h1>Quantum Search</h1>
 <h2>Mar 20, 2012</h2>
@@ -1521,3 +1527,228 @@ something we can implement classically, so this is not a problem -- then we
 can feed this into our conditional phase flip.</p>
 <p>The important thing about these algorithms is that they have special
 structure, and so they have small corresponding quantum circuits.</p>
+<p><a name='19'></a></p>
+<h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
+<h1>Guest lectures: implementation of qubits</h1>
+<h2>April 3, 2012</h2>
+<p>Kevin Young: kcyoung@berkeley.edu</p>
+<p>We'll start with how to implement qubits using spins, and eventually culminate in
+NMR.</p>
+<p>Today, what we're going to do is start looking at physical implementations
+of QC. Will continue through the end of next week. How to build an actual
+physical quantum computer. Implementation choice: NMR (one of first QC
+where a quantum algorithm was demonstrated).</p>
+<p>Start with basics, i.e. fundamental building blocks: spin qubits. Approach:
+start with experiments people did quite a while ago, back when people were
+still trying to understand QM, what systems were quantized. The experiments
+we're going to look at, we're going to use their results to build up a
+physical theory and apply this theory to qubits. We're going to look at how
+this gives us nice pictures to use.</p>
+<p>Ultimate goal of lecture: understand how to write down the state and work
+with the state of a two-level system.</p>
+<p>We're going to start out with some experimental results, assuming we know
+enough QM to push us along a little bit: understand quantum states and how
+they work. Not going to necessarily understand right away what quantum
+model we can use to describe these experiments.</p>
+<p>Backdrop: look at experiment called the Stern-Gerlach device. Conflicting
+theories about how magnetic field of small atoms should behave. Two
+theories. One: electrons should act like little tiny bar magnets ("bar
+magnet theory") -- one feature: these acted like classical bar magnets --
+magnetic dipoles that can be oriented arbitrarily in a magnetic field. Two:
+in light of all this new QM, in the presence of a magnetic field, then this
+bar magnet should only take one of two possible directions: up and down
+(quantum theory).</p>
+<p>Simple experiment: looking at how classical bar magnets behave in magnetic
+fields. Background: if I put a bar magnet in a magnetic field, the
+classical description corresponds to how much energy it has depending on
+its orientation. Since bar magnets like to align with magnetic fields, you
+can write down that energy <mathjax>$U = -\vec{\mu} \cdot \vec{B}$</mathjax>. B is the
+magnetic field; <mathjax>$\mu$</mathjax> is the magnetic dipole moment. If parallel, we have a
+relative energy of -1, and if antiparallel, we have a relative energy of 1
+(relatively high energy). Shows that dipole likes to be aligned with
+magnetic field.</p>
+<p>What Stern and Gerlach noticed was that we can separate out parallel from
+antiparallel by making the magnetic field not constant. The magnetic moment
+is aligned with the field, so in this case, energy is just <mathjax>$-\mu B$</mathjax>. So the
+energy will go down if magnetic field goes up. Reasoning: objects want to
+move to lower potentials. Wants to bend toward area where potential energy
+is lower. If dipole is pointed up, it'll move and point down.</p>
+<p>Now let's say we had an oven, and by saying it's an oven, we mean that it
+just spits out a continuous stream of these quantum or classical dipoles of
+totally random spins (as random as the theory will allow), and we connect
+the output of this oven to a SG machine. Let's say we have quantum dipoles
+coming out of that oven. In the quantum model, on the screen, we will see
+two points (for the most part). The classical theory predicts a continuous
+distribution.</p>
+<p>Saw two peaks.</p>
+<p>Reasoning for the classical result to not be flat: orientation is uniformly
+chosen from points on unit sphere.</p>
+<p>Argument of Summerfeld (quantum theory): wrong theory, but correct results.</p>
+<p>So more playing around with SG experiment. Oven spits out these completely
+random quantum particles. And then it hits this device. One of the things
+we need to do is give it a label corresponding to direction of magnetic
+field. We can label this by <mathjax>$\hat{n}$</mathjax>. What we're going to get out is two
+beams. We're going to label these two beams the same way we labeled the SG
+device. We'll label the top one using some quantum notation we've already
+learned. For now, we'll call these <mathjax>$\ket{\hat{n}^+}$</mathjax> and
+<mathjax>$\ket{\hat{n}^-}$</mathjax>. Check if these are appropriate labels by feeding into a
+second SG device, also pointing the same direction.</p>
+<p>Saw only one beam coming out in the same direction as the other one. This
+is a little bit affirming. I can do an experiment that is effectively
+measuring something: the alignment (or anti-alignment) with the field lines
+of the box. Measurements; since we measure again in the same basis, we get
+the same result.</p>
+<p>Nice, interesting result, but now let's change the situation again. Now we
+have <mathjax>$\hat{n}$</mathjax>, and we only let <mathjax>$\ket{\hat{n^+}}$</mathjax> through. Now this second
+box is pointed in a different direction. What do we get if m is very close
+to n?  <mathjax>$\ket{\hat{m}^+$</mathjax> is very bright (relatively). Probability of <mathjax>$+$</mathjax> is
+<mathjax>$\frac{1}{2}(1 + \hat{m} \cdot \hat{n})$</mathjax>, and probability of <mathjax>$n$</mathjax> is
+<mathjax>$\frac{1}{2}(1 - \hat{m} \cdot \hat{n})$</mathjax>. How do we find probabilities in
+QM? Squared inner product.</p>
+<p>These equations relate the experiment to a theory we haven't figured out
+yet. So we need to figure out a way to describe this. SG as entangling
+degrees of freedom.</p>
+<p>So: back to what we were talking about before. Must build physical theory
+that is consistent with these relationships. One thing we haven't done yet:
+(we know these things are quantum states) decide dimensionality. We can
+always write these as vectors, but how many numbers are we going to need to
+describe these. We need two numbers to describe the points on a
+2-sphere. Fundamental: only got two answers out. The simplest picture that
+you could imagine is that you have a 2-level quantum system. If all of your
+experiments could be described by two outputs, then the first thing that it
+might be worth trying is describing this quantum state with a
+2-vector. Could be wrong, but it's a good place to start.</p>
+<p>In physics we really like things that are up and down, so we'll give these
+special names. Instead of calling these <mathjax>$\ket{z^+}$</mathjax> and <mathjax>$\ket{z^-}$</mathjax>, we'll
+call these <mathjax>$\ket{0}$</mathjax> and <mathjax>$\ket{1}$</mathjax>. Represent all these <mathjax>$\hat{n}$</mathjax> states in
+terms of <mathjax>$\ket{0}$</mathjax> and <mathjax>$\ket{1}$</mathjax>. We know that if in fact our system is a
+2-dimensional quantum system, <mathjax>$\hat{n} = \alpha\ket{0} + \beta\ket{1}$</mathjax>. So
+what we're going to figure out is if we can determine <mathjax>$\alpha,
+\beta$</mathjax>. Something useful: go back to polar (spherical) coords. What we're
+going to do now is see if we can figure out something about <mathjax>$\alpha$</mathjax>,
+<mathjax>$\beta$</mathjax>. We know that if we choose <mathjax>$\ket{0}$</mathjax>, then <mathjax>$\ket{0} \equiv
+\ket{z^+}$</mathjax>. (z is direction SG device points). We want to see if we can
+write <mathjax>$\ket{n^+}$</mathjax> in terms of zeros and ones.</p>
+<p>Working out the math, we get <mathjax>$\abs{\alpha} = \cos\frac{\theta}{2},
+\abs{\beta} = \sin\frac{\theta}{2}$</mathjax>. However, we don't have phases
+(yet).</p>
+<p>Note that we don't care about absolute phases; relative phases are all that
+actually matter (reasoning: we can multiply through by some complex
+exponential to cancel out the phase on one term).</p>
+<p>Let's say that an x SG device is moving, and it hits a y SG device, and it
+outputs <mathjax>$\ket{y^+}, \ket{y^-}$</mathjax>. Only difference between these states is
+the absolute phase (rather, the relative phase between the two states).</p>
+<p>Working out the math (once again), we get <mathjax>$\frac{1}{2}\parens{1 +
+\cos(\lambda_y - \lambda_x)} = \frac{1}{2}$</mathjax>, so <mathjax>$\lambda_y, \lambda_x$</mathjax> are
+perpendicular (relative phase is <mathjax>$\frac{\pi}{2}$</mathjax>).</p>
+<p>What this tells me is that I can represent any quantum state as a unit
+vector. So if I have some state <mathjax>$\ket{n^+}$</mathjax>, I can associate it with a point on
+a unit sphere. This picture also tells me that <mathjax>$\ket{n^-}$</mathjax> is the opposite
+point on the sphere. Orthogonal states correspond to antiparallel vectors
+(antipodal points).</p>
+<p><a name='20'></a></p>
+<h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
+<h1>Guest lectures: implementation of qubits</h1>
+<h2>April 5, 2012</h2>
+<p>Recap: last time, we covered SG machines and the possibility of expressing
+states as points on an n-sphere (by specifying n angles). Punchline:
+one-to-one correspondence between states in a two-level system and points
+on the 2-sphere.</p>
+<p>One of the things we did on Tuesday was send these states through devices
+that measured their states. Summarizing all we know about measurements: if
+we can talk about some measurement (that corresponds to a Hermitian
+operator), and we have some device that takes some unknown state
+<mathjax>$\ket{\psi}$</mathjax> and output two beams that are orthogonal (on the Bloch-sphere,
+these are antipodal points); if I repeat the same measurement immediately,
+then we'll get the same result.</p>
+<p>A measurement corresponds to a Hermitian operator, and each measurement
+outcome is one of the eigenvalues of that operator. Why do we consider
+Hermitian operators? Diagonalizable with orthonormal eigenbasis
+corresponding to real eigenvalues (i.e. spectral theorem).</p>
+<p>What we want to do is construct a matrix to represent this measurement. We
+first need some sort of matrix representation of our kets. Taking advantage
+of the fact that we have Hermitian operators, some operator Q always has a
+diagonalization <mathjax>$SDS^\dag$</mathjax>.</p>
+<p>(constructing the bit flip (NOT) gate X, which was most of a problem on the
+QM midterm yesterday :D)</p>
+<p>One thing that's going to be on your homework is that <mathjax>$S(\hat{n})
+\ket{\hat{n}}$</mathjax> is going to be the matrix that returns +1 for</p>
+<p>Pauli matrices <mathjax>$Z = \begin{pmatrix}1 &amp; 0 \\ 0 &amp; -1\end{pmatrix}$</mathjax>, <mathjax>$X =
+\begin{pmatrix}0 &amp; 1\\ 1 &amp; 0\end{pmatrix}$</mathjax>, <mathjax>$Y = \begin{pmatrix}0 &amp; -i\\ i
+&amp; 0 \end{pmatrix}$</mathjax>.</p>
+<p>Physicists refer to these as <mathjax>$\sigma_x, \sigma_y, \sigma_z$</mathjax>. These
+correspond to some way of measuring the spin. If I send some random state
+through here, I can figure out the expectation value of that state using
+these operators. Let's say I have some state <mathjax>$\hat{n}$</mathjax>, and I stick it
+through the Z block. I'm going to get out some zeros and some ones. I
+learned from experiment that the probability of getting zero is
+<mathjax>$\frac{1}{2}(1 + \hat{n} \cdot \vec{z})$</mathjax>, etc.</p>
+<p>(<mathjax>$\vec{S} \equiv \hat{X}\ket{0} + \hat{Y}\ket{1} + \hat{Z}\ket{2}$</mathjax>; it's a
+vector of matrices)</p>
+<p>Expectation we can calculate in one of several ways: <mathjax>$\sum_i \prob{x_i}
+x_i$</mathjax>; <mathjax>$\braKet{\hat{n}}{Z}{\hat{n}}$</mathjax>. They give the same answer, which is
+encouraging.</p>
+<p>We can start to write the (quantum) Hamiltonian of the system with
+electrons in a magnetic field: <mathjax>$\mu B \cos\theta$</mathjax>. We're assuming <mathjax>$\mu, B$</mathjax>
+constant. Considering the Hamiltonian to be <mathjax>$-\mu B\hat{Z}$</mathjax>, the
+expectation value is certainly what we expect, so we'll go into a more
+advanced case: <mathjax>$H = -\mu \vec{B} \cdot \vec{S}$</mathjax>. In physics, for an
+electron, this is the Bohr magneton <mathjax>$-\frac{e\hbar}{2m}$</mathjax>, so it's
+negative. NMR uses radio waves; electron spin radiance uses
+microwaves. This is just due to the difference in the magneton.</p>
+<p>This in a way corresponds to a classical description. The thing is to see
+how that Hamiltonian affects states.</p>
+<p><mathjax>$H = -\mu_0 B_0 Z$</mathjax>. What describes time evolution of a quantum system?
+Time-dependent SE. Solution is <mathjax>$\Psi(t) = \exp(-\frac{i}{\hbar} H t)
+\ket{\Psi(0)}$</mathjax>. What this means is that <mathjax>$\ket{\Psi(t + dt)} = (1 -
+\frac{i}{\hbar} H dt) \ket{\Psi}$</mathjax>. Taylor series tends to be a terrible way
+to exponentiate matrices, since the radius of convergence is really
+small. However, we get lucky because these are Hermitian matrices, so they
+are diagonalizable with real eigenvalues, which is easy to do quickly.</p>
+<p>Pauli matrices are especially nice in that they actually alternate between
+themselves and the identity. This has interesting results: <mathjax>$e^{i\theta
+X} = I\cos\theta + iX\sin\theta$</mathjax>; <mathjax>$e^{i\theta \hat{n} \cdot \vec{S}} = I \cos
+theta + i(\hat{n} \cdot \vec{S})\cos\theta$</mathjax>. This shows up a lot since
+physicists tend to pick magnetic field as Z. Originally devised by Zeeman,
+so it'll often be known as the Zeeman Hamiltonian or the Zeeman effect.</p>
+<p>The system precesses. This misbehavior is analogous to internal angular
+momentum in classical mechanics.</p>
+<p>Peculiar property of fermions (half-integer spins). Requires two
+revolutions. (twists relative to the universe?) At this level, easiest to
+understand as the cost of having this nice physical picture. We're really
+doing rotations on complex vector spaces.</p>
+<p>Limitation of this picture is that it's only half of the representations we
+can do in the complex space.</p></div><div class='pos'></div>
+<script src='mathjax/unpacked/MathJax.js?config=default'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+  prefilterMath: function (math,displaymode,script) {
+      math = "\\displaystyle{"+math+"}";
+      return PREFILTER.call(TEX,math,displaymode,script);
+    }
+  });
+});
+
+var a  = document.getElementsByTagName('a'),
+    ll = a.length;
+if (ll > 0) {
+  var div = document.getElementsByClassName('pos')[0];
+  div.style.float = 'right';
+  div.style.position = 'fixed';
+  div.style.background = '#FFF';
+  div.style.fontSize = '90%';
+  div.style.top = '10%';
+  div.style.right = '5%';
+  for (var i = 0; i < ll; i++) {
+    div.innerHTML += '<a href="\#' + a[i].name + '">'
+                     + a[i].parentElement.nextElementSibling
+                           .nextElementSibling.innerText
+                     + '</a><br />';
+  }
+  var div = document.getElementsByClassName('wrapper')[0];
+  div.style.width = '50%';
+}
+</script>

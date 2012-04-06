@@ -1,3 +1,5 @@
+<a name='1'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 January 18, 2012
@@ -67,6 +69,8 @@ Clickers:
 
 [ note to self: 277 Cory ]
 
+<a name='2'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 Kinetic Theory 1 / Probabilities. January 23, 2012
@@ -126,6 +130,8 @@ Entropy as a measure of the state of disorder of a system. Modern
 definition: $\sigma = -\sum p_i \log p_i$. 0 if in one state, max if flat
 distribution.
 
+<a name='3'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 Kinetic Theory 2 / Probabilities. January 25, 2012
@@ -177,6 +183,8 @@ add up to 1. Probabilities cannot be negative.
  * Actually a lie.
 
 Moments. Stuff.
+
+<a name='4'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -269,6 +277,8 @@ space. Hence for a sum, the characteristic functions multiply and the logs
 of characteristic functions add.
 
 Central limit theorem: Cool if our variables actually are independent.
+
+<a name='5'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -378,6 +388,8 @@ That's just a particle in a box. If you ask yourself what is the momentum
 of this particle, this particle is actually a series of two momenta. It
 does not have a well-defined momentum, since it is going back and forth.
 
+<a name='6'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 Entropy and Stuff. Feb 1, 2012
@@ -481,6 +493,8 @@ divergence in more than one state.
 
 Stirling approximation: number of states goes to a Gaussian.
 
+<a name='7'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 Entropy and Stuff. Feb 3, 2012
@@ -537,6 +551,8 @@ $\tau = \pderiv{U}{\sigma(V, \sigma, N)} = \frac{2U}{3N} \iff U =
 \frac{3NkT}{2}$.
 
 $p = -\pderiv{U(V, \sigma, N)}{V} = \frac{2U}{3V} \iff pV = N\tau ≡ NkT$.
+
+<a name='8'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -604,6 +620,8 @@ $\delta$ has dimension of $\frac{1}{p}$. $\int \delta(x)dp = 1$
 
 Sackur Tetrode formula: entropy of an ideal gas. $\frac{S}{k} =
 N(\log(\frac{n_Q}{n}) + 5/2)$
+
+<a name='9'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -673,6 +691,8 @@ $$
 \\ \pderiv{\sigma_1}{U_1} = \pderiv{\sigma_2}{U_2}.
 \frac{1}{\tau_1} = \frac{1}{\tau_2}.
 $$
+
+<a name='10'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -784,6 +804,8 @@ ideal gas: not valid close to absolute zero. For that matter, Sackur
 Tetrode is not valid at absolute zero. The classical approximation breaks
 down when $n > n_Q$.
 
+<a name='11'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 Macroscopic Thermodynamics. Feb 13, 2012
@@ -830,6 +852,8 @@ Working through the math,
 Specific heats: ∂Q/∂T while holding various parameters constant.
 
 Adiabatic vs. isothermal expansion. γ ≡ C{p}/C{v}.
+
+<a name='12'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -905,6 +929,8 @@ dU = C{v}dτ + (τ∂P/∂τ - P)dV
 Example van der Waals gas (particle interactions):
 (P + a/v²)(v-b) = k{B}N{A}τ (v ≡ V/ν
 
+<a name='13'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 Applications of Classical Thermodynamics. Feb 17, 2012
@@ -942,6 +968,8 @@ engine is maximally efficient, given τ₁, τ₂. (q₂/q₁ ≤ τ₂/τ₁)
 Joule-Thomson process: H = U + PV ⇒ H₁ = H₂ if dQ = 0.
 μ ≡ V/C{p} (τ\alpha - 1)
 
+<a name='14'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 Chemical Potential. Feb 22, 2012
@@ -972,6 +1000,8 @@ Chemical Potential. Feb 22, 2012
 
 Most common state is such that the sum of chemical potentials is equal to
 zero. $\mu_{i} = \tau \log (n/n_{Q_i})$.
+
+<a name='15'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -1043,6 +1073,8 @@ temperature, the two states are equiprobable with 50%.
 The second example we will take is the Maxwell distribution, where a
 particle in a gas in contact with a reservoir (which can be the rest of the
 gas). To be continued on Wednesday.
+
+<a name='16'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -1144,6 +1176,8 @@ A very powerful tool. More technical, but important.
 5.3 Fluctuations
 ================
 
+<a name='17'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 Partition Function. Mar 2, 2012
@@ -1231,6 +1265,8 @@ error we accumulate is due to fewer terms appearing in the sum.
 
 In other words, we have very weak correlation coefficients.
 
+<a name='18'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 Ideal gas, Gibbs distribution: Mar 5, 2012
@@ -1316,6 +1352,8 @@ Gibbs Distribution
 ==================
 Exchange not only energy, but also particles.
 
+<a name='19'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 Gibbs Distribution: Mar 7, 2012
@@ -1388,6 +1426,8 @@ $-\epsilon$)
 Ionized impurities in a semiconductor: K&K p370. Doping. Donor: tends to
 have one more electron; acceptor: tends to have one fewer electron. $\mu$
 (Fermi level) determined by electron concentration in semiconductor.
+
+<a name='20'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -1497,6 +1537,8 @@ So we say that the Bosons like to travel in flux.
 
 Physicist joke: astronomers are fermions, particle physicists are bosons.
 
+<a name='21'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 What is Minimized; Black Body: Mar 12, 2012
@@ -1603,6 +1645,8 @@ interested in the direction of the photons, we integrate on solid angle and
 we get $u_\omega d\omega = u_vdv = \frac{\8\pi hv^3dv}{c^3(\exp(hv/\tau) -
 1)$. I would like you to be able to derive this from first principles,
 rather than rote memorization.
+
+<a name='22'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -1729,6 +1773,8 @@ of number of states using quantum numbers. Of course, same result.
 Flux through an aperture. Do not forget cosine factor: volume of oblique
 cylinder is $cdtdA\cos\theta$.
 
+<a name='23'></a>
+
 Physics 112: Statistical Mechanics
 ==================================
 Black Body: Mar 16, 2012
@@ -1821,6 +1867,8 @@ d\omega$, which comes directly from the counting of states. Since $\omega$
 is of the order of $\frac{\tau}{\hbar}$, we get here that the number goes
 as $T^3$. Of course, when I'm looking at energy, I have one extra factor of
 temperature ($\tau \equiv k_B T$), and that's where $T^4$ comes in.
+
+<a name='24'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -1947,6 +1995,8 @@ If we have something that is diffraction-limited, then $\Delta \theta \sim
 situations in astronomy. We'll do that rapidly at the beginning of next
 lecture. I will also probably speak about phonons on Friday, and we'll see
 if we can start the Fermi-Dirac/Bose-Einstein.
+
+<a name='25'></a>
 
 Physics 112: Statistical Mechanics
 ==================================
@@ -2101,3 +2151,370 @@ $2\tau d\nu$ (independent of area of object since this is a diffuse object,
 and we are diffraction-limited). So the amount of power received is just
 $\tau$; $k_B T$. Antenna temperature is just amount of power at low
 frequency.
+
+<a name='26'></a>
+
+Physics 112: Statistical Mechanics
+==================================
+Phonons, Quantum gases: April 2, 2012
+=====================================
+
+We have the third midterm a week from Friday. It will cover material up
+through Friday's lecture.
+
+So, phonons are vibrations in a crystal and are quantized. This means that
+as before, $\epsilon_1 = \hbar\omega$, and $\epsilon_\omega =
+\avg{s_\omega}\hbar\omega$. If you look at the dispersion relations,
+plotting energy and momentum, $\omega, k$ (proportional by a $\hbar$
+factor), in crystals there are three acoustic modes. To a first order, they
+are linear at very low energy.
+
+We will make some approximation, forget that they are of different
+velocities, and just consider all the photons to have the same velocity. So
+we will say the energy $E = p c_s$. Typically, this velocity is of the
+order of a few kilometers per second, which is roughly $10^{-5}c$. There is
+one detail we need to take into account: a crystal is not a continuous
+medium. If I'm speaking of transverse phonons, I can move the atoms
+transversely, and this corresponds to a certain wavelength and
+momentum. It's clear that wavelengths that are too short are equivalent to
+a much longer wavelength: you forget about the oscillations between the
+particles. Thus $k = \frac{p}{\hbar} \le \frac{a}{\pi} = k_D$. There is a limit
+which is $\frac{\hbar\pi}{a}$, which is called the Debye limit. The viable
+region, therefore, is known as the Brillom zone. The corresponding
+frequency is $\omega_D = \frac{a}{\pi}c_s$.
+
+One way of thinking about it: suppose I have a crystal with N atoms, each
+of which can move in three directions. I therefore have 3N degrees of
+freedom. So the sum from 0 to the Debye limit of my density of states,
+multiplied by the three polarizations, has to be equal to 3N. If you work
+out the computation (done in the notes, with spherical approximation), we
+get $c_s (6\pi^2 \frac{N}{V})^{1/3}$. This is slightly different from what
+you should get, but this is merely a result of the spherical approximation.
+
+The thing you just should remember is that there is a limit in the energy
+up to the momentum due to the fact that this is not a continuous medium.
+
+So: is the Debye temperature $\theta = \frac{\hbar\omega_D}{k_B}$ useful?
+Evidently not. In the case of photons, I will get the mean occuplation
+number as $\frac{1}{\exp(\hbar\omega/\tau) - 1}$. These are bosons, and
+chemical potential is zero because they can disappear at the walls. If I
+have a small temperature, I will excite low-energy phonons. At low
+temperature, same results as the black body but replacing $c$ by $c_s
+\approx 10^{-5} c$. In particular, $U = 3\int d^3 x \int_0^{p_D} \frac{d^3
+p}{h^3} \frac{1}{\exp(\hbar\omega/\tau) - 1}$, and I will have a similar
+result where $U$ goes as $T^4$, except we have three degrees of freedom as
+opposed to two, and the velocity is different. $C \propto \frac{1}{c_s^3}
+T^3$, $\sigma \sim \frac{1}{c_s^3} T^3$, $\avg{N_p} \sim \frac{1}{c_s^3}
+T^3$. What you can show easily (which I will not do in detail) is that $U
+\propto N\expfrac{T}{T_D}{4}$, and that $C \propto \expfrac{T}{T_D}{3}$.
+
+Consequences: with a very small heat capacity, we can measure very small
+energies with large temperatures.
+
+We are sensitive enough to measure the difference in temperature of the
+crystal when we look at some very distant, very faint radiation. These are
+among the most sensitive instruments you can imagine, and this is because
+the heat capacity plummets at very low temperatures. Okay, so probably
+enough. The phonons behave essentially exactly as the photons. The velocity
+of sound is roughly $10^{-5} c$, and there are three polarizations. Else,
+almost everything else applies. The fact that we have a limit in the
+momentum of the phonons due to the fact that the crystal is not continuous,
+is irrelevant at low temperatures.
+
+Do the calculation once; nothing is difficult.
+
+Let us speak about quantum gases. This is the last chapter, which is really
+at the core of the course. So let's just summarize what we did: we
+basically started from the H theorem (microcanonical methods of counting
+states). We can physically deduce all of thermodynamics. But you would
+agree that counting states (especially when you impose restrictions) is
+actually not very easy. So there was the trick that Boltzmann had invented,
+which was to put the system in equilibrium with a reservoir. The whole
+ensemble (reservoir + system) was isolated. We could apply once and for all
+the microcanonical method, and we got that the probability of a certain
+state of energy was $e^{-\epsilon/\tau}$.
+
+We could generalize this with Gibbs if the number of particles was not
+constant, i.e. the grand canonical method, where the probability of states
+goes as $e^{-\frac{\epsilon-\mu}{\tau}N}$. What we then derived (either
+from Boltzmann or Gibbs) was the black body radiation, where the average
+number of photons $\avg{s}$ was $\frac{1}{\exp(\hbar\omega/\tau) - 1}$. I
+would now like to use this method, but for particles where $\mu \neq 0$. So
+we derived that the mean number of particles in a state of energy
+$\epsilon$ was $\frac{1}{\exp((\epsilon-\mu)/\tau) \pm 1}$. Remember that
+fermions don't blow up at $\epsilon - \mu = 0$.
+
+There is something we will speak about, the Bose-Einstein condensation,
+which is due to the fact that this fraction actually diverges.
+
+skip density of states. How do we determine chemical potential? We compute
+the mean number of particles. How do we compute this number? Integrate the
+product of the average value with the density of states.
+
+<a name='27'></a>
+
+Physics 112: Statistical Mechanics
+==================================
+Fermi-Dirac/Bose-Einstein: April 4, 2012
+========================================
+No housekeeping.
+
+Focus on density of states to be sure that this concept is ingrained in
+your minds by now. Focus on Fermi-Dirac and basically what we will see is
+that normal operating temperatures, $\tau \ll \mu$. There are a number of
+interesting approximations we can make which allow us to make these
+calculations.
+
+Once again: recall that the minus sign in the Bose-Einstein distribution is
+responsible for the Bose-Einstein condensation, which we will cover. There
+is no divergence for the Bose-Einstein distribution because $\mu$ is
+slightly negative, so we don't have to worry about the case where they are
+equal.
+
+Density of States
+=================
+
+We have $\avg{s(\epsilon)} = \frac{1}{\exp\parens{\frac{\epsilon -
+\mu}{\tau}} \pm 1}$. What we have to do is sum over $g_i \avg{
+s(\epsilon_i)}$. As we get further, the density of states increases. In
+that case, we can replace this sum with an integral approximation (in
+particular at small energy): $\int_0^\infty g(i) \avg{s(\epsilon)} D(s)
+d\epsilon$. For Fermi-Dirac it does not matter much (since there are few
+states of small energy, but Bose-Einstein it will matter. Therefore this
+only holds for large $\epsilon$.
+
+We know that in phase space, the number of spatial quantum states
+(orbitals) is $\frac{d^3 x d^3 p}{h^3}$. I will need to multiply by some
+kind of degeneracy factor $g$ (e.g. number of spin states: for an electron,
+this would be equal to 2).
+
+In order to go to $\epsilon$, I will have to integrate over space and the
+angles and make the change of variables from p to $\omega$. Thus we have
+$\frac{g}{h^3}\int_{\text{space}} d^3 x \int_{\text{angles}} p^2 dp d\Omega
+= \frac{4\pi g V}{h^3}p^2 dp = \frac{gV p^2 dp}{2\pi^2 \hbar^3}$. Now we
+must distinguish between two cases.
+
+Non-relativistic ($\epsilon = \frac{p^2}{2m} \implies p =
+\sqrt{2m\epsilon}$). Most of literature does not put volume in density of
+states, since that is a trivial factor in front.
+
+We can replace our $p^2$ by $2m\epsilon$ and $dp$ by $\sqrt{\frac{m}
+{2\epsilon}}$, so we now have $D(\epsilon) d\epsilon = \frac{g}{4\pi^2}
+\expfrac{2m}{\hbar^2}{3/2} \sqrt{\epsilon} d\epsilon$. If in two
+dimensions, instead of $p^2 dp$ we would have $pdp$, which means that it is
+constant.
+
+In general, we are relativistic, and so $\epsilon = \sqrt{pc^2 +
+m^2c^4}$. If we are ultrarelativistic, $\epsilon = pc$. If you do the
+calculation for the ultrarelativistic case, it goes as $\epsilon
+d\epsilon$.
+
+Recall: we determine $\mu$ by computing the mean number of particles.
+That is, $V\int_0^\infty \avg{s(\epsilon)} D(\epsilon d\epsilon$ (with this
+convention). It does not really matter; just stick to _one_ convention. The
+number of states is always proportional to the volume: comes from the $d^3
+x$.
+
+One interesting thing is that this gives us in the limit of small
+occupation number the result of the Boltzmann distribution. In the case
+where $\epsilon - \mu$ close to 0, then we have degeneracy, and this is a
+fully quantum gas.
+
+Number of particles is just a sum over energies of occupation number
+multiplied by density of states (as we've determined previously). SO that's
+a way you can determine $\mu$: $\mu(\tau)$ is set by the requirement that N
+is the total number of particles. ($\neq$ black body $N_\gamma \alpha
+\tau^3$ -- you will have to do this integral using ultrarelativistic density
+of states).
+
+The energy is also triial to get: $U = \avg{\epsilon} = V \int_0^\infty
+\frac{\epsilon D(\epsilon) d\epsilon}{\exp\parens{\frac{\epsilon -
+\mu}{\tau}} \pm 1}$. You will get the classical case only if you neglect
+the $\pm 1$.
+
+The entropy is not a particularly useful expression, except that for
+Fermi-Dirac, it only appears in the region of the chemical potential and
+goes back to zero. There is no disorder where $\avg{s} = 1$, and there is
+no disorder in states that are empty. This is a theme with Fermi-Dirac: all
+the action is around the chemical potential.
+
+Similar things happen for the Bose-Einstein, but we'll come back to that.
+
+So: for Fermi-Dirac, for $\tau = 0$, we have a perfectly square
+distribution. In that case, we can trivially do the calculations: $N = V
+\int_0^\mu D(\epsilon) d\epsilon$.
+
+Let's first consider a nonrelativistic gas. In that gas, $D(\epsilon) =
+\frac{g}{4\pi^2} \expfrac{2m}{\hbar^2}{3/2}\sqrt{\epsilon}d\epsilon$. I can
+put that back into our expression, and we get $VA \frac{2\mu^{3/2}}{3}$.
+
+$\mu(\tau = 0) = \epsilon_F = \text{Fermi energy}$. This goes as $\expfrac
+{N}{V}{2/3} \equiv n^{2/3}$. If you take the density of free electrons in a
+metal, $\epsilon_F \sim 5\text{ eV} \to \sim 4 \cdot 10^4 \text{ K}$. By
+the time I am finished, I am obliged to require my electrons to have a
+fairly large energy. Velocities on the order of $.003c$. This is just a
+result of the Pauli exclusion principle. This I would like you to know
+this. As a consequence, $4 \cdot 10^4 \gg \text{ lab temperature}$. This
+approximation is quite good, in practice. So we are very close to a square
+distribution.
+
+So once I have the chemical potential, I can compute the energy, $U =
+\int_0^{\epsilon_f} \epsilon D(\epsilon) d\epsilon$. I will have to
+integrate $\epsilon^{3/2}$, so, if you do the math, this will give
+$\frac{3}{5} N \epsilon_F = F$ -- no disorder. I can laso compute $p =
+-\pderiv{F(\sigma, \tau, V)}{V} = \frac{2}{5} n \epsilon_F$ ($\sigma = 0$,
+constant $\tau$).
+
+If you are ultrarelativistic, you can do the same calculation, but you get
+different coefficients and formulae. Does not matter; these are the same
+idea. too many electrons in a white dwarf reaches this ultrarelativistic
+limit. Becomes unstable; will collapse. Similarly for neutron stars.
+
+Interpretation
+==============
+Pauli exclusion principle. Must apply Heisenberg uncertainty principle,
+large relative momentum, since position is constrained to within this
+lattice.
+
+$\mu$ does not change very much with temperature, but it does change. The
+distribution rounds off. Reason for slight decrease in 3 dimensions:
+density of states increases with energy. When we are rounding the
+distribution, what is happening is that in the tail, we have more states
+available, and therefore the contribution to the integral is larger.
+
+Origin of thermocouple effect.
+
+<a name='28'></a>
+
+Physics 112: Statistical Mechanics
+==================================
+Fermi-Dirac/Bose-Einstein: April 6, 2012
+========================================
+Once again, no special announcements. Midterm in a week. I will tell you
+during this lecture or the next lecture where the mditerm finishes.
+
+What we will speak first about is holes and electrons. More precisely,
+hole-electron excitations.
+
+Then we will get into crystals and speak about metals and heat capacity of
+metals.
+
+So that's the program for today.
+
+The discussion we had at the end of the last lecture applies to not just
+fermions, but any particle with half-integer spin. Cannot have more than
+one particle per quantum state.
+
+Fermi energy: ~5eV in a metal. Much much bigger than temperature in normal
+conditions. To a first order, this is a square distribution ($\mu \gg
+\tau$). Therefore when $\epsilon < \mu$, $\avg{s(\epsilon)} = 1$; when
+$\epsilon > \mu$, $\avg{s(\epsilon)} = 0$. ($\theta(\mu-\epsilon)$). Not
+exact; there is some rounding off of the distribution due to thermal
+fluctuations. One of the themes of this lecture (and of the last lecture)
+is that all of the action occurs around the Fermi level.
+
+We have to finish the lecture by asking ourselves what happens when we
+increase the temperature. The main thing that happens is that density of
+states goes down, yes, but there is no reason for potential to stay
+put (thermocouple effect!). We have to push the chemical potential slightly
+down.
+
+This applies to three dimensions; for a two-dimensional electron gas, you
+can show that chemical potential is constant, and for a one-dimensional
+gas, you can show that it increases with temperature.
+
+So what am I doing here? I am taking the same graph we just showed, but now
+flipping the coordinates. At zero temperature, all the states are full. We
+actually speak of the sea of electrons, which is totally filled at zero
+temperature.
+
+So what happens? It increases with temperature (to first-order, you can
+ignore change of potential), and it starts to round off: the sea is not
+totally filled -- electrons start to pop out of the lattice, and we have
+what is called a "hole". A hole is not truly a particle (it's the absence
+of one, really), and in solid state we speak of "quasi-particles".
+
+The first thing we can ask ourselves is the charge of this
+quasiparticle. It has a positive charge.
+
+Suppose I have an electric field. In some sense, I am tilting the energy:
+$\epsilon = \epsilon_0 - \abs{q} V$ (where V is the electric potential, q
+is the elementary charge). So if I have a field going to the right, V going
+down, and the electric field is constant and positive along the x, this
+corresponds to tilting.
+
+The hole will tend to migrate toward the right; the electron will tend to
+migrate toward the left.
+
+In some sense, holes act as anti-electrons (positrons). This is how Dirac
+interpreted negative energy states in the solution of his equation for
+half-integer spin particles.
+
+We have a constant number of particles. $\avg{\frac{N}{V}} = \int_0^\infty
+f(\epsilon) D(\epsilon) d\epsilon$ (forgetting about temperature dependence
+for now). Also equal to $\int_0^{\epsilon_F} D(\epsilon) d\epsilon$ at zero
+$\tau$.
+
+$$= \int_0^{\epsilon_F} f(\epsilon,\tau) D(\epsilon) d\epsilon +
+\int_{\epsilon_F}^\infty f(\epsilon, \tau) D(\epsilon) d\epsilon =
+\int_0^{\epsilon_F} D(\epsilon) d\epsilon
+\\ \implies \int_{\epsilon_F}^\infty f D(\epsilon) d\epsilon = \int_0
+^{\epsilon_F}\bracks{1 - f(\epsilon, \tau)}D(\epsilon d\epsilon
+$$
+
+Recall: $f$ corresponds to electrons; $1-f$ corresponds to holes. Hole-like
+excitation, electron-lilke excitation.
+
+$u(\tau) - u(0) = \int_0^\infty \epsilon f D(\epsilon) d\epsilon -
+\int_0^{\epsilon_F} \epsilon D(\epsilon) d\epsilon =
+\int_{\epsilon_F}^\infty \epsilon f D(\epsilon) d\epsilon -
+\int_0^{\epsilon_F} \epsilon (1-f) D(\epsilon d\epsilon$. Adding zero, we
+can get $\int_{\epsilon_F}^\infty (\epsilon - \epsilon_F) f D(\epsilon)
+d\epsilon - \int (\epsilon - \epsilon_F) (1-f)D(\epsilon) d\epsilon$.
+
+We can use the symmetry we had before. We can write this explicitly by
+substituting the values we had for $f$, $1-f$. Holes: increasing energy
+going "down"; electorns: increasing energy going "up".
+
+So let's do, rapidly, energy band structure. Up until now, I've just
+considered a gas of electrons; have not said anything about containment. In
+practice, electrons are in some kind of medium, and it is easiest to
+discuss crystals because then it is in a periodic medium.
+
+In a (cubic) crystal, the atoms are regularly spaced. If you try to solve
+the Schrodinger equation for this kind of periodic lattice, what you will
+arrive at is that the energy is a function of the momentum (or wave
+number), but there are regions of momenta where the electrons can tunnel
+resonantly from one region to the next. In other words, they are free to
+move if the wavelength is right. If the wavelength is not right, they will
+get stuck locally.
+
+You may have some energy band diagram. Energy gap: region of energy where
+the electrons cannot propagate. So: we have several things that happen,
+depending on the element that we are considering. Sometimes, the element
+also has some states above the gap (conduction band) are populated. That is
+what happens for metals. In some sense, this is all what we have described
+so far (our Fermi sea) -- we did not have to worry about the states below
+the valence band.
+
+Mass related to the curvature is considerably smaller in crystals than the
+electrons.
+
+So the other possibility is that basically your Fermi level wants to be
+inside the energy gap. In that case, you have no small temperature; no
+electrons available; they're all stuck in the valence band, so you have an
+insulator.
+
+We will see later on that if you have impurity levels, you could have
+bending of the bands.
+
+Let me briefly introduce the next subject, which I was hoping to finish by
+the end of the lecture, which is the heat capacity of a metal. What the
+heat capacity will be just $\pderiv{U}{T} = V\pderiv{}{t} \int_0^\infty
+\epsilon f(\epsilon,\tau) D(\epsilon) d\epsilon$. The other thing that
+depends on the temperature is f.
+
+$\deriv{f}{\tau} = -\frac{(\epsilon - \mu)}{\tau^2}
+\frac{1}{\parens{\exp(\frac{\epsilon - \mu}{\tau}) + 1}^2}$
+
+Midterm material will stop here.
