@@ -1,3 +1,8 @@
+Discussion
+==========
+Discussion: Monday, March 19, 2012
+----------------------------------
+
 Discussion today!
 
 Techniques in finding impedance, then homework.

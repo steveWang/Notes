@@ -1106,6 +1106,8 @@ smaller when seen from the source.</p>
 <p>Good midterm question is "looking into each of these nodes, what impedance
 do I see?"</p>
 <p><a name='25disc'></a></p>
+<h1>Discussion</h1>
+<h2>Discussion: Monday, March 19, 2012</h2>
 <p>Discussion today!</p>
 <p>Techniques in finding impedance, then homework.</p>
 <p>Probably will be okay, but if not, stop me, and I'll explain.</p>
@@ -1349,7 +1351,80 @@ fF$</mathjax>. Taking <mathjax>$\lambda = 0.1, V_{D,SAT} = 0.4V$</mathjax>, what
 C_{gs} + (1 - A) C_{gd}$</mathjax>; <mathjax>$A = -g_m r_o = -\frac{2}{\lambda V_{DSAT}} =
 -50$</mathjax>. So my input capacitance is <mathjax>$300 fF + 5100 fF = 5400 fF$</mathjax>. These
 capacitances start adding more poles.</p>
-<p>(possibility of negative capacitance?)</p></div><div class='pos'></div>
+<p>(possibility of negative capacitance?)</p>
+<p><a name='29'></a></p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Friday, April 6, 2012</h2>
+<p>CMOS inverter (how to make inverter versus how to make oscillator),
+frequency response, feedback, oscillation</p>
+<p>Miller gain, with an effective input impedance. In general, some <mathjax>$Z_{eff} =
+\frac{Z}{1-A}$</mathjax>. Turns voltage amplifier into a transconductance
+amplifier. The gain of this amplifier is just this <mathjax>$R_F$</mathjax>.</p>
+<p>Last time. Talked about <mathjax>$C_{gd}, C_{\mu}$</mathjax>, if you've got an amplifier where
+you've got high gain, you end up with a lot of input capacitance. Even
+though this may be much smaller than parasitic capacitor to ground, may
+still dominate. Often, Miller effect is bad. Some cases where you do like
+it.</p>
+<p>For example, suppose you've got a source follower. As long as it's a good
+source follower, we can make the effective capacitance much smaller. Also
+lowers output impedance.</p>
+<p>Let's do an example with bipolar (as was the case in the lab). There's a
+basic amplifier, and let's say we're trying to design something where we've
+got some kind of a sensor as our source. Has a very high source
+impedance. Stick into amplifier, shoot for gain on the order of 1000. Must
+drive 10 pF on the other side.</p>
+<p>WIth inverting amplifier, at low frequency, we have a phase shift of 180,
+pick up phase of 90 from one decade before to one decade after. When
+measuring, you find a much smaller value. Why? (Miller multiplication of
+<mathjax>$C_\mu$</mathjax>)</p>
+<p>For a gain of 400, <mathjax>$C_{in} = 25p + 800p = 825p$</mathjax>. So <mathjax>$\omega_{p,in} =
+\frac{1}{R_s C_{in}} \approx 10^3 rad/sec$</mathjax>. Instead of getting this nice
+Bode plot I thought I was going to get, it dies off much earlier.</p>
+<p>Once again, inserting components for reduction of input capacitance by an
+order of magnitude. Doubled gain is just an added bonus.</p>
+<p>What would we have done to deal with this problem before midterm 2? We
+would have bolted on another stage: follower (buffer). Gain is basically 1,
+so Miller multiplication makes <mathjax>$C_\mu$</mathjax> of the follower go away.</p>
+<h2>CMOS</h2>
+<p>Suppose I tie the gates of an NMOS and a PMOS together. Consider small
+signal model. Completely symmetric: once you draw the same small signal
+model, you can't tell which was which. <mathjax>$G_m = g_{m1} + g_{m2}$</mathjax>. <mathjax>$A_v =
+-(g_{m1} + g_{m2})(r_{o1} \parallel r_{o2})$</mathjax>. And if I just have some
+capacitive loading on the output (<mathjax>$C_L$</mathjax>), and I get my classic single-pole
+picture. This is an inverter. If I put in a low voltage, PMOS pulls voltage
+high; if I put in a high voltage, NMOS pulls voltage low.</p>
+<p>You'll build one of these and measure the Bode plot, and then we'll put
+three of them in series (with explicit 100pF capacitance on output of each
+one). We'll find that we've got a gain of something like -1000. Very
+difficult to bias, so we'll try the same trick that we did in the last lab:
+we put a feedback resistor on there and put an input and voltage source,
+and you'll find that you get a nice, easy-to-bias, reliable-gain
+amplifier. And gain is <mathjax>$-\frac{R_F}{R_i}$</mathjax>. Amplifier. It works nicely.</p>
+<p>And then you'll show this to one of your friends in EE141 or CS150, and in
+those classes, they'll note that you're working on ring oscillators in
+EE105. it's well-known that if you daisy-chain three of them, you get a
+3-stage ring oscillator. So how can this be an oscillator and an amplifier?
+Very subtle.</p>
+<p>The challenge is to make sure that you understand the math that governs
+which way this goes.</p>
+<p>So: what's going on there? If we look at the Bode plot for the 3-stage
+amplifier, assuming they all have the same load, three of them in series,
+gain of something like <mathjax>$A_0^3 = 10^4$</mathjax>, right at that frequency, my gain
+drops off very quickly: <mathjax>$\frac{1}{\omega^3}$</mathjax>, gain of -3 on a log-log
+plot. It's a third-degree pole. Phase-wise, what happens? Tripled slope in
+the region, so goes from 0 to 270 in that time.</p>
+<p>At 10x the pole frequency, we still have a magnitude of gain of
+<mathjax>$10$</mathjax>. Important: we also know that at some frequency less than that, our
+phase crosses 360. Think of this as a black box: if I put in a sine wave on
+one side, I'll get a sine wave on the other side. We know that at that
+frequency, we get exactly zero phase shift, and it comes out with some
+amplitude more than 10x what we input.</p>
+<p>If ever <mathjax>$\abs{H(j\omega_{360})} &gt; 1$</mathjax> (for any value of <mathjax>$\omega_{360}$</mathjax>),
+then it will oscillate. Otherwise, it will be an amplifier. How to fix? I
+have resistors, capacitors; if I can push one of these poles further left
+so that I can get a gain less than 1, then the sine wave goes in and gets a
+little smaller, so the system is stable. And then you can use this as an
+amplifier.</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
@@ -1380,6 +1455,6 @@ if (ll > 0) {
                      + '</a><br />';
   }
   var div = document.getElementsByClassName('wrapper')[0];
-  div.style.width = '50%';
+  div.style.width = '60%';
 }
 </script>

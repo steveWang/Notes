@@ -633,7 +633,21 @@ Bessel functions.</p>
 <p><a name='28'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Friday, April 6</h2>
-<p>Radial ball; no longer imposing the restriction that <mathjax>$V(0) = \infty$</mathjax>.</p></div><div class='pos'></div>
+<p>Radial ball; no longer imposing the restriction that <mathjax>$V(0) = \infty$</mathjax>.</p>
+<p>Recall: recursion relation for spherical Bessel functions.</p>
+<p>Prejudices confirmed by thought (look up data in table).</p>
+<p>We have all the tools to go in and slog through some harder problem.</p>
+<p>fine structure constant for translating Coulomb potential:
+<mathjax>$-\frac{e^2}{4\pi\epsilon_0 r} = -\frac{e^2/\hbar c}{4\pi\epsilon_0}
+\frac{\hbar c}{r} = \alpha \frac{\hbar c}{r}$</mathjax>; <mathjax>$\alpha \approx
+\frac{1}{137}$</mathjax>. Useful for QED. <mathjax>$\hbar c \approx 1973 eV-A = 197.3
+MeV-f$</mathjax>. Atomic physicists will usually use the first value.</p>
+<p><mathjax>$u = rR \bracks{-\frac{\hbar^2}{2m}\deriv{^2}{r^2} - \alpha \frac{\hbar
+c}{r} + \frac{\hbar^2}{2m} \frac{\ell(\ell + 1)}{r^2}}u(r)$</mathjax> <mathjax>$\rho = kr =
+\frac{\sqrt{-2mE}}{\hbar}r$</mathjax> (<mathjax>$E &lt; 0$</mathjax>). You wind up getting some
+differential equation you need to solve: <mathjax>$\deriv{^2 u}{\rho^2} = \bracks{1
+- \frac{\rho_0}{\rho} + \frac{\ell(\ell + 1)}{\rho^2}}u$</mathjax>; <mathjax>$\rho_0 \equiv
+\alpha \sqrt{\frac{2mc^2}{\abs{E}}}$</mathjax>.</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
@@ -664,6 +678,6 @@ if (ll > 0) {
                      + '</a><br />';
   }
   var div = document.getElementsByClassName('wrapper')[0];
-  div.style.width = '50%';
+  div.style.width = '60%';
 }
 </script>
