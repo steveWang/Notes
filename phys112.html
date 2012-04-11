@@ -181,7 +181,7 @@ $$</mathjax></p>
 probability of <mathjax>$P(x,y) = P(x|y)P(y) \neq P(x) \times P(y)$</mathjax>. We say we have
 independence iff <mathjax>$P(x,y) = P(x)P(y)$</mathjax>. In other words, <mathjax>$P(x|y) = P(x)$</mathjax>.</p>
 <p>You can define a correlation coefficient to be
-  <mathjax>$\frac{(x - \avg{x})(y - \avg{y})/(\sigma_x\sigma_y)$</mathjax>.</p>
+  <mathjax>$\frac{(x - \avg{x})(y - \avg{y})}{\sigma_x\sigma_y}$</mathjax>.</p>
 <p>Independence <mathjax>$ ⇒ \rho = 0$</mathjax>. Converse not necessarily true.</p>
 <p>Continuous distributions. Histograms. The case where a variable is
 continuous. We now have probability <em>densities</em>.</p>
@@ -449,7 +449,7 @@ counted states.</p>
 d^{3N}p}{h^{3N}}$</mathjax>: density of our states. We want to then integrate over
 the volume, but we choose the states such that U fixed. Represents in our
 3N-dimensional momentum space a sphere.</p>
-<p><mathjax>$\delta[\sqrt{\sum\sum p^2_{ik} - \sqrt{2MU}]$</mathjax>. Take advantage of sifting
+<p><mathjax>$\delta[\sqrt{\sum\sum p^2_{ik} - \sqrt{2MU}}]$</mathjax>. Take advantage of sifting
 property of <mathjax>$\delta$</mathjax>.</p>
 <p>radius of sphere in 3N momentum space. r has dimension <mathjax>$r^{d-1}$</mathjax>. In the
 general case, we'll have <mathjax>$\Omega^{3N}r^{3N-1}$</mathjax>.</p>
@@ -933,14 +933,14 @@ discussed last time why this is an approximation: sparseness of states.</p>
 {\lambda^3}$</mathjax>. So this is really a quantum density satisfied by putting
 particles a wavelength apart, and I cannot do much better than that.</p>
 <p>If I apply the Gibbs recipe there, what I get is that <mathjax>$Z_N =
-\frac{1}{N!}\parens{Vn_Q\right}^N$</mathjax>. So <mathjax>$\log Z_N = N\log(Vn_Q) - \log N!$</mathjax>. We
+\frac{1}{N!}\parens{Vn_Q}^N$</mathjax>. So <mathjax>$\log Z_N = N\log(Vn_Q) - \log N!$</mathjax>. We
 use the Stirling approximation to say <mathjax>$\log N! \approx N\log N - N$</mathjax>. Thus
 <mathjax>$\log Z_N = N\log(\frac{n_Q}{\frac{N}{V}}) + N = N\log \frac{n_Q}{n} + N$</mathjax>.</p>
 <p>When we introduce free energy, we have <mathjax>$F = -\tau\log Z$</mathjax>; <mathjax>$p =
 -\pderiv{F}{V}$</mathjax>; <mathjax>$\sigma -\pderiv{F}{\tau}$</mathjax>.</p>
 <h2>Barometric equation</h2>
 <p>Assume the atmosphere has constant temperature. How does the density
-decrease with altitude z? The way the book does it is <mathjax>$\mu = \const$</mathjax>, since
+decrease with altitude z? The way the book does it is <mathjax>$\mu = \text{const}$</mathjax>, since
 we are in thermal equilibrium. But <mathjax>$\mu$</mathjax> has two pieces: the internal
 chemical potential (<mathjax>$\tau\log\parens{\frac{n}{n_Q}}$</mathjax>) and external chemical
 potential, which is just the potential in the gravitational field, namely
@@ -969,7 +969,7 @@ pushing down on the slab is <mathjax>$(p + dp)A$</mathjax>. Our slab has a certa
 particle density, and so the downward force (due to gravity) is <mathjax>$nmAz
 g$</mathjax>. Putting that all together, we have <mathjax>$pA - (p + dp)A = nmgzA$</mathjax>. This leads
 directly to <mathjax>$\frac{1}{n}\deriv{p}{z} = -mg$</mathjax>. This is totally general. If we
-have <mathjax>$pV = N\tau$</mathjax>, <mathjax>$p = \frac{N}{V}\tau = n\tau$</mathjax>. Since <mathjax>$\frac{\tau}{\p}
+have <mathjax>$pV = N\tau$</mathjax>, <mathjax>$p = \frac{N}{V}\tau = n\tau$</mathjax>. Since <mathjax>$\frac{\tau}{p}
 \deriv{p}{z} = -mg \iff \frac{1}{n} \deriv{n}{z} = -\frac{mg}{\tau} \implies
 p \sim \exp\parens{-\frac{ngz}{\tau}}$</mathjax>. This generalizes to the case when
 the temperature is not constant.</p>
@@ -1171,11 +1171,11 @@ rather how to apply them. So many formulae now that if you apply them now,</p>
 <p>Usual way to consider a gas of photons in thermal equilibrium. (take
 <mathjax>$\omega \equiv 2\pi v$</mathjax>) Let's think of it in a single mode of cavity, and
 consider the number of photons in that mode. Harmonic oscillation:
-<mathjax>$\omega$</mathjax>. If I have s photons in this mode, the energy would be <mathjax>$\emf
+<mathjax>$\omega$</mathjax>. If I have s photons in this mode, the energy would be <mathjax>$\epsilon
 \equiv s\hbar\omega$</mathjax>; <mathjax>$s \in \mathbb{Z_+}$</mathjax>. So <mathjax>$Z = \sum_s e^{-s\hbar\omega
 / \tau}$</mathjax>, roughly. So <mathjax>$\avg{S} = \frac{\tau^2}{\hbar\omega} \pderiv{\log Z}
-{\tau} = \frac{e^{-\hbar\omega/\tau}}{1 - \e^{-\hbar\omega/\tau}} -
-\frac{1}{\e^{\hbar\omega/\tau} - 1}$</mathjax>. So <mathjax>$\avg{\emf_\omega} = \frac{\hbar
+{\tau} = \frac{e^{-\hbar\omega/\tau}}{1 - e^{-\hbar\omega/\tau}} -
+\frac{1}{e^{\hbar\omega/\tau} - 1}$</mathjax>. So <mathjax>$\avg{\epsilon_\omega} = \frac{\hbar
 \omega}{e^{\hbar\omega/\tau} - 1}$</mathjax></p>
 <p>Two quantifications: first quantification (wave-like): discrete states in
 massive particles; obvious cavity modes for photons. The second
@@ -1192,12 +1192,12 @@ of frequency? No; we have to fold in the frequency density of the modes
 <mathjax>$D(\omega)d\omega$</mathjax> which can be computed with our <mathjax>$\frac{1}{h^3}$</mathjax> rule.</p>
 <p>The density of states is <mathjax>$2\frac{d^3xd^3p}{h^3}$</mathjax>. (2 is the polarisation
 factor) Note that <mathjax>$pc = \hbar\omega$</mathjax>, and <mathjax>$d^3p = p^2 dp d\Omega$</mathjax>. So our
-density is <mathjax>$\frac{2d^3x(\hbar\omega)^2\hbard\omegad\Omega}{c^3\hbar^3}$</mathjax>. We
-can use the fact that <mathjax>$\hbar^3 = \frac{1}{8\pi/3}$</mathjax>. If we are not
-interested in the direction of the photons, we integrate on solid angle and
-we get <mathjax>$u_\omega d\omega = u_vdv = \frac{\8\pi hv^3dv}{c^3(\exp(hv/\tau) -
-1)$</mathjax>. I would like you to be able to derive this from first principles,
-rather than rote memorization.</p>
+density is <mathjax>$\frac{2d^3x(\hbar\omega)^2\hbar d\omega d\Omega}{c^3
+\hbar^3}$</mathjax>. We can use the fact that <mathjax>$\hbar^3 = \frac{1}{8\pi/3}$</mathjax>. If we are
+not interested in the direction of the photons, we integrate on solid angle
+and we get <mathjax>$u_\omega d\omega = u_vdv = \frac{8\pi hv^3dv} {c^3\parens
+{\exp\parens{hv/\tau} - 1}}$</mathjax>. I would like you to be able to derive this
+from first principles, rather than rote memorization.</p>
 <p><a name='22'></a></p>
 <h1>Physics 112: Statistical Mechanics</h1>
 <h1>Black Body: Mar 14, 2012</h1>
@@ -1211,7 +1211,7 @@ the average number of photons at frequency <mathjax>$\omega$</mathjax> is <mathj
 \omega/\tau} - 1}$</mathjax>. The minus is coming from the fact that we have a boson,
 the spin of which is 1. Some of you are more comfortable with <mathjax>$\nu = \frac
 {\omega}{2\pi}$</mathjax>, in which case the energy is <mathjax>$\frac{1}{e^{\hbar
-\nu/\tau} - 1$</mathjax>}.</p>
+\nu/\tau} - 1}$</mathjax>.</p>
 <p>We can write <mathjax>$u_\nu(\nu,\theta,\phi) 2\frac{d^3xd\nu d\Omega}{h^3} =
 \avg{s}h\nu 2\frac{d^3xd^p}{h^3}$</mathjax> (we need to pull out this factor of two
 to account for the polarization). We can then use that <mathjax>$p = \frac{\epsilon}
@@ -1878,7 +1878,195 @@ heat capacity will be just <mathjax>$\pderiv{U}{T} = V\pderiv{}{t} \int_0^\infty
 depends on the temperature is f.</p>
 <p><mathjax>$\deriv{f}{\tau} = -\frac{(\epsilon - \mu)}{\tau^2}
 \frac{1}{\parens{\exp(\frac{\epsilon - \mu}{\tau}) + 1}^2}$</mathjax></p>
-<p>Midterm material will stop here.</p></div><div class='pos'></div>
+<p>Midterm material will stop here.</p>
+<p><a name='29'></a></p>
+<h1>Physics 112: Statistical Mechanics</h1>
+<h1>Fermi-Dirac/Bose-Einstein: April 9, 2012</h1>
+<p>Several things to discuss: midterm on Friday. Basically, the first seven
+chapters of the notes, stopping at slide 10 of the notes without
+questions. Try to have something less long, less difficult than midterm</p>
+<h1>2. Mostly interested in concepts. Difficulties many of you have is that</h1>
+<p>you get confused between the various concepts. You really should be asking
+yourself what method to apply. Understand how all the concepts are related
+to each other. Clear emphasis on black body &amp; Fermi-Dirac, but I will try
+to judge how you put that in context with the rest. So one question that
+comes from before. Things like definition of entropy that you need to know.</p>
+<p>The two things I wanted to do today: metals -- <mathjax>$C \propto T$</mathjax>;
+semiconductors. On Wednesday, we will finish the Fermi-Dirac and get into
+Bose-Einstein.</p>
+<p>Reminder: in crystals, the relationship between energy and momentum (what
+we call in Physics the dispersion relations): gap between conduction and
+valence bands -- energies are not allowed. Sometimes, the conduction band
+is naturally filled. There are enough electrons in the crystal such that
+you have a Fermi level above the energy of the conduction band.</p>
+<p>In that case, we have basically the same formalism as we have had so far,
+except that the energy is something like <mathjax>$\epsilon = \epsilon_c
+\frac{\parens{p - p_0}^2}{2m_e^*}$</mathjax>. This mass is not the mass of the
+electron; it is the mass of the electron inside the crystal (which is
+usually smaller). All we have done can be generalized to that case. The
+only thing which really changes is the mass of the electron. (also, usually
+<mathjax>$p_0$</mathjax> goes away)</p>
+<p>Now, let's look at the heat capacity of the electrons in the crystal. In
+order to have the heat capacity, I must compute the energy of the
+eleectrons. That is very straightforward: <mathjax>$V\int_0^\infty \epsilon
+\frac{1}{e^{\frac{\epsilon-\mu}{\tau}} + 1}D(\epsilon) d\epsilon$</mathjax>. Since <mathjax>$C
+= \pderiv{U}{T}\Big|_V = h\deriv{U}{\tau} = k_BV\int_0^\infty \epsilon
+\deriv{}{\tau}\parens{\frac{1}{e^{()} + 1}}D(\epsilon)
+d\epsilon$</mathjax>. Derivative of <mathjax>$s(\epsilon)$</mathjax> w.r.t <mathjax>$\tau$</mathjax>, not <mathjax>$\epsilon$</mathjax>. So
+the action is occurring only around the chemical potential. So that is what
+we will use. It's the narrow region around <mathjax>$\mu$</mathjax>. We have seen <mathjax>$\mu$</mathjax> does
+not vary rapidly with temperature, so let's take <mathjax>$\mu \approx
+\epsilon_F$</mathjax>. (we have already used this, since we did not use chain rule
+for <mathjax>$\deriv{\mu}{\tau}$</mathjax>. Number of particles is <mathjax>$\int s(\epsilon)
+D(\epsilon) d\epsilon$</mathjax>. But number of particles is not changing, so
+<mathjax>$\pderiv{N}{\tau} = 0$</mathjax>. </p>
+<p>Thus <mathjax>$C = k_B V\int_0^\infty \frac{\parens{\epsilon - \epsilon_F}^2}{\tau^2}
+\frac{e^{\parens{\frac{\epsilon - \epsilon_f}{\tau}}} D(\epsilon)
+d(\epsilon - \epsilon_F)}{\parens{e^{\frac{\epsilon - \epsilon_f}{\tau}} +
+1}^2}$</mathjax>. Also, using the limits from <mathjax>$-\infty$</mathjax> to <mathjax>$\infty$</mathjax> is making the
+approximation that <mathjax>$\epsilon \gg \tau$</mathjax>. This is a quantity that you
+compute. <mathjax>$C \sim k_B D(\epsilon_F) A V \tau$</mathjax>.</p>
+<p>This linear dependence on temperature is because the number of electrons
+involved is proportional to temperature.</p>
+<p>Taking into account phonons, <mathjax>$C_{tot} = C_e + C_\phi = \gamma T + AT^3$</mathjax>;
+<mathjax>$C_e \ll \frac{3}{2}N k_B$</mathjax>. This by the way solved a great quandary that
+people had at the beginning of the 19th century. There were electrons in
+metals at the time, and we could actually compute their density. Heat
+capacity estimate using ideal gas law was way off: only electrons that
+affected anything were those close to the Fermi energy.</p>
+<h1>Semiconductors</h1>
+<p>Semiconductors are substances where the Fermi level is somewhere in the
+gap. At zero temperature, they will be totally insulators. The difference
+between insulators and semiconductors is the magnitude of the gap. If the
+gap is very big, you can only excite electrons from the valence band to the
+conduction band at very high temperatures. For semiconductors, the gap is
+somewhat smaller, and you can excite them at lower temperatures. We still
+have our usual Fermi-Dirac distribution, but now the density of states is
+somewhat different: you make parabolic approximations, and the density of
+states of electrons is <mathjax>$D_e(\epsilon) d\epsilon \frac{2}{4\pi^2}
+\parens{\frac{2m^*_e}{\hbar^2}}^{3/2} \sqrt{\epsilon - \epsilon_c}
+d\epsilon$</mathjax>. (2 is from the spin)</p>
+<p>The density of states for holes is inverted, since it is in the opposite
+direction, and the masses are fairly different.</p>
+<p>Basically, we can compute the total number of electrons: <mathjax>$n_{Te} = \int
+f(\epsilon) D(\epsilon) d\epsilon = \int_0^{\epsilon_v} f(\epsilon)
+D_h(\epsilon) d\epsilon + \int_{\epsilon_c}^\infty f(\epsilon)
+D_e(\epsilon) d\epsilon$</mathjax>. Let us use the fact that <mathjax>$1 - \frac{1}{e^{\frac
+{\epsilon - \mu}{\tau}} + 1} = \frac{1}{e^{\frac{\mu-\epsilon}{\tau}}+1}$</mathjax>
+and rewrite this. What we get is that <mathjax>$\int_0^{\epsilon_v} \frac{1}{e^{
+\frac{\mu - \epsilon}{\tau}} + 1}D_h(\epsilon) d\epsilon = \int_0
+^{\epsilon_v} \frac{1} {e^{\frac{\epsilon - \mu}{\tau}} + 1}D_e(\epsilon)
+d\epsilon$</mathjax>. Namely, number of holes is the same as the number of (free)
+electrons.</p>
+<p>Note that from this, ,we can see that the number of holes in the valence
+band decreases with increasing <mathjax>$\mu$</mathjax>. Furthermore, we can determine <mathjax>$\mu$</mathjax>
+by imposing charge neutrality.</p>
+<p>The interest of semiconductors is that impurities are localized states in
+the gap (not the band!). We still need to enforce charge
+neutrality. Acceptors shift fermi level down to valence band, and I will
+have holes in the valence band, and mostly positive carriers: p-type
+material.</p>
+<p><a name='30'></a></p>
+<h1>Physics 112: Statistical Mechanics</h1>
+<h1>Fermi-Dirac/Bose-Einstein: April 11, 2012</h1>
+<p>Several housekeeping items, and midterm on Friday. What I would like to do
+today is finish Fermi-Dirac and speak in particular about the Chandrasekhar
+limit and Bose-Einstein condensation.</p>
+<p>So: after Monday, we will have only two weeks of class remaining. The
+question is what do we want to speak about after Fermi-Dirac and
+Bose-Einstein. Would like to speak about phase transitions and nonideal
+gas, but this will take one or two lectures. So we have one week of free
+subject we can choose. Propositions: transport phenomenon (diffusion,
+drift), semiconductors, or cosmology.</p>
+<p>Correction: heat capacity in metals. When thinking of heat capacity, we had
+to take the derivative with respect to temperature of <mathjax>$\int_0^\infty
+\epsilon \mathcal{f}(s,\tau)\mathcal{D}(\epsilon)d\epsilon$</mathjax>. This is just
+the energy of a Fermi-Dirac gas, and, taking the derivative with respect to
+temperature, we can do a change of variables to <mathjax>$\epsilon^\prime \equiv
+\epsilon - \epsilon_F$</mathjax> without changing our result (the jacobian is 1).</p>
+<p>So let me provide other examples of degenerate Fermi gas. <mathjax>$^3$</mathjax>He has spin
+<mathjax>$\frac{1}{2}$</mathjax>. cf problem set. very different behavior from <mathjax>$^4$</mathjax>He: phase
+separation. Behaves as a magnetic fluid. Nobel prize of Richardson and
+Oscheroff (?). At low temperature, these two fluids will not mix, and that
+is what we actually use for supercooling.</p>
+<p>Nuclear matter: protons and neutrons in the nucleus are also fermions, and
+a fairly good model (bag model) is that these have relatively small
+interactions with respect to each other. Have surface tension; tend to
+stick together because of the bag. Not very modern way of thinking: muons
+and whatnot. But to a first order, a fairly good approximation.</p>
+<p>Typical radius of nucleus: <mathjax>$R \approx 1.3 \cdot 10^{-13} A^{\frac{1}{3}}$</mathjax>
+cm. Velocity very high: <mathjax>$T_F \approx 3 \cdot 10^{11}$</mathjax> K. Fermi
+momentum. Used here at LBL to produce first pions. Machines were not very
+powerful at that time: one of first cyclotrons (380 MeV), and they sent an
+<mathjax>$\alpha$</mathjax> onto a <mathjax>$^{12}C$</mathjax>, which produced this pion.</p>
+<p>One of the most interesting applications of Fermi-Dirac statistics is in
+white dwarves and neutron stars. What I told you so far is because we have
+to stack the particles' energy (because I cannot put more than one particle
+in each state), they are fairly large energies on the order of the Fermi
+energy. This results in pressure. So the equilibrium of a star is the
+equilibrium between (gravitational) potential energy and pressure from the
+kinetic energy.</p>
+<p>There is one class of stars (white dwarves), which is what our sun will
+become. At some point in their lives, some stars will discard their
+envelopes and contract into what is known as a white dwarf. High pressure;
+very dense. What is providing the pressure is the degenerate gas of
+electrons. There are of course protons and neutrons around, but they are
+just not active in defining the pressure.</p>
+<p>One way to express this equilibrium between gravitational pull (the star
+tends to collapse, and the pressure which tends to keep it from collapsing)
+is to look at the kinetic energy and the potential energy. Let's compare
+the potential energy: let us assume our star is round. Take a constant
+density <mathjax>$\rho$</mathjax> (not true: physically, it goes as <mathjax>$\frac{M}{\frac{4}{3}\pi
+R^3}$</mathjax> -- this means that <mathjax>$n \propto \frac{M}{R^3}$</mathjax>).</p>
+<p>This potential means we have to be related to the force and go as
+<mathjax>$\frac{GM^2}{R}$</mathjax>. There will be some geometric factor in front, which you
+will compute in your problem set. There is a negative sign, of course, and
+let us call this <mathjax>$U_{\mathrm{pot}}-b\frac{M^2}{R}$</mathjax>. So what is the kinetic
+energy? It goes as <mathjax>$\propto M\epsilon_F$</mathjax>. Let us distinguish between two
+cases: first, if you are nonrelativistic, <mathjax>$\epsilon_F \propto n^{\frac{2}
+{3}}$</mathjax>, so the kinetic energy goes as <mathjax>$\frac{M^{\frac{5}{3}}}{R^2}$</mathjax>. And if
+I am ultrarelativistic (which can happen if mass of object is fairly
+large), <mathjax>$\epsilon_F \propto n^{\frac{1}{3}}$</mathjax>, and so <mathjax>$U_k \propto \frac{
+M^{\frac{4}{3}}}{R}$</mathjax>.</p>
+<p>So in the nonrelativistic case, if I take the sum of the two energies, the
+star has a minimum energy at a specific <mathjax>$R$</mathjax>. So the star is stable. This is
+to be contrasted in the ultrarelativistic case: we then have still the
+potential energy <mathjax>$U_p = -b\frac{M^2}{R}$</mathjax>, and kinetic energy which goes as
+<mathjax>$U_k = c\frac{M^{\frac{4}{3}}}{R}$</mathjax>. For small M, the star expands; goes to
+nonrelativistic cases and beocmes stable; at some sufficiently large M, the
+sum is negative, and the star collapses. First described by Chandrasekhar
+during his PhD. Degeneracy pressure cannot balance gravity if M too big:
+roughly <mathjax>$1.4 M_\odot$</mathjax>: stars beyond this limit will go supernova.</p>
+<p>Same story with neutrons, except now <mathjax>$\epsilon_F \approx 300 MeV$</mathjax>. Also has
+a Chandrasekhar limit <mathjax>$3 M_\odot$</mathjax>, beyond which the star collapses on
+itself and also gives rise to a supernova. Accretion from neighboring
+stars.</p>
+<p>Large stars collapse into neutron stars, and if the neutron star is too
+large, it will further become a black hole.</p>
+<p>Type Ia supernovae can be normalized: the story going to smoke is a little
+more complex. Standard amount of material that just goes. What you see is
+that universe expansion is accelerating instead of decelerating. Gravity
+becomes repulsive (result of dark energy). Recent Nobel Prize (Saul
+Perlmutter).</p>
+<h1>Bose-Einstein Condensation</h1>
+<p>The plus one is what gives you the square distribution in the Fermi-Dirac.</p>
+<p>Note that the Pauli-exclusion principle only applies to Fermi-Dirac
+particles. I can put as many particles in the ground state as I want. Talk
+about choosing <mathjax>$\mu$</mathjax> (since it is, after all, one of our random variables)
+such that <mathjax>$\mu \approx \epsilon_0 - \frac{\tau}{N}$</mathjax>: set <mathjax>$\frac{N(\epsilon_0
+- \mu)}{\tau} = 1$</mathjax>. Issue with using the method we've been using up to this
+point (i.e. for Fermi-Dirac gas), the continuous approximation is not
+accurate enough, since the gaps are actually important. You must rely on
+the discrete sum. You do indeed solve this equation. What you get is that
+indeed <mathjax>$f = \avg{s(0)} = \frac{1}{\exp(-\frac{\mu}{\tau})} = -\frac{\mu}
+{\tau}$</mathjax>, so we get an incredibly small <mathjax>$\mu$</mathjax>: <mathjax>$10^{-26}$</mathjax> eV. And if you
+look at the second state, there are very few particles in the second state.</p>
+<p>Temperature dependence: calculate separately condensed phase and normal
+phase. Can use continuous approximation for excited state, but must isolate
+ground state. We show that we have a certain Einstein condensation
+temperature; <mathjax>$\tau_E = \frac{2\pi\hbar^2}{m}\expfrac{N}{2.612 V}{2/3}
+\implies N_{exc} = N\expfrac{\tau}{\tau_E}{3/2}$</mathjax>. For large densities,
+<mathjax>$\tau_E$</mathjax> is not very small. </p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
@@ -1902,6 +2090,7 @@ if (ll > 0) {
   div.style.fontSize = '90%';
   div.style.top = '10%';
   div.style.right = '5%';
+  div.style.width = '15%';
   for (var i = 0; i < ll; i++) {
     div.innerHTML += '<a href="\#' + a[i].name + '">'
                      + a[i].parentElement.nextElementSibling
@@ -1909,6 +2098,6 @@ if (ll > 0) {
                      + '</a><br />';
   }
   var div = document.getElementsByClassName('wrapper')[0];
-  div.style.width = '60%';
+  div.style.width = '80%';
 }
 </script>

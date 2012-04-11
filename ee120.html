@@ -1554,7 +1554,75 @@ $$</mathjax></p>
 <p>These are our eigenvalues. Some linear combination of these two
 exponentials will give us our initial conditions (i.e. <mathjax>$y(0) = 1$</mathjax>, <mathjax>$y(-1) =
 y(-2) = 0$</mathjax>). That is, <mathjax>$y = a_0 \parens{-\frac{1}{2}}^n + a_1 \parens{-\frac{1}{3}}^n$</mathjax>
-)</p></div><div class='pos'></div>
+)</p>
+<p><a name='21'></a></p>
+<h1>EE 120: Signals and Systems</h1>
+<h2>April 10, 2012.</h2>
+<h1>Zero-State and Zero-Input Responses</h1>
+<p>Alternate decomposition of systems that is based on whether the system is
+initially at rest or not. If initially at rest, what is response due to
+initial conditions, and what is response to impulse?</p>
+<p>Example believed to be in the textbook: system described by <mathjax>$y(n) -
+0.9 y(n-1) = x(n)$</mathjax>. Causal.</p>
+<p>If the system is not at rest, technically it is not LTI. Not nonlinear,
+though. It's what we call an incrementally-linear system. What
+distinguishes these from linear systems is that these have non-zero
+intercepts.</p>
+<p>Turning off the input, all you've got is some nonzero initial
+condition. Figure out the response as time goes forward. This is called the
+zero-input response of the system (turning off the input).</p>
+<p>What if <mathjax>$y(-1) = 0$</mathjax>, and <mathjax>$x(n) = u(n)$</mathjax>? We've got a geometric series! Or do
+it the z-transform style; do the transform as we've been doing for the past
+few weeks, and causality will tell you the rest. Output is <mathjax>$HX$</mathjax>. We know
+how to do partial fractions and stuff. Talk about damn walls.</p>
+<p>This response is called the zero-state response (<mathjax>$y_{ZSR}$</mathjax>), meaning the
+initial state (set of initial conditions) is zero.</p>
+<p>So you have the zero-input response plus the zero-state response as yet
+another decomposition of your system.</p>
+<p>Now we're learning about the contributions of the nonzero initial state. We
+did this by splitting the response. There is actually a way to figure out
+the total response using transforms: there is a transform method. Main
+point of today.</p>
+<h1>Transform Method to get the Total Response</h1>
+<p>So, the method begins by looking at the difference equation, e.g. <mathjax>$y(n) =
+0.9 y(n-1) + x(n)$</mathjax>. I'm going to use the Lee &amp; Varaiya method, and then
+we'll look at it another very related method (the unilateral
+Z-transform).</p>
+<p>For starters, multiply each side by <mathjax>$u(n)$</mathjax>. So we have <mathjax>$y(n)u(n) =
+0.9y(n-1)u(n) + x(n)u(n)$</mathjax>.</p>
+<p>Then take the Z-transform of both sides (using the definition of the
+Z-transform). Note that this Z-transform looks very much like the
+z-transform you've seen up until now, except that it starts at zero and
+goes up to infinity. This is called the unilateral z-transform of <mathjax>$y$</mathjax>.</p>
+<p>For any causal signal, the unilateral transform is the same as the
+bilateral z-transform.</p>
+<p>With the unilateral transform, you can do it all in one go.</p>
+<h1>Laplace Transform</h1>
+<p><mathjax>$\hat{X}(s) \defequals \int_{-\infty}^{\infty} x(t) e^{-st} dt$</mathjax>, <mathjax>$s =
+\sigma + i\omega$</mathjax>. Just as with the Z-transform, we do not use an inverse
+transform formula. We're going to use similar methods.</p>
+<p>Why do we even bother with this? For reasons similar to why we justified
+the Z-transform, we need a comparable transform for continuous-time
+systems.</p>
+<p>Notice how the integral is actually the Fourier transform of the perturbed
+("tamed") function <mathjax>$x(t)e^{-\sigma t}$</mathjax>. The radius of convergence is
+defined by <mathjax>$\sigma = \mathrm{Re}(s)$</mathjax> -- <mathjax>$\omega$</mathjax> plays no role in
+convergence.</p>
+<p>In continuous time, there is a very nice correspondence between sidedness
+of signals and the RoC in continuous-time. Easier to remember.</p>
+<p>Once again, causality means that the RoC extends all the way to (and
+includes!) infinity.</p>
+<p>Notice that in this case, the RoC contains the <mathjax>$i\omega$</mathjax> axis. (Conjecture,
+since not yet proven in this class) As in the z-transform, this is because
+<mathjax>$x(t)$</mathjax> is a stable signal. That is, it is absolutely integrable. The proof
+is fairly trivial: <mathjax>$\int\abs{x(t)e^{-i\omega t}} dt = \int \abs{x(t)} dt &lt;
+\infty$</mathjax>.</p>
+<p>Transform pairs!</p>
+<p><mathjax>$$
+\renewcommand{\Re}{\mathrm{Re}}
+e^{-at} u(t) \ltrans \frac{1}{s+a} (-\Re(a) &lt; \Re(s))
+\\ -e^{-at} u(-t) \ltrans \frac{1}{s+a} (\Re(s) &lt; -\Re(a))
+$$</mathjax></p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
@@ -1578,6 +1646,7 @@ if (ll > 0) {
   div.style.fontSize = '90%';
   div.style.top = '10%';
   div.style.right = '5%';
+  div.style.width = '15%';
   for (var i = 0; i < ll; i++) {
     div.innerHTML += '<a href="\#' + a[i].name + '">'
                      + a[i].parentElement.nextElementSibling
@@ -1585,6 +1654,6 @@ if (ll > 0) {
                      + '</a><br />';
   }
   var div = document.getElementsByClassName('wrapper')[0];
-  div.style.width = '60%';
+  div.style.width = '80%';
 }
 </script>

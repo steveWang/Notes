@@ -1424,7 +1424,81 @@ then it will oscillate. Otherwise, it will be an amplifier. How to fix? I
 have resistors, capacitors; if I can push one of these poles further left
 so that I can get a gain less than 1, then the sine wave goes in and gets a
 little smaller, so the system is stable. And then you can use this as an
-amplifier.</p></div><div class='pos'></div>
+amplifier.</p>
+<p><a name='30'></a></p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Monday, April 9, 2012</h2>
+<p>CMOS amps. Ways to draw PMOS, NMOS. (analog way: PMOS on top, NMOS on
+bottom (source = bulk); LTSpice puts the two together. Way to remember:
+always PN-junction). Always looks like a diode. If you're a digital person,
+you draw transistors with a NOT (bubble) on the gate of the PMOS. LTSpice's
+way is the most faithful: analog way could be wrong, since it really
+depends on which way the current's flowing.</p>
+<p>So given those devices, on your homework I ask you to draw explicitly
+(using the bubbles). You get an I/O relationship that has two flat regions
+on it. When within threshold region, it's just plain off; in between, I get
+two quadratics, and in between, I get a high-gain region. If we draw five
+different regions of operation of this thing, if we look at the P and the N
+current in each one:</p>
+<p>When <mathjax>$0 &lt; V_{in} &lt; V_{th,N}$</mathjax>, the PMOS device has almost all the <mathjax>$V_{DD}$</mathjax>
+across it. It's going to go into saturation pretty close to the top
+rail. Very little saturation there; almost all triode region. N current is
+just identically zero.</p>
+<p>In the next region, <mathjax>$V_{th,N} &lt; V_{in} &lt; ?$</mathjax>, N is in saturation now, and P
+is still in triode.</p>
+<p>Then, at some point, both devices are in saturation, intersection point
+in there, and that is our high gain region. Not perfectly straight, but
+pretty darn straight. Both curves moving as <mathjax>$g_m v_{in}$</mathjax>.</p>
+<p>Next, the NMOS device goes up to even higher current, PMOS goes to lower
+current, NMOS in triode, PMOS saturated.</p>
+<p>Finally, PMOS is just off, NMOS is in triode.</p>
+<p>For homework, must calculate what these transition points are. Pretty
+straightforward to calculate: for ALD1106 and ALD1107, <mathjax>$\mu_n C_{ox}
+\approx 40 \mu A/V^2, \mu_p C_{ox} \approx 16 \mu A/V^2$</mathjax>. So if you want to
+find <mathjax>$V_{in}$</mathjax> s.t. <mathjax>$V_{out} = V_{DD}/2 = 2.5V$</mathjax>, the two currents have to be
+equal to each other, so <mathjax>$I_{DN} = I_{DP}$</mathjax>, so <mathjax>$\mu_n C_{ox}(V_{in} -
+V_{th})^2 = \mu_p C_{ox}(V_{DD} - V_{in} - \abs{V_{th,p}})$</mathjax>. You can solve,
+and you get something around <mathjax>$2V$</mathjax>. That's going to tell you how to get to
+that point.</p>
+<p>So how do you figure out what the input and output swing is where both
+devices stay in saturation? Pretty straightforward with the picture: you
+know it goes into saturation at <mathjax>$V_{in} - V_{th}$</mathjax> for the NMOS, and
+similarly, for the PMOS device, this is going to be <mathjax>$V_{DD} -
+\abs{V_{th}}$</mathjax>. These tell you exactly what your output swing is, so once
+you know this, you can calculate how high/low it can go until a transistor
+drops out of saturation; divide by gain, and you have your input.</p>
+<p>Managed to get Excel to plot these things.</p>
+<p>A, H: open loop gain (once through main amp). Then, feedback factor K: will
+often see as F. If you're a control theorist, you'll draw some sort of
+summing junction. If you go around this loop once (break or open loop) and
+look at the gain once through the amplifier and feedback, then that (AK) is
+called the loop gain.</p>
+<p>So what is the overall gain of a system with feedback? For the gain
+(closed-loop gain) we get <mathjax>$y = Ae$</mathjax>, <mathjax>$e = x - Ky$</mathjax>. When we combine these, we
+get <mathjax>$y = Ax - AKy$</mathjax>, or <mathjax>$\frac{y}{x} = \frac{A}{1 + AK} = \frac{A}{AK
+\parens{1 + \frac{1}{AK}}} = \frac{1}{K}\frac{1}{1 + \frac{1}{AK}} \approx
+\frac{1}{K}\parens{1 - \frac{1}{AK}}$</mathjax>. So that's good news. We get to take
+our amplifier, which we're building out of transistors.</p>
+<p>Closest thing that you can make (that control theorists like to see) is an
+opamp -- darn good approximation. If you take 140, you take what you've
+learned in 105 and learn to design opamps. But you already know some
+circuits that look pretty opamp-like.</p>
+<p>In datasheets: <mathjax>$A_v(V_+ - V_- + V_{offset})$</mathjax>. Important thing that'll show
+up early.</p>
+<p>So: in your lab, you built a bunch of CMOS inverters; calculate input
+capacitance. Couple of polarized capacitors. Pretty subtle. Explicitly
+place 100pF so we don't have to worry about the subtleties. So let's say
+the gain of each stage is 10, that'll make a nice ring oscillator. So what
+is the open-loop gain, feedback factor, loop gain of this? Feedback gain is
+1, open-loop gain is -1000. So loop gain is -1000. People tend to drop
+minus signs.</p>
+<p>Proper place to break feedback loop: right in front of each amplifier
+(since we explicitly drew load capacitors).</p>
+<p>Response of closed-loop gain to frequency.</p>
+<p>Very quickly: single-pole system. <mathjax>$A = \frac{A_0}{1 + \frac{s}{\omega_p}}$</mathjax>,
+so <mathjax>$\frac{V}{X} = \frac{A}{1 + AK} = \frac{A_0}{1 + \frac{s}{\omega_p} +
+A_0K}$</mathjax>. Put this back into original form, etc. Pole moves. With feedback,
+pole moved to higher frequency.</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
@@ -1448,6 +1522,7 @@ if (ll > 0) {
   div.style.fontSize = '90%';
   div.style.top = '10%';
   div.style.right = '5%';
+  div.style.width = '15%';
   for (var i = 0; i < ll; i++) {
     div.innerHTML += '<a href="\#' + a[i].name + '">'
                      + a[i].parentElement.nextElementSibling
@@ -1455,6 +1530,6 @@ if (ll > 0) {
                      + '</a><br />';
   }
   var div = document.getElementsByClassName('wrapper')[0];
-  div.style.width = '60%';
+  div.style.width = '80%';
 }
 </script>

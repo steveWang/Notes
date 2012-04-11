@@ -28,6 +28,7 @@ if (ll > 0) {
   div.style.fontSize = '90%';
   div.style.top = '10%';
   div.style.right = '5%';
+  div.style.width = '15%';
   for (var i = 0; i < ll; i++) {
     div.innerHTML += '<a href=\"\#' + a[i].name + '\">'
                      + a[i].parentElement.nextElementSibling
@@ -35,7 +36,7 @@ if (ll > 0) {
                      + '</a><br />';
   }
   var div = document.getElementsByClassName('wrapper')[0];
-  div.style.width = '50%';
+  div.style.width = '80%';
 }
 </script>"
 fi

@@ -647,7 +647,36 @@ c}{r} + \frac{\hbar^2}{2m} \frac{\ell(\ell + 1)}{r^2}}u(r)$</mathjax> <mathjax>$
 \frac{\sqrt{-2mE}}{\hbar}r$</mathjax> (<mathjax>$E &lt; 0$</mathjax>). You wind up getting some
 differential equation you need to solve: <mathjax>$\deriv{^2 u}{\rho^2} = \bracks{1
 - \frac{\rho_0}{\rho} + \frac{\ell(\ell + 1)}{\rho^2}}u$</mathjax>; <mathjax>$\rho_0 \equiv
-\alpha \sqrt{\frac{2mc^2}{\abs{E}}}$</mathjax>.</p></div><div class='pos'></div>
+\alpha \sqrt{\frac{2mc^2}{\abs{E}}}$</mathjax>.</p>
+<p><a name='29'></a></p>
+<h1>Physics 137A: Quantum Mechanics</h1>
+<h2>Monday, April 9</h2>
+<p>Recap from last time: stuff with Coulomb potential.</p>
+<p>Talk about Laguerre polynomials.</p>
+<p>As with Hermite polynomials, must self-truncate (some term <mathjax>$j_{\max}$</mathjax> must
+go to 0).</p>
+<p><mathjax>$\alpha \approx \frac{1}{137}; mc^2 \approx 0.511 MeV; \hbar c \approx 1973
+eV-A$</mathjax>.</p>
+<p>Hydrogen!</p>
+<p><a name='30'></a></p>
+<h1>Physics 137A: Quantum Mechanics</h1>
+<h2>Wednesday, April 9</h2>
+<p>Radial wave function, Exponential that goes like <mathjax>$e^{-r/an}$</mathjax>. Scale should
+jump out at you. You get this feeling as you go to higher and higher
+states, stuff gets weaker, and whatever. Solns to Lapl's eq on sphere;
+worked out formula using Frobenius method. Worked out eigenvalue problem;
+had to have Laguerre polynomials -- auto-truncating, not unlike Hermite
+polys. Write energies that correspond to truncation in one of two ways:
+electron mass-energy. Could also write in terms of distance.</p>
+<p>Book's normalization is weird -- usual: either constant term is 1 or
+highest-order term has coefficient of 1.</p>
+<p>Our <mathjax>$L_j^p$</mathjax> are gotten from the underlying Laguerre polynomials. The
+Laguerre polynomials, going from the text's definition, is as follows:
+<mathjax>$L_q(x) e^x\parens{\deriv{}{x}}^q\parens{e^{-x} x^q} = \sum_{k=0}^q (-1)^k
+\expfrac{q!}{k!}{2}\frac{x^k}{(q-k)!}$</mathjax>. Thus our wave function <mathjax>$\psi_{n\ell
+m} (r,\theta, \phi) = \bracks{\expfrac{2}{na}{3}\frac{(n-\ell - 1)!}{2n
+\bracks{(n+\ell)!}^3}}^{1/2}e^{-r/na}\expfrac{2r}{na}{\ell}L_{n-\ell-1}^{2
+\ell + 1}\parens{\frac{24}{na}}Y_{\ell m}(\theta, \phi)$</mathjax>.</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
@@ -671,6 +700,7 @@ if (ll > 0) {
   div.style.fontSize = '90%';
   div.style.top = '10%';
   div.style.right = '5%';
+  div.style.width = '15%';
   for (var i = 0; i < ll; i++) {
     div.innerHTML += '<a href="\#' + a[i].name + '">'
                      + a[i].parentElement.nextElementSibling
@@ -678,6 +708,6 @@ if (ll > 0) {
                      + '</a><br />';
   }
   var div = document.getElementsByClassName('wrapper')[0];
-  div.style.width = '60%';
+  div.style.width = '80%';
 }
 </script>

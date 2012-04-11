@@ -36,7 +36,7 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
   TEX.Macro("ztrans", "\\overset{\\mathcal{Z}}{\\Longleftrightarrow}", 0);
   TEX.Macro("ltrans", "\\overset{\\mathcal{L}}{\\Longleftrightarrow}", 0);
   TEX.Macro("prob", "\\Pr\\left[#1 \\right]", 1);
-  TEX.Macro("abs", "\\left\\Vert #1 \\right\\Vert", 1);
+  TEX.Macro("abs", "\\left\\vert #1 \\right\\vert", 1);
   TEX.Macro("vec", "\\overset{\\rightharpoonup}{#1}", 1);
   TEX.Macro("pdiff", "{\\partial #1}", 1);
   TEX.Macro("diff", "{d #1}", 1);

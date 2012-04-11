@@ -964,3 +964,47 @@ c}{r} + \frac{\hbar^2}{2m} \frac{\ell(\ell + 1)}{r^2}}u(r)$ $\rho = kr =
 differential equation you need to solve: $\deriv{^2 u}{\rho^2} = \bracks{1
 - \frac{\rho_0}{\rho} + \frac{\ell(\ell + 1)}{\rho^2}}u$; $\rho_0 \equiv
 \alpha \sqrt{\frac{2mc^2}{\abs{E}}}$.
+
+<a name='29'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Monday, April 9
+---------------
+
+Recap from last time: stuff with Coulomb potential.
+
+Talk about Laguerre polynomials.
+
+As with Hermite polynomials, must self-truncate (some term $j_{\max}$ must
+go to 0).
+
+$\alpha \approx \frac{1}{137}; mc^2 \approx 0.511 MeV; \hbar c \approx 1973
+eV-A$.
+
+Hydrogen!
+
+<a name='30'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, April 9
+------------------
+Radial wave function, Exponential that goes like $e^{-r/an}$. Scale should
+jump out at you. You get this feeling as you go to higher and higher
+states, stuff gets weaker, and whatever. Solns to Lapl's eq on sphere;
+worked out formula using Frobenius method. Worked out eigenvalue problem;
+had to have Laguerre polynomials -- auto-truncating, not unlike Hermite
+polys. Write energies that correspond to truncation in one of two ways:
+electron mass-energy. Could also write in terms of distance.
+
+Book's normalization is weird -- usual: either constant term is 1 or
+highest-order term has coefficient of 1.
+
+Our $L_j^p$ are gotten from the underlying Laguerre polynomials. The
+Laguerre polynomials, going from the text's definition, is as follows:
+$L_q(x) e^x\parens{\deriv{}{x}}^q\parens{e^{-x} x^q} = \sum_{k=0}^q (-1)^k
+\expfrac{q!}{k!}{2}\frac{x^k}{(q-k)!}$. Thus our wave function $\psi_{n\ell
+m} (r,\theta, \phi) = \bracks{\expfrac{2}{na}{3}\frac{(n-\ell - 1)!}{2n
+\bracks{(n+\ell)!}^3}}^{1/2}e^{-r/na}\expfrac{2r}{na}{\ell}L_{n-\ell-1}^{2
+\ell + 1}\parens{\frac{24}{na}}Y_{\ell m}(\theta, \phi)$.
