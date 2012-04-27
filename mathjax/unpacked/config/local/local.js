@@ -31,10 +31,12 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
   //   TEX.Macro("R","{\\bf R}");
   //   TEX.Macro("op","\\mathop{\\rm #1}",1); // a macro with 1 parameter
   TEX.Macro("set", "\\left\\{ #1 \\right\\}", 1);
+  TEX.Macro("const", "\\mathrm{const}", 0);
+  TEX.Macro("tensor", "\\otimes", 0);
   TEX.Macro("cplx", "\\mathbb{C}", 0);
   TEX.Macro("fourier", "\\overset{\\mathcal{F}}{\\Longleftrightarrow}", 0);
   TEX.Macro("ztrans", "\\overset{\\mathcal{Z}}{\\Longleftrightarrow}", 0);
-  TEX.Macro("ltrans", "\\overset{\\mathcal{L}}{\\Longleftrightarrow}", 0);
+  TEX.Macro("ltrans", "\\overset{\\mathcal{H}}{\\Longleftrightarrow}", 0);
   TEX.Macro("prob", "\\Pr\\left[#1 \\right]", 1);
   TEX.Macro("abs", "\\left\\vert #1 \\right\\vert", 1);
   TEX.Macro("vec", "\\overset{\\rightharpoonup}{#1}", 1);

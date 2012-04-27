@@ -286,19 +286,25 @@ well.</p>
 systems.</p>
 <p>Fourier analysis today. Some of this will be review, but we'll dive
 more deeply into the linear algebra in this class.</p>
-<p>Roadmap:
- * Fourier Analysis
+<p>Roadmap:</p>
+<ul>
+<li>Fourier Analysis
    "A way of decomposing signals into their constituent frequencies.
    Kind of like the way a prism splits light into its components.
-   Fourier analysis gives us the tools we need to analyze signals."
-   + Periodic [ in time domain. ]
-     - Discrete time, discrete time Fourier series.
-     - Continuous time, continuous time Fourier series.
-   + Aperiodic
-     - Discrete-time Fourier transform.
-     - Continuous-time Fourier transform
+   Fourier analysis gives us the tools we need to analyze signals."</li>
+<li>Periodic [ in time domain. ]<ul>
+<li>Discrete time, discrete time Fourier series.</li>
+<li>Continuous time, continuous time Fourier series.</li>
+</ul>
+</li>
+<li>Aperiodic<ul>
+<li>Discrete-time Fourier transform.</li>
+<li>Continuous-time Fourier transform
    We can put blocks around these. Discrete-time signals are periodic
-   in the frequency domain.</p>
+   in the frequency domain.</li>
+</ul>
+</li>
+</ul>
 <p>Before I do that, I want to review an abstraction that we use for
    signals (and the way we look at signals) as vectors.</p>
 <h1>Periodic DT Signals</h1>
@@ -1553,8 +1559,8 @@ y^2 = \frac{5}{6}y - \frac{1}{6}y
 $$</mathjax></p>
 <p>These are our eigenvalues. Some linear combination of these two
 exponentials will give us our initial conditions (i.e. <mathjax>$y(0) = 1$</mathjax>, <mathjax>$y(-1) =
-y(-2) = 0$</mathjax>). That is, <mathjax>$y = a_0 \parens{-\frac{1}{2}}^n + a_1 \parens{-\frac{1}{3}}^n$</mathjax>
-)</p>
+y(-2) = 0$</mathjax>). That is, <mathjax>$y = a_0 \parens{-\frac{1}{2}}^n + a_1
+\parens{-\frac{1}{3}}^n$</mathjax> )</p>
 <p><a name='21'></a></p>
 <h1>EE 120: Signals and Systems</h1>
 <h2>April 10, 2012.</h2>
@@ -1622,7 +1628,156 @@ is fairly trivial: <mathjax>$\int\abs{x(t)e^{-i\omega t}} dt = \int \abs{x(t)} d
 \renewcommand{\Re}{\mathrm{Re}}
 e^{-at} u(t) \ltrans \frac{1}{s+a} (-\Re(a) &lt; \Re(s))
 \\ -e^{-at} u(-t) \ltrans \frac{1}{s+a} (\Re(s) &lt; -\Re(a))
-$$</mathjax></p></div><div class='pos'></div>
+$$</mathjax></p>
+<p><a name='23'></a></p>
+<h1>EE 120: Signals and Systems</h1>
+<h2>April 17, 2012.</h2>
+<h2>Differentiation property:</h2>
+<p><mathjax>$$
+x(t) \ltrans \hat{X}(s)
+\\ \dot{x}(t) \ltrans s\hat{X}(s)
+$$</mathjax></p>
+<p>LCCDEs</p>
+<p><mathjax>$y^{(N)} + ... + a_1 y^{(1)}(t) + a_0 = b_M x^{(M)} + ... + b_0 x(t)$</mathjax>. What
+I want you is to apply the differentiation property to find the transfer
+function of this. (x-coefficients-polynomial divided by
+y-coefficients-polynomial)</p>
+<p><mathjax>$\frac{\sum_m b_m s^m}{\sum_n a_n s^n}$</mathjax>.</p>
+<p>Going back to a series-RC circuit powered by a voltage source, we have
+<mathjax>$z(t) = \frac{x(t) - y(t)}{R}$</mathjax>, <mathjax>$C\dot{y}(t) = z(t)$</mathjax>. So <mathjax>$C\dot{y} -
+\frac{1}{R}y(t) = x(t)$</mathjax>. Transfer function therefore is <mathjax>$\frac{1}{RCs +
+1}$</mathjax>. Other way is to plug in <mathjax>$e^{-st}$</mathjax> and insist silly things.</p>
+<p>Inverting this signal yields <mathjax>$\frac{1}{RC}e^{-t/(RC)}u(t)$</mathjax>. That is the
+impulse response of the system.</p>
+<p>So that was differentiation in time. There is differentiation in the
+s-domain. </p>
+<h2>Differentiation in s</h2>
+<p><mathjax>$$
+x(t) \ltrans \hat{X}(s)
+\\ -t x \ltrans \deriv{\hat{X}}{s}
+$$</mathjax></p>
+<p><mathjax>$x(t) = \frac{1}{2\pi i} \oint \hat{X}(s) e^{st} ds$</mathjax></p>
+<p><mathjax>$te^{-at}u(t) \ltrans \frac{1}{(s+a)^2}$</mathjax>.</p>
+<p>Conjecture: terms of the form <mathjax>$t^n e^{-at} u(t)$</mathjax> and their anticausal
+counterparts are the only kinds that can be combined (subject to matching
+RoCs) to produce rational transforms. This means that the impulse response
+of any rational transfer function must be the sum of these terms.</p>
+<p>In differential equations, you studied simple and multiple roots (which
+correspond to simple/multiple poles in our vernacular).</p>
+<p><mathjax>$s + 1 + 1/(s+3)$</mathjax></p>
+<p>(unit doublet)</p>
+<p>on one side, you have delta, step, ramp, quadratic. On the other side,
+you've got a doublet, second derivative of delta, etc. Delta is <mathjax>$u_0(t)$</mathjax>,
+doublet is <mathjax>$u_1(t)$</mathjax>, step is <mathjax>$u_{-1}(t)$</mathjax>, etc.</p>
+<p>If not strictlty proper, have polynomial in s.</p>
+<h2>Method 1: non-transform method</h2>
+<p>If delta goes into the system, what comes out? <mathjax>$h$</mathjax>. If the unit step goes
+in, we get <mathjax>$u*h$</mathjax>.</p>
+<h2>Method 2: transform method</h2>
+<p>partial fractions and stuff. Consistent with result of method 1.</p>
+<h2>Integration in time/transform domain</h2>
+<p>Just relabel variables, and it becomes self-evident.</p>
+<p><mathjax>$$
+x(t) \ltrans \hat{X}(s)
+\\ \int x dt^\prime \ltrans \frac{1}{s}\hat{X}(s)
+$$</mathjax></p>
+<h1>Steady-State &amp; Transient Response of LTI Systems</h1>
+<p>Exactly the same as expected. Note that the second one dies out because of
+the pole of the system.</p>
+<p>With BIBO-stable system, input pole to right of rightmost pole of system
+dominates output.</p>
+<p><a name='24'></a></p>
+<h1>EE 120: Signals and Systems</h1>
+<h2>April 19, 2012.</h2>
+<p>Transient/Steady-State Wrap up</p>
+<p>Let's talk a bit about a causal BIBO-stable system. Which is usually the
+case with practical applications. Has a rational transfer function, so
+usually ratio of two polynomials in <mathjax>$s$</mathjax>. Not going to be too concerned
+about zeros of system, so we'll write the factored denominator in terms of
+the poles of the system.</p>
+<p>Assume all poles are simple. All poles are in left half-plane. Also, assume
+transfer function is strictly proper.</p>
+<p>To this system, I apply a one-sided (causal) complex exponential
+signal. What is the output?</p>
+<p>transforms and multiplications.</p>
+<p>Eigenfunction property (plus other stuff?!).</p>
+<p>True for any BIBO-stable function: you can evaluate the Laplace transform
+on the <mathjax>$i\omega$</mathjax> axis and get the Fourier transform for that particular
+<mathjax>$\omega$</mathjax>.</p>
+<p>What happens to all the terms involving the Rs? These, collectively,
+compose your transient response. The last term (result from input)? Doesn't
+die out. Steady-state.</p>
+<p>What this says is that the system cannot distinguish between <mathjax>$e^{i\omega_0
+t}$</mathjax> and its truncated cousin <mathjax>$e^{i\omega_0 t}u(t)$</mathjax> if we wait long enough:
+i.e. transients become insignificant. Only portion of response that remains
+is the one corresponding to <mathjax>$e^{i\omega_0 t}$</mathjax>. Notice that the pole of the
+input is to the right of the rightmost pole of the system.</p>
+<p>Important: all poles of the system are in the left half-plane, and the pole
+of the input is on the <mathjax>$i\omega$</mathjax> axis, which means it's to the right of the
+rightmost pole (and of course the system is causal). Therefore the pole of
+the input will dominate the response.</p>
+<p>Eigenfunction property applies to steady-state solution. Can also extend to
+sinusoids.</p>
+<p>Likely a good time to move to the unilateral Laplace transform and how we
+can use it to solve ordinary LDEs.</p>
+<h1>Unilateral Laplace Transform&amp; linear, constant-coefficient differential equations with non-zero initial conditions</h1>
+<p>Whenever you have nonzero initial conditions, you need to truncate. Trick
+used: multiply by unit step, then take Laplace transform. Effectively the
+same as taking unilateral Laplace transform.</p>
+<p><mathjax>$\hat{\mathcal{X}}(s) = \int_{0^-}^\infty x(t) e^{-st} dt$</mathjax>. A lot of
+textbooks only deal with the unilateral transform because they're
+interested in causal systems. As are we, in this context.</p>
+<p>If I am looking at the unilateral Laplace transform of <mathjax>$\dot{x}$</mathjax>, one
+additional term appears. If we integrate by parts, we can see which this
+term must be. In the bilateral case, we evaluated <mathjax>$uv$</mathjax> at both
+infinities. The second term (i.e. <mathjax>$\int vdu$</mathjax>) required that this product
+pevaluate to zero at infinities -- otherwise the integral would not
+converge.</p>
+<p>In the unilateral case, we therefore have an additional term: <mathjax>$-x(0^-)$</mathjax>.</p>
+<p>Zero-state, zero-input method. Remember: <strong>different</strong> from transient and
+steady-state. Best not to think of these at the same time.</p>
+<p>Method 2: use unilateral Laplace transform.</p>
+<p>Note that if a signal is causal, its unilateral Laplace transform is the
+same as its bilateral Laplace transform.</p>
+<p><a name='25'></a></p>
+<h1>EE 120: Signals and Systems</h1>
+<h2>April 24, 2012.</h2>
+<h1>DC Motor Control</h1>
+<p>Application of what we've been studying. Way to review and test fluency
+with material. We've got a DC motor whose model is some second order linear
+differential equation. We've got applied torque and damping. Moment of
+inertia of rotor and whatever's hooked up to it.</p>
+<p>Transfer function?</p>
+<p>Feedback to stabilize the system. Place this in proportional feedback
+configuration: only other thing in the feedback system is K, which is a
+scalar. Integrator: of form <mathjax>$\frac{1}{s}$</mathjax>. What's the transfer function?
+Characteristic polynomial from differential equations.</p>
+<p>K must be positive for BIBO stability.</p>
+<p>If roots complex, guaranteed stability. Real part of each pole is
+<mathjax>$-\frac{D}{2M} &lt; 0$</mathjax>.</p>
+<p>Oscillations you get when you have complex poles. Underdamping, critical
+damping, overdamping. Robustness discussion.</p>
+<h1>Bode plots!</h1>
+<p>Gots two building blocks:</p>
+<p><mathjax>$$
+\hat{F}_I(s) = 1 + \frac{s}{\omega_0}
+\\ F_I(\omega) = \hat{F}_I(i\omega)
+$$</mathjax></p>
+<p>Asymptotic plot of <mathjax>$20\log\abs{F_I}$</mathjax> and <mathjax>$\angle F_I$</mathjax>. The horizontal axis
+is a logarithmic axis.</p>
+<p>What happens when <mathjax>$\omega$</mathjax> is very small? Asymptotically zero. At higher
+frequencies, <mathjax>$\omega$</mathjax> large, so imaginary part will dominate. And so when
+you take its magnitude, you jump by 20 every time you increase magnitude by
+10 -- slope is 20dB/dec. <mathjax>$\omega_0$</mathjax> is your corner frequency (named for
+obvious reasons). 3dB point: corner frequency. One of foundational blocks
+for frequency responses on logarithmic scales. 45 degrees per decade. (use
+10x to determine dominance).</p>
+<p>This building block is called a regular zero. Not widely used; Babak
+learned from circuits professor at CalTech (R.D. Middlebrook).</p>
+<p>The second building block is <mathjax>$\frac{s}{\omega_0}$</mathjax>. Simple zero.</p>
+<p>Claim: all expressions with real roots can be written as combinations of
+these two.</p>
+<p>Inverted zero: <mathjax>$1 + \frac{\omega_0}{s}$</mathjax></p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {

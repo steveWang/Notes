@@ -25,10 +25,9 @@
 <li>2 Midterms: 14 Feb, 22 Mar.</li>
 <li>Final Project</li>
 <li>In-class quizzes</li>
-<li>Academic integrity policy
-Today</li>
+<li>Academic integrity policy</li>
 </ul>
-<hr />
+<h2>Today</h2>
 <ul>
 <li>What is quantum computation?</li>
 <li>What is this course?</li>
@@ -63,10 +62,12 @@ exponentially faster, this was really a big surprise. And really on
 fundamental problems, like factoring.</p>
 <p>What this course will focus on is several questions on quantum computers.</p>
 <p>Where we are for quantum computers is sort of where computers were
-60-70 years ago.
-<em> Size -- room full of equipment
-</em> Reliability -- not very much so
-* Limited applications</p>
+60-70 years ago.</p>
+<ul>
+<li>Size -- room full of equipment</li>
+<li>Reliability -- not very much so</li>
+<li>Limited applications</li>
+</ul>
 <h2>Ion traps.</h2>
 <p>Can trap a small handful of ions, small number of qubits. No
 fundamental obstacle scaling to ~40 qubits over next two years.</p>
@@ -209,29 +210,31 @@ principle and all).</p>
 <h2>Multiple-qubit Systems -- January 24, 2012</h2>
 <p>Snafu with the projections, so lecture will be on the whiteboard! Will
 also stop early, unfortunately.</p>
-<p>State of a single qubit is a superposition of various states (cosθ|0〉
-+ sinθ|1〉). measurement has effect of collapsing the superposition
-(WAVE FUNCTION).</p>
+<p>State of a single qubit is a superposition of various states
+(<mathjax>$\cos\theta\ket{0} + \sin\theta\ket{1}$</mathjax>). measurement has effect of
+collapsing the superposition.</p>
 <p>(hydrogen atom: electron can be in ground state or excited state.)</p>
 <p>Now we study two qubits!</p>
 <h1>TWO QUBITS</h1>
-<p>Now you have two such particles, and we want to describe their joint
-state, what that state looks like. Classically, this can be one of
-four states. So quantumly, it is in a superposition of these four
-states. Our |ψ〉, then, is α₀₀|00〉 + α₀₁|01〉 + α₁₀|10〉 + α₁₁|11〉.
-Collapse of the wavefunction occurs in exactly the same manner.</p>
-<p>Probability first qubit is 0: |α₀₀|² + |α₀₁|². New state is a
-renormalization of the remaining states.</p>
+<p>Now you have two such particles, and we want to describe their joint state,
+what that state looks like. Classically, this can be one of four states. So
+quantumly, it is in a superposition of these four states. Our <mathjax>$\ket{\psi}$</mathjax>,
+then, is <mathjax>$\alpha_{00}\ket{00} + \alpha_{01}\ket{01} + \alpha_{10}\ket{10} +
+\alpha_{11}\ket{11}$</mathjax>.  Collapse of the wavefunction occurs in exactly the
+same manner.</p>
+<p>Probability first qubit is 0: <mathjax>$\abs{\alpha_{00}}^2 + \abs{\alpha_{01}}
+^2$</mathjax>. New state is a renormalization of the remaining states.</p>
 <h1>ENTANGLEMENT</h1>
 <p>First, let me show you what it means for two qubits not to be
 entangled. Essentially, we have conditional independence.</p>
 <p>Quantum mechanics tells us that this is a very rare event (i.e. it
 almost never happens).</p>
 <h2>Bell State</h2>
-<p>You have two qubits in the state (1/√2)|00〉 + (1/√2)|11〉. Impossible
-to factor, so we must have some sort of dependence occurring. Neither
-of the two qubits has a definite state. All you can say is that the
-two qubits together are in a certain state.</p>
+<p>You have two qubits in the state <mathjax>$\frac{1}{\sqrt{2}}\parens{\ket{00} +
+\ket{11}}$</mathjax>. Impossible to factor (nontrivial tensor product), so we must
+have some sort of dependence occurring. Neither of the two qubits has a
+definite state. All you can say is that the two qubits together are in a
+certain state.</p>
 <p>Rotational invariants of Bell states -- maximally entangled in all
 orthogonal bases.</p>
 <p><a name='4'></a></p>
@@ -599,25 +602,26 @@ eigenbasis), and you can write them out in this eigenbasis.</p>
 <p>Suppose M = X (bit-flip). Xv = λv. (X-λI)v = 0. det(X-λI) = 0. Solve for λ,
 which are your eigenvalues, and then we go back and solve for our
 eigenvectors.</p>
-<p>Here, we're going to do t his by inspection. Eigenvectors of X would be
-|+〉, |-〉; the corresponding eigenvalues are 1, -1.</p>
+<p>Here, we're going to do this by inspection. Eigenvectors of X would be
+<mathjax>$\ket{+}, \ket{-}$</mathjax>; the corresponding eigenvalues are 1, -1.</p>
 <p>Why is this an observable? If you were to create the right detector, we'd
 observe something. We'd measure something. What we read out on the meter is
-λ|j〉 with probability equal to α{j}², and the new state is |Φ{j}〉. What
-Schrödinger's equation tells us is that if you look at the energy operator
-H, and then in order to solve this differential equation, we need to look
-at it in its eigenbasis. It was not supposed to be so frightening. You can
-write U(t) notationally as e^{-iHt/ℏ}.</p>
+<mathjax>$\lambda\ket{j}$</mathjax> with probability equal to <mathjax>$\alpha_j^2$</mathjax>, and the new state
+is <mathjax>$\ket{\Psi_j}$</mathjax>. What Schrödinger's equation tells us is that if you look
+at the energy operator H, and then in order to solve this differential
+equation, we need to look at it in its eigenbasis. It was not supposed to
+be so frightening. You can write U(t) notationally as <mathjax>$e^{-iHt/ℏ}$</mathjax>.</p>
 <h2>Why H?</h2>
 <p>Why should Schrödinger's equation involve the Hamiltonian? Why the energy
 operator? What's so special about energy? Here's the reasoning: from axiom
 3 of quantum mechanics, which says unitary evolution, what we showed was
-the unitary transformation is e^{-iHt/ℏ}. Any unitary transformation can be
-written in this form. You can always write it in the form e^{iM} for some
-Hermitian matrix M. The only question is, what should M be? Why should M be
-the energy function? The second thing that turns out (either something that
-we'll go through in class or have as an assignment) – suppose that M is a
-driving force of Schrödinger's equation. So ∂Ψ/∂t = M|Ψ〉.</p>
+the unitary transformation is <mathjax>$e^{-iHt/\hbar}$</mathjax>. Any unitary transformation
+can be written in this form. You can always write it in the form <mathjax>$e^{iM}$</mathjax>
+for some Hermitian matrix M. The only question is, what should M be? Why
+should M be the energy function? The second thing that turns out (either
+something that we'll go through in class or have as an assignment) –
+suppose that M is a driving force of Schrödinger's equation. So
+<mathjax>$\pderiv{\Psi}{t} = M\ket{\Psi}$</mathjax>.</p>
 <p>Suppose there were some observable quantity A that is conserved: i.e. if
 you start out with a measurement of |Ψ(0)〉, and you do the same
 measurement at time t, if A is a conserved value, then this expected value
@@ -1532,8 +1536,8 @@ structure, and so they have small corresponding quantum circuits.</p>
 <h1>Guest lectures: implementation of qubits</h1>
 <h2>April 3, 2012</h2>
 <p>Kevin Young: kcyoung@berkeley.edu</p>
-<p>We'll start with how to implement qubits using spins, and eventually culminate in
-NMR.</p>
+<p>We'll start with how to implement qubits using spins, and eventually
+culminate in NMR.</p>
 <p>Today, what we're going to do is start looking at physical implementations
 of QC. Will continue through the end of next week. How to build an actual
 physical quantum computer. Implementation choice: NMR (one of first QC
@@ -1706,8 +1710,8 @@ to exponentiate matrices, since the radius of convergence is really
 small. However, we get lucky because these are Hermitian matrices, so they
 are diagonalizable with real eigenvalues, which is easy to do quickly.</p>
 <p>Pauli matrices are especially nice in that they actually alternate between
-themselves and the identity. This has interesting results: <mathjax>$e^{i\theta
-X} = I\cos\theta + iX\sin\theta$</mathjax>; <mathjax>$e^{i\theta \hat{n} \cdot \vec{S}} = I \cos
+themselves and the identity. This has interesting results: <mathjax>$e^{i\theta X} =
+I\cos\theta + iX\sin\theta$</mathjax>; <mathjax>$e^{i\theta \hat{n} \cdot \vec{S}} = I \cos
 theta + i(\hat{n} \cdot \vec{S})\cos\theta$</mathjax>. This shows up a lot since
 physicists tend to pick magnetic field as Z. Originally devised by Zeeman,
 so it'll often be known as the Zeeman Hamiltonian or the Zeeman effect.</p>
@@ -1718,7 +1722,818 @@ revolutions. (twists relative to the universe?) At this level, easiest to
 understand as the cost of having this nice physical picture. We're really
 doing rotations on complex vector spaces.</p>
 <p>Limitation of this picture is that it's only half of the representations we
-can do in the complex space.</p></div><div class='pos'></div>
+can do in the complex space.</p>
+<p><a name='22'></a></p>
+<h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
+<h1>Guest lectures: implementation of qubits</h1>
+<h2>April 12, 2012</h2>
+<p>(notes from last time were on paper)</p>
+<p>One last homework due next week. Will give feedback on projects after
+that. 3 multi-part problems. Should not be too hard.</p>
+<p>Review: we can do arbitrary single-qubit gates. Wrote down expressions for
+doing arbitrary phase rotations. THe simplest model for two qubits
+interacting with each other that feels like <mathjax>$H_{int} = J\sigma_z^{(1)}
+\otimes \sigma_z^{(2)}$</mathjax>. If we were in a single qubit, we chose special
+states: <mathjax>$\ket{0},\ket{1}$</mathjax>. Eigenstates of <mathjax>$\sigma_z$</mathjax>. Arbitrary
+superposition of these.</p>
+<p>When we have two qubits, we can pick a similar basis, but now our system is
+composed of 2 qubits, so we need four basis states (can easily form these
+by taking tensor products of our previous basis states).</p>
+<p>effective magnetic field of the qubit is itself measured by a Pauli
+operator.</p>
+<p>If we want to build a matrix representation of an operator, we just need to
+know how it acts on each of our basis states. To set up our conventions,
+<mathjax>$\sigma_z\ket{0} = 0$</mathjax>; <mathjax>$\sigma_z\ket{1} = -\ket{1}$</mathjax>.</p>
+<p>If J positive, favors antialigned (antiferromagnetic); if J negative,
+favors aligned (ferromagnetic). Condensed-matter people love to study
+antiferromagnetic things. End up with frustration in triangle lattice.</p>
+<p>The way we construct the tensor product matrix is by sticking the second
+matrix B onto each element of A. What I mean by that is that <mathjax>$A \otimes B
+\equiv \begin{pmatrix}A_11 B &amp; A_{12}B &amp; ... \\ A_{21}B &amp; ... &amp; ...
+\\ ... &amp; ... &amp; ...\end{pmatrix}$</mathjax>. It's worth your time to convince yourself
+that this is the right way to do the tensor product. Think about how you're
+writing down your basis states.</p>
+<p>Now that we have this operator, let's think about what it does to our
+system. Let's look at it strictly from the lab frame. So we're not going to
+take out the Larmor precession. Write out full Hamiltonian.</p>
+<p><mathjax>$H = \mu_0 B_1 \sigma_z \tensor I - \mu_0 B_2 \sigma_z \otimes I + J
+\sigma_z \otimes \sigma_z$</mathjax>. One thing you can do is look at the spectrum of
+the Hamiltonian: the available energies (eigenvalues of Hamiltonian).</p>
+<p>By putting an interaction on these two qubits, I've given myself some way
+of doing a CNOT: a nontrivial tensor product. One thing that is important
+is that these qubits are indistinguishable somehow. If I want to control
+one but not the other, they need different resonance frequencies. If you're
+going to pick some molecule to stick in your quantum computer, you can't
+choose one with the usual symmetries. Something like plain acetylene
+wouldn't really work wekk: both carbons have the same
+environment. Indistinguishable. But by replacing one hydrogen by a
+deuterium, we've changed the resonant frequency by just a little bit so
+that our system is now resolvable.</p>
+<p>Let's go back into a rotating frame. In a rotating frame, what we've done
+is subtract out the rotating part of the hamiltonian. We can still do the
+same mathematical transformation. Why? These operators commute. Two
+different systems, so you can know both simultaneously. No uncertainty
+relation.</p>
+<p>Notice that the state <mathjax>$\ket{00}$</mathjax> and <mathjax>$\ket{11}$</mathjax> get a positive phase after
+some time t, and <mathjax>$\ket{01}$</mathjax> and <mathjax>$\ket{10}$</mathjax> get a negative phase after some
+time t. Recall that the <mathjax>$\pi$</mathjax>-pulse changes the parity of a state: it takes
+an even-parity state and switches it to an odd parity state.</p>
+<p>First is hamiltonian evolution for time <mathjax>$\tau$</mathjax>, and second, we do an X-gate
+on the first qubit, and then third, we do hamiltonian evolution again for
+<mathjax>$\tau$</mathjax>, and fourth, we do our X-gate again. I'll do 0 explicitly. We start
+out in the state <mathjax>$\ket{00}$</mathjax>. Hamiltonian evolution (for this system) under
+a time t looks like <mathjax>$e^{-J\tau}\ket{00}$</mathjax>. After the second step, we move
+into the state <mathjax>$e^{-J\tau}\ket{10}$</mathjax>. After the third step, we have the
+state <mathjax>$e^{J\tau - J\tau}\ket{10}$</mathjax>. And then, after the fourth step, we get
+back <mathjax>$\ket{00}$</mathjax>. So by doing this series of operations, I've effectively
+eliminated the effect of this hamiltonian (not ideal, but has the same net
+result.)</p>
+<p>This procedure is going to be very important to us: dipolar
+decoupling. It's dipolar because you're dealing with these magnetic
+dipoles, and this interaction in a sense couples these two qubits, and
+you've turned this interaction off. On Tuesday, we'll talk about dynamic
+decoupling, where it's basically the same procedure used to eliminate
+noise.</p>
+<p>One of the assumptions we've made is that the X-gate is fast compared to
+<mathjax>$\tau$</mathjax>. It takes some time to do that X-gate, and while that's happening,
+the system is evolving, and so you're accumulating some errors. Problem
+with doing these X-gates fast.</p>
+<p>Let's think of the exact sequence of controls we need to do to implement a
+Bell state. So the first thing we do is the dipolar decoupling, as
+discussed, so that we have the same state after some time has elapsed. Now,
+we have to do a Hadamard gate: sequence of X, Y pulses that looked like
+<mathjax>$X(\pi/2), Y(\pi/4), X(\pi/2)$</mathjax>. Now we want to do a CNOT by applying a
+<mathjax>$\pi$</mathjax>-pulse at one of the frequencies.</p>
+<p>This sequence of operations gives us exactly the Bell state that we wanted.</p>
+<p>When you start building a larger quantum computer, the idle times start
+becoming vital: even worse than we've discussed (Tuesday).</p>
+<p>A lot of pulse-design for NMR revolves around faulty gates: how can I make
+these errors cancel each other out?</p>
+<p><a name='23'></a></p>
+<h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
+<h1>Guest lectures: implementation of qubits</h1>
+<h2>April 17, 2012</h2>
+<p>Last time, we talked about two-qubit gates. Today, we're going to talk
+about why NMR quantum computers are not scalable and dephasing/decoherence.</p>
+<p>So, one of the most successful demonstrations of an NMR quantum computer so
+far was factoring the number 15. Used a molecule <mathjax>$F^{19}C^{13}$</mathjax> as their
+nuclear spins, and then iron, etc. In order to construct a molecule to use
+it in a quantum computer, each qubit must be in a different local
+environment so that the spectrometer can see a different resonant frequency
+for each qubit.</p>
+<p>Carbon exists with several different isotopes: <mathjax>$C^{13}$</mathjax> has spin
+<mathjax>$\frac{1}{2}$</mathjax>, for instance.</p>
+<p>Carbons are easy to distinguish. Either surrounded by fluorines (very
+electronegative) or irons (metals).</p>
+<p>Also not just using one of these: fill up generously-sized sample-holder,
+and you end up with ~<mathjax>$10^{22}$</mathjax>. Also important: this system is generally
+analysed at room temperature. At room temperature, the effect of thermal
+excitations on quantum systems is fairly large. Back-of-the-envelope way of
+estimating whether you're in the ground state or not: if your energy gap is
+very big compared to <mathjax>$\tau$</mathjax>, you'll likely be in the ground state. But
+typically in NMR systems, the converse is true: energy gap is very small.</p>
+<h2>Density matrices</h2>
+<p>Quantum mechanics is frequently concerned with quantum probabilities
+(intensities of the wave function, so to speak). These are not the only
+probabilities we can consider.</p>
+<p>Person flips a coin. If heads, gives state <mathjax>$\ket{\psi}$</mathjax>. If you're doing an
+experiment and measure, what you want to do is describe what's coming out
+consistently. One way: describe state as list of tuples,
+e.g. [(.5 0) (.5 1)]. Not very useful. Expectation of operator A:
+<mathjax>$\braKet{\psi}{A}{\psi}$</mathjax>.</p>
+<p>trace of <mathjax>$\rho_A$</mathjax>. Density matrix: if probabilities sum up to 1, trace of
+density matrix is 1.</p>
+<p>Remember Bloch sphere: states on Bloch sphere describe quantum states. If I
+have some probabilistic sum, the density matrix <mathjax>$\rho$</mathjax> is <mathjax>$\sum_k p_k
+\ketbra{\psi_k}{\psi_k}$</mathjax>. For a single qubit, I'm interested in making
+measurements. The measurements I usually have access to are the Pauli
+matrices (plus the identity), which form a basis for all Hermitian matrices
+for two-level systems -- quaternion lie group, almost. Pauli matrices are
+traceless.</p>
+<p>Thus I can write the density matrix in terms of these quaternions. <mathjax>$\rho$</mathjax>,
+then, will be <mathjax>$aI + b\sigma_x + c\sigma_y + d\sigma_z$</mathjax>. All I have to do,
+now, is figure out a,b,c,d. I know that the trace of <mathjax>$\rho$</mathjax> is 1, so a must
+be <mathjax>$\frac{1}{2}$</mathjax>.</p>
+<p>Now let's say I want to take the expectation value of <mathjax>$\sigma_x$</mathjax>. That's
+equal to the trace of <mathjax>$\rho \sigma_x$</mathjax>. Working this out, we get b is
+<mathjax>$\frac{1}{2}\avg{\sigma_x}$</mathjax>. The rest follows in a similar
+manner. (remember that <mathjax>$\sigma_i\sigma_j = \sigma_k\epsilon{ijk} +
+\sigma_i\delta_{ij}$</mathjax>)</p>
+<p>Something else is really nice here: you know that pure states are such that
+the expectations of <mathjax>$\sigma_x$</mathjax>, <mathjax>$\sigma_y$</mathjax>, <mathjax>$\sigma_z$</mathjax> are easy to
+calculate: the state is an eigenstate of <mathjax>$\hat{n} \cdot \vec{S}$</mathjax>.</p>
+<p>We can now say something: pure states live on the Bloch sphere, while mixed
+states live within the Bloch sphere.</p>
+<p>No measurements that can distinguish between states with same density
+matrix. Completely mixed state.</p>
+<h2>Decoherence</h2>
+<p>How these things evolve over time. Populations, coherences. Time evolution:
+rewrite as <mathjax>$\int p_b \rho_b db$</mathjax>.</p>
+<p>Populations and coherences: intuition is notion of coherent superposition
+vs. incoherent superposition (classical prob. of up, classical prob. of
+down; off-diagonal terms are 0).</p>
+<p>Start having quantum coherences <mathjax>$\implies$</mathjax> values showing up in
+off-diagonal terms.</p>
+<p>Magnetic field will just cause phase to go around at some rate.</p>
+<p>Hahn (?) echo to extend coherence: only if magnetic field is not
+fluctuating. Great at eliminating low-frequency noise.</p>
+<p>In an NMR system, you tend to have inhomogeneous broadening.</p>
+<p>Decoherence comes in two favors: both flavors are very bad. This is called
+dephasing: losing the phase from the system. Typically comes with a time
+scale, <mathjax>$t_2$</mathjax>. If you do this series of Hahn echos, the coherence will very
+quickly decay. Remember, these magnetic fields are slightly fluctuating.</p>
+<p><mathjax>$t_2^*$</mathjax> is decay that gets almost completely eliminated by Hahn echos, so
+less relevant, generally.</p>
+<p>There's another type of decoherence: suppose I set up my state in the
+excited state. Could be noise that relaxes the state to the ground
+state. This relaxation is given by time <mathjax>$t_1$</mathjax>. If you set up some state on
+the Bloch sphere, and you don't do your complication very quickly, it'll
+start to decohere.</p>
+<p><mathjax>$t_2$</mathjax> is controllable. Can utilize correlations of that noise, various
+techniques to mitigate its effects. Relaxation very difficult to eliminate:
+what you could try is symmetrization. Can never get this echoing
+behavior. Eventually, all of these states will go down to the mixed
+state. Eventually all the states tend toward the zero state if there's
+relaxation.</p>
+<p>Decay of magnetization; Bloch equations. Decay in certain directions
+corresponds to certain time constants. So that's about everything. Did want
+to talk for a few seconds what happens when you try to scale NMR.</p>
+<p>Because you have these thermal issues, you can't prepare the ground state
+in exactly where you want. You want everything in the ground state. Because
+of thermal issues, you have a probability of being in all of the
+states. Make something called a pseudo-pure state. <mathjax>$\epsilon$</mathjax> times the
+ground state plus <mathjax>$1-\epsilon$</mathjax> times the fully-mixed state. When you start
+adding qubits (e.g. with 7), <mathjax>$\epsilon$</mathjax> gets smaller. If you get 100 qubits
+(molecule with 100 different spins on it) and a standard sample size,
+there's 100 qubits per molecule. There's a 99.9999999% chance you have 0
+molecules sitting in the ground state.</p>
+<p>Also, the colder your system gets, that's certainly better, but you need to
+push those temperatures really low, and at some point you're not doing
+liquid-state NMR any more (molecules are just tumbling; dipolar coupling
+between molecules balances out, very narrow lines), you're dealing with
+solid-state NMR (broadening of lines). Ways of coping: magic-angle spinning
+-- narrows lines a bit.</p>
+<p>Thursday: Haffner will come back to talk a bit more about another
+system. Umesh will then come back to talk about AQC and quantum crypto.</p>
+<p><a name='24'></a></p>
+<h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
+<h1>Guest lectures: Experimental Quantum Computing</h1>
+<h2>April 19, 2012</h2>
+<p>Professor Haffner: will speak about experimental QC. One of leading experts
+in ion traps.</p>
+<p>Specific impl. of quant. information prcessing. Idea is fueled by building
+a scalable quantum processing device for whatever motivation you have. Many
+approaches. What people thought 10-15 years ago: landscape has not actually
+changed too much in recent years. Couple options shown to not work; most
+likely will; and some have made progress.</p>
+<p>Implementation of qubits: initialization of quantum registers, logic
+operations, maintaining coherence. NMR initially very successfully, but
+could be shown that this technology not scalable: exponential cost for
+initialization: prob of finding particle in ground state drops
+exponentially with no. of qubits because simply the prob of being in ground
+state decreases.</p>
+<p>Concentration for today: trapped ions. Mention: superconducting quantum
+bits -- new, looks promising.</p>
+<p>Picture of quantum computer. Quite complicated. Important thing: realize
+that the physics is very simple, and that's what you need for quantum
+processing device: very isolated, very clean. All in this vacuum chamber
+(rest is just tools). Ion trap: by applying correct voltages, we can
+confine single ions. trapping direction much stronger radially than
+axially. Distance from each other on order of <mathjax>$5\mu\mathrm{m}$</mathjax>. These ions
+are what we call quantum bits: nothing but two-level system: we forget
+about all other levels. Particular excited state: chose <mathjax>$D_{3/2}$</mathjax>
+(implementation detail). Transition is a two-photon transition: has two
+angular momenta. Unlikely to drop (since it needs to spit out two photons),
+so we have about a second for quantum processing.</p>
+<p>We also have this p-level around. Very important in this context, since it
+allows us to see the ions.</p>
+<p>Di Vincenzo criteria:</p>
+<h1>Scalable physical system, well-characterized qubits.</h1>
+<h1>Ability to initialize the state of the qubits</h1>
+<p>(need to set up a system)</p>
+<h1>Long relevant coherence times, much longer than gate operation time</h1>
+<p>(require this to be quantum, and we need to be able to implement arbitrary
+operations)</p>
+<h1>Universal set of quantum gates</h1>
+<h1>Qubit-specific measurement capability</h1>
+<p>(need to be able to read it out)</p>
+<p>No infinitely-scalable system (believed to be finite particles in
+universe), so we mean mostly-scalable, i.e. not exponential to scale.</p>
+<p>Experimental procedure: initialization in a pure quantum state. Very high
+probabilities: the idea is that you exploit large differences of coherence
+times. (done by shining lasers)</p>
+<p>Quantum state manipulation: also done with lasers.</p>
+<p>Quantum state measurement by fluorescence detection (every 10 ns I get a
+photon into a <mathjax>$4\pi$</mathjax> solid angle, etc. From a quantum mechanical view, this
+is pretty interesting: prepare in s,d, and start scattering photons, and
+the ion decides whether it's light or dark. Also works with multiple
+ions. Instead of zero and one, I will use s and d since I am talking about
+physical images.</p>
+<p>With very high fidelity (~99.99%) we can detect this state. Essentially
+limited by time it takes for the d state to the ground state. Many orders
+of magnitude better than other implementations.</p>
+<p>What we do now is initialize in ground state, shine in laser for a given
+time, then read out dark or bright, then plot probability. Then you see
+oscillations that correspond to the Bloch sphere, and you plot these.</p>
+<p>How do we distinguish between <mathjax>$s+d$</mathjax> and <mathjax>$s+id$</mathjax>? What does that mean? What
+does that phase mean? I can shine in this laser and stop here. Might have
+also noticed I can prepare in <mathjax>$s$</mathjax> state; how can I prepare in <mathjax>$is$</mathjax> state?
+This problem of the phase occurs because in quantum mechanics, you must be
+especially careful regarding what you can observe. Will show experiments.</p>
+<p>So what is this phase about? For this phase, you need a phase
+reference. The two phases we will have are the phase of the laser field and
+the phase of the atomic polarization. Assume for now that we have a
+dipole transition, not a quadrupole transition. <mathjax>$s$</mathjax> and <mathjax>$p$</mathjax> state. If I
+look at where my electron is, I will find that in the upper part it
+interferes constructively, but from the timing-dependent Schrodinger
+equation, relative phase is governed by energy difference. What this means
+is that you can have a minus sign, and it will be found lower.</p>
+<p>The electron probability moves up and down with energy difference between s
+and p state. Exactly the optical frequency: laser frequency. If I want to
+drive transition, must apply laser matching that energy difference.</p>
+<p>Atom with atomic polarization that goes up and down: how laser can drive
+transition. Electric field shakes electron. If phase right, I can increase
+this dipole moment. If phase wrong, I get destructive interference.</p>
+<p>By switching laser phase by <mathjax>$\frac{\pi}{2}$</mathjax>, we switch from constructive to
+destructive interference. By shifting the phase by this amount, we're not
+putting any more energy in the system, so it's not evolving.</p>
+<p>When I switch the phase, I am no longer rotating about the x, but now the
+y.</p>
+<p>So far we were talking about single ions. Now consider multiple ions (where
+most problems show up).</p>
+<p>change voltage by electrooptic deflector: deflects light beam based on
+voltage. Neightboring ions are hardly excited. Residual excitation of cost
+here since never really zero. Way to correct: apply dipolar decoupling.</p>
+<p>Suppose you are ~1 A, and your neighboring ion is about 50 <mathjax>$\mu \mathrm{m}$</mathjax>
+away. Exploiting here: ions move together. Coulombic attraction. Two
+pendula coupled by a spring have normal modes. Most common is center of
+mass mode where all ions move together. All have different frequencies. Can
+use laser to excite these modes. Main mechanism: selectively push on one
+ion with a laser.</p>
+<p>Review of quantum mechanics of harmonic oscillators. Four levels: display
+slightly differently. Combination of two-level system with harmonic
+oscillator. Plot energy, label different states. Ion beam at ground
+state. Electron ground state, electron excited state, etc. And then I can
+apply a laser to drive this electron transition.</p>
+<p>Think of it really as a ball being at the bottom of some harmonic
+potential. Very crude approximation. Point is that we can think of this as
+an abstract Hilbert space which you can connect with lasers. Same
+frequency: carrier transition. In this transition, motion is not
+changed. Then we can detune the laser; we have energy conservation at
+particular energies.</p>
+<p>Blue side-bands, since blue-shifted, etc. Frequency multiplied by
+<mathjax>$\hbar$</mathjax>. When you scan the laser frequency, you can see some
+excitations. There are other excitation probabilities. Three harmonic
+oscillators, since we're working with three dimensions. Radial modes,
+radial minus axial modes, etc. Can also do transitions where excitation of
+state destroys a photon. Raising and lowering operators.</p>
+<p>e.g. radial production of phonons, axial destruction of phonons.</p>
+<p>What we can do, for instance, is increase motion in one direction while
+decreasing it in another direction.</p>
+<p>You learn things like dipole-forbidden. It's really a quadrupole
+transition, suppressed by <mathjax>$\alpha^2$</mathjax>. Gives the difference of 10ns
+vs. 1s. Don't worry about details.</p>
+<p>We looked already at this exciting the electronic transition. Can also tune
+laser to sideband, and see more Rabi oscillations with Rabi frequencies:
+Reduced by <mathjax>$\eta = kx_0$</mathjax> Lamb-Dicke parameter. Can calculate; actually
+probably would take an hour as well.</p>
+<p>Let us now create some Bell states. See how we can use this toolbox to
+create Bell states. Take two ions prepared in s state, but also
+laser-cooled center of mass to ground state. Doppler effect. What we do now
+is three pulses: first a pulse onto right ion for a length <mathjax>$\pi$</mathjax> on the
+carrier transition, i.e. flip state but not motion. Now, go with laser to
+other ion and apply a blue side-band pulse for length <mathjax>$\frac{\pi}{2}$</mathjax>. And
+now we have the last pulse, which will somehow create the bell
+state. Tuning our laser to the right ion and applying a <mathjax>$\pi$</mathjax>-pulse. What's
+happening is we go to the s state and remove a photon excitation. We
+de-excite the motion (which was common to both ions). The original part of
+this superposition, which was left around, won't happen: no state with
+correct energy.</p>
+<p>If we have zero excitations in our quantum oscillator, then we can't take
+out an excitation. We can separate out the motion, and what we left with is
+sd + ds. Remember: we're talking only about the center-of-mass
+motion. Normal mode spans the full space of the two ions moving.</p>
+<p>Bell-states with atoms: NIST: beryllium, fidelity of 97%; Innsbruck:
+calcium, fidelity of 99%, etc.</p>
+<p>We all know that there is an infinite number of Bell states, which have
+some phase incorporated. Need to play around with the length of the
+<mathjax>$\frac{\pi}{2}$</mathjax> pulse. Must show coherence: interference with each
+other. Plus sign makes sense. Not sometimes plus, sometimes minus. We want
+to also know relative phase of the superposition.</p>
+<p>What we do is develop a method to measure the density matrix. A measurement
+yields the z-component of the Bloch vector. Measuring diagonal of the
+density matrix is straightforward: enter measured values into this
+diagonal. So how, then, are you going to measure these off-diagonal
+elements, which determine the phase of this coherence?</p>
+<p>How do I, say, measure the projection onto the y-axis? Rotate about x-axis
+(apply <mathjax>$\frac{\pi}{2}$</mathjax>-pulse). Enter value here, then prepare same state
+again. Do the same with projection onto x-axis.</p>
+<p>Now we need to generalize to 2 qubits. Must try all combinations. Need to
+do x,y rotations, nothing to first, nothing to second. etc. Analysis, some
+linear algebra. Then we come up with the density matrices.</p>
+<p>These are actually all measurements. You can even go to more complex
+states: largest: 16 zero-qubits + 16 up-qubits. Huge matrix.</p>
+<p>W state, etc.</p>
+<p>Want to now show some nice things about quantum mechanics: can now prepare
+these states, and can now measure individual qubits. Suppose we measure the
+red qubit here in the center. Projection onto a self-consistent space.</p>
+<p>problems with Hilbert spaces. One more qubit would have increased analysis
+time by a factor of 24.</p>
+<p>In the last 20 minutes, we've talked only about generation of bell
+states. Not yet a quantum state. Original proposal to do controlled-not,
+Cirac-Zoller, geometric phase, Malmer-Sorensen gate.</p>
+<p>We use a little more complicated mechanism, which is harder to
+understand. What we want to do is manipulate our two ions in this
+manifold. Put all states. Drive two photon transitions: to move from SD to
+DS. Do this by detuning laser from excited state. Equivalent paths:
+constructive interference. When you analyze this carefully, you can see
+this is a two-qubit universal gate.</p>
+<p>Don't need to address ions: automatically implements a gate. Experimentally
+easier: higher fidelity, etc.</p>
+<p>Analysis of coherence. Applying two single-qubit gates to two ions:
+contrast of interference fringes goes up to 1: high-fidelity bell state, so
+gate works exceedingly well. One case: gate duration of 51 <mathjax>$\mu
+\mathrm{s}$</mathjax>, average fidelity of 99.3(2)%.</p>
+<p>Talk about errors. In theory, the fidelity would be sufficient.</p>
+<p>Parity + when equal, parity - when unequal, etc. Such an interference
+pattern predicted. If not happening, interference fringes have less
+contrast. Fidelity decreases as we apply more gates.</p>
+<p>Even after 21 equivalent gates, still 8% fidelity.</p>
+<p>Scaling of this approach?</p>
+<p>Problems:</p>
+<ul>
+<li>
+<p>Coupling strength between internal and motional states of a N-ion string
+  decreases as <mathjax>$\eta \propto \frac{1}{\sqrt{N}$</mathjax> (reasoning: if you excite
+  one ion, a single photon needs to excite the whole ion chain; a single
+  photon gets absorbed by the whole ion chain. More difficult for single
+  photon to kick entire chain if chain is big), but problem does not scale
+  exponentially. From a math point, we are fine (no exponential
+  resources).</p>
+</li>
+<li>
+<p>More vibrational modes increase risk of spurious excitation of unwanted
+  nodes.</p>
+</li>
+<li>
+<p>Distance between neighbouring ions decreases <mathjax>$\implies$</mathjax> addressing more
+  difficult.</p>
+</li>
+</ul>
+<p>So we need to divide: idea behind using segmented traps.</p>
+<p>One problem is complexity. Everything can fail. Suppose one component fails
+with error 0.1%, with 10000 components, this will never work.</p>
+<p>In some sense the ENIAC looks similar in complexity. What we have done to
+make things better was to put a box about it: probability of misalignment
+gets worse.</p>
+<p>We need to divide the system into smaller pieces: where most (if not all)
+of effort of ion-trapping goes at the moment. This is an idea which
+actually comes from Leibfried and Wineland, who envisioned many ions
+trapped in some structure, and voltages moving ions around. Advantage:
+small ion string.</p>
+<p>Can show that within 50us we can move ions on the order of a millimeter,
+which is huge. Shown on time scales, which are comparable to gate times, so
+not too expensive.</p>
+<p>Experiment, for instance: sketch of ion trap. What they have done is move
+ions between points, and what they have shown is coherence (Ramsey fringes
+on a single ion). When they transported, the contrast is approximately the
+same. This tells us that the quantum information is not lost during
+transport.</p>
+<p>Another development is to make the traps easier. People are interested in
+using conventional lithography to build easier traps. Recent development:
+surface traps. All on one surface; can use microfab techs. Can basically
+analyse electrostatics, and ions trapped on such a surface.</p>
+<p>That is basically where the experiments are. People are building these
+devices and trying to control them. Main challenge. Once we can control
+these, we have real scalable quantum processing.</p>
+<p>If you want to read about these things, you can look in this review which
+is written in a way with hardly any math.</p>
+<p>Review on "quantum computing with trapped ions"
+http://xxx.lanl.gov/abs/0809.4368</p>
+<p>most recent progress: NIST, Boulder
+http://www.nist.gov/pml/div688/grp10/quantum-logic-and-coherent-control.cfm</p>
+<p>Innsbruck
+http://wwww.quantumoptics.at/</p>
+<p>University of Maryland
+http://www.iontrap.umd.edu/publications/recent_pubs.html</p>
+<p>Basic ideas of how this works, physics is fairly clear: quantum mechanics at its best.</p>
+<p><a name='25'></a></p>
+<h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
+<h1>Quantum Cryptography</h1>
+<h2>April 24, 2012</h2>
+<p>Today we will speak about quantum cryptography. The main question: how to
+agree on a secret key? Alice &amp; Bob sitting at distance, can communicate
+over insecure channel. Want to agree on shared random key. Often running,
+can use private-key crypto, do whatever they want. Getting started, they
+want to exchange this private key.</p>
+<p>The problem is that Eve is listening on the line. So how do they accomplish
+this? Here's the setup: there's a quantum channel which they share. Alice
+can send qubits to Bob. They also share a classical channel, except that
+they have no control over the classical channel. All they know is that it's
+authenticated (public-key signing, perhaps).</p>
+<p>Eve also has access to the quantum channel. What we want to do is develop
+this protocol: sharing of the random key without loss of confidentiality.</p>
+<p>So what happens in classical cryptography? RSA (public key
+crypto). Everything we're speaking about today is working under the
+assumption that A&amp;B haven't met yet and are only now establishing this
+private key.</p>
+<p>Why do we need quantum cryptography? Shor's breaks RSA. What we are trying
+to achieve is unconditional security -- the only thing you need to assume
+in order to guarantee security is that the laws of physics hold (i.e. QM is
+an accurate model). Has been implemented using today's cryptography.</p>
+<p>What we will talk about today are the principles of quantum crypto.</p>
+<p>Qubits used here are polarizations of photons. Polarization as orientation
+of light wave as it propagates. In some direction orthogonal to direction
+of propagation. Polarization is a qubit. Nice thing: polarizing filter
+blocks photons whose polarization is perpendicular to the orientation of
+the filter and transmits photons whose polarization is aligned with the
+orientation of the filter. It gives us a measurement axis for the photon.</p>
+<p>The probability that the photon is transmitted by the second filter is
+<mathjax>$\cos^2\theta$</mathjax>. Measurement of the qubit.</p>
+<p>What we are saying is that we could write our qubit state <mathjax>$\ket{\psi}
+\equiv \alpha\ket{0} + \beta\ket{1}$</mathjax>. Zero vertically-polarized, one
+horizontally-polarized. One part of superposition goes through, other part
+blocked. Self-consistency. We could also write this in some other basis
+<mathjax>$\ket{u}, \ket{u_\perp}$</mathjax> at some angle <mathjax>$\theta$</mathjax>.</p>
+<p>This is really qubits in the same language that we had, except we're
+thinking about them as spatially-oriented, just as we thought about
+spin. Completely analogous.</p>
+<p>So here's what we're planning to do. Two ways to encode a bit of
+information. Could either encode in rectilinear (vert/horiz) or in diagonal
+(+,-). So when Alice wants to transmit a bit to Bob, if she was using the
+rectilinear basis, she'd transmit horizontally/vertically polarized
+photons. Bob would then use either a vertical or horizontal filter. Similar
+concept with a diagonal polarization.</p>
+<p>Remember: all channels are visible to everyone.</p>
+<p>Why use both these polarizations? Has to do with uncertainty principle:
+these are Fourier transform pairs, so maximally uncertain. You'll recall we
+did this in the second or third lecture. We talked about the bit and sign
+bases. There's an uncertainty principle between the two. You have a choice
+of measurement basis (could be one, could be other, could be a mix) to
+determine how much information you get. You cannot get perfect information
+about the state of said qubit.</p>
+<p>Eve, who doesn't know which basis the information is being sent in, really
+cannot figure out both. If Eve tries to measure in the wrong basis, then
+she completely destroys the information.</p>
+<p>thought regarding decision of which basis to choose: send a bell
+state. Confirmation would be on this classical line, just saying "I got &amp;
+measured the bell state"</p>
+<p>Implementation is actually done without bell states. Very difficult to
+implement bell states.</p>
+<p>Let's suppose Eve entangled the transmitted qubit with one of her
+own. By doing so, she's randomized the state.</p>
+<p>The BB84 protocol (that we're going to discuss) was invented in 1984 but was
+not proven correct until about a decade ago. People assumed
+correctness. Reason: subtle. All other attacks you could think of, but they
+don't work. But how do you show that no attack will work?</p>
+<p>How do we make use of this scenario? How do we distinguish between Bob and Eve?</p>
+<p>Repeat 4N times (if we want to end up with N random bits):</p>
+<p>Choose random bit, randomly select basis. Announce choices of
+bases. Discard if choices different. Eve can see all of this.</p>
+<p>Final result: roughly 2N shared bits. Select N random positions, confirm
+that they're the same. Remaining N bits are secret key.</p>
+<p>Ensures confidentiality of message. Integrity of key is guaranteed by
+communications on classical channel.</p>
+<p>Potential corruption of shared key (attack on integrity): Eve just needs to
+corrupt one bit. 50% chance of catching this. Refine: more sophisticated
+protocol.</p>
+<p>Beautiful way of dealing with this, provable correctness.</p>
+<p>Single-photon generators imperfect. Occasionally emit two photons. Eve can
+intercept one, let the other go, and that breaks the scheme (known vector
+of attack).</p>
+<p>Polarization over these distances? This is the interesting thing about
+photons. If you transmit a photon, there is almost nothing that decoheres
+it. Can maintain coherence over long period and long distance. Can transmit
+through optical fiber, and it will maintain its polarization for something
+like 60 - 70 km.</p>
+<p>Issue is why 60-70 km? Because signal gets attenuated. Every so often, you
+have to amplify the signal, but of course we don't want to amplify the
+signal; we just want to transmit it. Usually involves measurement and
+retransmission.</p>
+<p>People are trying to build amplifiers that don't do that: small quantum
+computers that take the photon, error-correct, and retransmit. But not
+implemented yet.</p>
+<p>Security of BB84: Since Eve does not know the correct orientation, she
+cannot measure the polarization without disturbing it.</p>
+<p>Proof of unconditional security based on axioms of QM is difficult and
+dates back to about 2000.</p>
+<p>Practical considerations:</p>
+<ul>
+<li>imperfect measurements: channel noise causes shared btis to not agree.</li>
+<li>Figure out noise rate, determine whether acceptable.</li>
+<li>In this case, Alice and Bob exchange parity bits to correct mismatches.</li>
+<li>Can only guarantee that Eve does not know too many bits out of the
+  remaining N.</li>
+</ul>
+<p>Randomness distillation. Suppose we are left with 4 bits, and we know the
+noise rate is at most a quarter, so Eve knows at most one of these
+bits. Want to distill into bits Eve does not know about. Extract key via
+XORs. Claim: no matter which bit Eve knows, each bit looks completely
+random to Eve.</p>
+<p>Choose random hash function to hash these bits. What we can prove is that
+Eve has no information regarding the resulting hash. Must deal with these
+issues: mismatches and Eve's knowledge.</p>
+<p>Turns out that hash function itself doesn't have to be random. Should work
+even if hash function is public (and surjective?).</p>
+<p>Actual theorem: suppose you pick a hash function H at random, and now let's
+say that <mathjax>$N \mapsto M$</mathjax> (n-bit strings to m-bit strings), and that x is
+chosen according to some distribution.</p>
+<p>Lemma: left-over hash lemma. If you look at the pair H (specified somehow,
+chosen at random), H(x) (m-bit string; H(x) is some string), the claim is
+that this distribution is close to the uniform distribution on m-bit
+strings, and so you cannot tell the difference between this result and some
+random m-bit string.</p>
+<p>Has been implemented. Was famous experiment done at a lake near
+Geneva. Three locations with optical fiber going between these
+locations.</p>
+<p>Challenges with atmospheric photon transmission and detection. Background
+photons, daylight radiance, night radiance. How to distinguish? Start:
+timing pulse -- expect a photon in 1 us, within a window of 1 ns. What can
+we control? Narrowness of window of time; part of spectrum which sunlight
+that does not use (or least-used), and a very narrow window of frequency,
+at that; look at very small solid angle. So we're isolating in terms of
+position, momentum, and time. Once you do all of these things you realize
+that you can cut down this <mathjax>$10^{13}$</mathjax> to something very tiny.</p>
+<p>So why use photons? Why not use some particle with very strong coherence?
+Photons are nice -- very stable, coherent. So what would this other
+particle be?</p>
+<p>Must take into account GR. Photon essentially does not interfere with
+anything else. Remember how hard it is to do cavity QED. To take a photon
+and create a gate using said photon is very difficult to do. You put the
+photon in a cavity and couple the qubit to the cavity and the cavity to
+some other qubit. Outside of these extraordinary efforts, photons are
+fairly stable.</p>
+<p>Other considerations for photon transmission: efficient lasers (want some
+source such that exactly one photon can be transmitted). Already that is
+enough to get this off the ground.</p>
+<p>Exaamples of 10 km QKD. Commercially available quantum crypto systems.</p>
+<p>And then there's this fact. You can prove that these things are secure, but
+they aren't really: one possible attack: shine strong laser at Alice; can
+figure out internal settings.</p>
+<p>Device-independent cryptography. Want to prove quantum crypto scheme secure
+based purely on quantum mechanics. What is interesting is that you can show
+that in principle, you can create some systems. Theoretically possible to
+do.</p>
+<p>Quantum key distribution, then use classical private key cryptography,
+i.e. schemes secure under quantum cryptography (not known to be broken; no
+proximal reason why those would be breakable, given the quantum algorithms
+we know).</p>
+<p>Two things: course projects. Some of you have sent email giving 2-3
+paragraphs describing what you'll be doing and what sources. What would be
+good would be if the rest of you could send something hopefully by later
+today.</p>
+<p>Project presentations: next week Thursday. Will set up in location to be
+determined (hopefully here). Will go from 9:30 to 1, perhaps. Go through
+all project presentations. Make sure you have a good typed presentation
+that fits into ~20 min. With questions, presumably no presentations will go
+over 25 min.</p>
+<p>Roughly 10 groups. Will try to arrange for pizza -- at some point we'll
+break for lunch.</p>
+<p>What day will the paper be due? The paper will be due the end of the
+following week (end of finals week).</p>
+<p>Let's say that there might not be a breakdown in the sense that if you do
+particularly well in one, it'll compensate for the other.</p>
+<p>Two other issues: 1) there's a question for EECS majors: what should this
+course count as? Science requirement? EECS requirement? 50/50? Would be a
+useful thing to sort out. Would like to take existing notes for this class
+and make them more consistent with what was taught this semester. Two
+things: if you've been taking good notes in class, I'd love to have a copy
+of those.</p>
+<p><a name='26'></a></p>
+<h1>CS 191: Qubits, Quantum Mechanics and Computers</h1>
+<h1>Quantum Walks and the Dirac Equation</h1>
+<h2>April 26, 2012</h2>
+<p>Last lecture of the semester. Talk about two things: start with quantum
+walks and Dirac equation, and then I'll tell you a little about other
+topics in quantum computation you might be interested in. Larger picture,
+who, how to pursue.</p>
+<p>Before we start, let's review something about classical mechanics. Suppose
+we are doing a random walk on a discretized line, so we have grid
+points. At each step, we move randomly. How long to reach a distance <mathjax>$n$</mathjax>?</p>
+<p>You may recognize this: after k steps, this is given by a binomial
+distribution centered at zero, and the standard deviation is about
+<mathjax>$\sqrt{k}$</mathjax>: central limit theorem. We can work this out: if you look at the
+position after <mathjax>$k$</mathjax> steps, we have some distribution. We want to know what
+the variance of this distribution is, and thus what the standard deviation
+is. Turns out that the variance grows as <mathjax>$k$</mathjax>, and so the standard deviation
+grows as <mathjax>$\sqrt{k}$</mathjax>. Since each step is a random variable (independent from
+all other steps), we can exploit linearity of expectation to find this <mathjax>$k$</mathjax>.</p>
+<p>Thus if we want to reach this distance safely, we should expect to walk
+roughly <mathjax>$n^2$</mathjax> steps. That is the penalty for randomness: a factor of <mathjax>$n^2$</mathjax>.</p>
+<p>Now assume that instead of dealing with a classical particle and a
+classical walk, we're dealing with a quantum particle.</p>
+<p>In the classical case, the position is <mathjax>$x$</mathjax>, which is an integer; there is a
+coin flip <mathjax>$b$</mathjax>, which is <mathjax>$-1 \lor 1$</mathjax>, and at each step, you flip the coin
+and increment <mathjax>$x$</mathjax> by <mathjax>$b$</mathjax>.</p>
+<p>In the quantum case, we again have <mathjax>$x$</mathjax>s and <mathjax>$b$</mathjax>, but now we're keeping
+track of everything. The state includes both <mathjax>$x$</mathjax> and <mathjax>$b$</mathjax>. Whatever the coin
+flip says, we move accordingly. And now we must flip the coin. How to flip
+the coin, since it's now a quantum bit? Apply the Hadamard to it. That is
+our quantum walk on the line.</p>
+<p>Now, we could do the same thing, start from the origin, walk for <mathjax>$k$</mathjax> steps,
+and how far do we get? When you do this quantum walk, you end up with most
+of the mass at some constant multiplied by <mathjax>$k$</mathjax>: it really walks at constant
+rate. Why?</p>
+<p>What accounts for the chance at origin being roughly zero in the quantum
+case?</p>
+<p>We must go back to the classical case and understand this. There are many
+ways to return to the origin, but in the quantum case, each way comes with
+a phase, and these phases tend to cancel out. When you shoot out to the
+ends, you get constructive interference, whereas at the origin, you get
+destructive interference.</p>
+<p>Qualitatively, the quantum walk behaves very differently from the classical
+walk. Remember: in quantum mechanics, you don't have a notion of a
+trajectory.</p>
+<p>You can also define a continuous version of that by defining an appropriate
+Hamiltonian. The Hamiltonian you would need is exactly what you think: it's
+the Pauli matrix <mathjax>$\sigma_x$</mathjax>. We'll see how to write this behavior
+explicitly in a bit: this will result in the Dirac equation.</p>
+<p>So now, let's see how to apply some of these ideas about quantum
+walks. What are these useful for? Algorithms. This relates to a quadratic
+speedup in the simple case. Tells you if you were using random walks to
+design an algorithm, if you switched over to quantum, you'd get quadratic
+speedup. You do get quadratic speedup or much speedup for most of these.</p>
+<p>What's interesting is a quantum algorithm for formula evaluation: quadratic
+speedup for evaluating a boolean expression.</p>
+<p>Applications: minmax tree where values are zero and one. And is min, Or is
+max.</p>
+<p>This finds its use in quantum algorithms and other places. What I want to
+talk about today is Dirac's equation, which can be explained nicely with
+quantum walks.</p>
+<p>This was when he was reconciling quantum mechanics with special relativity,
+which also led him to the role of spin and the relativistic origins of
+spin. Also led him to his discovery of antimatter. This was really quite a
+remarkable event in physics, and what was interesting was that also, in all
+this was just how much courage Dirac had in terms of looking at this
+problem, finding this very simple equation, and having the courage to stand
+by something so new that had so many major consequences.</p>
+<p>So let's go back: we have a particle whose energy is classically
+<mathjax>$\frac{p^2}{2m}$</mathjax>. Quantumly, this is <mathjax>$\frac{\hat{p}^2}{2m}$</mathjax>, where <mathjax>$\hat{p}
+\equiv \frac{\hbar}{i}\nabla$</mathjax>. So now, let's try to understand
+relativistically that the energy is given by the Klein-Gordon equation
+(Einstein's theory of relativity, really, which arises from invariances of
+moving frames), which says that <mathjax>$E^2 = p^2c^2 + m^2c^4$</mathjax> (where <mathjax>$c$</mathjax> is speed
+of light), and <mathjax>$p^2c^2$</mathjax> is the kinetic form.</p>
+<p>If you try to figure out what this is saying, when a particle has speed
+much less than that of the speed of light, you can pull out <mathjax>$mc^2$</mathjax>, and you
+get <mathjax>$mc^2\sqrt{1 + \frac{p^2}{m^2c^2}}$</mathjax>. Since this is small, you can
+approximate this as <mathjax>$mc^2(1 + \frac{p}{2mc^2})$</mathjax> (first-order Taylor
+expansion with respect to p). Expanding this, we get <mathjax>$mc^2$</mathjax> (energy
+associated with rest mass) added to <mathjax>$\frac{p^2}{2m}$</mathjax>. And that's exactly
+what you want: that is the total energy.</p>
+<p>So all is fine and well, and now, what Dirac was trying to do was figure
+out what the corresponding quantum equation is: <mathjax>$H^2 = \hat{p^2}c^2 + m^2
+c^4 I$</mathjax> (where <mathjax>$I$</mathjax> is the identity). This is the square of the
+Hamiltonian. How do you compute the Hamiltonian itself? This is exactly
+what Dirac was trying to do: he was trying to compute the square root of
+this operator. Youc an try to compute square roots, use Taylor series, it
+blows up, and it doesn't really look like anything. And then he had this
+insight.</p>
+<p>Let's use units where <mathjax>$c=1$</mathjax>. What we're trying to do is compute <mathjax>$H =
+\sqrt{p^2 + m^2 I}$</mathjax>, where both of these are operators. Here was the flash
+of insight: what he realized was if you wrote the Hamiltonian by doubling
+the dimension as <mathjax>$\begin{pmatrix}\hat{p} &amp; mI \\ mI &amp;
+-\hat{p}\end{pmatrix}$</mathjax>. So what happens when you square this? We get
+<mathjax>$\begin{pmatrix}\hat{p}^2 + mI &amp; 0 \\ 0 &amp; \hat{p}^2 + mI \end{pmatrix}$</mathjax>.</p>
+<p>Has this feel about it that in trying to solve this especially difficult
+problem, and by stepping outside of what seem to be the rules of the game,
+it suddenly becomes very simple. And then instead of saying this is
+illegal, perhaps these actually are the correct rules of the game.</p>
+<p>And so what Dirac said was that there's an extra degree of freedom: it's a
+qubit -- spin. So now we can try to understand what this tells us about how
+the particle moves relativistically. If we write that out, we want to solve
+<mathjax>$i\pderiv{\Psi}{t} = H \Psi$</mathjax>. Let's do case 1: <mathjax>$m = 0$</mathjax>.</p>
+<p>So what's our state space? There's the position of the particle, and then
+there's spin. The Hamiltonian is going to act on the whole thing. What will
+this look like? In general, it's acting on the two spaces together. If you
+were to write out the state vector, it consists of the component with spin
+<mathjax>$b=0$</mathjax> and the component with spin <mathjax>$b=1$</mathjax>.</p>
+<p>With the massless particle, <mathjax>$\pderiv{\psi}{t} = -\nabla\psi$</mathjax>, so in the
+one-dimensional case, <mathjax>$\psi$</mathjax> is moving right with the speed of light. So
+there are two solutions, depending on your spin qubit: in one case, you're
+moving right at the speed of light, and in the other case, you're moving
+left with the speed of light.</p>
+<p>So what happens in general? You have this term that corresponds to motion
+left or right at the speed of light, and then you have the term that
+corresponds to the mass. The greater the mass, the more often you flip the
+coin. The presence of the mass term corresponds to a new direction after
+each coin flip, so to speak. Recall that we moved <mathjax>$ak$</mathjax> for some <mathjax>$a$</mathjax>. With
+no mass, <mathjax>$a$</mathjax> is <mathjax>$c$</mathjax>. As we increase the mass, <mathjax>$a$</mathjax> decreases.</p>
+<p>There's another thing you might think about: in the classical case, after k
+steps, you move <mathjax>$\sqrt{k}$</mathjax>. You can move one step per unit time right or
+left. But of course we want to let that unit tend to zero, so <mathjax>$k$</mathjax> tends to
+infinity.</p>
+<p>In fact, what Dirac did was work out this problem, and he worked out the
+statistics of this walk. He didn't call it a quantum walk, but that's what
+he implicitly did.</p>
+<p>So that's it regarding quantum walks and the Dirac equation. I'll now spend
+the next ten minutes talking how to further pursue quantum computing. If
+you have specific questions, feel free to ask.</p>
+<p>There are many different areas here in quantum computing, which is
+partitioned into three primary flavors of research: theory work -- consists
+of quantum algorithms (design), complexity theory (QBP = P?), information,
+crypto. The boundaries will vary depending on your source.</p>
+<p>Quantum information theory: quantum analog of classical information theory:
+how much classical information can I transmit in each qubit? What's the
+value of quantum information? And the second part: error correction and
+fault-tolerance. If you want to build a quantum computer, one thing you
+have to worry about is decoherence. Previously people thought that quantum
+states were not protectable: they degrade over time as the environment
+decoheres them. This is a way of putting this quantum information inside a
+sort of error-correcting envelope for protection. Even after being subject
+to errors, we can still recover the original message (a quantum state).</p>
+<p>Physically, you think about these errors as heating of the system (increase
+of entropy). What do you do? Take fresh qubits all initialized to zeros
+(supercooled), and do heat exchange. Take all the heat (in the form of
+errors), isolate it, and push it into these cold qubits. Now these errors
+are sitting inside these new qubits, which we can then discard --
+refrigeration. If you do that, that's called fault-tolerance.</p>
+<p>Cryptography we know about. There's one subject I haven't talked about:
+post-quantum cryptography. Quantum algorithms break most of modern crypto:
+RSA, Diffie-Hellman, you name it. What we'd like to do is restore
+public-key cryptography, and eventually use private-key cryptography. You
+could use quantum cryptography, but even though there are existing systems,
+they're very difficult to use.</p>
+<p>There's a different way out: how about designing public-key cryptosystems
+which quantum computers cannot break?  Very active field of research. If
+you think about it, this may be the biggest practical impact of quantum
+computation in the very near future (next few years). Would be very
+interesting if that happens; it's not the quantum computers that would have
+the impact, but rather the threat of quantum computers.</p>
+<p>Two other fields are simulating quantum systems: the starting point for
+quantum computation, to simulate this, we normally would need an
+exponential amount of work to simulate. So how would you simulate quantum
+systems efficiently on a quantucm computer? There are interesting results
+here: how would you, for instance, run the quantum metropolis algorithm?
+The second question: how to simulate on a classical computer. Here, the
+question is not how to simulate general systems, but rather, could it be
+that natural quantum systems are somehow much simpler and can be simulated
+very efficiently, even if they are highly-entangled? There is a renaissance
+of information in this field.</p>
+<p>Special systems can be solved explicitly (closed-form). Those can be
+simulated on a classical computer. There are many others that can't be
+solved explicitly, but they have certain properties that we can take
+advantage of.</p>
+<p>And finally, there is a lot of work on experimental quantum
+computing. Various techniques.</p>
+<p>In terms of resources: Haffner teaches a course on quantum computing from a
+more experimental viewpoint. In terms of the physics department, there's
+Haffner, Clark (superconducting qubits), Stamper-Kurn (Bose-Einstein
+condensates, optical systems), Szdiki, Crommie. In the chemistry
+department, there's Waley, who might teach this course next year. There's
+also a colleague in computer science: Kubiatowicz -- quantum architecture.</p>
+<p>How to put together? Let's say that three years from now, ion traps work
+and scale to a few hundred qubits. Now how would you put them together to
+do interesting computations? What are the architectural tradeoffs: should
+you keep qubits close or teleport, how to manage ECC, etc.</p>
+<p>Few places other than Berkeley; Waterloo (IQC, perimeter institute),
+Caltech, MIT, U. Maryland -- growing group, CQT in Singapore (which
+actually offers a degree in QC). Number of resources. And then there are
+groups in Europe which are very strong: Munich, Germany, Paris. There are
+lots of resources internationally, but also there are plenty of
+opportunities for summer schools if interested or graduate work in the
+area.</p>
+<p>If you want any more information, you can email or stop by.</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {

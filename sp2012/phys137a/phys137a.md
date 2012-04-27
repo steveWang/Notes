@@ -988,8 +988,8 @@ Hydrogen!
 
 Physics 137A: Quantum Mechanics
 ===============================
-Wednesday, April 9
-------------------
+Wednesday, April 11
+-------------------
 Radial wave function, Exponential that goes like $e^{-r/an}$. Scale should
 jump out at you. You get this feeling as you go to higher and higher
 states, stuff gets weaker, and whatever. Solns to Lapl's eq on sphere;
@@ -1008,3 +1008,190 @@ $L_q(x) e^x\parens{\deriv{}{x}}^q\parens{e^{-x} x^q} = \sum_{k=0}^q (-1)^k
 m} (r,\theta, \phi) = \bracks{\expfrac{2}{na}{3}\frac{(n-\ell - 1)!}{2n
 \bracks{(n+\ell)!}^3}}^{1/2}e^{-r/na}\expfrac{2r}{na}{\ell}L_{n-\ell-1}^{2
 \ell + 1}\parens{\frac{24}{na}}Y_{\ell m}(\theta, \phi)$.
+
+Last couple of little properties: orthogonality. Must be careful with
+orthogonality. A lot comes from the $Y_{\ell m}$s. Orthogonality in the
+angular components enforced by $Y_{\ell m}$, which we've already shown.
+
+<a name='31'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Friday, April 13
+----------------
+Nothing much.
+
+<a name='32'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Monday, April 16
+================
+Think about $e^{i\vec{k} \cdot \vec{r}}\vec{\sigma}$.
+
+Recap: commutators. raising/lowering (ladder) operators. Levi-Civitta
+tensor. Maximal commuting set of operators.
+
+Ladder operators anti-hermitian (skew-hermitian). Have very interesting
+property.
+
+Couple things to think about. Phase transitions.
+
+We now have a really interesting trick: if we wanted to, we could have
+write this $\ket{lm} \equiv \parens{L_-}^{l-m}\ket{ll}$.
+
+Maybe we can avoid some algebra. Invoke Wigner-Eckart theorem?
+
+Two states with just one value of $m$. Must somehow be able to do these
+operations efficiently.
+
+Choice of bases is just a matter of convention. Underlying all of this must
+be some result, some physical quantity that is independent of your
+coordinate system. This is how you figure it out.
+
+All of these matrix elements -- I'll write down the notation -- can be
+written as a single element with no dependence on $m$ (3-j symbol?).
+
+Will see this stuff if you start to use it in practical
+applications. Annoying, lots of algebra, but you get simple results that
+allow you to do more stuff efficiently.
+
+PREVIOUSLY in quantum mechanics: we wrote down $L^2 = (\vec{x} \times p)^2$
+and stuff.
+
+These are not pulled out of a hat: written out because we know what these
+are in Cartesian coordinates, and we know how to transform from Cartesian
+to spherical. Not doing derivation because that has nothing to do with
+quantum mechanics. One of the problems for next homework: raising and
+lowering operators in $L_\pm \equiv \pm \hbar e^{\pm i\phi}\parens{
+\pderiv{}{\theta} \pm i\cos\theta\pderiv{}{itheta}}$.
+
+Zeeman: decided to break spherical symmetry by putting hydrogen atom in
+a magnetic field. Nice discretisation.
+
+First observed by Pauli: looks like you missed a quantum number. When you
+plot magnetic field, you see twice the number of states.
+
+Talk about Alfred Landay. Pauli also coming at that time (just a kid at
+that time, evidently, but did stuff like a paper on special
+relativity). Missing quantum number?! Electron spin. Thought about this
+classically. Idea was basically very interesting: source of this extra
+quantum number. (internal!). Electrons had to have half-integer spins (from
+Zeeman effect): here you would have two quantum numbers. Got 2 initially
+for g-factor -- surprising quantum-mechanically. Applied to other problem:
+fine structure splitting. Explained another factor explained by magnetic
+moments. Needed a different value of g-factor (1). Pauli had two objections:
+couldn't be right, since they were different values, and only one valid
+radius you could use: $r = \frac{e^2}{m c^2}$.
+
+Figuring out how fast this surface was rotating, had to be 100x speed of
+light. Special relativity says this is impossible. Told same thing to Niels
+Bohr,
+
+Nine months later, two guys in Holland (also very young) had exactly the
+same idea: had notion that there must be a new quantum number, almost must
+be spin; talked to their boss Ehrenfest. Said it was either nonsense or
+very important. Then said to talk to most famous Dutch theorist at the time
+Lorentz. Lorentz said everything was nonsense. Turns out this wasn't
+stupid: within two years they figured out problems. First, not classical
+spin. Also had interaction that looked like inner product between spin and
+angular momentum. This is what gives the fine structure splitting.
+
+Should have used Dirac's equation: need relativity.
+
+Nobody ever heard about the guy who actually discovered spin. Moral: don't
+listen to anyone over 30, and publish if you have something to discuss.
+
+If you want a fantastic review article (just wonderful), Jean Cummins from
+the atomic group. Coming out in a couple months. Called "electron
+spin". Talking about how theories were broken. How to fix in new QM.
+
+So what is this spin? The idea is that spin is an intrinsic quantity and
+quantum-mechanical, so don't try to think of it as a spinning soccer
+ball. Same algebra. What we're going to do is build this with something
+that we do have classical relations for, i.e. orbital angular momentum. Go
+through cyclical permutations, and this again can be summarized in this
+relationship that $\comm{S_i}{S_j} \equiv i\hbar\epsilon_{ijk}S_k$. Once
+again, you can choose eigenfunctions with quantum numbers $s,
+m_s$. Electron has  $s = \frac{1}{2}$ (fermions).
+
+Diagonal quantum numbers: $s^2\ket{s m_s}= \frac{3}{4}\hbar^2 \ket{s m_s}$,
+$s_z \ket{s m_s} \equiv \hbar m \ket{s m_s}$. You can do raising and
+lowering operators just as before: mimic what we did with angular orbital
+momentum. All particles are fundamental: point-like. Test with $e^\pm,
+\mu^\pm, \tau^\pm$ (electrons, muons, tauons). Quarks: u,d/c,s/t,b. All of
+these constitute our fermions.
+
+We also have $\gamma, w^\pm, z$: our bosons.
+
+Composite particles act just like elementary particles. The theory
+(i.e. SM) thinks that various fermions (i.e. electrons, muons, tauons) are
+also composed of quarks.
+
+Spin-up, spin-down wave functions.
+
+<a name='33'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, April 18
+===================
+
+Stuff.
+
+Raising, lowering, Pauli matrices
+
+<a name='34'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Friday, April 20
+===================
+
+Pauli matrices. Electron in magnetic field.
+
+Larmor precession. More stuff. Not quite the Bloch sphere.
+
+Beyond SG machines!
+
+Introduction to addition of angular momentum. Actually important! Reason
+for picking this example: how to go further with hydrogen atom, now that
+you understand spin.
+
+People began to test spin carefully: explained Zeeman effect, explained
+specific levels of hydrogen. Splitting of p(1/2), p(3/2). No degeneracy:
+spin of electron interacts with orbital: magnetic field from relative
+motion of proton (with respect to electron).
+
+
+<a name='35'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Monday, April 23
+================
+
+Let's start up where we left off last time: Larmor frequency (electron in
+magnetic field).
+
+learn to manipulate products of angular momenta.
+
+Important: linear combination of coupled states can often be used to
+represent uncoupled states. Clebsch-Gordan coefficient.
+
+
+<a name='36'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Wednesday, April 25
+===================
+
+Klepsch-Gordan coefficients. Corresponds to unitary (and hermitian)
+transformation between bases.
+
+Fine-structure of hydrogen: taking into account spin interaction with
+magnetic field induced by relative motion of proton (larmor precession)
+
+Quadrupoles, nuclear spin, total angular momentum of electron. Angular
+momentum of atom: $I_N + \vec{J} = \vec{F}_{\mathrm{atom}}$.

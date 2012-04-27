@@ -2745,3 +2745,619 @@ ground state. We show that we have a certain Einstein condensation
 temperature; $\tau_E = \frac{2\pi\hbar^2}{m}\expfrac{N}{2.612 V}{2/3}
 \implies N_{exc} = N\expfrac{\tau}{\tau_E}{3/2}$. For large densities,
 $\tau_E$ is not very small. 
+
+<a name='31'></a>
+
+Physics 112: Statistical Mechanics
+==================================
+Bose-Einstein Condensation: April 16, 2012
+==========================================
+Today: In particular, speak about number of states, superfluidity in, for
+instance, liquid helium, and discoveries of Bose-Einstein condensates.
+
+Midterms will be graded by tomorrow, presumably. You will have them on
+Wednesday. So the final is on May 7, so three weeks from today, early in
+the morning (sorry about that, but you are accustomed now). Of course, it
+will cover everything that you have covered. After Bose-Einstein
+condensates, I will have a short chapter on phase partitions (that is an
+important subject in statistical mechanics), and then we will spend some
+time on cosmology next week to show you how you can apply this to a
+practical problem (it is not that practical).
+
+Office hours Wednesday from 3-4; today is as usual (11-12).
+
+Bose-Einstein Condensates
+=========================
+
+Bose-Einstein had an occupation number of $\frac{1}{\exp\parens{
+\frac{\epsilon - \mu}{\tau}} - 1}$. This negative one is critical and will
+determine the behavior of the condensation. What we saw was that when
+$\frac{\mu - \epsilon_0}{\tau} \sim -\frac{1}{N}$ (for some $\epsilon_0$
+being our ground state), roughly all of the particles are in the ground
+state.
+
+In principle we should make the calculation of $\mu$ by just looking at the
+total number of particles: by the usual sum. Recall that when measuring
+$\mu$, we cannot use the integral approximation that we used in the
+Fermi-Dirac case, since our states of low energy are not very close
+together. The integral approximation does not take into account the spacing
+between the states. When $\mu$ is very small, this is not a very good
+approximation. One way of thinking about it: states get denser at higher
+$\epsilon$, but what happens with the Bose-Einstein condensation? When
+$\frac{\mu - \epsilon_0}{\tau} \sim \frac{1}{N} \ll \epsilon - \epsilon_0$,
+this spacing is critical: it will enforce that most of the particles are in
+the ground state, and very few are in excited states.
+
+So can we make calculations of this $\mU$ analytically? No; this is a
+numeric problem.
+
+We can talk, however, of isolating the first term and then using the
+integral approximation on all excited states. That is an approximation, and
+we would like this to be equal to N. We are interested in the second term,
+the number of excited states. We would like $\frac{\epsilon_0 - \mu}{\tau}
+\sim \frac{1}{N}$, so we can replace the excited states with $N_{exc}
+\equiv V \int_{ \epsilon_1}^\infty \frac{1}{\exp \parens{\frac{\epsilon_0 -
+\mu}{\tau}} \exp \parens{\frac{\epsilon - \epsilon_0}{\tau}} - 1}
+D(\epsilon) d\epsilon$.
+
+Working through the math, and setting $\epsilon_0$ to 0, we get $N_{exc} =
+2.612 n_Q V$. It does not depend on N if $\frac{\mu}{\tau} = 0$. We thus
+define the Einstein condensation temperature as $\tau_E \equiv \frac{2\pi
+\hbar^2}{m} \expfrac{N}{2.612 V}{2/3}$, so $N_{exc} = N\expfrac{\tau}
+{\tau_E} {3/2}$.
+
+Liquid $^4$He
+-------------
+If you look in the slides, I have actually computed (also probably in
+Kittel) the numerical values for $^4$He. If you apply this naively, you
+will get 3.1K. So $^4$He is expected (if there were no interactions between
+the atoms) to behave like a Bose-Einstein condensate. Not exactly true:
+behaves as a Bose-Einstein condensate about 2.17K. This is important:
+called the Landau point (also called lambda point because this looks like a
+lambda). Helium is liquid about 4K. Literally changes sign at 2.17K.
+
+All of your particles are in the same state and becomes a macroscopic
+quantum state. Very fun to see (oh god!). Basically in the same way as in
+electromagnetism, which is doing a square root of number of photons and
+plane waves: we have a wave function which is the square root of energies.
+
+With this quantum effect: you can use vortices which are quantized: have a
+certain amount of angular momentum. You have the equivalent of the two-slit
+experiment, where basically you have liquid helium go through two slots,
+and they diffract exactly like Young's double-slit experiment. You have
+basically all the interference phenomena.
+
+The most dramatic macroscopic property is superfluidity. Not only dramatic,
+it is a pain for experimentalists working at low temperature. Basically
+what is happening is that the atoms are not subject to any kinds of forces
+from the wall. They begin to flow on the wall as if it had no roughness
+(explanation forthcoming!). It makes the helium have no surface tension on
+the surface and go through cracks. One of the problems of experimentalists
+working at low temperature is something that is essentially leak-proof
+above the Landau point (2.17K), but once you cross that threshold, bang!
+the thing begins to leak like a sieve.
+
+And of course 2.17K is something that you go and look; you'd have to warm
+up and try to understand where the leak could have come from, redo the
+solder, get back down, and maybe nine times out of ten, this thing is
+leaking again. That's why low-temperature is sometimes called
+slow-temperature physics. It takes a lot of tries to fix a system which is
+leaking.
+
+To give you an idea of what is going on, I would like you the following
+question: when is energy transfer maximized? When the two masses are equal;
+easy to show via conservation of energy and conservation of
+momentum. Important consequence: if $M \ll m$, then $\frac{1}{2}mv^2 \to
+0$. In one dimension (you can of course generalize to several dimensions),
+with a particle of mass M, $E = \frac{p^2}{2M}$. I have to conserve energy
+and momentum, so the dispersion relationship of my particle of mass $m$ can
+be expressed graphically by the intersection of two parabolas. If $m = M$,
+the curves have the same width, so energy transfer is maximized. If m is
+infinite, this is flat: I am not losing any energy.
+
+We have a large effective $m$, but the analogy breaks down: system that is
+very soft: no way to transfer a lot of momentum. When we send a little ball
+into a superfluid liquid helium, it does not lose energy: keeps going as if
+it were in a vacuum.
+
+If your velocity is large enough, you can lose energy to phonons. In liquid
+helium, there are also quantized oscillations. You have a system with
+excitations, and there are phonons. If I am below the tangent, there is no
+way I can have phonons (i.e. if travelling below velocity of sound). Only
+if I am above the speed of sound can I lose energy. It will only lose
+energy to phonons, and not to kicking of the system. Can emit excitations
+(phonons) if velocity large enough. This may remind you of Cherenkov
+radiation. This ia a phenomenon remarkably similar to that. If a particle
+goes through a medium faster to the local velocity of light (smaller than c
+because of diffraction index), then you will emit light. Same thing: if you
+go above the velocity of sound, you will emit phonons.
+
+So a lot of interesting physics; you can do the calculations, but the graph
+is good enough to show what is happening.
+
+By the way, there is one small experiment, which is somewhat interesting:
+if you put a little pipe going through the surface of liquid helium in a
+container with glass walls, and you begin to pump at 4K, and the
+temperature of the helium goes down. Suddenly at 2.17K, you have a fountain
+of liquid helium coming out of your tube. Very cool. Another thing that
+happens is that the helium rises up on the sides and heats up to 2.17K
+where it evaporates. It goes through cracks.
+
+In the late 90s, there were interesting successful attempts by two groups
+to artificially create Bose-Einstein condensation: one at NIST/JILA in
+Boulder, and one at MIT.
+
+This is an example where they were trapping atoms in the form of a ring,
+which you can observe rotating. This is just the spectacular demonstration
+that the particles are totally coherent.
+
+Any way: how do we do that? What you need to make a Bose-Einstein
+condensate: low temperature (need to cool atoms) and high density (of the
+order of the quantum density). So how do you cool atoms? Having them bounce
+on the wall is not a very efficient way of cooling them.
+
+The breakthrough came from what was called laser cooling: suppose I have an
+atom that I want to cool. This atom is going in many directions. Let's
+choose an absorption line of this atom which has some resonance and
+frequency. Instead of sending a laser at the resonance frequency, let's
+send a laser slightly below this frequency. What is happening? This is if I
+were in the rest frame of the atom. If the atom is moving towards the
+laser, in this rest frame, it sees the frequency of the laser slightly
+blue-shifted, so it absorbs the laser more, and it will emit the photons
+over $4\pi$ after a while, and it has lost kinetic energy. If it goes away
+from the laser, it will scatter less (it will see the frequency
+red-shifted). The net result is if I am sending laser light from all
+directions, I will tend to cool my atoms and decrease their energy.
+
+We can use the same idea to trap the atoms: put magnetic field on the side:
+frequency is changing; oblige particles to be in the area of zero magnetic
+field.
+
+In practice this is a little more complex than this: you cannot make a
+magnetic field that looks like an infinite square well, but you can have a
+rotating magnetic field, so every time the particles want to go out, they
+will see the magnetic field (whose energy will be higher: particles are
+slow since they have been cooled). Two groups in our department are doing
+that as their main research.
+
+<a name='32'></a>
+
+Physics 112: Statistical Mechanics
+==================================
+Fermi-Dirac, Bose-Einstein, Phase transitions: April 18, 2012
+=============================================================
+Reasoning why chemical potential does not vary much at low temperatures: it
+looks fairly rectangular under normal circumstances. When we have a finite
+temperature, we have some rounding of the distribution.
+
+The occupation number of holes: if I am a distance $\delta$ from $\mu$,
+this is the occupation number $\lambda$ of electrons. The two are equal
+because of this addition. On the other hand, that's not what we want to
+have: we want to multiply by density of states. We have to plot
+$f(\epsilon, \tau)$ and integrate over that. In two dimensions,
+$D(\epsilon)$ is constant. So this is the same graph, except now we have
+$D(\epsilon)$ on our axis. At a distance $\delta$ from the chemical
+potential, now the _number_ of holes is equal to the _number_ of electrons
+(as opposed to occupation number: we've taken into account density of
+states, so this is for the entire system).
+
+Because of this symmetry, the sum from 0 to infinity of $f(\epsilon, \tau)
+D(\epsilon) d\epsilon$ is exactly equal to $\int_0^\mu D(\epsilon
+d\epsilon$. This is known to be $\int_0^{\epsilon_F} D(\epsilon)
+d\epsilon$. Slightly different from what happens in 3 dimensions:
+$D(\epsilon) \propto \sqrt{\epsilon}$, so my function $fD$ looks different
+because I am losing less on the hole-side than gaining on the electron, so
+I have to reduce the chemical potential a little bit at $\tau$ at 0.
+
+Don't confuse occupation number (which is symmetric) with the number (which
+is not symmetric in general). Symmetric only in two-dimensional case
+because $D(\epsilon)$ constant.
+
+Let me, then, finish rapidly what I wanted to say on Fermi-Dirac and
+Bose-Einstein. We were speaking about this very nice experiment: BEC atoms,
+cooling in a trap. Now becoming routine, but before were very difficult to
+do with atoms. And now people are doing that with molecules; they are
+making artificial crystals; there is a whole industry. They take atoms and
+arrange them in a particular fashion and potential. Now that the technology
+of cooling the atoms and trapping them is well understood, there is a lot
+of physics happening.
+
+Graph corresponds to spatial density of atoms. Claim: not a great
+discovery; just a technical feat. Superconductivity: in low-temperature
+superconductors, you have electrons pairing in Cooper pairs for phonon
+interactions.
+
+Condensation theory is a bad approximation: interactions between Cooper
+pairs are important. The temperature at which superconductivity appears is
+much smaller than you would naively compute. Similar effects: zero
+resistance (as in superfluidity), vortices: quantization of flux, phase
+shift effects: all the $n^2$ behavior. Superconductor with two junctions is
+equivalent to Young's double-slit experiment. Very similar properties; very
+important devices.
+
+$^3He$ is spin $\frac{1}{2}$, and you have pairing of the spin to create a
+spin of 1 to create superconductivity. Then, because this is in vacuum, you
+have very strange effects: magnetic properties.
+
+This is a very important effect in condensed-matter physics. Emerging
+phenomenon: completely different phenomenon at low temperature. Surprising:
+not that low of temperature for sufficiently dense systems.
+
+Energy density for both bosons and fermions goes as $T^4$. Useful when
+considering early universe when considering expansion.
+
+Pressure: we have never solved problem of scattering of particles (shown
+force per unit area). Once again, define independent variables when taking
+partial derivatives. What is constant is energy and number of particles (if
+we want to use $p = \tau \pderiv{\sigma}{N}$.
+
+The force per unit area on the wall can be readily computed in the
+following way: I am considering a small area on the wall $dA$. Now, if I
+have a particle coming in (I will assume, by the way, because of the
+symmetry, the angle of reflection is the same as that of incidence), the
+force is merely $\pderiv{p}{t}$, i.e. what is the change of momentum per
+unit time? And the pressure will be the force divided by $dA$. I will have
+to compute this: $\frac{1}{dA\Delta p}\int 2p\cos\theta v\Delta t dA
+\cos\theta n(p) p^2 dp d\Omega = 2\pi \int cos^2\theta d\cos\theta \int 2pv
+n(p)p^2dp$. The $\theta$ integral gives me $\frac{1}{3}$, and what we have
+is that my pressure is $\frac{4\pi}{3} \int pv n(p) p^2 dp$. Depending on
+whether you are nonrelativistic or (ultra)relativistic, pv is just $mv^2 =
+2\epsilon$, so $P = \frac{2}{3}U$. If you are relativistic, $pv$ is just
+$pc = \epsilon$, the pressure is therefore just $\frac{1}{3}U$. And check
+with our various results: this is the same pressure as the thermodynamic
+definition $\tau\pderiv{\sigma}{V}\Big|_{U,N}$
+
+Explanation for why we have pressure for Fermi-Dirac even at zero
+temperature: I have to stack up my states in energy space, and I have to
+have states that are high velocity even at zero temperature. That's one of
+the interpretations of the pressure of a Fermi-Dirac gas.
+
+phase transitions: system in contact with reservoir, but not necessarily in
+equilibrium. What is minimized? Landau free energy. We have seen this: free
+energy is not defined because $\tau$ is not defined. Energy is not minimzed
+because system is constantly kicked by thermal fluctuations.
+
+<a name='33'></a>
+
+Physics 112: Statistical Mechanics
+==================================
+Phase transitions: April 23, 2012
+=================================
+
+Would like to finish phase transitions if possible. The modern way of
+looking at phase distributions involves looking at the Landau
+distributions: consider the Landau free energy $F_L = U_s - \tau_R
+\sigma_s$ and Landau free enthalpy $G_L = U_s - \tau_R\sigma_s + p_R
+V_s$. The first one is used when considering constant volume, and the
+second one is used at constant pressure.
+
+Generally speaking, you will look at the dependence of $U_s, \sigma_s, V_s$
+on an order parameter $\xi$, and we are looking at equilibrium, which is
+obtained at the minimum.
+
+You may be somewhat confused by the fact that you cannot define the state
+of a system by just one parameter. We must almost actually minimize with
+respect to all other variables.
+
+This minimization comes in usually by the expression of $\sigma_s
+(\xi)$. When you speak of $\sigma_s(\xi)$, usually energy depends directly
+on $xi$, whereas $\sigma$ depends on probabilities. You will maximize
+$\sigma_s$ at some given $\xi$.
+
+When I was speaking of ferromagnetism, at one point I was changing in the
+expression of the entropy $\frac{mB}{\tau} \to \tanh^{-1}\parens{\frac{M}
+{nm}}$, I was already doing this minimization.
+
+The net result is that if I plot F as a function of the magnetization, at
+high temperature, the magnetization wants to be zero (since that is the
+minimum of the Landau free energy), and this curve will move upwards until
+suddenly, at a critical temperature (the Curie temperature), it develops a
+minimum, and the equilibrium magnetization becomes nonzero.
+
+If I plot the magnetization as a function of teh temperature, it is zero
+above this temperature. This is a second-order phase transition, and you
+move smoothly from $m=0$ to $m \neq 0$. There is no discontinuity in
+$m$. This is very different from the case in which we go from gas to
+liquid. Continuous evolution: the thing that is discontinuous is the first
+derivative.
+
+Classical gases: what are we missing in our description (point-like
+particles which just scatter when they make contact with each other).
+
+Issues: limit to compressibility (not taking into account volume of
+particles). Interaction forces (long-distance): attractive Van der Waals
+forces (polarization due to fluctuations induces polarizations in other
+local particles). So how do these forces look? I have a very strong
+repulsive force when they are in contact and a weaker $\frac{1}{r}$ force
+when they are sufficiently far apart.
+
+$V \to V - Nb$ (where $b$ is the volume of the atom). So this is the
+approximation. Instead of a very fast approaching force, we linearize about
+this point. For the attractive force, I will treat in a similar manner to
+what we did for magnetism: mean field approximation. $\avg{U} \to \avg{U} -
+\avg{\phi}\frac{N(N-1)}{2}$. I will say that $U = T - \frac{N^2 a}{V}$
+because the average of $\phi$ is $\frac{\int \phi d^3 r}{V} \equiv
+\frac{2a}{V}$. I will make this approximation: there is an attractive force
+that goes as $N^2$.
+
+We want to compute $G_L$. I have $U_s = T - \frac{N^2 a}{V}$, and, back to
+counting of states, $\sigma_s = N \bracks{\log \bracks{}\frac{\expfrac{M
+U_K}{3\pi\hbar^2 N}}{\frac{N}{V - Nb}} \equiv N \log \frac{n_Q}{n} +
+\frac{5}{2}N$ (the Sackur-Tetrode formula).
+
+At $U_k = \frac{3}{2} N\tau$, I am not yet in equilibrium with the
+reservoir, so there is no real way to define temperature.
+
+What is the pressure? There is a critical pressure $\frac{a}{27b^2}$ (don't
+ask me; just result of calculation) above which things behave normally:
+$G_L$ normally, and as temperature goes down, $G_L$ as a function of $V_s$
+moves downward. But below this limit, I start to develop two minima: moves
+up and to the left as temperature goes down.
+
+$\pderiv{G_L}{V_s$ gives us the Van der Waals equation of state,
+$\parens{p_R + \frac{N^2a}{V_s^2}}\parens{V_s - Nb} = N\tau_R$. I have
+already defined $p_c = \frac{a}{27b^2}$, and $\tau_c = \frac{8a}{27b}$.
+
+At this critical temperature, it begins to develop a certain inflection
+point, and the liquid/gas relationship emerges.
+
+If you do this calculation numerically, it is not easy to plot: there is a
+big difference between the volume of the gas and the volume of the gas for
+different values of the pressure compared to the critical pressure.
+
+At high pressure compared to teh critical pressure, you stay always in the
+gas phase. As you increase the temperature, it will decrease, and the
+minimum goes down: the volume just changes. Nothing special happens. If you
+are below the critical temperature, at high temperature, volume is large,
+and you see a minimum at high temperature, and there is a second minimum
+which develops: the liquid. That is what is happening.
+
+Transition from liquid to gas as we increase the temperature: it does not
+go by itself: there is a potential barrier between the two phases: liquid
+$\to$ gas needs a wall or a dust particle (creating a bubble takes work.
+
+Even if the gas has a smaller free enthalpy, I still have to overcome this
+potential barrier (we are stuck in the liquid if nothing else
+happens). Takes work to create a bubble.
+
+Meta-stable states: superheated liquid or supercooled vapor: need surfaces
+for transition to occur.
+
+Unless you increase the temperature high enough such that there are no more
+local minima, you will go extremely brutally.
+
+<a name='34'></a>
+
+Physics 112: Statistical Mechanics
+==================================
+Phase transitions, Cosmology: April 25, 2012
+============================================
+
+What I wanted to do was speak about the final. You have the right to have
+four pages now (single-sided) of notes. As usual, my advice is to rewrite
+your notes because this class is more about concepts and how they relate to
+each other than formulae. As should be quite obvious from the midterms, if
+you take the wrong formula and apply to a situation, the result is
+unpredictable.
+
+I think we all agree that 8am is not advisable. So what I can propose is a
+review session either on Wednesday 4-6, Friday 10-12, or Friday 2-4 (Alex's
+is on Thursday 1-3pm in 9 Lewis). I will focus the review on chemical
+potential, since we have not really seen this before.
+
+Strong preference for Wednesday.
+
+So let's look at phase transitions. We were looking at this question of how
+the system goes from liquid to gas as we increase the temperature. The
+thing I wanted to attract your attention that for this kind of first-order
+phase transition, the behavior is not continuous: there is a discontinuity
+because there are to minima in $G_L$. Because there is a potential barrier
+between the two minima, the system can be stuck in one of the states. It is
+not true that if you heat (pure) water at about 100 degrees Celsius, it
+will not boil. It will be stuck in a metastable state of superheated
+liquid. Will only boil because of defects.
+
+Import in stuff like bubble chambers and particle detectors (important for
+detection of dark matter). Can stay metastable for minutes. This is fairly
+characteristic of what we call first-order transitions.
+
+Chemical potential as a function of $p, \tau, N$ has no dependence on
+$N$. We showed that $G = N\mu(p,\tau)$.
+
+Entropy of liquid is lower than that of gas with same parameters. Related
+to the fact that there are fewer degrees of freedom, so smaller number of
+states. Using that the Gibbs free energies are the same, $\Delta H = LN >
+0$, where $L$ is the latent heat per particle.
+
+Coexistence: you can follow the separation between the liquid and gas as a
+function of pressure and temperature. When the Landau free enthalpy is
+equal between the systems, you are on this locus where gas and liquid
+coexist, and of course it stops when you reach critical pressure and
+critical temperature, which we call the critical point. This is of course
+of intense interest to us.
+
+There is a very famous formula derived in the mid-nineteenth century by
+Clausius and Clapeyron, which is very simple. Clearly we have
+$G_L(p(\tau),\tau) = G_g(p(\tau),\tau)$ (equation at the coexistence
+line). Now, taking the derivative with respect to $\tau$, we get
+$\pderiv{G_L}{\tau}\deriv{p}{\tau} + \pderiv{G_L}{\tau} = \pderiv{G_g}
+{\tau}\deriv{p}{\tau} + \pderiv{G_g}{\tau}$. So what are these terms?
+
+$dG = -\sigma d\tau + Vdp + \mu dN$, so $\pderiv{G}{p} = V$,
+$\pderiv{G}{\tau} = -\sigma$. Thus we can solve: $\deriv{p}{\tau} =
+\frac{\sigma_l - \sigma_g}{V_g - V_l} = \frac{1}{\tau}\frac{L}{v_g - v_l}$,
+where $v_g \equiv \frac{V_g}{N}$. If you use that $v_l \ll v_g \sim
+\frac{\tau}{p}$, then this is roughly $-\frac{pL}{\tau^2}$, or $p \sim
+\exp\parens{-\frac{L}{\tau}}$. If you express the partial pressure, you
+have a straight line, which is actually the latent heat per particle. Very
+good approximation for water (given the number of assumptions we have made)
+and ice (since we can do the same thing between solid and liquid). Also an
+excellent approximation for $^4\mathrm{He}$.
+
+That's basically all regarding phase transitions. These arise from
+correlations between particles: no phase transitions with ideal gases. The
+method used here is the mean field approximation as a first-order. Two
+types: first order (coexistence, latent heat, metastability) and second
+order (continuous transformation -- discontinuity in derivative). In first
+order, there is a critical point. Very important in modern statistical
+mechanics.
+
+Cosmology
+=========
+Let me dissipate ambiguities regarding presence on final. The details of
+what I will tell you will not be on the final. But the kind of principles
+that I am applying (the thermal physics and statistical mechanics) are
+clearly on the final: these are the things we have spoken about in
+considerable detail over the last 14 weeks.
+
+What I would like to speak to you about is basically the thermal evolution
+of the universe. We have something (we call this the Big Bang). Big
+explosion: a lot of unknown particle physics at the beginning. At about a
+tenth of a nanosecond in, what we see is fairly well defined. A few
+thousand years gives us the microwave background.
+
+How do we know that the universe is expanding? We can measure the Hubble
+recession of distant galaxies. To a first approximation, their velocity is
+proportional to their distance. There is essentially 80 years of research
+where we have learned to measure distances, account for local velocities,
+and more.
+
+THe second thing (which we have spoken about) is that we have observed this
+background radiation (about 3K). The final thing (which I will speak about
+in more detail on Friday) is that if we, in the early universe, not only
+observe protons and electrons, but that pi-modal -- helium and deuterium
+have been formed -- in order to understand how these things happened, we
+need a very hot phase.
+
+Best way to think about this expanding universe (which is mind-boggling
+because everything is changing) is to divide out the expansion. We have
+something called the scale parameter a(t) and go from the physical
+coordinate to the comoving coordinate, where we take this expansion away.
+
+Now, there is something that we call the Friedman equation: the sum of
+kinetic energy and potential energy is constant. We can compute constants
+in general relativity. If the curvature of the universe is infinite, this
+is constant.
+
+For all practical purposes, we believe this all started from a phase
+transition: inflation. This second-order phase transition led to
+exponential expansion. What is going on? We assume that we have a field
+which we have never seen (order parameter -- inflaton). Same that we've
+used, except now in quantum mechanics: instead of classic variables, we now
+have quantum fields. As temperature decreases, this begins to develop a
+second minimum. This will induce a phase transition. System feels that its
+energy is not equal to zero, which leads to an exponential increase of the
+scale parameter. We call that inflation. We believe that in the space of
+less than a tenth of a nanosecond, the universe has expanded by a factor of
+60E40. For all practical purposes, this is what we call the big bang.
+
+<a name='35'></a>
+
+Physics 112: Statistical Mechanics
+==================================
+Cosmology: April 25, 2012
+=========================
+
+Thermal history of the universe.  How thermodynamics / statistical physics
+is applied to the field. Before I do that: let me remind you that next week
+we will have review sessions Wed 4-6 in 325 Leconte and Th 1-3 9 Lewis.
+
+What I am going to do is finish talking about inflation, then speak of the
+evolution of temperature as a function of time, and finally give you an
+idea about nucleosynthesis: how the elements (which have nuclei) were
+formed. This will give us the opportunity to speak about three important
+aspects of the course: phase transitions, more general arguments about
+evolution of entropy, and the mass-action law.
+
+For instance: looking at a proton and an electron, we get hydrogen. Or a
+neutron and a proton: deuterium. Or deuterium and a proton: Helium-3.
+
+The universe is expanding in a homogenous and isotropic manner. The
+physical coordinates are related to comoving coordinates by a certain
+expansion factor. This is interesting: relates speed of expansion to energy
+density.
+
+Did speak on Wednesday regarding what happens in the early universe: phase
+transition (postulate). We believe that we had a phase transition, where
+what was happening as a function of order parameter, the Landau free energy
+developed a minimum, and suddenly the universe wants to go to this
+point. When it does that, it discovers that is has a nonzero energy
+density, and it begins to expand.
+
+On the order of 60E40.
+
+So: why do we need something like that? Need to justify cosmic microwave
+background. Remember this is the radiation from the plasma in the early
+universe at a given temperature. Recombined into hydrogen, so universe
+became transparent.
+
+Things were close (in causal contact). Then things were put very far
+apart. In GR, there is no problem with having the space expand faster than
+the speed of light.
+
+That was the main reason for inflation: some reason for extremely fast
+expansion of universe, which then settles down.
+
+Space flat, so no worry regarding initial conditions. Quantum fluctuations
+are frozen in and expand with space. Will provide seed for large scale
+structure.
+
+If you plot the power spectrum of density fluctuations as a function of
+spatial frequency $k$ (just a Fourier transform). We have a power spectrum
+that looks roughly parabolic (with a maximum), and we understand the
+shape. If we measure the microwave background on this plot and extrapolate
+from the expansion factor, it links perfectly with what we measure in the
+galaxies in terms of structure. That was the great excitement about the
+cosmic microwave background when we first measured these fluctuations: they
+were right were we needed them to be.
+
+We have no real mechanism for this field. Cosmology points to physics at
+much higher energy: $10^{16}$ GeV. Best accelerators are $10^4$ GeV. One of
+reasons for switching to cosmology.
+
+What can we test? Measure polarization of microwave background: see
+gravitational field. This is very much related to discussions in media on
+multiverses.
+
+What is constant in this comoving sphere during the expansion? The entropy
+-- no heat transfer. The energy cannot be constant: the sphere is working
+against the rest of the universe. There is this pressure. The volume
+increases, $-pdV$ acts, and so the energy inside decreases by $pdV$. The
+entropy on the other hand should not decrease: universe is isotropic and
+homogeneous.
+
+No generation of entropy if there are no first order phase transitions
+(which would mean irreversibility).
+
+This tells us that entropy per unit comoving volume has to be constant. $T
+\propto \frac{1}{a(t)}$. Remember: we did show that the energy density for
+relativistic particles (which dominated the entropy during the early
+universe) goes as $T^4$. There is a factor corresponding to the degrees of
+freedom, which is 1 per polarization for bosons and $\frac{7}{8}$ per
+polarization for fermions So $\frac{\sigma}{\gamma} \propto g^* T^3$. That
+is related to relativstic number of the number of particles.
+
+So what is the $\frac{\sigma}{V_{\text{com}}} \propto g^*$. In that case,
+we have $S_{com} \propto a^3 g^* T^3$, which gives us that $T \sim
+\frac{1}{a(t)$. Same result as in GR.
+
+Reason why temperature goes as $\frac{1}{a(t)}$ is related to the Doppler
+shift. As the universe expands, the wavelength of the relativistic
+particles is stretching out in GR, and the wavelength increase, frequency
+decreases, therefore the temperature decreases.
+
+If there is no change of degrees of freedom, $T \propto \frac{1}{a(t)}$. In
+the parabolic graph, used that we can compute (from first principles)
+temperature of fusion of hydrogen to be ~3000K. Universe was 1000x smaller
+than it is now.
+
+If the number of degrees of freedom is changing, you have a kink in the
+temperature evolution.
+
+With high enough temperature compared to binding energy, the product,
+for all practical purposes, does not exist.
+
+Indeed, in this case, the chemical potentials add.
+
+Problem: running out of time. Try to tell a little bit about how we discuss
+the 

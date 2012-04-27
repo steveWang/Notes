@@ -1498,7 +1498,296 @@ minus signs.</p>
 <p>Very quickly: single-pole system. <mathjax>$A = \frac{A_0}{1 + \frac{s}{\omega_p}}$</mathjax>,
 so <mathjax>$\frac{V}{X} = \frac{A}{1 + AK} = \frac{A_0}{1 + \frac{s}{\omega_p} +
 A_0K}$</mathjax>. Put this back into original form, etc. Pole moves. With feedback,
-pole moved to higher frequency.</p></div><div class='pos'></div>
+pole moved to higher frequency.</p>
+<p><a name='31'></a></p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Wednesday, April 11, 2012</h2>
+<h2>Feedback:</h2>
+<ul>
+<li>Math</li>
+<li>circuits poles move</li>
+<li>stability and amplitudes</li>
+</ul>
+<p>Nice mathematical abstraction of feedback with an amplifier with open-loop
+gain given by A, and a feedback factor K, and loop gain AK. If we close the
+loop, then we know that we get a closed-loop gain of <mathjax>$\frac{A}{1+AK}$</mathjax>. For
+<mathjax>$\abs{AK} \gg 1$</mathjax>, this is approximately <mathjax>$\frac{1}{K}\parens{1 -
+\frac{1}{AK}}$</mathjax>.</p>
+<p>Turns out same analysis we do for amplifiers is the same we need to do for
+oscillators. Circuits don't quite match this.</p>
+<p>So let's do a little math, and example where I mess up and am too busy
+thinking about the beautiful math. Single-pole amplifier with <mathjax>$A(s) =
+\frac{A_o}{1 + s/\omega_{p0}}$</mathjax>. CLG is <mathjax>$\frac{A}{1 + AK} = \frac{A_0}{1 +
+A_0 K + s/\omega_{p0}} = \frac{A_0}{1 + A_0 K} \frac{1}{1 + s /
+\omega_{p,cl}}$</mathjax>. DC gain is the same, and then we've got some
+frequency-dependent component. So we have <mathjax>$\omega_{p,cl} = (1 + A_0
+K)\omega_{p0}$</mathjax>. Pole has moved: depends on how much feedback we provide. In
+particular, if the amount of feedback I put into this thing is 0, then I
+get the right answer.</p>
+<p>So if we look at (the magnitude of) the open-loop transfer function, we
+have this <mathjax>$\omega_{u0} = A_0 \omega_{p0}$</mathjax>. And now, as I add feedback, this
+should not move.</p>
+<p>Mathematically, as we change the loop, unity gain does not change.</p>
+<p>We know from Miller that we can write the equivalent linear circuit with
+input and output loads.</p>
+<p>Calculate <mathjax>$G_m, R_o$</mathjax> the usual way (small signal model). Math ran into real
+world: taking last lab into account, unity gain frequency moved. Mistaken
+assumption was that the resistor impedance stays small at all
+frequencies. Impedance goes up with frequency, and all of a sudden, <mathjax>$r_\pi$</mathjax>
+is not negligible any more. Initially 7k, and I'm driving a 7k with a 100k
+resistor. cut effective <mathjax>$G_m$</mathjax>.</p>
+<p>Now let's look at your next lab, where we'll build a ring
+oscillator. Feeding back to the input and trying to turn this thing into an
+amplifier. Put a 100k resistor in the loop, each stage has an explicit
+100pF capacitance on the input. Start with <mathjax>$R_{fb} = 0$</mathjax>, put load on this
+capacitance. Then we can figure stuff out from <mathjax>$V_{in}$</mathjax> to <mathjax>$V_{fb}$</mathjax>.</p>
+<p>We're going to get three frequencies out of these. Initially they're
+identical, and we're going to get an open-loop gain <mathjax>$A = \parens{\frac{G_m
+R_o}{1 + s/\omega_{p1}}}^3$</mathjax>. All the poles line up at the same place.</p>
+<p>Gets bigger each loop until saturation. Mathematical criteria for
+stability: <mathjax>$\abs{H(j\omega)} &lt; 1, \angle H(j\omega) = 0$</mathjax>. Phase margin:
+<mathjax>$\angle H(j\omega)$</mathjax>. If that's 360, we're doomed. <mathjax>$360 - \angle H(j\omega)$</mathjax>
+tells you how close to instability you are. Then there's gain margin, which
+is <mathjax>$H(j\omega_{360})/1$</mathjax>. People get very nervous when your phase margin is
+less than <mathjax>$45^\circ$</mathjax>. So this thing is going to oscillate, and that's what
+you found. (when phase margin dips below 0, you oscillate)</p>
+<p>So how to keep this an oscillator? (generally used for clocks; stick
+through handful of inverters afterward and measure that final output)
+Current source: have some reference current with resistor up to rail
+(setting ref. voltage), and now you have some transistors whose drains are
+all tied together and have particular values of <mathjax>$W/L$</mathjax>. We control the bias
+voltage with more MOSFETs or whatever. Lots of advice to take 142 and
+stuff.</p>
+<p>system absolutely unstable, etc. How do we guarantee small gain? Get rid of
+poles or stuff. Single inverter will not oscillate. Not enough poles to get
+you to 360.</p>
+<p><a name='32'></a></p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Monday, April 16, 2012</h2>
+<p>Lab,</p>
+<p>slew rate: trying to drive an <mathjax>$8\Omega$</mathjax> speaker. Probably want to drive
+this with a DC-block capacitor. In systems like this, you generally want
+AC-coupling so you don't have to worry how things are inserted. You also
+want this to work for audio. C should be blocking. 20Hz. For lab, only have
+to go down to 1kHz. May use 10 or 100 <mathjax>$\mu F$</mathjax>. Why is this bad? Output
+stage is a cascode (sort of) with capacitive load.</p>
+<p>If you've got a sine wave on this thing at some DC offset of 1-5V, you know
+that what you'd like to see is the output tracking the input with a diode
+drop. In fact, that works fine for low amplitudes at low frequencies.</p>
+<p>But at high amplitudes / frequency, what you see is this thing called the
+slew rate (looks like capacitor action). What's happening? Current flowing
+across this capacitor is equal to <mathjax>$C\omega V_0 \cos(\omega t)$</mathjax>. The
+magnitude of the current is simply <mathjax>$\omega C V_0$</mathjax>. If f is 160 Hz and C is
+1 <mathjax>$\mu F$</mathjax>, then <mathjax>$\omega = 10^3$</mathjax>, <mathjax>$\omega C = 10^{-3}$</mathjax>, so you're going to
+get 1 mA of current that you need at the peaks of these sine waves. But if
+you take this up to <mathjax>$f = 1 kHz, C = 10 \mu F$</mathjax>, you'll need <mathjax>$60 mA$</mathjax>. etc.</p>
+<p>What you see on the scope is that output tracks just fine on the way
+up. No problems with emitter follower transistor. On its way up, if this
+voltage is lagging, it only takes 60 mV to give 10x the current. More than
+happy to source extra current. But once you hit the peak, current coming
+down, and you need to discharge capacitor with that current. And that's why
+with this setup you end up with a slew rate <mathjax>$\deriv{V}{t}\Big|_{max} =
+\frac{I_{bias}}{C}$</mathjax>.</p>
+<p>Bunch of tricks people have come up with over the years. Problem here is
+that we have a hard time pulling down. So what if we make a CE or CC with a
+PNP transistor? On the negative-going transitions, this thing will happily
+pull much more current. But it'll have problems with the positive-going.</p>
+<p>So combine the two, make an NPN follower to bring this voltage up and a PNP
+follower to bring this voltage down. Tie these together, and this is our
+<mathjax>$V_{in}$</mathjax>. Challenge: if you look at <mathjax>$I_{out}$</mathjax> vs. <mathjax>$V_{in} - V_{out}$</mathjax>, you
+know that we have a dead zone of two diode drops, i.e. when these things
+turn on/off. SO what do we want to do to fix this?</p>
+<p>Ideally you put a battery in there that biases these two bases far enough
+apart that they're always on. How do you do that? Turns out, lots of other
+ways to do a voltage source.</p>
+<p>Simplest: just put two diodes in there. Trying to compensate for the diode
+drops. Want some current flowing through, so just put a resistor before the
+diodes. Conceptually, this will do. Could put input anywhere, really, and
+the output really would track the input.</p>
+<p>This is one of the problems with the lab: driving low impedance with
+output. Driving high-impedance source. If this were actual electret, this
+would have huge impedance. But inside this can, there's already a JFET to
+lower the impedance.</p>
+<p>Two issues: slew rate; impedance is basically 8<mathjax>$\Omega$</mathjax>. Somehow you've got
+to get from k<mathjax>$\Omega$</mathjax>s to <mathjax>$\Omega$</mathjax>s. Put in a follower. Key: understand
+what you're adding and why. Perfectly fine as well as you get reasonable
+performance. Hand calculations match spice calculations match
+measurements.</p>
+<p>One thing you might put in there is another CC, which magnifies impedance
+by that <mathjax>$1+\beta$</mathjax> factor. Darlington pair.</p>
+<p>As always, at the input to the amplifier, we have a magical subtracter box
+for now.  We'll eventually show how to make this with transistors
+(differential pairs).</p>
+<p>Unity-gain feedback can be used to manipulate what an output impedance
+looks like. Should not be a surprise: we already knew this because we knew
+that with that same configuration where we had some load capacitance, we
+got a system with an open-loop gain at 0 and a pole at <mathjax>$\frac{1}{R_o
+C_L}$</mathjax>. When we wrap feedback around it, this moves to <mathjax>$\omega_{p,cl} = (1 +
+A_0 K)\omega_{p,ol}$</mathjax>.</p>
+<p>So that's a very good thing: for a voltage amplifier, feedback lowers your
+output impedance, potentially dramatically.</p>
+<p>So how about the input impedance? This is a little trickier in that it's
+doing some handwaving regarding how the feedback actually happens.</p>
+<p>Want to get high gain because you can always trade it for good things in
+circuits: low stable gain, etc. The only caveat is that this is a real
+amplifier, so there's only so much swing you can get.</p>
+<p>Magical subtracter box! We'd like <mathjax>$V_D = V_+ - V_-$</mathjax>. If they're both going
+up and down together, we'd like nothing to happen.</p>
+<p>Works because of linearization around our operating point.</p>
+<p>Take current and turn into voltage by putting in resistors. And now you've
+got a differential voltage across here.</p>
+<p>Similar to common emitter: how is this different? the change on either side
+will set the other rail. Another way to look at this: we're rejecting the
+average.</p>
+<p><a name='33'></a></p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Wednesday, April 18, 2012</h2>
+<p>Output impedance, slew rate. Feedbacks, op amps, digital.</p>
+<p>From lab: trying to derive load with resistive component, passive
+component. Bunch of issues here: R is small (8 ohm), output resistance much
+smaller than load resistance means burn current.</p>
+<p>Current limits: <mathjax>$I = \omega C V_{swing}$</mathjax>. Pick C such that impedance small
+compared to R.</p>
+<p>cleverness. Cleverness in short supply. Nice to have ability to just throw
+op amps at problems instead of cleverness.</p>
+<p>What if we had some way to measure output voltage and compare to input
+voltage and use to affect bias voltage on transistor? Would be nice if
+we could somehow measure output voltage relative to input, gain it up
+(positive) and apply to <mathjax>$V_{BE1}$</mathjax>.</p>
+<p>Turns out: negative feedback. Doesn't fit nicely into picture we like of
+summing junction, etc, but it turns out most circuit feedback doesn't (at
+transistor level). If you take 140, you learn what true pain is. Until you
+start using op amps. Which is an abstraction.</p>
+<p>Something that lets me drive with small current in small-signal
+model.</p>
+<p>Still have problem slewing north, but slewing south is fine. Before we had
+the opposite problem.</p>
+<p>Turns out when you're slewing, linearity of drive not good; going to sound
+distorted. </p>
+<p>More talk about feedback.</p>
+<p>Op amps!</p>
+<p>Last time we learned about differential amplifiers. Now we'll put that to
+use. There's no precise definition of what an op amp is. But roughly, there
+are three parts: differential amplifier (where the goal is to separate the
+common mode from the difference of the signal), gain stage, and maybe an
+output stage. Sometimes you see amplfiiers drawn as trapezoids, which just
+means that it's missing the output stage: could be very large output
+impedance.</p>
+<p><a name='34'></a></p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Monday, April 23, 2012</h2>
+<p>Operational amps; oscillated at 800Hz in speaker-to-microphone
+feedback. Ideal op amp: is differential amplifier with gain. Infinite input
+impedance, no output impedance, etc. Doesn't care where output goes; no
+current limits. All things that real op amps don't share with ideal op
+amps. We're not going to get into the details of designing op amps, but
+it's a nice circuit: uses things you've learned all semester
+long. Relatively easy to make and buy.</p>
+<p>If we look at the simplest op amp, you have to have a differential pair,
+and you have to have some sort of current flowing through that differential
+pair. We know from last lecture if the common mode voltage is the same, as
+they move up and down, the emitter moves up and down. Depending on the
+resistor, your current stays relatively constant. So this gives us some
+common-mode rejection. Slight changes of this (if you draw the SSM) --
+virtual ground. You get a differential current (one side is +, other is
+-). Keeping current constant. Simplest way to turn this into a voltage is
+to make it single-sided, and that is an op amp.</p>
+<p>So how do we find the gain? We have to find the operating point. For this
+particular circuit, we need to know what the inputs are at. Our operating
+point, therefore, is one <mathjax>$V_{BE}$</mathjax> drop below the DC bias at 0. Tail
+resistance. Named by people doing tubes. Tail current: <mathjax>$\frac{V_{EE} -
+V_{BE} - V_{cm}}{R_{tail}}$</mathjax>. So <mathjax>$g_{m1}$</mathjax> is <mathjax>$\frac{I_c}{V_T}$</mathjax>. <mathjax>$R_{out}
+\approx R_c$</mathjax>, and <mathjax>$G_m$</mathjax> ends up being <mathjax>$\frac{g_{m1}}{2}$</mathjax>.</p>
+<p>Gain ends up being around 50.</p>
+<p>So this thing actually does work as an op amp. If I wanted to make a
+follower or unity-gain buffer out of it,</p>
+<p>Stability? Depends on gain at <mathjax>$\omega_{360}$</mathjax>. If there is no
+<mathjax>$\omega_{360}$</mathjax>, then we don't have to worry about this. This particular
+case is a single-pole system (to a good approximation).</p>
+<p>Traditional thing to do in tube amplifiers: -500V (really big volts).</p>
+<p>This ends up getting an output impedance of about 200 ohms, which is not
+ideal, but still better than 10k.</p>
+<p>So let's add a second stage.</p>
+<p>Reduces gain, but eh. Usually see follower.</p>
+<p>Small signal does poor job approximating: well out of region of approximation.</p>
+<p>Let's suppose we have an amplifier, and we put it in feedback. Assume gain
+is 1000, output resistance is just <mathjax>$R_c = 1k$</mathjax>. This stuff here is all about
+creating K, the feedback factor. So open-loop, this is <mathjax>$K=0$</mathjax>. AK is about
+10, so closed-loop gain is about 90, output resistance is about 100. If K
+is 0.1, closed-loop gain is about 10, output resistance is about 1.</p>
+<p>Unity-gain frequency, closed-loop gain is about 1, output resistance is
+about 1.</p>
+<p><mathjax>$A_{CL} \approx \frac{1}{K}$</mathjax>, <mathjax>$R_o \approx \frac{R_{out}{1 + A_0 K}$</mathjax>.</p>
+<p>So this can drive a speaker pretty well. So what does it look like when
+it's driving it? Fine for small signals. If you think about that output
+stage, drawing just part of this, with no bias on the input, and I've got
+my feedback, then it turns out the way this thing is set up is such that I
+get an output bias of a couple of volts. Pretty close to zero. With no
+input, I'm going to have something like 6 mA flowing.</p>
+<p>Talk about slew. Can slew fast in positive direction, but in negative
+direction, stuck with bias current through <mathjax>$R_C$</mathjax>.</p>
+<p>That's why the next step is to take that amplifier that we have and have it
+drive two emitter followers.</p>
+<p><a name='35'></a></p>
+<h1>EE 105: Devices &amp; Circuits</h1>
+<h2>Wednesday, April 25, 2012</h2>
+<p>Next week: lecture is just going to be review, examples, Q&amp;A. If we run out
+of Q's or A's, we'll quit. Comprehensive final. Stuff certainly on
+capacitance versus applied voltage.</p>
+<p>Will be a homework next week to throw in all the things we haven't had
+homework on.</p>
+<p>Not an op amp class, so all we need to know is that they're made of common
+emitters and common collectors and things like that. Might do some good to
+see that people design real products using these tools that we now know.</p>
+<p>Some stuff quite subtle and not covered at all.</p>
+<p>3T, 5T op-amp. On some problems, we lost half of our transconductance. Lose
+gain <mathjax>$R_1 \parallel r_{\pi3}$</mathjax> (not a big deal yet, but will be an issue
+when we add a current source) -- costs us a factor of 2 for now. Bias
+currents depend on common mode (CM) input and output voltage and supply.</p>
+<p>On the output stage, there's a very nasty deadband on the output, and
+there's no over current protection on the output. On the LM324, they made
+the output stage even worse: got current source -- NPN common emitter stuck
+into PNP and also an NPN with a Darlington on the NPN. The problem over
+here is that if the output is at 0, we've got a range of <em>three</em> diode
+drops that does nothing. Quad op amp. Power, ground, plus, minus for 4 op
+amps. Nine cents in volume.</p>
+<p>One interesting thing on this guy: they've got a current source feeding the
+gate of the Darlington pair (100 uA), so they've got <mathjax>$\beta^2$</mathjax>. If my input
+goes low, then all the current is going to flow through the Darlington pair
+and get multiplied by <mathjax>$\beta^2$</mathjax>. Huge amount of current dropping across big
+voltage. (potentially at 30V). Literally can destroy transistors.</p>
+<p>So what do you do to stop that? Very common they'll put in a sense
+resistor, so now you have a voltage proportional to the current flowing
+through the output, and so if the current gets too high, I steal some of
+the output current.</p>
+<p>Thermal runaway: <mathjax>$I_c \propto I_s(\tau)$</mathjax>, more or less.</p>
+<p><mathjax>$\beta$</mathjax>-helper: try to minimize current being stolen from <mathjax>$I_{ref}$</mathjax>. Going
+to have to have <mathjax>$I_B$</mathjax> flowing into the node. Therefore current flowing that
+way is <mathjax>$\frac{NI_B}{\beta}$</mathjax>, which is basically nothing.</p>
+<p>Can turn any one of these and turn into a source by just mirroring it:
+diode connect a transistor on the other end so it has a current of
+<mathjax>$I_{ref}$</mathjax>, and I just do the same thing.</p>
+<p>MOS case. Now we don't need a <mathjax>$\beta$</mathjax>-helper because we don't have a
+current. Multiple copies, mostly same thing. Except now you change the
+<mathjax>$\frac{W}{L}$</mathjax> (as opposed to area). Don't want to change <mathjax>$L$</mathjax>, since that's
+coupled to nonlinear device behavior.</p>
+<p>We normally lose half of our <mathjax>$g_m$</mathjax></p>
+<p>What I really want is a current mirror. If I put in a PNP current mirror
+and mirror one side's current over to the other side, now I recover my
+original current, <em>and</em> this thing self-biases. Standard 2-stage op amp.</p>
+<p>Got a differential pair that gives you a current proportional to difference
+between two signals, stick that into an active load current mirror, and now
+this thing has very high gain (as long as the next stage has high
+gain). Stick that into a common-emitter amplifier to get another gain
+stage, and maybe you put some gain after it. These are driven by current
+sources (which we know how to make -- diode-connected transistor and a
+resistor), and that is your classic two-stage op amp.</p>
+<p>Works with MOS as well: differential input stage, current mirror as a load,
+and common source gain stage. Both of these want current sources as loads.</p>
+<p>The nice thing about both of these is that you just wire them up and they
+work. Might not work well (point of 140).</p>
+<p>Miller effect helps. Pole-splitting, beautiful thing. Outside of the scope
+of this class. So that's it for op amps.</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
