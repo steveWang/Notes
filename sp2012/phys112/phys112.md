@@ -3360,4 +3360,25 @@ for all practical purposes, does not exist.
 Indeed, in this case, the chemical potentials add.
 
 Problem: running out of time. Try to tell a little bit about how we discuss
-the 
+the formation of atoms in the early universe. Neutrons, protons,
+electrons. At the early part (before about 3 minutes in the age of the
+universe), we had too high of energy, and the neutrons plus protons could
+not form deuterium. When the temperature dropped, deuterium was able to
+form, and we had that. Then we could form Helium-3, Helium-4, etc. We have
+to be a little careful when we have two charged particles, we have a
+positive potential from the EM forces between the particles.
+
+Let me show just one thing: we can use this kind of argument to follow the
+expansion of the density of various components. In the space of a few
+moments, you are forming all of the light nuclei in the universe. Can try
+to measure amount of deuterium and whatnot. You arrive at the fact that
+ordinary matter is only a tiny part of what we observe in the universe.
+
+By the way: cosmic microwave background gives exactly the same results with
+totally different physics.
+
+Conclusion: what I wanted to conclude was the link between nuclear physics
+at small scale and the universe at large scale. Now attempting to explore
+links between particle physics / quantum gravity and the universe.
+
+Inflation: origin of small scale quantum structure.

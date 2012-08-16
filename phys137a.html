@@ -1,4 +1,4 @@
-<div class='wrapper'>
+<div><div class='wrapper'>
 <p><a name='1'></a></p>
 <h1>Physics 137A: Quantum Mechanics</h1>
 <h2>Wednesday, January 18</h2>
@@ -799,7 +799,37 @@ transformation between bases.</p>
 <p>Fine-structure of hydrogen: taking into account spin interaction with
 magnetic field induced by relative motion of proton (larmor precession)</p>
 <p>Quadrupoles, nuclear spin, total angular momentum of electron. Angular
-momentum of atom: <mathjax>$I_N + \vec{J} = \vec{F}_{\mathrm{atom}}$</mathjax>.</p></div><div class='pos'></div>
+momentum of atom: <mathjax>$I_N + \vec{J} = \vec{F}_{\mathrm{atom}}$</mathjax>.</p>
+<p><a name='37'></a></p>
+<h1>Physics 137A: Quantum Mechanics</h1>
+<h1>Friday, April 27</h1>
+<p>spin combinations, parity, stuff. spans space. doesn't have good symmetry
+under imagined operators.</p>
+<p>Annihilation of conjugate coordinates: discrete Fourier transforms and
+stuff. <mathjax>$M = m_1 + m_2$</mathjax>, <mathjax>$\mu = \frac{m_1m_2}{m_1 + m_2}}$</mathjax>.</p>
+<p>center of mass and stuff. Two-body problem.</p>
+<p><mathjax>$\frac{1}{\Psi(R)} \frac{p^2}{2M}\Psi_{cm} = E_{cm}$</mathjax>.</p>
+<p><mathjax>$\frac{1}{\Psi(r)} \parens{\frac{p^2}{2M} + \gamma} \Psi_{rel} = E_{rel}$</mathjax>.</p>
+<p><mathjax>$E = E_{rel} + E_{cm}$</mathjax>.</p>
+<p>Everything on the one-body problem maps directly onto the two-body
+problem. There's one small difference: we can claim we're not interested in
+the center-of-mass motion. We want to know the intrinsic structure, so we
+can just worry about the relative motion.</p>
+<p>In addition, there's spin. There are now two spins. <mathjax>$\ket{nlm; s_1m_{s1}
+s_2m_{s2}}$</mathjax>.</p>
+<p>Bosons and fermions. If you use separation of variables for
+<mathjax>$\Psi(\vec{r_1}, \vec{r_2})$</mathjax>, what does this wave function have to look
+like if we require symmetry? This wave function has probably one of two
+possibilities: we exchange quantum numbers, or we introduce a minus
+sign. Symmetric or antisymmetric under interchange of particle quantum
+numbers.</p>
+<p>Powerful theorem: depending on particle, only one is possible. Bosons: must
+build symmetry under interchange. Fermions: must be antisymmetric.</p>
+<p>Spin triplet state is even under particle exchange, and spin singlet is odd
+under particle exchange.</p>
+<p>Symmetry: can interchange. Have another spin buried in that Pauli
+originally introduced. Now you have this proton neutron stuff and can just
+continue.</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
@@ -826,11 +856,10 @@ if (ll > 0) {
   div.style.width = '15%';
   for (var i = 0; i < ll; i++) {
     div.innerHTML += '<a href="\#' + a[i].name + '">'
-                     + a[i].parentElement.nextElementSibling
-                           .nextElementSibling.innerText
+                     + a[i].parentElement.nextElementSibling.innerHTML
                      + '</a><br />';
   }
   var div = document.getElementsByClassName('wrapper')[0];
   div.style.width = '80%';
 }
-</script>
+</script></div>
