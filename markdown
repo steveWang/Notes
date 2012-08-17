@@ -4,7 +4,7 @@ if `test -n "$1" && test -f $1`; then
     fname=`echo $1 | sed -r "s/\.[^.]*$//"`.html
     echo "<div class='wrapper'>"
     cat $1 | markdown_py -x mathjax
-    echo "</div><div class='pos'></div>"
+    echo "<div class='pos'></div>"
     echo "<script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type=\"text/x-mathjax-config\">
 MathJax.Hub.Register.StartupHook(\"TeX Jax Ready\",function () {
@@ -38,5 +38,5 @@ if (ll > 0) {
   var div = document.getElementsByClassName('wrapper')[0];
   div.style.width = '80%';
 }
-</script>"
+</script></div>"
 fi
