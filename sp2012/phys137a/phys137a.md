@@ -1195,3 +1195,49 @@ magnetic field induced by relative motion of proton (larmor precession)
 
 Quadrupoles, nuclear spin, total angular momentum of electron. Angular
 momentum of atom: $I_N + \vec{J} = \vec{F}_{\mathrm{atom}}$.
+
+<a name='37'></a>
+
+Physics 137A: Quantum Mechanics
+===============================
+Friday, April 27
+================
+
+spin combinations, parity, stuff. spans space. doesn't have good symmetry
+under imagined operators.
+
+Annihilation of conjugate coordinates: discrete Fourier transforms and
+stuff. $M = m_1 + m_2$, $\mu = \frac{m_1m_2}{m_1 + m_2}}$.
+
+center of mass and stuff. Two-body problem.
+
+$\frac{1}{\Psi(R)} \frac{p^2}{2M}\Psi_{cm} = E_{cm}$.
+
+$\frac{1}{\Psi(r)} \parens{\frac{p^2}{2M} + \gamma} \Psi_{rel} = E_{rel}$.
+
+$E = E_{rel} + E_{cm}$.
+
+Everything on the one-body problem maps directly onto the two-body
+problem. There's one small difference: we can claim we're not interested in
+the center-of-mass motion. We want to know the intrinsic structure, so we
+can just worry about the relative motion.
+
+In addition, there's spin. There are now two spins. $\ket{nlm; s_1m_{s1}
+s_2m_{s2}}$.
+
+Bosons and fermions. If you use separation of variables for
+$\Psi(\vec{r_1}, \vec{r_2})$, what does this wave function have to look
+like if we require symmetry? This wave function has probably one of two
+possibilities: we exchange quantum numbers, or we introduce a minus
+sign. Symmetric or antisymmetric under interchange of particle quantum
+numbers.
+
+Powerful theorem: depending on particle, only one is possible. Bosons: must
+build symmetry under interchange. Fermions: must be antisymmetric.
+
+Spin triplet state is even under particle exchange, and spin singlet is odd
+under particle exchange.
+
+Symmetry: can interchange. Have another spin buried in that Pauli
+originally introduced. Now you have this proton neutron stuff and can just
+continue.
