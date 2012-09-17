@@ -31,7 +31,8 @@ if (ll > 0) {
   div.style.width = '15%';
   for (var i = 0; i < ll; i++) {
     div.innerHTML += '<a href=\"\#' + a[i].name + '\">'
-                     + a[i].parentElement.nextElementSibling.nextElementSibling.innerHTML
+                     + a[i].parentElement.nextElementSibling
+                           .nextElementSibling.innerHTML
                      + '</a><br />';
   }
   var div = document.getElementsByClassName('wrapper')[0];

@@ -30,7 +30,11 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
   // place macros here.  E.g.:
   //   TEX.Macro("R","{\\bf R}");
   //   TEX.Macro("op","\\mathop{\\rm #1}",1); // a macro with 1 parameter
-  TEX.Macro("set", "\\left\\{ #1 \\right\\}", 1);
+  TEX.Macro("mag", "\\left\\Vert #1 \\right\\Vert", 1);
+  TEX.Macro("Re", "\\mathbb{R}", 0);
+  TEX.Macro("fn", "#1 : #2 \\rightarrow #3", 3);
+  TEX.Macro("set", "\\{ #1 \\vert #2 \\}", 2);
+  TEX.Macro("st", "\\text{\ s.t.\ }", 0);
   TEX.Macro("const", "\\mathrm{const}", 0);
   TEX.Macro("tensor", "\\otimes", 0);
   TEX.Macro("cplx", "\\mathbb{C}", 0);

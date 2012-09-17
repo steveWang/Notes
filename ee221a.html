@@ -1,0 +1,889 @@
+<div class='wrapper'>
+<p><a name='1'></a></p>
+<h1>EE 221A: Linear System Theory</h1>
+<h2>August 23, 2012</h2>
+<p>Prof. Claire Tomlin (tomlin@eecs)
+721 Sutardja Dai Hall
+inst.eecs.berkeley.edu/~ee221a</p>
+<p>GSI: Insoon Yang (iyang@eecs)</p>
+<p>Somewhat tentative office hours on schedule: T 1-2, W 11-12.</p>
+<p>In Soon's office hours: M 1:30 - 2:30, θ 11-12.</p>
+<p>Homeworks typically due on Thursday or Friday.</p>
+<h2>Intro</h2>
+<p>Bird's eye view of modeling in engineering + design vs. in science.</p>
+<p>"Science":</p>
+<p><mathjax>$$
+\mbox{Dynamical system}
+    \rightarrow \mbox{experiments}
+    \leftrightarrow \mbox{Model}
+$$</mathjax></p>
+<p>"Engineering":</p>
+<p><mathjax>$$
+\mbox{dynamical system}
+    \rightarrow \mbox{experiments}
+    \leftrightarrow \mbox{Model}
+    \rightarrow \mbox{control}
+$$</mathjax></p>
+<p>Control validation, verification, testing.</p>
+<p>Broad brush of a couple of concepts: modeling. We're going to spend a lot
+of time talking about modeling in this course.</p>
+<p>First: for any dynamical system, there's an infinite number of models you
+could design, depending on your level of abstraction. Typically, you choose
+level of abstraction based on use case. Often, only able to use certain
+kinds of experiments. e.g. probing of protein concentration levels. If
+you're able to measure just this, then the signals in your model should
+have something to do with these concentration levels.</p>
+<p>As we said, same phys system can have many different models. Another
+example: MEMS device. Can think about having models at various different
+models. e.g. electrical model: silicon / electrostatics of the
+system. Might be interested in manipulation of the device.</p>
+<p>Alt: mechanical model (could have a free-body diagram, e.g.).</p>
+<p>Another example: Hubble telescope. Could think of orbital
+dynamics. Individual rigid body dynamics. Or properties of the telescope,
+the individual optical models of the mirrors and their interactions. The
+idea here is to just realize that the word model can mean very different
+things. The logical model to use depends on the task at hand. The main
+point: a basic tenet of engineering: the value of a model: choose the
+simplest model that answers the questions you are asking about the
+system. The simplest model that will allow you to predict something that
+you didn't build into it.</p>
+<p>Predict IO relations that you didn't explicitly design the model on. One of
+the properties of a good linear model for a system: it obeys linearity, so
+if you form a basis for your domain, then you have the system response to
+any input spanned by this basis. Probably the most important thing to take
+away from this course: linearity is a <em>very</em> strong principle that allows
+us to build up a set of tools.</p>
+<h2>Time</h2>
+<p>We have this term a "dynamical system". A key part is that it changes with
+time, responding with behavior over time. Time will turn out to be quite
+important. Depending on how we model time, we can come up with different
+variables. We call time (t) a privileged model because it has certain
+properties. Namely, when we think about time, we think about time marching
+forward (unidirectionality of evolution). Different models: continuous time
+(<mathjax>$t \in \Re$</mathjax>, could be negative, could go backwards, if we are interested
+in backwards evolution), or discrete time <mathjax>$t \in \{nT, n \in \mathbb{Z}\}$</mathjax>,
+where <mathjax>$T$</mathjax> is some sampling time. So in that sense, discrete time, we have
+some set. We can also come up with more complicated models of time, like
+discrete-time asynchronous. The previous model was some constant period
+<mathjax>$T$</mathjax>. In DT asynchronous, we just have a set of points in time. Now becoming
+a more important model now with asynchronous processes (react to events
+that are going to happen at previously undefined points in time).</p>
+<h2>Linear vs. nonlinear models</h2>
+<p>More on this later. Suppose we could take the system, and we could
+represent it as being in one of a number of states.</p>
+<p>First: suppose a finite number of states (so can be modeled by a FSM),
+which represent some configuration of the system. State space represents
+states system can be in at any point in time. If state space is finite, we
+can use a finite-state automaton. Each state has an output (prints out a
+message, or a measurement is taken), and we also consider inputs. The
+inputs are used to evolve the dynamic system. Input affects a
+transition. We can build up the dynamics of the system by just defining the
+transition function.</p>
+<p>Packet transmitting node: first state is "ready-to-send"; second state is
+"send packet &amp; wait"; and the third state is "flush buffer". If buffer
+empty, stay in <mathjax>$q_1$</mathjax>. If not empty, transitions to <mathjax>$q_2$</mathjax>. If ACK received,
+then transition to <mathjax>$q_3$</mathjax> and return to <mathjax>$q_1$</mathjax>. If <mathjax>$T$</mathjax> time units elapse, we
+time out and transition directly to <mathjax>$q_1$</mathjax>. Here, no notion of linear or
+nonlinear systems. To be able to talk about linear or nonlinear models, we
+need to be able to put some vector space structure on these three
+elements. System must then satisfy superposition.</p>
+<p>Back to abstract dynamical system (thing we could never hope to model
+perfectly): rather than thinking about a set of rules, we're going to think
+about a mathematical model. Three classes: CT, DT [synchronous], and
+discrete-state (typically finite). Within each of these classes we can
+further break each down. For the first two, we can consider linearity, and
+we can further break these down into time-varying (TV) and time-invariant
+(TI). This course is going to focus just on the linear systems in
+continuous and discrete time, both time-varying and time-invariant. We'll
+use differential equation models in continuous time and difference equation
+models in discrete time. We usually develop in continuous-time and show
+analogies in discrete-time.</p>
+<h2>Analysis and Control</h2>
+<p>Control is pervasive. If you go to any of the control conferences, you see
+areas where techniques from this course are applied. Modern control came
+about because of aerospace in the 50s. e.g. autopilot, air traffic
+control. There the system itself is the system of aircraft. Chemical
+process control. Mechatronics, MEMS, robotics. Novel ways to automate
+things that hadn't been automated previously, mostly because of a
+renaissance in sensing. Power systems. Network control systems: how you
+combine models of the system itself with the control models. Quantum
+chemistry. Typically, when we think about state spaces, we think about the
+state as a vector in <mathjax>$\Re^n$</mathjax>. In many cases, you want to think about the
+state spaces as more complicated (e.g. <mathjax>$C^\infty$</mathjax>, the class of smooth
+functions).</p>
+<h2>Difference between verification, simulation, and validation</h2>
+<p>One of the additional basic tenets of this course: if you have a model of
+the system, and you can analytically verify that the model behaves in given
+ways for ranges of initial conditions, then that is a very valuable thing
+to have: you have a proof that as long as the system adheres to the model,
+then your model will work as expected. Simulation gives you system behavior
+for a certain set of parameters. Very different, but they complement each
+other. Analyze simpler models, simulate more complex models.</p>
+<h1>Linear Algebra</h1>
+<p>Functions and their properties.</p>
+<p>Fields, vector spaces, properties and subspaces.</p>
+<p>(note regarding notation: <mathjax>$\Re^+$</mathjax> means non-negative reals, as does
+<mathjax>$\mathbb{C}_+$</mathjax> (non-negative real part)</p>
+<p><mathjax>$\exists!$</mathjax>: exists a unique, <mathjax>$\exists?$</mathjax>: does there exist, <mathjax>$\ni$</mathjax>:
+such that.</p>
+<p>Cartesian product: <mathjax>$\{(x,y) \vert x \in X \land y \in Y\}$</mathjax> (set of ordered
+n-tuples)</p>
+<p><a name='2'></a></p>
+<h1>EE 221A: Linear System Theory</h1>
+<h2>August 28, 2012</h2>
+<p>OH: M/W 5-6, 258 Cory</p>
+<p>Today: beginning of the course: review of lin. alg topics needed for the
+course. We're going to go through lecture notes 2 and probably start on
+the third sets of notes. Will bring copies of 3 and 4 on Thursday.</p>
+<p>We did an introduction to notation and topics last time. First topic:
+functions, which will be used synonymously with "maps". Terminology will be
+used interchangeably.</p>
+<p>Given two sets of elements X, Y, we defined <mathjax>$\fn{f}{X}{Y}$</mathjax>. Notion of
+range vs. codomain (range is merely the subset of the codomain covered by
+f). We define <mathjax>$f(X) \defequals \set{f(x)}{x \in X}$</mathjax> to be the
+range.</p>
+<h2>Properties of functions</h2>
+<p>Injectivity of functions ("one-to-one"). A function <mathjax>$f$</mathjax> is said to be
+injective iff the function maps each x in X to a distinct y in
+Y. Equivalently, <mathjax>$f(x_1) = f(x_2) \iff x_1 = x_2$</mathjax>. This is also equivalent
+to <mathjax>$x_1 \neq x_2 \iff f(x_1) \neq f(x_2)$</mathjax>.</p>
+<p>Surjectivity of functions ("onto"). A function <mathjax>$f$</mathjax> is said to be surjective
+if the codomain is equal to the range. Basically, the map <mathjax>$f$</mathjax> covers the
+entire codomain. A way to write this formally is that <mathjax>$f$</mathjax> is surjective iff
+<mathjax>$\forall y \in Y \exists x \in X \ni y = f(x)$</mathjax>.</p>
+<p>And then a map <mathjax>$f$</mathjax> is bijective iff it is both injective and surjective. We
+can write this formally as there being a unique <mathjax>$x \in X$</mathjax> forall <mathjax>$y \in Y$</mathjax>.</p>
+<p>Example: inverse of a map. We can talk about left and right inverses of
+maps. Suppose we have a map <mathjax>$\fn{f}{X}{Y}$</mathjax>. We're going to define this
+map <mathjax>$\mathbb{1}_X$</mathjax> as the identity map on X. Namely, application of this
+map to any <mathjax>$x \in X$</mathjax> will yield the same <mathjax>$x$</mathjax>.</p>
+<p>The left inverse of <mathjax>$f$</mathjax> is <mathjax>$\fn{g_L}{Y}{X}$</mathjax> such that <mathjax>$g_L \circ f =
+\mathbb{1}_X$</mathjax>. In other words, <mathjax>$\forall x\in X, (g_L \circ f)(x) = x$</mathjax>.</p>
+<p>Prove: <mathjax>$f$</mathjax> has a left inverse <mathjax>$g_L$</mathjax> iff <mathjax>$f$</mathjax> is injective. First of all, let
+us prove the backwards implication. Assume <mathjax>$f$</mathjax> is injective. Prove that
+<mathjax>$g_L$</mathjax> exists. We're going to construct the map <mathjax>$\fn{g_L}{Y}{X}$</mathjax> as
+<mathjax>$g_L(f(x)) = x$</mathjax>, where the domain here is the range of <mathjax>$f$</mathjax>. In order for
+this to be a well-defined function, we require that <mathjax>$x$</mathjax> is unique, which is
+met by injectivity of <mathjax>$f$</mathjax>.</p>
+<p>Now let us prove the forward implication. Assume that this left inverse
+<mathjax>$g_L$</mathjax> exists. By definition, <mathjax>$g_L \circ f = \mathbb{1}_x \iff \forall x
+\in X g_L(f(x)) = x$</mathjax>. If <mathjax>$f$</mathjax> were not injective, then <mathjax>$g_L$</mathjax> would not be
+well-defined (<mathjax>$\exists x_1 \neq x_2$</mathjax> such that <mathjax>$f(x_1) = f(x_2)$</mathjax>, and so
+<mathjax>$g_L$</mathjax> is no longer a function).</p>
+<p>review: contrapositive: <mathjax>$(A \implies B) \iff (\lnot B \implies \lnot A)$</mathjax>;
+contradiction: <mathjax>$(A \not\implies B) \implies \text{contradiction}$</mathjax>. </p>
+<p>We can similarly shows surjectivity <mathjax>$\iff$</mathjax> existence of a right
+inverse. With these two, we can then trivially show that bijectivity <mathjax>$\iff$</mathjax>
+existence of an inverse (rather, both a left and right inverse, which we
+can easily show must be equal). Proof will likely be part of the first
+homework assignment.</p>
+<h2>Fields</h2>
+<p>We need the definition of a vector and a field in order to define a vector
+space.</p>
+<p>A field is an object: a set of elements <mathjax>$S$</mathjax> with two closed binary
+operations defined upon <mathjax>$S$</mathjax>. These two operations are addition (which
+forms an abelian group over <mathjax>$S$</mathjax>) and multiplication (which forms an abelian
+group over <mathjax>$S - \{0\}$</mathjax>) such that multiplication distributes over
+addition. Note that convention dictates <mathjax>$0$</mathjax> to be the additive identity and
+<mathjax>$1$</mathjax> to be the multiplicative identity.</p>
+<p>Other silly proofs include showing that if both a left and right identity
+exist, they must be equivalent, or that multiplication by <mathjax>$0$</mathjax> maps any
+element to <mathjax>$0$</mathjax>.</p>
+<h2>Vector spaces (linear spaces)</h2>
+<p>A vector space is a set of vectors V and a field of scalars <mathjax>$\mathbb{F}$</mathjax>,
+combined with vector addition and scalar multiplication. Vector addition
+forms an abelian group, but this time, scalar multiplication has the
+properties of a monoid (existence of an identity and associativity). We
+then have the distributive laws <mathjax>$\alpha + \beta)x = \alpha x + \beta x$</mathjax> and
+<mathjax>$\alpha (x + y)$</mathjax>.</p>
+<h2>Function spaces</h2>
+<p>We define a space <mathjax>$F(D,V)$</mathjax>, where <mathjax>$(V, \mathbb{F})$</mathjax> is a vector space and
+<mathjax>$D$</mathjax> is a set. <mathjax>$F$</mathjax> is the set of all functions <mathjax>$F(D, V) = \fn{f}{D}{V}$</mathjax>. Is
+<mathjax>$(F, \mathbb{F})$</mathjax> a vector space (yes) where vector addition is pointwise
+addition of functions and scalar multiplication is pointwise multiplication
+by a scalar?</p>
+<p>Examples of this: space of continuous functions on the closed interval
+<mathjax>$\fn{\mathcal{C}}{\bracks{t_0, t_1}}{\Re^n}$</mathjax>, (<mathjax>$(C(\bracks{t_0, t_1},
+\Re^n), \Re)$</mathjax>). This is indeed a vector space.</p>
+<h2>Lebesgue spaces</h2>
+<p><mathjax>$L_p t_0, t_1) = \set{\fn{f}{[t_0, t_1]}{\Re}}{\int_{t_0}^{t_1}
+\abs{f(t)}^p dt &lt; \infty}$</mathjax>.</p>
+<p>We can then talk about <mathjax>$\ell_p$</mathjax>, which are spaces of sequences. <mathjax>$\ell_2$</mathjax> is
+the space of square-summable sequences of real numbers. Informally, <mathjax>$\ell_2
+= \set{ v = \{v_1, v_2, ... v_k\}}{v_k \in \Re \sum_k \abs{v_k}^2 &lt;
+\infty}$</mathjax>.</p>
+<p>In general, when looking at vector spaces, often we use <mathjax>$\mathbb{F} = \Re$</mathjax>,
+and we refer to the space as simply <mathjax>$V$</mathjax>.</p>
+<p>Next: subspaces, bases, linear dependence/independence, linearity. One of
+the main things we're going to do is look at properties of linear functions
+and representation as multiplication by matrices.</p>
+<p><a name='3'></a></p>
+<h1>EE 221A: Linear System Theory</h1>
+<h2>August 30, 2012</h2>
+<h2>From last time</h2>
+<p>Subspaces, bases, linear dependence/independence, linearity. One of the
+main things we're going to do is look at properties of linear functions and
+representation as multiplication by matrices.</p>
+<h2>Example (of a vector space)</h2>
+<p><mathjax>$\ell_2 = \{v = \{v_1, v_2, ...\} \st \sum_{i=1}^\infty \abs{v_i}^2 &lt;
+\infty, v_i \in \Re \}$</mathjax></p>
+<p>Vector addition and scalar multiplication? ("pointwise" addition,
+multiplication by reals)</p>
+<h2>What is a vector subspace?</h2>
+<p>Consider vector space <mathjax>$(V, \mathbb{F})$</mathjax>. Consider a subset W of V combined
+with the same field. <mathjax>$(W, \mathbb{F})$</mathjax> is a subspace of <mathjax>$(V, \mathbb{F})$</mathjax>
+if it is closed under vector addition and scalar multiplication (formally,
+this must be a vector space in its own right, but these are the only
+vector space properties that we need to check).</p>
+<p>Consider vectors from <mathjax>$\Re^n$</mathjax>. A plane (in <mathjax>$\Re^3$</mathjax>) is a subspace of
+<mathjax>$\Re^3$</mathjax> if it contains the origin.</p>
+<p>Aside: for <mathjax>$x \in V$</mathjax>, <strong>span</strong><mathjax>$(x) = \alpha x, \alpha \in \mathbb{F}$</mathjax>.</p>
+<h2>Linear dependence, linear independence.</h2>
+<p>Consider a set of <mathjax>$p$</mathjax> vectors <mathjax>$\{v_1, v_2, ..., v_p\}, v_i \in V$</mathjax>. This set
+of vectors is said to be a <strong>linear independent set</strong> iff no nontrivial
+homogeneous equation exists, i.e. <mathjax>$\sum_i \alpha_i v_i = 0 \implies \forall
+i, \alpha_i = 0$</mathjax>. This is equivalent to saying that no one vector can be
+written as a linear combination of the others.</p>
+<p>Otherwise, the set is said to be <strong>linearly dependent</strong>.</p>
+<h2>Bases</h2>
+<p>Recall: a set of vectors <mathjax>$W$</mathjax> is said to span a space <mathjax>$(V, \mathbb{F})$</mathjax> if
+any vector in the space can be written as a <strong>linear combination</strong> of
+vectors in the set, i.e. <mathjax>$\forall v \in V, \exists \set{(\alpha_i,
+w_i)}{v = \sum \alpha_i w_i}$</mathjax> for <mathjax>$w_i \in W, \alpha_i \in \mathbb{F}$</mathjax>.</p>
+<p>W is a <strong>basis</strong> iff it is also linearly independent.</p>
+<h2>Coordinates</h2>
+<p>Given a basis <mathjax>$B$</mathjax> of a space <mathjax>$(V, \mathbb{F})$</mathjax>, there is a unique
+representation (trivial proof) of every <mathjax>$v \in V$</mathjax> as a linear combination
+of elements of <mathjax>$B$</mathjax>. We define our <strong>coordinates</strong> to be the coefficients
+that appear in this unique representation. A visual representation is the
+<strong>coordinate vector</strong>, which defines</p>
+<p><mathjax>$$\alpha = \begin{bmatrix}\alpha_i \\ \vdots \\ \alpha_n \end{bmatrix}$$</mathjax></p>
+<p>Basis is not uniquely defined, but what is constant is the number of
+elements in the basis. This number is the <strong>dimension</strong> (rank) of the
+space. Another notion is that a basis generates the corresponding space,
+since once you have a basis, you can acquire any element in the space.</p>
+<h2>Linearity</h2>
+<p>A function <mathjax>$\fn{f}{(V, \mathbb{F})}{(W, \mathbb{F})}$</mathjax> (note that these
+spaces are defined over the same field!) is <strong>linear</strong> iff <mathjax>$f(\alpha_1 v_1 +
+\alpha_2 v_2) = \alpha_1 f(v_1) + \alpha_2 f(v_2)$</mathjax>.</p>
+<p>This property is known as <strong>superposition</strong>, which is an amazing property,
+because if you know what this function does to the basis elements of a
+vector space, then you know what it does to <em>any</em> element in the space.</p>
+<p>An interesting corollary is that a linear map will <em>always</em> map the zero
+vector to itself.</p>
+<h2>Definitions associated with linear maps</h2>
+<p>Suppose we have a linear map <mathjax>$\fn{\mathcal{A}}{U}{V}$</mathjax>. The <strong>range
+(image)</strong> of <mathjax>$\mathcal{A}$</mathjax> is defined to be <mathjax>$R(\mathcal{A}) = \set{v}{v =
+A(u), u \in U} \subset V$</mathjax>. The <strong>nullspace (kernel)</strong> of <mathjax>$\mathcal{A}$</mathjax> is
+defined to be <mathjax>$N(\mathcal{A}) = \set{u}{\mathcal{A}(u) = 0} \subset U$</mathjax>. Also
+trivial (from definition of linearity) to prove that these are subspaces.</p>
+<p>We have a couple of very important properties now that we've defined range
+and nullspace.</p>
+<h2>Properties of linear maps <mathjax>$\fn{\mathcal{A}}{U}{V}$</mathjax></h2>
+<p><mathjax>$$(b \in V) \implies (\mathcal{A}(u) = b \iff b \in R(\mathcal{A}))$$</mathjax></p>
+<p><mathjax>$$(b \in R(\mathcal{A})) \iff (\exists!\ u\ \st \mathcal{A}(u) = b \iff
+[N(\mathcal{A}) = 0])$$</mathjax></p>
+<p>(if the nullspace only contains the zero vector, we say it is <strong>trivial</strong>)</p>
+<p><mathjax>$$\mathcal{A}(x_0) = \mathcal{A}(x_1) \iff x - x_0 \in N(\mathcal{A})$$</mathjax></p>
+<p><a name='4'></a></p>
+<h1>EE 221A: Linear System Theory</h1>
+<h2>September 4, 2012</h2>
+<h2>Today</h2>
+<p>Matrix multiplication as a representation of a linear map; change of basis
+-- what happens to matrices; norms; inner products. We may get to adjoints
+today.</p>
+<p>Last time, we talked about the concept of the range and the nullspace of a
+linear map, and we ended with a relationship that related properties of the
+nullspace to properties of the linear equation <mathjax>$\mathcal{A}(x) = b$</mathjax>. As
+we've written here, this is not <em>matrix</em> multiplication. As we'll see
+today, it can be represented as matrix multiplication, in which case, we'll
+write this as <mathjax>$Ax = b$</mathjax>.</p>
+<p>There's one more important result, called the rank-nullity theorem. We
+defined the range and nullspace of a linear operator. We also showed that
+these are subspaces (range of codomain; nullspace of domain). We call
+<mathjax>$\text{dim}(R(\mathcal{A})) = \text{rank}(\mathcal{A})$</mathjax> and
+<mathjax>$\text{dim}(N(\mathcal{A})) = \text{nullity}(\mathcal{A})$</mathjax>. Taking the
+dimension of the domain as <mathjax>$n$</mathjax> and the dimension of the codomain as <mathjax>$m$</mathjax>,
+<mathjax>$\text{rank}(\mathcal{A}) + \text{nullity}(\mathcal{A}) = n$</mathjax>. Left as an
+exercise. Hints: choose a basis for the nullspace. Presumably you'd extend
+it to a basis for the domain (without loss of generality, because any set
+of <mathjax>$n$</mathjax> linearly independent vectors will form a basis). Then consider how
+these relate to the range of <mathjax>$\mathcal{A}$</mathjax>. Then map <mathjax>$\mathcal{A}$</mathjax> over
+this basis.</p>
+<h2>Matrix representation</h2>
+<p><strong>Any linear map between finite-dimensional vector spaces can be
+represented as matrix multiplication.</strong> We're going to show that it's true
+via construction.</p>
+<p><mathjax>$\fn{\mathcal{A}}{U}{V}$</mathjax>. We're going to choose bases for the domain and
+codomain. <mathjax>$\forall x \in U, x = \sum_{j=1}^n \xi_k u_j$</mathjax>. Now consider
+<mathjax>$\mathcal{A}(x) = \mathcal{A}(\sum_{j=1}^n \xi_k u_j) = \sum_{j=1}^n \xi_k
+\mathcal{A}(u_j)$</mathjax> (through linearity). Each <mathjax>$\mathcal{A}(u_j) =
+\sum_{i=1}^n a_{ij} v_i$</mathjax>. Uniqueness of <mathjax>$a_{ij}$</mathjax> and <mathjax>$\xi_j$</mathjax> follows from
+writing the vector spaces in terms of a basis.</p>
+<p><mathjax>$$
+\mathcal{A}(x) = \sum_{j=1}^n \xi_j \sum_{i=1}^m a_{ij} v_i
+\\ = \sum_{i=1}^m \left(\sum_{j=1}^n a_{ij} \xi_j\right) v_i
+\\ = \sum_{i=1}^m \eta_i v_i
+$$</mathjax></p>
+<p>Uniqueness of representation tells me that <mathjax>$\eta_i \equiv \sum_{j=1}^n
+a_{ij} \xi_j$</mathjax>. We've got <mathjax>$i = \{1 .. m\}$</mathjax> and <mathjax>$j = \{1 .. n\}$</mathjax>. We can turn
+this representation into a matrix by defining <mathjax>$\eta = A\xi$</mathjax>. <mathjax>$A \in
+\mathbb{F}^{m \times n}$</mathjax> is defined such that its <mathjax>$j^{\text{th}}$</mathjax> column is
+<mathjax>$\mathcal{A}(u_j)$</mathjax> written with respect to the <mathjax>$v_i$</mathjax>s.</p>
+<p>All we used here was the definitions of basis, coordinate vectors, and
+linearity.</p>
+<p>Let's do a couple of examples. Foreshadowing of work later in
+controllability of systems. Consider a linear map <mathjax>$\fn{\mathcal{A}}
+{(\Re^n, \Re)}{(\Re^n, \Re)}$</mathjax>. Try to derive the matrix <mathjax>$A \in \Re^{n
+\times n}$</mathjax>. Both the domain and codomain have as basis <mathjax>$\{b,
+\mathcal{A}(b), \mathcal{A}^2(b), ..., \mathcal{A}^{n-1}(b)\}$</mathjax>, where <mathjax>$b
+\in \Re^n$</mathjax> and <mathjax>$A^n = -\sum_1^n -\alpha_i \mathcal{A}^{n-i}$</mathjax>. Your task is
+to show that the representation of <mathjax>$b$</mathjax> and <mathjax>$\mathcal{A}$</mathjax> is:</p>
+<p><mathjax>$$
+\bar{b} = \begin{bmatrix}1 \\ 0 \\ \vdots \\ 0\end{bmatrix}
+\\ \bar{A} = \begin{bmatrix}
+\\ 0 &amp; 0 &amp; ... &amp; 0 &amp; -\alpha_n
+\\ 1 &amp; 0 * ... &amp; 0 &amp; -\alpha_{n-1}
+\\ 0 &amp; 1 * ... &amp; \vdots &amp; -\alpha_{n-2}
+\\ \vdots &amp; \vdots&amp;  \ddots &amp; \vdots &amp; -\alpha_{n-2}
+\\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; -\alpha_{n-2}
+\\ 0 &amp; 0 &amp; \dots &amp; 1 &amp; -\alpha_1
+\end{bmatrix}
+$$</mathjax></p>
+<p>This is really quite simple; it's almost by definition.</p>
+<p>Note that these are composable maps, where composition corresponds to
+matrix multiplication.</p>
+<h2>Change of basis</h2>
+<p>Consider we have <mathjax>$\fn{\mathcal{A}}{U}{V}$</mathjax> and two sets of bases for the
+domain and codomain. There exist maps between the first set of bases and
+the second set; composing those appropriately will give you your change of
+basis. Essentially, do a change of coordinates to those in which <mathjax>$A$</mathjax> is
+defined (represented this as <mathjax>$P$</mathjax>), apply <mathjax>$A$</mathjax>, then change the coordinates
+of the codomain back (represented as <mathjax>$Q$</mathjax>). Thus <mathjax>$\bar{A} = QAP$</mathjax>.</p>
+<p>If <mathjax>$V = U$</mathjax>, then you can easily derive that <mathjax>$Q = P^{-1}$</mathjax>, so <mathjax>$\bar{A} =
+P^{-1}AP$</mathjax>.</p>
+<p>We consider this transformation (<mathjax>$\bar{A} = QAP$</mathjax>) to be a <strong>similarity
+transformation</strong>, and <mathjax>$A$</mathjax> and <mathjax>$\bar{A}$</mathjax> are called <strong>similar</strong>
+(<strong>equivalent</strong>).</p>
+<p>We derived these two matrices from the same linear map, but they're derived
+using different bases.</p>
+<p>Proof of Sylvester's inequality on homework 2.</p>
+<p>One last note about the dimension of the rank of a linear map, which
+corresponds to the rank of the associated matrix representation: that is
+<mathjax>$\text{dim}(R(A)) = \text{dim}(R(\mathcal{A}))$</mathjax>. Similarly, <mathjax>$\text
+{nullity}(A) = \text{dim}(\text{nullspace}(A)) = \text{dim}(\text
+{nullspace}(\mathcal{A}))$</mathjax>.</p>
+<p>Sylvester's inequality, which is an important relationship, says the
+following: <strong>Suppose you have <mathjax>$A \in \mathbb{F}^{m \times n}$</mathjax>, <mathjax>$B \in
+\mathbb{F}^{n \times p}$</mathjax>, then <mathjax>$AB \in \mathbb{F}^{m \times p}$</mathjax>, then
+<mathjax>$\text{rk}(A) + \text{rk}(B) - n \le \text{rk}(AB) \le \min(\text{rk}(A),
+\text{rk}(B)$</mathjax>.</strong> On the homework, you'll have to show both
+inequalities. Note at the end about elementary row operations.</p>
+<p>Next important concept about vector spaces: that of norms.</p>
+<h2>Norms</h2>
+<p>With some vector spaces, you can associate some entity called a norm. We
+can then speak of a <strong>normed vector space</strong> (more commonly known as a
+<strong>metric space</strong>). Suppose you have a vector space <mathjax>$(V, \mathbb{F})$</mathjax>, where
+<mathjax>$\mathbb{F}$</mathjax> is either <mathjax>$\Re$</mathjax> or <mathjax>$\mathbb{C}$</mathjax>. This is a metric space if you
+can find <mathjax>$\fn{\mag{\cdot}}{V}{\Re_+}$</mathjax> that satisfies the following axioms:</p>
+<p><mathjax>$\mag{v_1 + v_2} \le \mag{v_1} + \mag{v_2}$</mathjax></p>
+<p><mathjax>$\mag{\alpha v} = \abs{\alpha}\mag{v}$</mathjax></p>
+<p><mathjax>$\mag{v} = 0 \iff v = \theta$</mathjax></p>
+<p>We have some common norms on these fields:</p>
+<p><mathjax>$\mag{x}_1 = \sum_{i=1}^n \abs{x_i}$</mathjax> (<mathjax>$\ell_1$</mathjax>)</p>
+<p><mathjax>$\mag{x}_2 = \sum_{i=1}^n \abs{x_i}^2$</mathjax> (<mathjax>$\ell_2$</mathjax>)</p>
+<p><mathjax>$\mag{x}_p = \sum_{i=1}^n \abs{x_i}^p$</mathjax> (<mathjax>$\ell_p$</mathjax>)</p>
+<p><mathjax>$\mag{x}_\infty = \max \abs{x_i}$</mathjax> (<mathjax>$\ell_\infty$</mathjax>)</p>
+<p>One of the most important norms that we'll be using: the <strong>induced norm</strong>
+is that induced by a linear operator. We'll define <mathjax>$\mathcal{A}$</mathjax> to be a
+continuous linear map between two metric spaces; the induced norm is
+defined as</p>
+<p><mathjax>$$ \mag{\mathcal{A}}_i = \sup_{u \neq \theta}
+\frac{\mag{\mathcal{A}u}_V}{\mag{u}_U} $$</mathjax></p>
+<p>From analysis: the <strong>supremum</strong> is the least upper bound (the smallest
+<mathjax>$\forall y \in S, x : x \ge y$</mathjax>).</p>
+<p><a name='5'></a></p>
+<h1>EE 221A: Linear System Theory</h1>
+<h2>September 6, 2012</h2>
+<h2>Induced norms of matrices</h2>
+<p>The reason that we're going to start talking about induced norms: today
+we're just going to build abstract algebra machinery, and at the end, we'll
+do the first application: least squares. We'll see why we need this
+machinery and why abstraction is a useful tool.</p>
+<p>The idea is that we want to find a norm on a matrix using existing norms on vectors.</p>
+<p>Let 1) <mathjax>$\fn{A}{(U,F)}{(U,F)}$</mathjax>, 2) let U have the norm <mathjax>$\mag{\ }_u$</mathjax>, 3) let
+V have the norm <mathjax>$\mag{\ }_v$</mathjax>. Let the <strong>induced norm</strong> be <mathjax>$\mag{A}_{u,v} =
+\sup_{x\neq 0} \frac{\mag{Ax}_v}{\mag{x}_u}$</mathjax>. Theorem: the induced norm is
+a norm. Not going to bother showing positive homogeneity and triangle
+inequality (trivial in this case). Only going to show last property:
+separates points. Essentially, <mathjax>$\mag{A}_{u,v} = 0 \iff A = 0$</mathjax>. The reason
+that this is not necessarily trivial is because of the supremum. It's a
+complex operator that's trying to maximize this function over an infinite
+set of points. It's possible that the supremum does not actually exist at a
+finite point.</p>
+<p>The first direction is easy: if <mathjax>$A$</mathjax> is zero, then its norm is 0 (by
+definition -- numerator is 0).</p>
+<p>The second direction is a hard one. If <mathjax>$\mag{A}_{u,v} = 0$</mathjax>, then given any
+<mathjax>$x \neq 0$</mathjax>, it holds that <mathjax>$\frac{\mag{Ax}_u}{\mag{v}_u} \le 0$</mathjax> (from the
+definition of supremum). Denominator must be positive definite (being the
+norm of a vector), and numerator must be positive definite (also being a
+norm). Thus the norm is also bounded below by zero, which means that the
+numerator is zero for all nonzero x. Thus everything is in the nullspace of
+<mathjax>$A$</mathjax>, which means that <mathjax>$A$</mathjax> is zero.</p>
+<p>Proposition: the induced norm has (a) <mathjax>$\mag{Ax}_u \le \mag{A}_{u,v}
+\mag{x}_u$</mathjax>; (b) <mathjax>$\mag{AB}_{u,v} \le \mag{A}_{u,v} \mag{B}_{u,v}$</mathjax>. (b)
+follows from (a).</p>
+<p>Not emphasized in Claire's notes: induced norms form a small amount of all
+possible norms on matrices.</p>
+<p>Examples of induced norms:</p>
+<ul>
+<li><mathjax>$\mag{A}_{1,1} = \max_j \sum_i \abs{u_{ij}}$</mathjax>: maximum column sum: maximum
+  of the sum of columns;</li>
+<li><mathjax>$\mag{A}_{2,2} = \max_j \sqrt{\lambda_j A^T A}$</mathjax>: max singular value norm;</li>
+<li><mathjax>$\mag{A}_{\infty, \infty} = \max_i \sum_j \abs{u_{ij}}$</mathjax>: maximum row sum.</li>
+</ul>
+<p>Other matrix: special case of Schatten norms. (a) Frobenius norm
+<mathjax>$\sqrt{\text{trace}(A^T A)}$</mathjax>. Also square root of singular
+values. Convenient way to write nuclear norm.</p>
+<p>Statistical regularization; Frobenius norm is analogous to <mathjax>$\ell_2$</mathjax>
+regularization; nuclear norm analogous to <mathjax>$\ell_1$</mathjax> regularization. It is
+important to be aware that these other norms exist.</p>
+<h2>Sensitivity analysis</h2>
+<p>Nice application of norms, but we won't see that it's a nice application
+until later.</p>
+<p>Computation for numerical linear algebra.</p>
+<p>Some algebra can be performed to show that if <mathjax>$Ax_0 = b$</mathjax> (when <mathjax>$A$</mathjax>
+invertible), then for <mathjax>$(A + \delta A)(x + \delta_x) = b + \delta b$</mathjax>, we
+have an approximate bound of <mathjax>$\frac{\mag{\delta_x}}{\mag{x_0}} \le
+\mag{A}\mag{A^{-1}} \bracks{\frac{\mag{\delta A}}{\mag{A}} +
+\frac{\mag{\delta b}}{\mag{b}}}$</mathjax>. Need to engineer computation to improve
+situation. Namely, we're perturbing <mathjax>$A$</mathjax> and <mathjax>$b$</mathjax> slightly: how much can the
+solution vary? In some sense, we have a measure of effect
+(<mathjax>$\mag{A}\mag{A^{-1}}$</mathjax>) and a measure of perturbation. The first quantity
+is important enough that people in linear algebra have defined it and
+called it a <strong>condition number</strong>: <mathjax>$\kappa(A) = \mag{A}\mag{A^{-1}} \ge
+1$</mathjax>. The best you can do is 1. If you have a condition number of 1, your
+system is well-conditioned and very robust to perturbations. Larger
+condition number will mean less robustness to perturbation.</p>
+<h2>More machinery: Inner Product &amp; Hilbert Spaces</h2>
+<p>Consider a linear space <mathjax>$(H, \mathbb{F})$</mathjax>, and define a function
+<mathjax>$\fn{\braket{}{}}{(H, \mathbb{F})}{\mathbb{F}}$</mathjax>. This function is an
+inner product if it satisfies the following properties.</p>
+<ul>
+<li>Conjugate symmetry. <mathjax>$\braket{x}{y} = \braket{y}{x}^*$</mathjax>.</li>
+<li>Homogeneity. <mathjax>$\braket{x}{\alpha y} = \alpha \braket{x}{y}$</mathjax>.</li>
+<li>Linearity. <mathjax>$\braket{x}{y + z} = \braket{x}{y} + \braket{x}{z}$</mathjax>.</li>
+<li>Positive definiteness. <mathjax>$\braket{x}{x} \ge 0$</mathjax>, where equality only occurs
+  when <mathjax>$x = 0$</mathjax>.</li>
+</ul>
+<p>Inner product spaces have a natural norm (might not be the official name),
+and that's the norm induced by the inner product.</p>
+<p>One can define <mathjax>$\mag{x}^2 = \braket{x}{x}$</mathjax>, which satisfies the axioms of a
+norm.</p>
+<p>Examples of Hilbert spaces: finite-dimensional vectors. Most of the time,
+infinite-dimensional Hilbert spaces match up with finite-dimensional. All
+linear operators in finite vector spaces are continuous because they can be
+written as a matrix (not always the case with infinite vector
+spaces). Suppose I have the field <mathjax>$\mathbb{F}$</mathjax>; <mathjax>$(\mathbb{F}^n,
+\mathbb{F})$</mathjax>, where the inner product <mathjax>$\braket{x}{y} = \sum_i \bar{x_i}
+y_i$</mathjax>, but another important inner product space is the space of
+square-integrable functions, <mathjax>$L^2([t_0, t_1], \mathbb{F}^n
+)$</mathjax>. Infinite-dimensional space which actually is the space spanned by
+Fourier series. It turns out that the inner product (of functions) is
+<mathjax>$\int_{t_0}^{t_1} f(t)^* g(t) dt$</mathjax>.</p>
+<p>We're going to power through a little more machinery, but we're getting
+very close to the application. Need to go through adjoints and
+orthogonality before we can start doing applications.</p>
+<h2>Adjoints</h2>
+<p>Consider Hilbert spaces <mathjax>$(U, \mathbb{F}, \braket{}{}_u), V, \mathbb{F},
+\braket{}{}_v)$</mathjax>, and let <mathjax>$\fn{A}{U}{V}$</mathjax> be a continuous linear
+function. The <strong>adjoint</strong> of <mathjax>$A$</mathjax> is denoted <mathjax>$A^*$</mathjax> and is the map
+<mathjax>$\fn{A^*}{V}{U}$</mathjax> such that <mathjax>$\braket{x}{Ay}_v = \braket{A^*}{y}_u$</mathjax>.</p>
+<p>Reasoning? Sometimes you can simplify things. Suppose <mathjax>$A$</mathjax> maps an
+infinite-dimensional space to a finite-dimensional space (e.g. functions to
+numbers). In some sense, you can convert that function into something that
+goes from real numbers to functions on numbers. Generalization of the
+Hermitian transpose.</p>
+<p>Consider functions <mathjax>$f, g \in C([t_0, t_1], \Re^n)$</mathjax>. What is the adjoint of
+<mathjax>$\fn{A}{C([t_0, t_1], \Re^n)}{\Re}$</mathjax>, where <mathjax>$A = \braket{g}{f}_{C
+([t_0, t_1], \Re^n)}$</mathjax>? (aside: this notion of the adjoint will be very
+important when we get to observability and reachability)</p>
+<p>Observe that <mathjax>$\braket{v}{A}_\Re = v \cdot A = v \braket{g}{f}_C = \braket{v
+g}{f}$</mathjax>, and so consequently, we have that the adjoint of <mathjax>$A^*[v] = v g$</mathjax>.</p>
+<h2>Orthogonality</h2>
+<p>With Hilbert spaces, one can define orthogonality in an axiomatic manner (a
+more abstract form, rather). Let <mathjax>$(H, \mathbb{F}, \braket{}{})$</mathjax> be a
+Hilbert space. Two vectors <mathjax>$x, y$</mathjax> are defined to be <strong>orthogonal</strong> if
+<mathjax>$\braket{x}{y} = 0$</mathjax>.</p>
+<p>Cute example: suppose <mathjax>$c = a + b$</mathjax> and <mathjax>$a, b$</mathjax> are orthogonal. In fact,
+<mathjax>$\mag{c}^2 = \mag{a + b}^2 = \braket{a + b}{a + b} = \braket{a}{a} +
+\braket{b}{b} + \braket{a}{b} + \braket{b}{a} = \mag{a}^2 +
+\mag{b}^2$</mathjax>. Cute because the result is the Pythagorean theorem, which we
+got just through these axioms.</p>
+<p>One more thing: the orthogonal complement of a subspace <mathjax>$M$</mathjax> in a Hilbert
+space is defined as <mathjax>$M^\perp = \set{y \in H}{\forall x \in M
+\braket{x}{y}}$</mathjax>.</p>
+<p>We are at a point now where we can talk about an important theorem:</p>
+<h2>Fundamental Theorem of Linear Algebra (partially)</h2>
+<p>Let <mathjax>$A \in \Re^{m \times n}$</mathjax>. Then:</p>
+<ul>
+<li><mathjax>$R(A) \perp N(A^T)$</mathjax></li>
+<li><mathjax>$R(A^T) \perp N(A)$</mathjax></li>
+<li><mathjax>$R(AA^T) = R(A)$</mathjax></li>
+<li><mathjax>$R(A^TA) = R(A^T)$</mathjax></li>
+<li><mathjax>$N(AA^T) = N(A)$</mathjax></li>
+<li><mathjax>$N(A^TA) = N(A^T)$</mathjax></li>
+</ul>
+<p>Proofs:</p>
+<ul>
+<li>
+<p>Given any <mathjax>$x \in \Re^n, y \in \Re^m \st A^T y = 0$</mathjax> (<mathjax>$y \in N(A^T)$</mathjax>),
+  consider the quantity <mathjax>$\braket{y}{Ax} = \braket{A^Ty}{x} = 0$</mathjax>.</p>
+</li>
+<li>
+<p>Given any <mathjax>$x \in \Re^n, \exists y \in \Re^m \st x = A^T y + z$</mathjax>, where <mathjax>$z
+  \in N(A)$</mathjax>(as a result of the decomposition above). Thus <mathjax>$Ax =
+  AA^Ty$</mathjax>. Implies that <mathjax>$R(A) \subset R(A A^T)$</mathjax></p>
+</li>
+</ul>
+<p>Now for the application.</p>
+<h2>Application: Least Squares</h2>
+<p>Consider the following problem: minimze <mathjax>$\mag{y - Ax}_2$</mathjax>, where <mathjax>$y \not\in
+R(A)$</mathjax>. If <mathjax>$y$</mathjax> were in the range of A, and A were invertible, the solution
+would be trivial (<mathjax>$A^{-1}y$</mathjax>). In many problems, <mathjax>$A \in \Re^{m\times n}$</mathjax>,
+where <mathjax>$m \gg n$</mathjax>, <mathjax>$y \in \Re^m$</mathjax>, <mathjax>$x \in \Re^n$</mathjax>.</p>
+<p>Since we cannot solve <mathjax>$Ax = y$</mathjax>, we instead solve <mathjax>$Ax = \hat{y}$</mathjax>. According
+to our intuition, we would like <mathjax>$y - \hat{y}$</mathjax> to be orthogonal to
+<mathjax>$R(A)$</mathjax>. From the preceding (partial) theorem, this means that <mathjax>$y - \hat{y}
+\in N(A^T) \iff A^T(y - y_0) = 0$</mathjax>. Remember: what we really want to solve
+is <mathjax>$A^T(y - Ax) = 0 \implies A^T Ax = A^T y \implies x = (A^T A)^{-1} A^T
+y$</mathjax> if <mathjax>$A^T A$</mathjax> is invertible.</p>
+<p>If A has full column-rank (that is, for <mathjax>$A \in \Re^{m \times n}$</mathjax>, we have
+<mathjax>$R(A) = n$</mathjax>), then this means that in fact <mathjax>$N(A) = \{0\}$</mathjax>, and the preceding
+theorem implies that the dimension of <mathjax>$R(A^T) = n$</mathjax>, which means that the
+dimension of <mathjax>$R(A^T A) = n$</mathjax>. However, <mathjax>$A^T A \in \Re^{n \times n}$</mathjax>. Thus,
+<mathjax>$A^T A$</mathjax> is invertible.</p>
+<h2>Back to condition numbers (special case)</h2>
+<p>Consider a self-adjoint and invertible matrix in <mathjax>$\Re^{n \times
+n}$</mathjax>. <mathjax>$\hat{x} = (A^T A)^{-1} A^T y = A^{-1} y$</mathjax>. We have two ways of
+determining this value: the overdetermined least-squares solution and the
+standard inverse. Let us look at the condition numbers.</p>
+<p><mathjax>$\kappa(A^T A) = \mag{A^T A}\mag{(A^T A)^{-1}} = \mag{A^2}\mag{(A^{-1})^2}
+= \bracks{\kappa(A)}^2$</mathjax>. This result is more general: also applies in the
+<mathjax>$L^2$</mathjax> case even if <mathjax>$A$</mathjax> is not self-adjoint. As you can see, this is worse
+than if we simply use the inverse.</p>
+<h2>Gram-Schmidt orthonormalization</h2>
+<p>This is a theoretical toy, not used for computation (numerics are very bad).</p>
+<p>More definitions:</p>
+<p>A <em>set</em> of vectors S is <strong>orthogonal</strong> if <mathjax>$x \perp y \forall x
+\neq y$</mathjax> and <mathjax>$x, y \in S$</mathjax>.</p>
+<p>The set is <strong>orthonormal</strong> if also <mathjax>$\mag{x} = 1, \forall x \in S$</mathjax>. Why do we
+care about orthonormality? Consider Parseval's theorem. The reason you get
+that theorem is that the bases are required to be orthonormal so that you
+can get that result. Otherwise it wouldn't be as clean. That's typically
+why people like orthonormal bases: you can represent your vectors as just
+coefficients (and you don't need to store the length of the vectors).</p>
+<p>We conclude with an example of Gram-Schmidt orthonormalization. Consider
+the space <mathjax>$L^2([t_0, t_1], \Re)$</mathjax>. Suppose I have <mathjax>$v_1 = 1, v_2 = t, v_3 =
+t^2$</mathjax>, <mathjax>$t_0 = 0$</mathjax>, <mathjax>$t_1 = 1$</mathjax>, and <mathjax>$\mag{v_1}^2 = \int_0^1 1 \cdot 1 dt =
+1$</mathjax>. The key idea of Gram-Schmidt orthonormalization is the following: start
+with <mathjax>$b_1 \equiv \frac{v_1}{\mag{v_1}}$</mathjax>. Then go on with <mathjax>$b_2 = \frac{v_2 -
+\braket{v_2}{b_1}b_1}{\mag{v_2 - \braket{v_2}{b_1}b_1}}$</mathjax>, and repeat until
+you're done (in essence: you want to preserve only the component that is
+orthogonal to the space spanned by the vectors you've computed so far, then
+renormalize).</p>
+<p>Basically, you get after all this computation that <mathjax>$b_2 = \frac{1}{12} t -
+\frac{1}{24}$</mathjax>. Same construction for <mathjax>$b_3$</mathjax>.</p>
+<p><a name='6'></a></p>
+<h1>EE 221A: Linear System Theory</h1>
+<h2>September 11, 2012</h2>
+<p>Reviewing the adjoint, suppose we have two vector spaces <mathjax>$U, V$</mathjax>; like we
+have with norms, let us associated a field that is either <mathjax>$\Re$</mathjax> or
+<mathjax>$\mathbb{C}$</mathjax>. Assume that these spaces are inner product spaces (we're
+associating with each an inner product). Suppose we have a continuous
+(linear) map <mathjax>$\fn{\mathcal{A}}{U}{V}$</mathjax>. We define the <strong>adjoint</strong> of this
+map to be <mathjax>$\fn{\mathcal{A}^*}{V}{U}$</mathjax> such that <mathjax>$\braket{u}{\mathcal{A} v} =
+\braket{\mathcal{A}^* v}{u}$</mathjax>.</p>
+<p>We define <strong>self-adjoint</strong> maps as maps that are equal to their adjoints,
+i.e. <mathjax>$\fn{\mathcal{A}}{U_1}{U_2} \st \mathcal{A} = \mathcal{A}^*$</mathjax>.</p>
+<p>In finite-dimensional vector spaces, the adjoint of a map is equivalent to
+the conjugate transpose of the matrix representation of the map. We refer
+to matrices that correspond to self-adjoint maps as <strong>hermitian</strong>.</p>
+<h2>Unitary matrices</h2>
+<p>Suppose that we have <mathjax>$U \in \mathbb{F}^{n\times n}$</mathjax>. <mathjax>$U$</mathjax> is <strong>unitary</strong> iff
+<mathjax>$U^*U = UU^* = I_n$</mathjax>. If <mathjax>$\mathbb{F}$</mathjax> is <mathjax>$\Re$</mathjax>, the matrix is called
+<strong>orthogonal</strong>.</p>
+<p>These constructions lead us to something useful: singular value
+decomposition. We'll come back to this later when we talk about matrix
+operations.</p>
+<h2>Singular Value Decomposition (SVD)</h2>
+<p>Suppose you have a matrix <mathjax>$M \in \mathbb{F}^{m\times m}$</mathjax>. An <strong>eigenvalue</strong>
+<mathjax>$\lambda$</mathjax> of <mathjax>$M$</mathjax> is a complex number iff there exists a nonzero vector <mathjax>$v$</mathjax>
+such that <mathjax>$Mv = \lambda v$</mathjax> (<mathjax>$v$</mathjax> is thus called the <strong>eigenvector</strong>
+associated to <mathjax>$\lambda$</mathjax>). Now we can think about how to define singular
+values of a matrix in terms of these definitions.</p>
+<p>Let us think about this in general for a matrix <mathjax>$A \in \mathbb{F}^{m \times
+n}$</mathjax> (which we consider to be a matrix representation of some linear map
+with respect to a basis). Note that <mathjax>$A A^* = \mathbb{F}^{m \times m}$</mathjax>,
+which will have <mathjax>$m$</mathjax> eigenvalues <mathjax>$\lambda_i, i = 1 ... m$</mathjax>.</p>
+<p>Note that <mathjax>$AA^*$</mathjax> is hermitian. We note that from the Spectral theorem, we
+can decompose the matrix into an orthonormal basis of eigenvectors
+corresponding to real eigenvalues. In fact, in this case, the eigenvalues
+must be real and non-negative.</p>
+<p>If we write the eigenvalues of <mathjax>$AA^*$</mathjax> as <mathjax>$\lambda_1 \ge \lambda_2 \ge
+... \ge \lambda_m$</mathjax>, where the first <mathjax>$r$</mathjax> are nonzero, note that <mathjax>$r =
+\text{rank} AA^*$</mathjax>. We define the <strong>non-zero singular values</strong> of <mathjax>$A$</mathjax> to be
+<mathjax>$\sigma_i = \sqrt{\lambda_i}, i \le r$</mathjax>. The remaining singular values are
+zero.</p>
+<p>Recall the <strong>induced 2-norm</strong>: let us relate this notion of singular values
+back to the induced 2-norm of a matrix <mathjax>$A$</mathjax> (<mathjax>$\mag{A}_{2,i}$</mathjax>). Consider the
+induced norm to be the norm induced by the action of <mathjax>$A$</mathjax> on the domain of
+<mathjax>$A$</mathjax>; thus if we take the induced 2-norm, then this is the <mathjax>$\max (\lambda_i
+(A^*A))^{1/2}$</mathjax>, which is simply the maximum singular value.</p>
+<p>Now that we know what singular values are, we can do a useful decomposition
+called singular value decomposition.</p>
+<p>Take <mathjax>$M \in \mathbb{C}^{m \times n}$</mathjax>. We have the following theorem: there
+exist unitary matrices <mathjax>$U \in \mathbb{C}^{m \times m}, V \in \mathbb{C}^{n
+\times n}$</mathjax> such that <mathjax>$A = U \Sigma V$</mathjax>, where <mathjax>$\Sigma$</mathjax> is defined as a
+diagonal matrix containing the singular values of <mathjax>$A$</mathjax>. Consider the first
+<mathjax>$r$</mathjax> columns of <mathjax>$U$</mathjax> to be <mathjax>$U_1$</mathjax>, the first <mathjax>$r$</mathjax> columns of <mathjax>$V$</mathjax> to be <mathjax>$V_1$</mathjax>,
+and the <mathjax>$r \times r$</mathjax> block of <mathjax>$\Sigma$</mathjax> containing the nonzero singular
+values to be <mathjax>$\Sigma_r$</mathjax>. Then <mathjax>$A = U \Sigma V = U_1 \sigma_r
+V_1^*$</mathjax>.</p>
+<p>Consider <mathjax>$AA^*$</mathjax>. With a bit of algebra, we can show that <mathjax>$AA^*U_1 = U_1
+\sigma_r^2$</mathjax>. We call the columns <mathjax>$u_i$</mathjax> of <mathjax>$U_1$</mathjax> are the eigenvectors of
+<mathjax>$AA^*$</mathjax> associated to eigenvalues <mathjax>$\sigma_i^2$</mathjax>; these are called the
+<strong>right-singular vectors</strong>.</p>
+<p>Similarly, if we consider <mathjax>$A^*A$</mathjax>, we can show that <mathjax>$A^*A = V_1^* \Sigma_r^2
+V_1$</mathjax> and that <mathjax>$v_i^* A^*A = \Sigma_r^2 v_1^*$</mathjax>; the columns of this matrix
+are called the <strong>left-singular vectors</strong>.</p>
+<h2>Recap</h2>
+<p>We've covered a lot of ground these past few weeks: we covered functions,
+vector spaces, bases, and then we started to consider linearity. And then
+we started talking about endowing vector spaces with things like norms,
+inner products; induced norms. From that, we went on to talk about
+adjoints. We used adjoints, we went on to talk a little about projection
+and least-squares optimization. We then went on to talk about Hermitian
+matrices and singular value decomposition. I think about this first unit as
+having many basic units that we'll use over and over again. Two interesting
+applications: least-squares, SVD.</p>
+<p>So we have this basis now to build on as we talk about linear
+systems. We'll also need to build a foundation on linear differential
+equations. We'll spend some time going over the basics: what a solution
+means, under what conditions a solution exists (i.e. what properties does
+the differential equation need to have?). We'll spend the next couple weeksn
+talking about properties of differential equations.</p>
+<p>All of what we've done up to now has been covered in appendix A of Callier
+&amp; Desoer. For the introduction to differential equations, we'll follow
+appendix B of Callier &amp; Desoer. Not the easiest to read, but very
+comprehensive background reading.</p>
+<p>The existence and uniqueness theorems are in many places, however.</p>
+<p>Lecture notes 7.</p>
+<h2>Differential Equations</h2>
+<p><mathjax>$$
+\dot{x} = f((x(t), t)), x(t_0) = x_0
+\\ x \in \Re^n
+\\ \fn{f}{\Re^n \times \Re}{\Re^n}
+$$</mathjax></p>
+<p>(strictly speaking, <mathjax>$f$</mathjax> maps <mathjax>$x$</mathjax> to the tangent space, but for this course,
+we're going to consider the two spaces to be equivalent)</p>
+<p>Often, we're going to consider the <strong>time-invariant</strong> case (where there is
+no dependence on <mathjax>$t$</mathjax>, but rather only on <mathjax>$x$</mathjax>), but this is a time-variant
+case. Recall that we consider time to be a privileged variable, i.e. always
+"marching forward".</p>
+<p>What we're going to talk about now is how we can solve this differential
+equation. Rather (for now), under what conditions does there exist a
+(unique) solution to the differential equation (with initial condition)?
+We're interested in these two properties: existence and uniqueness. The
+solution we call <mathjax>$x(t)$</mathjax> where <mathjax>$x(t_0) = x_0$</mathjax>. We need some understanding of
+some properties of that function <mathjax>$f$</mathjax>. We'll talk about continuity,
+piecewise continuity, Lipschitz continuity (thinking about the
+existence). In terms of uniqueness, we'll be talking about Cauchy
+sequences, Banach spaces, Bellman-Gr&ouml;nwall lemma.</p>
+<p>A couple of different ways to prove uniqueness and existence; we'll use the
+Callier &amp; Desoer method.</p>
+<p>We'll finish today's lecture by just talking about some definitions of
+continuity. Suppose we have a function <mathjax>$f(x)$</mathjax> that is said to be
+<strong>continuous</strong>: that is, <mathjax>$\forall \epsilon &gt; 0, \exists \delta &gt; 0 \st
+\abs{x_1
+- x_2} &lt; \delta \implies \abs{f(x_1) - f(x_2)} &lt; \epsilon$</mathjax>
+  (<mathjax>$\epsilon$</mathjax>-<mathjax>$\delta$</mathjax> definition).</p>
+<p>Suppose we have <mathjax>$\fn{f(x,t)}{\Re^n \times \Re}{\Re^n}$</mathjax>. <mathjax>$f$</mathjax> is said to be
+piece-wise continuous (w.r.t. <mathjax>$t$</mathjax>), <mathjax>$\forall x$</mathjax> if <mathjax>$\fn{f(x,
+\cdot)}{\Re}{\Re^n}$</mathjax> is continuous except at a finite number of
+(well-behaved) discontinuities in any closed and bounded interval of
+time. What I'm not allowing in this definition are functions with
+infinitely many points of discontinuity.</p>
+<p>Next time we'll talk about Lipschitz continuity.</p>
+<p><a name='7'></a></p>
+<h1>EE 221A: Linear System Theory</h1>
+<h2>September 13, 2012</h2>
+<p>Section this Friday only, 9:30 - 110:30, Cory 299.</p>
+<p>Today: existence and uniqueness of solutions to differential equations.</p>
+<p>We called this a DE or ODE, and we associated with it an initial
+condition. We started to talk about properties of the function <mathjax>$f$</mathjax> as a
+function of <mathjax>$x$</mathjax> only, but we can consider thinking about this as a function
+of <mathjax>$x$</mathjax> for all t. This is a map from <mathjax>$\Re^n \to \Re^n$</mathjax>. In this class,
+recall, we used the <mathjax>$\epsilon$</mathjax>-<mathjax>$\delta$</mathjax> definition for continuity.</p>
+<p>We also introduced the concept of piecewise continuity, which will be
+important for thinking about the right-hand-side of the differential
+equation.</p>
+<p>We defined piecewise continuity as <mathjax>$\fn{f(t)}{\Re_+}{\Re^n}$</mathjax>, where <mathjax>$f(t)$</mathjax>
+is said to be piecewise continuous in <mathjax>$t$</mathjax>, where the function is continuous
+except at a set of well-behaved discontinuities (finitely many in any
+closed and bounded, i.e. <strong>compact</strong>, interval).</p>
+<p>Finally, we will define Lipschitz continuity as follows: a function
+<mathjax>$\fn{f(\cdot, t)}{\Re^n}{\Re^n}$</mathjax> is <strong>Lipschitz continuous</strong> in x if there
+exists a piecewise continuous function of time <mathjax>$\fn{k(t)}{\Re_+}{\Re_+}$</mathjax>
+such that the following inequality holds: <mathjax>$\mag{f(x_1) - f(x_2)} \le
+k(t)\mag{x_1 - x_2}, \forall x_1, x_2 \in \Re^n, \forall t \in \Re_+$</mathjax>. This
+inequality (condition) is called the <strong>Lipschitz condition</strong>.</p>
+<p>An important thing in this inequality is that there has to be one function
+<mathjax>$k(t)$</mathjax>, and it has to be piecewise continuous. That is, there exists such a
+function that is not allowed to go to infinity in compact time
+intervals.</p>
+<p>It's an interesting condition, and if we look at this and compare the
+Lipschitz continuity definition to the general continuity definition, we
+can easily show that if the function is LC (Lipschitz continuous), then
+it's C (continuous), since LC is a stricter condition than C. That
+implication is fairly straightforward to show, but the inverse relationship
+is not necessarily true (i.e. continuity does not necessarily imply
+Lipschitz continuity).</p>
+<p>Aside: think about this condition and what it takes to show that a function
+is Lipschitz continuous. Need to come up with a candidate <mathjax>$k(t)$</mathjax> (often
+called the Lipschitz function or constant, if it's constant). Often the
+hardest part: trying to extract from <mathjax>$f$</mathjax> what a possible <mathjax>$k$</mathjax> is.</p>
+<p>But there's a useful possible candidate for <mathjax>$k(t)$</mathjax>, given a particular
+function <mathjax>$f$</mathjax>. Let's forget about time for a second and consider a function
+just of <mathjax>$x$</mathjax>. If the <strong>Jacobian</strong> <mathjax>$Df$</mathjax> (often you also use <mathjax>$\pderiv{f}{x}$</mathjax>),
+which is an <mathjax>$n \times n$</mathjax> matrix (where <mathjax>$(Df)^j_i = \pderiv{f_j}{x_i}$</mathjax>. If
+the Jacobian <mathjax>$Df$</mathjax> exists, then its norm provides a candidate Lipschitz
+function <mathjax>$k(t)$</mathjax>.</p>
+<p>A norm of the Jacobian of <mathjax>$f$</mathjax>, if independent of <mathjax>$x$</mathjax>, tells you that the
+function is Lipschitz. If the norm always seems to depend on <mathjax>$x$</mathjax>, you can
+still say something about the Lipschitz properties of the function: you can
+call it locally Lipschitz by bounding the value of <mathjax>$x$</mathjax> in some region.</p>
+<p>Sketch of proof: generalization of mean value theorem (easy to sketch in
+<mathjax>$\Re^1$</mathjax>). Mean value theorem states that there exists a point such that the
+instantaneous slope is the same as the average slope (assuming that the
+function is differentiable). If we want to generalize it to more
+dimensions, we say <mathjax>$f(x_1) - f(x_2) = Df(\lambda x_1 + (1 - \lambda)
+x_2)(x_1 - x_2)$</mathjax> (where <mathjax>$0 &lt; \lambda &lt; 1$</mathjax>). All we've required is the
+existence of <mathjax>$Df$</mathjax>.</p>
+<p>Now we can just take norms (and this is what's interesting now) and use
+some of the results we have from norms. This provides a very useful
+construction for a candidate for <mathjax>$k$</mathjax> (might not provide a great bound), but
+it's the second thing to try if you can't immediately extract out a
+function <mathjax>$k(t)$</mathjax>.</p>
+<p>Something not in the notes, but useful. Let's go back to where we started,
+the differential equation with initial condition, and state the main
+theorem.</p>
+<h2>Fundamental Theorem of DEs / the Existence and Uniqueness theorem of (O)DEs</h2>
+<p>suppose we have a differential equation with an initial condition. Assume
+that <mathjax>$f(x)$</mathjax> is piecewise continuous in <mathjax>$t$</mathjax> and Lipschitz continuous in
+<mathjax>$x$</mathjax>. With that information, we have that there exists a unique function of
+time which maps <mathjax>$\Re_+ \to \Re^n$</mathjax>, which is differentiable (<mathjax>$C^1$</mathjax>) <em>almost</em>
+everywhere (derivative exists at all points at which <mathjax>$f$</mathjax> is continuous),
+and it satisfies the initial condition and differential equation. This
+derivative exists at all points <mathjax>$t \in [t_1, t_2] - D$</mathjax>, where
+<mathjax>$D$</mathjax> is the set of points where <mathjax>$f$</mathjax> is discontinuous in <mathjax>$t$</mathjax>.</p>
+<p>We are going to be interested in studying differential equations where we
+know these conditions hold. We're also going to prove the theorem. It's a
+nice thing to do (a little in depth) because it demonstrates some proof
+techniques (as well as giving you an idea of why the theorem works).</p>
+<h2>LC condition</h2>
+<p>The norm of the Jacobian of the example is bounded for bounded <mathjax>$x$</mathjax>. That
+is, we can choose a local region in <mathjax>$\Re$</mathjax> for which our <mathjax>$Df$</mathjax> is bounded to
+be less than some constant. That gives us a candidate Lipschitz constant
+for that local region. We say then that <mathjax>$f(x)$</mathjax> is (at least) <strong>locally
+Lipschitz continuous</strong> (usually we just say this without specifying a
+region, since you can usually find a bound given any region). Further, it
+is trivially piecewise continuous in time (since it doesn't depend on
+time).</p>
+<p>Note: if the Lipschitz condition holds only locally, it may be that the
+solution is only defined over a certain range of time.</p>
+<p>We didn't show this, but in this example, the Lipschitz condition does not
+hold globally.</p>
+<h2>Local Fundamental theorem of DEs</h2>
+<p>Now assume that <mathjax>$f(x)$</mathjax> is piecewise continuous in <mathjax>$t$</mathjax> and Lipschitz
+continuous in <mathjax>$x$</mathjax> (for all <mathjax>$x \in G \in \Re^n$</mathjax>). We now have that there
+exists a unique function of time and an interval <mathjax>$[t_0,t_1]$</mathjax> (such that
+<mathjax>$t_0 \in G, t_1 \in G$</mathjax>) which maps <mathjax>$\Re_+ \to \Re^n$</mathjax>, which is
+differentiable (<mathjax>$C^1$</mathjax>) <em>almost</em> everywhere (derivative exists at all points
+at which <mathjax>$f$</mathjax> is continuous), and it satisfies the initial condition and
+differential equation. As before, This derivative exists at all points <mathjax>$t
+\in [t_1, t_2] \minus - D$</mathjax>, where <mathjax>$D$</mathjax> is the set of points where <mathjax>$f$</mathjax> is
+discontinuous in <mathjax>$t$</mathjax>. If it is global, we can make the interval as large as
+desired.</p>
+<h2>Proof</h2>
+<p>There are two pieces: the proof of existence and the proof of
+uniqueness. Today will likely just be existence.</p>
+<h2>Existence</h2>
+<p>Roadmap: construct an infinite sequence of continuous functions defined
+(recursively) as follows <mathjax>$x_{m+1}(t) = x_0 + \int_{t_0}^t f(x_m(\tau),
+\tau) d\tau$</mathjax>. First, show that this sequence converges to a continuous
+function <mathjax>$\fn{\Phi(\cdot)}{\Re_+}{\Re^n}$</mathjax> which solves the DE/IC pair.</p>
+<p>Would like to be able to prove the first thing here: I've constructed a
+sequence, and I want to show that the limit of this sequence is a solution
+to the differential equation.</p>
+<p>The tool that I'm going to use is a property called Cauchy, and then I'm
+going to invoke the result that if I have a complete space, any Cauchy
+sequence on the space converges to something in the space. Gives me the
+basis of the existence of the thing that this converges to.</p>
+<p>Goal: (1) to show that this sequence is a Cauchy sequence in a
+complete normed vector space, which means the sequence converges to
+something in the space, and (2) to show that the limit of this sequence
+satisfies the DE/IC pair.</p>
+<p>A <strong>Cauchy sequence</strong> (on a normed vector space) is such that there exists
+some point in the sequence (some finite index <mathjax>$m$</mathjax>) such that if you look at
+any point beyond that index, the distance between the later points can be
+made smaller than some arbitrarily small <mathjax>$\epsilon &gt; 0$</mathjax>. In other words: if
+we drop a finite number of elements from the start of the sequence, the
+distance between any remaining elements can be made arbitrarily small.</p>
+<p>We define a <strong>Banach space</strong> (equivalently, a <strong>complete normed vector
+space</strong>) is one in which all Cauchy sequences converge. Implicitly in that,
+it means to something in the space itself.</p>
+<p>Just an aside, a <strong>Hilbert space</strong> is a <strong>complete inner product
+space</strong>. If you have an inner product space, and you define the norm in
+that inner product space induced by that inner product, if all Cauchy
+sequences of that space converge (to a limit in the space) with this norm,
+then it is a Hilbert space.</p>
+<p>Think about a Cauchy sequence on a space that converges to something not
+necessarily in the space. Example: any continued fraction.</p>
+<p>To show (1), we'll show that this sequence <mathjax>$\{x_m\}$</mathjax> that we constructed is
+a Cauchy sequence in a Banach space. Interestingly, it matters what norm
+you choose.</p></div><div class='pos'></div>
+<script src='mathjax/unpacked/MathJax.js?config=default'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+  prefilterMath: function (math,displaymode,script) {
+      math = "\\displaystyle{"+math+"}";
+      return PREFILTER.call(TEX,math,displaymode,script);
+    }
+  });
+});
+
+var a  = document.getElementsByTagName('a'),
+    ll = a.length;
+if (ll > 0) {
+  var div = document.getElementsByClassName('pos')[0];
+  div.style.float = 'right';
+  div.style.position = 'fixed';
+  div.style.background = '#FFF';
+  div.style.fontSize = '90%';
+  div.style.top = '10%';
+  div.style.right = '5%';
+  div.style.width = '15%';
+  for (var i = 0; i < ll; i++) {
+    div.innerHTML += '<a href="\#' + a[i].name + '">'
+                     + a[i].parentElement.nextElementSibling
+                           .nextElementSibling.innerHTML
+                     + '</a><br />';
+  }
+  var div = document.getElementsByClassName('wrapper')[0];
+  div.style.width = '80%';
+}
+</script>
