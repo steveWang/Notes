@@ -852,7 +852,398 @@ then it is a Hilbert space.</p>
 necessarily in the space. Example: any continued fraction.</p>
 <p>To show (1), we'll show that this sequence <mathjax>$\{x_m\}$</mathjax> that we constructed is
 a Cauchy sequence in a Banach space. Interestingly, it matters what norm
-you choose.</p></div><div class='pos'></div>
+you choose.</p>
+<p><a name='8'></a></p>
+<h1>EE 221A: Linear System Theory</h1>
+<h2>September 18, 2012</h2>
+<p>Today:</p>
+<ul>
+<li>proof of existence and uniqueness theorem.</li>
+<li>[ if time ] introduction to dynamical systems.</li>
+</ul>
+<p>First couple of weeks of review to build up basic concepts that we'll be
+drawing upon throughout the course. Either today or Thursday we will launch
+into linear system theory.</p>
+<p>We're going to recall where we were last time. We had the fundamental
+theorem of differential equations, which said the following: if we had a
+differential equation, <mathjax>$\dot{x} = f(x,t)$</mathjax>, with initial condition <mathjax>$x(t_0) =
+x_0$</mathjax>, where <mathjax>$x(t) \in \Re^n$</mathjax>, etc, if <mathjax>$f( \cdot , t)$</mathjax> is Lipschitz
+continuous, and <mathjax>$f(x, \cdot )$</mathjax> is piecewise continuous, then there exists a
+unique solution to the differential equation / initial condition pair (some
+function <mathjax>$\phi(t)$</mathjax>) wherever you can take the derivative (may not be
+differentiable everywhere: loses differentiability on the points where
+discontinuities exist).</p>
+<p>We spent quite a lot of time discussing Lipschitz continuity. Job is
+usually to test both conditions; first one requires work. We described a
+popular candidate function by looking at the mean value theorem and
+applying it to <mathjax>$f$</mathjax>: a norm of the Jacobian function provides a candidate
+Lipschitz if it works.</p>
+<p>We also described local Lipschitz continuity, and often, when using a norm
+of the Jacobian, that's fairly easy to show.</p>
+<p>Important point to recall: a norm of the Jacobian of <mathjax>$f$</mathjax> provides a
+candidate Lipschitz function.</p>
+<p>Another important thing to say here is that we can use any norm we want, so
+we can be creative in our choice of norm when looking for a better bound.</p>
+<p>We started our proof last day, and we talked a little about the structure
+of the proof. We are going to proceed by constructing a sequence of
+functions, then show (1) that it converges to a solution, then show (2)
+that it is unique.</p>
+<h2>Proof of Existence</h2>
+<p>We are going to construct this sequence of functions as follows:
+<mathjax>$x_{m+1}(t) = x_0 + \int_0^t f(x_m(\tau)) d\tau$</mathjax>. Here we're dealing with
+an arbitrary interval from <mathjax>$t_1$</mathjax> to <mathjax>$t_2$</mathjax>, and so <mathjax>$0 \in [t_1, t_2]$</mathjax>. We
+want to show that this sequence is a Cauchy sequence, and we're going to
+rely on our knowledge that the space these functions are defined in is a
+Banach space (hence this sequence converges to something in the space).</p>
+<p>We have to put a norm on the set of reals, so we'll use the infinity
+norm. Not going to prove it, but rather state it's a Banach space. If we
+show that this is a Cauchy sequence, then the limit of that Cauchy sequence
+exists in the space. The reason that's interesting is that it's this limit
+that provides a candidate for this differential equation.</p>
+<p>We will then prove that this limit satisfies the DE/IC pair. That is
+adequate to show existence. We'll then go on to prove uniqueness.</p>
+<p>Our immediate goal is to show that this sequence is Cauchy, which is, we
+should show <mathjax>$\exists m \st (x_{m+p} - x_m) \to 0$</mathjax> as <mathjax>$m$</mathjax> gets large.</p>
+<p>First let us look at the difference between <mathjax>$x_{m+1}$</mathjax> and <mathjax>$x_m$</mathjax>. Just
+functions of time, and we can compute this. <mathjax>$\mag{x_{m+1} - x_m} =
+\int_{t_0}^t (f(x_m, \tau) - f(x_{m+1}, \tau)) d\tau$</mathjax>. Use the fact that f
+is Lipschitz continuous, and so it is <mathjax>$\le k(\tau)\mag{x_m(\tau) -
+x_{m+1}(\tau)} d\tau$</mathjax>. The function is Lipschitz, so well-defined, and it
+has a supremum in this interval. Let <mathjax>$\bar{k}$</mathjax> be the supremum of <mathjax>$k$</mathjax> over
+the whole interval <mathjax>$[t_1, t_2]$</mathjax>. This means that we can take this
+inequality and rewrite as <mathjax>$\mag{x_{m+1} - x_m} \le \bar{k} \int_{t_0}^t
+\mag{x_m(\tau) - x_{m+1}(\tau)} d\tau$</mathjax>. Now we have a bound that relates
+the bound between <mathjax>$x_m$</mathjax> and <mathjax>$x_{m+1}$</mathjax>. You can essentially relate the
+distance we've just related between two subsequent elements to some further
+distance by counting.</p>
+<p>Let us do two things: sort out the integral on the right-hand-side, then
+look at arbitrary elements beyond an index.</p>
+<p>We know that <mathjax>$x_1(t) = x_0 + \int_{t_0}^t f(x_0, \tau) d\tau$</mathjax>, and that <mathjax>$x_1
+- x_0 \le \int_{t_0}^{t} \mag{f(x_0, \tau)} d\tau \le \int_{t_1}{t_2}
+  \mag{f(x_0, \tau) d\tau} \defequals M$</mathjax>. From the above inequalities,
+  <mathjax>$\mag{x_2 - x_1} \le M \bar{k}\abs{t - t_0}$</mathjax>. Now I can look at general
+  bounds: <mathjax>$x_3 - x_2 \le \frac{M\bar{k}^2 \abs{t - t_0}^2}{2!}$</mathjax>. In general,
+  <mathjax>$x_{m+1} - x_m \le \frac{M\parens{\bar{k} \abs{t - t_0}}^m}{m!}$</mathjax>.</p>
+<p>If we look at the norm of <mathjax>$\dot{x}$</mathjax>, that is going to be a function
+norm. What I've been doing up to now is look at a particular value <mathjax>$t_1 &lt; t
+&lt; t_2$</mathjax>.</p>
+<p>Try to relate this to the norm <mathjax>$\mag{x_{m+1} - x_m}_\infty$</mathjax>. Can what we've
+done so far give us a bound on the difference between two functions? We
+can, because the infinity norm of a function is the maximum value that the
+function assumes (maximum vector norm for all points <mathjax>$t$</mathjax> in the interval
+we're interested in). If we let <mathjax>$T$</mathjax> be the difference between our larger
+bound <mathjax>$t_2 - t_1$</mathjax>, we can use the previous result on the pointwise norm,
+then a bound on the function norm has to be less than the same
+bound, i.e. if a pointwise norm function is less than this bound for all
+relevant <mathjax>$t$</mathjax>, then its max value must be less than this bound.</p>
+<p>That gets us on the road we want to be, since that now gets us a bound. We
+can now go back to where we started. What we're actually interested in is
+given an index <mathjax>$m$</mathjax>, we can construct a bound on all later elements in the
+sequence.</p>
+<p><mathjax>$\mag{x_{m+p} - x_m}_\infty = \mag{x_{m+p} + x_{m+p-1} - x_{m+p-1} + ... -
+x_m} = \mag{\sum_{k=0}^{p-1} (x_{m+k+1} - x_{m+k})} \le M \sum_{k=0}^{p-1}
+\frac{(\bar{k}T)^{m+k}}{(m+k)!}$</mathjax>.</p>
+<p>We're going to recall a few things from undergraduate calculus: Taylor
+expansion of the exponential function and <mathjax>$(m+k)! \ge m!k!$</mathjax>.</p>
+<p>With these, we can say that <mathjax>$\mag{x_{m+p} - x_m}_\infty \le
+M\frac{(\bar{k}T)^m}{m!} e^{\bar{k} T}$</mathjax>. What we'd like to show is that this
+can be made arbitrarily small as <mathjax>$m$</mathjax> gets large. We study this bound as <mathjax>$m
+\to \infty$</mathjax>, and we recall that we can use the Stirling approximation,
+which shows that factorial grows faster than the exponential function. That
+is enough to show that <mathjax>$\{x_m\}_0^\infty$</mathjax> is Cauchy. Since it is in a
+Banach space (not proving, since beyond our scope), it converges to
+something in the space to a function (call it <mathjax>$x^\ell$</mathjax>) in the same
+space.</p>
+<p>Now we just need to show that the limit <mathjax>$x^\ell$</mathjax> solves the differential
+equation (and initial condition). Let's go back to the sequence that
+determines <mathjax>$x^\ell$</mathjax>. <mathjax>$x_{m+1} = x_0 + \int_{t_0}^t f(x_m, \tau)
+d\tau$</mathjax>. We've proven that this limit converges to <mathjax>$x^\ell$</mathjax>. What we want to
+show is that if we evaluate <mathjax>$f(x^\ell, t)$</mathjax>, then <mathjax>$\int_{t_0}^t f(x_m, \tau)
+\to \int_{t_0}^t f(x^\ell, \tau) d\tau$</mathjax>. Would be immediate if we had that
+the function were continuous. Clear that it satisfies initial condition by
+the construction of the sequence, but we need to show that it satisfies the
+differential equation. Conceptually, this is probably more difficult than
+what we've just done (establishing bounds, Cauchy sequences). Thinking
+about what that function limit is and what it means for it to satisfy that
+differential equation.</p>
+<p>Now, you can basically use some of the machinery we've been using all along
+to show this. Difference between these goes to <mathjax>$0$</mathjax> as <mathjax>$m$</mathjax> gets large.</p>
+<p><mathjax>$$\mag{\int_{t_0}^t (f(x_m, \tau) f(x^\ell, \tau)) d\tau}
+\\ \le \int_{t_0}^t k(\tau) \mag{x_m - x^\ell} d\tau \le \bar{k}\mag{x_m - x^\ell}_\infty T
+\\ \le \bar{k} M e^{\bar{k} T} \frac{(\bar{k} T)^m}{m!}T
+$$</mathjax></p>
+<p>Thus <mathjax>$x^\ell$</mathjax> solves the DE/IC pair. A solution <mathjax>$\Phi$</mathjax> is <mathjax>$x^\ell$</mathjax>,
+i.e. <mathjax>$x^\ell(t) = f(x^\ell, t) \forall [t_1, t_2] - D$</mathjax> and <mathjax>$x^\ell(t_0) =
+x_0$</mathjax></p>
+<p>To show that this solution is unique, we will use the Bellman-Gronwall
+lemma, which is very important. Used ubiquitously when you want to show
+that functions of time are equal to each other: candidate mechanism to do
+that.</p>
+<h2>Bellman-Gronwall Lemma</h2>
+<p>Let <mathjax>$u, k$</mathjax> be real-valued positive piece-wise continuous functions of time,
+and we'll have a constant <mathjax>$c_1 \ge 0$</mathjax> and <mathjax>$t_0 \ge 0$</mathjax>. If we have such
+constants and functions, then the following is true: if <mathjax>$u(t) \le c_1 +
+\int_{t_0}^t k(\tau)u(\tau) d\tau$</mathjax>, then <mathjax>$u(t) \le c_1 e^{\int_{t_0}^t
+k(\tau) d\tau}$</mathjax>.</p>
+<h2>Proof (of B-G)</h2>
+<p><mathjax>$t &gt; t_0$</mathjax> WLOG.</p>
+<p><mathjax>$$U(t) = c_1 + \int_{t_0}^t k(\tau) u(\tau) d\tau
+\\ u(t) \le U(t)
+\\ u(t)k(t)e^{\int_{t_0}^t k(\tau) d\tau} \le U(t)k(t)e^{\int_{t_0}^t k(\tau) d\tau}
+\\ \deriv{}{t}\parens{U(t)e^{\int_{t_0}^t k(\tau) d\tau}} \le 0 \text{(then integrate this derivative, note that U(t_0) = c_1)}
+\\ u(t) \le U(t) \le c_1 e^{\int_{t_0}^t k(\tau) d\tau}
+$$</mathjax></p>
+<h2>Using this to prove uniqueness of DE/IC solutions</h2>
+<p>How we're going to use this to prove B-G lemma.</p>
+<p>We have a solution that we constructed <mathjax>$\Phi$</mathjax>, and someone else gives us a
+solution <mathjax>$\Psi$</mathjax>, constructed via a different method. Show that these must
+be equivalent. Since they're both solutions, they have to satisfy the DE/IC
+pair. Take the norm of the difference between the differential equations.</p>
+<p><mathjax>$$\mag{\Phi - \Psi} \le \bar{k} \int_{t_0}^t \mag{\Phi - \Psi} d\tau \forall
+t_0, t \in [t_1, t_2]$$</mathjax></p>
+<p>From the Bellman-Gronwall Lemma, we can rewrite this inequality as
+<mathjax>$\mag{\Phi - \Psi} \le c_1 e^{\bar{k}(t - t_0)}$</mathjax>. Since <mathjax>$c_1 = 0$</mathjax>, this
+norm is less than or equal to 0. By positive definiteness, this norm must
+be equal to 0, and so the functions are equal to each other.</p>
+<h2>Reverse time differential equation</h2>
+<p>We think about time as monotonic (either increasing or decreasing, usually
+increasing). Suppose that time is decreasing. <mathjax>$\exists \dot{x} =
+f(x,t)$</mathjax>. Going backwards in time, explore existence and uniqueness going
+backwards in time. Suppose we had a time variable <mathjax>$\tau$</mathjax> which goes from
+<mathjax>$t_0$</mathjax> backwards, and defined <mathjax>$\tau \defequals t_0 - t$</mathjax>. We want to define
+the solution to that differential equation backwards in time as <mathjax>$z(\tau) =
+x(t)$</mathjax> if <mathjax>$t &lt; t_0$</mathjax>. Derive what reverse order time derivative is. Equation
+is just <mathjax>$-f$</mathjax>; we're going to use <mathjax>$\bar{f}$</mathjax> to represent this
+function (<mathjax>$\deriv{}{\tau}z = -\deriv{}{t}x = -f(x, t) = -f(z, \tau) =
+\bar{f}$</mathjax>).</p>
+<p>This equation, if I solve the reverse time differential equation, we'll
+have some corresponding backwards solution. Concluding statement: can think
+about solutions forwards and backwards in time. Existence of unique
+solution forward in time means existence of unique solution backward in
+time (and vice versa). You can't have solutions crossing themselves in
+time-invariant systems.</p>
+<p><a name='9'></a></p>
+<h1>EE 221A: Linear System Theory</h1>
+<h2>September 20, 2012</h2>
+<p>Introduction to dynamical systems. Suppose we have equations <mathjax>$\dot{x} =
+f(x, u, t)$</mathjax>, <mathjax>$\fn{f}{\Re^n \times \Re^n \times \Re_+}{\Re^n}$</mathjax> and <mathjax>$y = h(x,
+u, t)$</mathjax>, <mathjax>$\fn{h}{\Re^n \times \Re^n \times \Re_+}{\Re^n}$</mathjax>. We define <mathjax>$n_i$</mathjax> as
+the dimension of the input space, <mathjax>$n_o$</mathjax> as dimension of the output space,
+and <mathjax>$n$</mathjax> as the dimension of the state space.</p>
+<p>We've looked at the form, and if we specify a particular <mathjax>$\bar{u}(t)$</mathjax> over some
+time interval of interest, then we can plug this into the right hand side
+of this differential equation. Typically we do not supply a particular
+input. Thinking about solutions to this differential equation, for now,
+let's suppose that it's specified.</p>
+<p>Suppose we have some feedback function of the state. If <mathjax>$u$</mathjax> is specified,
+as long as <mathjax>$\bar{f}$</mathjax> satisfies the conditions for the existence and
+uniqueness theorem, we have a differential equation we can solve.</p>
+<p>Another example: instead of differential equation (which corresponds to
+continuous time), we have a difference equation (which corresponds to
+discrete time).</p>
+<p>Example: dynamic system represented by an LRC circuit. One practical way to
+define the state <mathjax>$x$</mathjax> is as a vector of elements whose derivatives appear in
+our differential equation. Not formal, but practical for this example.</p>
+<p>Notions of discretizing.</p>
+<h2>What is a dynamical system?</h2>
+<p>As discussed in first lecture, we consider time <mathjax>$\Tau$</mathjax> to be a privileged
+variable. Based on our definition of time, the inputs and outputs are all
+functions of time.</p>
+<p>Now we're going to define a <strong>dynamical system</strong> as a 5-tuple: <mathjax>$(\mathcal{U},
+\Sigma, \mathcal{Y}, s, r)$</mathjax> (input space, state space, output space, state
+transition function, output map).</p>
+<p>We define the <strong>input space</strong> as the set of input functions over time to an
+input set <mathjax>$U$</mathjax> (i.e. <mathjax>$\mathcal{U} = \{\fn{u}{\Tau}{U}\}$</mathjax>. Typically, <mathjax>$U =
+\Re^{n_i}$</mathjax>).</p>
+<p>We also define the <strong>output space</strong> as the set of output functions over time to
+an output set <mathjax>$Y$</mathjax> (i.e. <mathjax>$\mathcal{Y} = \{\fn{y}{\Tau}{Y}\}$</mathjax>). Typically, <mathjax>$Y
+= \Re^{n_o}$</mathjax>.</p>
+<p><mathjax>$\Sigma$</mathjax> is our <strong>state space</strong>. Not defined as the function, but the actual
+state space. Typically, <mathjax>$\Sigma = \Re^n$</mathjax>, and we can go back and think
+about the function <mathjax>$x(t) \in \Sigma$</mathjax>. <mathjax>$\fn{x}{\Tau}{\Sigma}$</mathjax> is called the
+state trajectory.</p>
+<p><mathjax>$s$</mathjax> is called the <strong>state transition function</strong> because it defines how the
+state changes in response to time and the initial state and the
+input. <mathjax>$\fn{s}{\Tau \times \Tau \times \Sigma \times U }{\Sigma}$</mathjax>. Usually
+we write this as <mathjax>$x(t_1) = s(t_1, t_0, x_0, u)$</mathjax>, where <mathjax>$u$</mathjax> is the function
+<mathjax>$u(\cdot) |_{t_0}^{t_1}$</mathjax>. This is important: coming towards how we define
+state. Only things you need to get to state at the new time are the initial
+state, inputs, and dynamics.</p>
+<p>Finally, we have this <strong>output map</strong> (sometimes called the readout map)
+<mathjax>$r$</mathjax>. <mathjax>$\fn{r}{\Tau \times \Sigma \times U}{Y}$</mathjax>. That is, we can think about
+<mathjax>$y(t) = r(t, x(t), u(t))$</mathjax>. There's something fundamentally different
+between <mathjax>$r$</mathjax> and <mathjax>$s$</mathjax>. <mathjax>$s$</mathjax> depended on the function <mathjax>$u$</mathjax>, whereas <mathjax>$r$</mathjax> only
+depended on the current value of <mathjax>$u$</mathjax> at a particular time.</p>
+<p><mathjax>$s$</mathjax> captures dynamics, while <mathjax>$r$</mathjax> is static. Remark: <mathjax>$s$</mathjax> has dynamics
+(memory) -- things that depend on previous time, whereas <mathjax>$r$</mathjax> is static:
+everything it depends on is at the current time (memoryless).</p>
+<p>In order to be a dynamical system, we need to satisfy two axioms: a
+dynamical system is a five-tuple with the following two axioms:</p>
+<ul>
+<li>The <strong>state transition axiom</strong>: <mathjax>$\forall t_1 \ge t_0$</mathjax>, given <mathjax>$u, \tilde{u}$</mathjax>
+  that are equal to each other over a particular time interval, the state
+  transition functions must be equal over that interval, i.e. <mathjax>$s(t_1, t_0,
+  x_0, u) = s(t_1, t_0, x_0, \tilde{u})$</mathjax>. Requires us to not have
+  dependence on the input outside of the time interval of interest.</li>
+<li>The <strong>semigroup axiom</strong>: suppose you start a system at <mathjax>$t_0$</mathjax> and evolve it to
+  <mathjax>$t_2$</mathjax>, and you're considering the state. You have an input <mathjax>$u$</mathjax> defined
+  over the whole time interval. If you were to look at an intermediate
+  point <mathjax>$t_1$</mathjax>, and you computed the state at <mathjax>$t_1$</mathjax> via the state transition
+  function, we can split our time interval into two intervals, and we can
+  compute the result any way we like. Stated as the following: <mathjax>$s(t_2, t_1,
+  s(t_1, t_0, x_0, u), u) = s(t_2, t_0, x_0, u)$</mathjax>.</li>
+</ul>
+<p>When we talk about a dynamical system, we have to satisfy these axioms.</p>
+<h2>Response function</h2>
+<p>Since we're interested in the outputs and not the states, we can define
+what we call the <strong>response map</strong>. It's  not considered part of the definition
+of a dynamical system because it can be easily derived.</p>
+<p>It's the composition of the state transition function and the readout map,
+i.e. <mathjax>$y(t) = r(t, x(t), u(t)) = r(t, s(t, t_0, x_0, u), u(t)) \defequals
+\rho(t, t_0, x_0, u)$</mathjax>. This is an important function because it is used to
+define properties of a dynamical system. Why is that? We've said that
+states are somehow mysterious. Not something we typically care about:
+typically we care about the outputs. Thus we define properties like
+linearity and time invariance.</p>
+<h2>Time Invariance</h2>
+<p>We define a time-shift operator <mathjax>$\fn{T_\tau}{\mathcal{U}}{\mathcal{U}}$</mathjax>,
+<mathjax>$\fn{T_\tau}{\mathcal{Y}}{\mathcal{Y}}$</mathjax>. <mathjax>$(T_\tau u)(t) \defequals u(t -
+\tau)$</mathjax>. Namely, the value of <mathjax>$T_\tau u$</mathjax> is that of the old signal at
+<mathjax>$t-\tau$</mathjax>.</p>
+<p>A <strong>time-invariant</strong> (dynamical) system is one in which the input space and
+output space are closed under <mathjax>$T_\tau$</mathjax> for all <mathjax>$\tau$</mathjax>, and <mathjax>$\rho(t, t_0,
+x_0, u) = \rho(t + \tau, t_0 + \tau, x_0, T_\tau u)$</mathjax>.</p>
+<h2>Linearity</h2>
+<p>A <strong>linear</strong> dynamical system is one in which the input, state, and output
+spaces are all linear spaces over the same field <mathjax>$\mathbb{F}$</mathjax>, and the
+response map <mathjax>$\rho$</mathjax> is a linear map of <mathjax>$\Sigma \times \mathcal{U}$</mathjax> into
+<mathjax>$\mathcal{Y}$</mathjax>.</p>
+<p>This is a strict requirement: you have to check that the response map
+satisfies these conditions. Question that comes up: why do we define
+linearity of a dynamical system in terms of linearity of the response and
+not the state transition function? Goes back to a system being
+intrinsically defined by its inputs and outputs. Often states, you can have
+many different ways to define states. Typically we can't see all of
+them. It's accepted that when we talk about a system and think about its
+I/O relations, it makes sense that we define linearity in terms of this
+memory function of the system, as opposed to the state transition function.</p>
+<p>Let's just say a few remarks about this: <strong>zero-input response</strong>,
+<strong>zero-state response</strong>. If we look at the zero element in our spaces (so
+we have a zero vector), then we can take our superposition, which implies
+that the response at time <mathjax>$t$</mathjax> is equal to the zero-state response, which is
+the response, given that we started at the zero state, plus the zero input
+response.</p>
+<p>That is: <mathjax>$\rho(t, t_0, x_0, u) = \rho(t, t_0, \theta_x, u) + \rho(t, t_0,
+x_0, \theta_u)$</mathjax> (from the definition of linearity).</p>
+<p>The second remark is that the zero-state response is linear in the input,
+and similarly, the zero-input response is linear in the state.</p>
+<p>One more property of dynamical systems before we finish: <strong>equivalence</strong> (a
+property derived from the definition). Take two dynamical systems <mathjax>$D = (U,
+\Sigma, Y, s, r), \tilde{D} = (U, \bar{\Sigma}, Y, \bar{s}, \bar{r})$</mathjax>. <mathjax>$x_0
+\in D$</mathjax> is equivalent to <mathjax>$\tilde{x_0} \in \tilde{D}$</mathjax> at <mathjax>$t_0$</mathjax>. If <mathjax>$\forall t
+\ge t_0, \rho(t, t_0, x_0, u) = \tilde{\rho}(t, t_0, \tilde{x_0}, u)$</mathjax>
+<mathjax>$\forall x$</mathjax> and some <mathjax>$\tilde{x}$</mathjax>, the two systems are equivalent.</p>
+<p><a name='10'></a></p>
+<h1>EE 221A: Linear System Theory</h1>
+<h2>September 25, 2012</h2>
+<h2>Linear time-varying systems</h2>
+<p>Recall the state transition function is given some function of the current
+time with initial state, initial time, and inputs, Suppose you have a
+differential equation; how do you acquire the state transition function?
+Solve the differential equation.</p>
+<p>For a general dynamical system, there are different ways to get the state
+transition function. This is an instantiation of a dynamical system, and
+we're going to ge thte state transition function by solving the
+differential equation / initial condition pair. </p>
+<p>We're going to call <mathjax>$\dot{x}(t) = A(t)x(t) + B(t)u(t)$</mathjax> a vector
+differential equation with initial condition <mathjax>$x(t_0) = x_0$</mathjax>.</p>
+<p>So that requires us to think about solving that differential equation. Do a
+dimension check, to make sure we know the dimensions of the matrices. <mathjax>$x
+\in \Re^n$</mathjax>, so <mathjax>$A \in \Re^{n_0 \times n}$</mathjax>. We could define the matrix
+function <mathjax>$A$</mathjax>, which takes intervals of the real line and maps them over to
+matrices. As a function, <mathjax>$A$</mathjax> is piecewise continuous matrix function in
+time.</p>
+<p>The entries are piecewise-continuous scalars in time. We would like to get
+at the state transition function; to do that, we need to solve the
+differential equation.</p>
+<p>Let's assume for now that <mathjax>$A, B, U$</mathjax> are given (part of the system
+definition).</p>
+<p>Piece-wise continuous is trivial; we can use the induced norm of <mathjax>$A$</mathjax> for a
+Lipschitz condition. Since this induced norm is piecewise-continuous in
+time, this is a fine bound. Therefore <mathjax>$f$</mathjax> is globally Lipschitz continuous.</p>
+<p>We're going to back off for a bit and introduce the state transition
+matrix. Background for solving the VDE. We're going to introduce a matrix
+differential equation, <mathjax>$\dot{X} = A(t) X$</mathjax> (where <mathjax>$A(t)$</mathjax> is same as before).</p>
+<p>I'm going to define <mathjax>$\Phi(t, t_0)$</mathjax> as the solution to the matrix
+differential equation (MDE) for the initial condition <mathjax>$\Phi(t_0, t_0) =
+1_{n \times n}$</mathjax>. I'm going to define <mathjax>$\Phi$</mathjax> as the solution to the <mathjax>$n
+\times n$</mathjax> matrix when my differential equation starts out in the identity
+matrix.</p>
+<p>Let's first talk about properties of this matrix <mathjax>$\Phi$</mathjax> just from the
+definition we have.</p>
+<ul>
+<li>If you go back to the vector differential equation, and let's just drop
+   the term that depends on <mathjax>$u$</mathjax> (either consider <mathjax>$B$</mathjax> to be 0, or the input
+   to be 0), the solution of <mathjax>$\cdot{x} = A(t)x(t)$</mathjax> is given by <mathjax>$x(t) =
+   \Phi(t, t_0)x_0$</mathjax>.</li>
+<li>This is what we call the semigroup property, since it's reminiscent of
+   the semigroup axiom. <mathjax>$\Phi(t, t_0) = \Phi(t, t_1) \Phi(t_1, t_0) \forall
+   t, t_0, t_1 \in \Re^+$</mathjax></li>
+<li><mathjax>$\Phi^{-1}(t, t_0) = \Phi(t_0, t)$</mathjax>.</li>
+<li><mathjax>$\text{det} \Phi(t, t_0) = \exp\parens{\int_{t_0}^t \text{tr} \parens{A
+   (\tau)} d\tau}$</mathjax>.</li>
+</ul>
+<p>Here's let's talk about some machinery we can now invoke when
+we want to show that two functions of time are equal to each other when
+they're both solutions to the differential equation. You can simply show by
+the existence and uniqueness theorem (assuming it applies) that they
+satisfy the same initial condition and the same differential
+equation. That's an important point, and we tend to use it a lot.</p>
+<p>(i.e. when faced with showing that two functions of time are equal to each
+other, you can show that they both satisfy the same initial condition and
+the same differential equation [as long as the differential equation
+satisfies the hypotheses of the existence and uniqueness theorem])</p>
+<p>Obvious, but good to state.</p>
+<p>Note: the initial condition doesn't have to be the initial condition given;
+it just has to hold at one point in the interval. Pick your point in time
+judiciously.</p>
+<p>Proof of (2): check <mathjax>$t=t_1$</mathjax>. (3) follows directly from (2). (4) you can
+look at if you want. Gives you a way to compute <mathjax>$\Phi(t, t_0)$</mathjax>. We've
+introduced a matrix differential equation and an abstract solution.</p>
+<p>Consider (1). <mathjax>$\Phi(t, t_0)$</mathjax> is a map that takes the initial state and
+transitions to the new state. Thus we call <mathjax>$\Phi$</mathjax> the <strong>state transition
+matrix</strong> because of what it does to the states of this vector differential
+equation: it transfers them from their initial value to their final value,
+and it transfers them through matrix multiplication.</p>
+<p>Let's go back to the original differential equation. Claim that the
+solution to that differential equation has the following form: <mathjax>$x(t) =
+\Phi(t, t_0)x_0 + \int_{t_0}^t \Phi(t, \tau)B(\tau)u(\tau) d\tau$</mathjax>. Proof:
+we can use the same machinery. If someone gives you a candidate solution,
+you can easily show that it is the solution.</p>
+<p>Recall the Leibniz rule, which we'll state in general as follows:
+<mathjax>$\pderiv{}{z} \int_{a(z)}^{b^z} f(x, z) dx = \int_{a(z)}^{b^z}
+\pderiv{}{x}f(x, z) dx + \pderiv{b}{z} f(b, z) - \pderiv{a}{z} f(a, z}$</mathjax>.</p>
+<p><mathjax>$$
+\dot{x}(t) &amp; = A(t) \Phi(t, t_0) x_0 + \int_{t_0}^t
+\pderiv{}{t} \parens{\Phi(t, \tau)B(\tau)u(\tau)} d\tau +
+\pderiv{t}{t}\parens{\Phi(t, t)B(t)u(t)} - \pderiv{t_0}{t}\parens{...}
+\\ &amp; = A(t)\Phi(t, t_0)x_0 + \int_{t_0}^t A(t)\Phi(t,\tau)B(\tau)u(\tau)d\tau + B(t)u(t)
+\\ &amp; = A(\tau)\Phi(t, t_0) x_0 + A(t)\int_{t_0}^t \Phi(t, \tau)B(\tau)
+u(\tau) d\tau + B(t) u(t)
+\\ &amp; = A(\tau)\parens{\Phi(t, t_0) x_0 + \int_{t_0}^t \Phi(t, \tau)B(\tau)
+u(\tau) d\tau} + B(t) u(t)
+$$</mathjax></p>
+<p><mathjax>$x(t) = \Phi(t,t_0)x_0 + \int_{t_0}^t \Phi(t,\tau)B(\tau)u(\tau) d\tau$</mathjax> is
+good to remember.</p>
+<p>Not surprisingly, it depends on the input function over an interval of
+time.</p>
+<p>The differential equation is changing over time, therefore the system
+itself is time-varying. No way in general that will be time-invariant,
+since the equation that defines its evolution is changing. You test
+time-invariance or time variance through the response map. But is it
+linear? You have the state transition function, so we can compute the
+response function (recall: readout map composed with the state transition
+function) and ask if this is a linear map.</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {

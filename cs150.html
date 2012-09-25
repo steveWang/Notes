@@ -594,7 +594,151 @@ implement this with fewer gates by using the maxterm expansion.</p>
 sums. (Section 2.7). Based on the combining theorem, which says that <mathjax>$XA +
 X\bar{A} = X$</mathjax>. Ideally: every row should just have a single value
 changing. So, I use Gray codes. (e.g. 00, 01, 11, 10). Graphical
-representation!</p></div><div class='pos'></div>
+representation!</p>
+<p><a name='9'></a></p>
+<h1>CS 150: Digital Design &amp; Computer Architecture</h1>
+<h2>September 18, 2012</h2>
+<p>Lab this week you are learning about chipscope. Chipscope is kinda like
+what it sounds: allows you to monitor things happening in the FPGA. One of
+the interesting things about Chipscope is that it's a FSM monitoring stuff
+in your FPGA, it also gets compiled down, and it changes the location of
+everything that goes into your chip. It can actually make your bug go away
+(e.g. timing bugs).</p>
+<p>So. Counters. How do counters work? If I've got a 4-bit counter and I'm
+counting from 0, what's going on here?</p>
+<p>D-ff with an inverter and enable line? This is a T-ff (toggle
+flipflop). That'll get me my first bit, but my second bit is slower. <mathjax>$Q_1$</mathjax>
+wants to toggle only when <mathjax>$Q_0$</mathjax> is 1. With subsequent bits, they want to
+toggle when all lower bits are 1.</p>
+<p>Counter with en: enable is tied to the toggle of the first bit. Counter
+with ld: four input bits, four output bits. Clock. Load. Then we're going
+to want to do a counter with ld, en, rst. Put in logic, etc.</p>
+<p>Quite common: ripple carry out (RCO), where we AND <mathjax>$Q[3:0]$</mathjax> and feed this
+into the enable of <mathjax>$T_4$</mathjax>.</p>
+<p>Ring counter (shift register with one hot out), If reset is low I just
+shift this thing around and make a circular shift register. If high, I clear
+the out bit.</p>
+<p>Mobius counter: just a ring counter with a feedback inverter in it. Just
+going to take whatever state in there, and after n clock ticks, it inverts
+itself. So you have <mathjax>$n$</mathjax> flipflops, and you get <mathjax>$2n$</mathjax> states.</p>
+<p>And then you've got LFSRs (linear feedback shift registers). Given N
+flipflops, we know that a straight up or down counter will give us <mathjax>$2^N$</mathjax>
+states. Turns out that an LFSR give syou almost that (not 0). So why do
+that instead of an up-counter? This can give you a PRNG. Fun times with
+Galois fields.</p>
+<p>Various uses, seeds, high enough periods (Mersenne twisters are higher).</p>
+<h2>RAM</h2>
+<p>Remember, decoder, cell array, <mathjax>$2^n$</mathjax> rows, <mathjax>$2^n$</mathjax> word lines, some number of
+bit lines coming out of that cell array for I/O with output-enable and
+write-enable.</p>
+<p>When output-enable is low, D goes to high-Z. At some point, some external
+device starts driving some Din (not from memory). Then I can apply a write
+pulse (write strobe), which causes our data to be written into the memory
+at this address location. Whatever was driving it releases, so it goes back
+to high-impedance, and if we turn output-enable again, we'll see "Din" from
+the cell array.</p>
+<p>During the write pulse, we need Din stable and address stable. We have a
+pulse because we don't want to break things. Bad things happen.</p>
+<p>Notice: no clock anywhere. Your FPGA (in particular, the block ram on the
+ML505) is a little different in that it has registered input (addr &amp;
+data). First off, very configurable. All sorts of ways you can set this up,
+etc. Addr in particular goes into a register and comes out of there, and
+then goes into a decoder before it goes into the cell array, and what comes
+out of that cell array is a little bit different also in that there's a
+data-in line that goes into a register and some data-out as well that's
+separate and can be configured in a whole bunch of different ways so that
+you can do a bunch of different things.</p>
+<p>The important thing is that you can apply your address to those inputs, and
+it doesn't show up until the rising edge of the clock. There's the option
+of having either registered or non-registered output (non-registered for
+this lab).</p>
+<p>So now we've got an ALU and RAM. And so we can build some simple
+datapaths. For sure you're going to see on the final (and most likely the
+midterm) problems like "given a 16-bit ALU and a 1024x16 sync SRAM, design
+a system to find the largest unsigned int in the SRAM."</p>
+<p>Demonstration of clock cycles, etc. So what's our FSM look like? Either
+LOAD or HOLD.</p>
+<p>On homework, did not say sync SRAM. Will probably change.</p>
+<p><a name='10'></a></p>
+<h1>CS 150: Digital Design &amp; Computer Architecture</h1>
+<h2>September 20, 2012</h2>
+<p>Non-overlapping clocks. n-phase means that you've got n different outputs,
+and at most one high at any time. Guaranteed dead time between when one
+goes low and next goes high.</p>
+<h2>K-maps</h2>
+<p>Finding minimal sum-of-products and product-of-sums expressions for
+functions. <strong>On-set</strong>: all the ones of a function; <strong>implicant</strong>: one or
+more circled ones in the onset; a <strong>minterm</strong> is the smallest implicant you
+can have, and they go up by powers of two in the number of things you can
+have; a <strong>prime implicant</strong> can't be combined with another (by circling);
+an <strong>essential prime implicant</strong> is a prime implicant that contains at
+least one one not in any other prime implicant. A <strong>cover</strong> is any
+collection of implicants that contains all of the ones in the on-set, and a
+<strong>minimal cover</strong> is one made up of essential prime implicants and the
+minimum number of implicants.</p>
+<p>Hazards vs. glitches. Glitches are when timing issues result in dips (or
+spikes) in the output; hazards are if they might happen. Completely
+irrelevant in synchronous logic.</p>
+<h2>Project</h2>
+<p>3-stage pipeline MIPS150 processor. Serial port, graphics accelerator. If
+we look at the datapath elements, the storage elements, you've got your
+program counter, your instruction memory, register file, and data
+memory. Figure 7.1 from the book. If you mix that in with figure 8.28,
+which talks about MMIO, that data memory, there's an address and data bus
+that this is hooked up to, and if you want to talk to a serial port on a
+MIPS processor (or an ARM processor, or something like that), you don't
+address a particular port (not like x86). Most ports are
+memory-mapped. Actually got a MMIO module that is also hooked up to the
+address and data bus. For some range of addresses, it's the one that
+handles reads and writes.</p>
+<p>You've got a handful of different modules down here such as a UART receive
+module and a UART transmit module. In your project, you'll have your
+personal computer that has a serial port on it, and that will be hooked up
+to your project, which contains the MIPS150 processor. Somehow, you've got
+to be able to handle characters transmitted in each direction.</p>
+<h2>UART</h2>
+<p>Common ground, TX on one side connected to RX port on other side, and vice
+versa. Whole bunch more in different connectors. Basic protocol is called
+RS232, common (people often refer to it by connector name: DB9 (rarely
+DB25); fortunately, we've moved away from this world and use USB. We'll
+talk about these other protocols later, some sync, some async. Workhorse
+for long time, still all over the place.</p>
+<p>You're going to build the UART receiver/transmitter and MMIO module that
+interfaces them. See when something's coming in from software /
+hardware. Going to start out with polling; we will implement interrupts
+later on in the project (for timing and serial IO on the MIPS
+processor). That's really the hardcore place where software and hardware
+meet. People who understand how each interface works and how to use those
+optimally together are valuable and rare people.</p>
+<p>What you're doing in Lab 4, there's really two concepts of (1) how does
+serial / UART work and (2) ready / valid handshake.</p>
+<p>On the MIPS side, you've got some addresses. Anything that starts with FFFF
+is part of the memory-mapped region. In particular, the first four are
+mapped to the UART: they are RX control, RX data, TX control, and TX data.</p>
+<p>When you want to send something out the UART, you write the byte -- there's
+just one bit for the control and one byte for data.</p>
+<p>Data goes into some FSM system, and you've got an RX shift register and a
+TX shift register.</p>
+<p>There's one other piece of this, which is that inside of here, the thing
+interfacing to this IO-mapped module uses this ready bit. If you have two
+modules: a source and a sink (diagram from the document), the source has
+some data that is sending out, tells the sink when the data is valid, and
+the sink tells the source when it is ready. And there's a shared "clock"
+(baud rate), and this is a synchronous interface.</p>
+<ul>
+<li>source presents data</li>
+<li>source raises valid</li>
+<li>when ready &amp; valid on posedge clock, both sides know the transaction was
+  successful.</li>
+</ul>
+<p>Whatever order this happens in, source is responsible for making sure data
+is valid.</p>
+<p>HDLC? Takes bytes and puts into packets, ACKs, etc.</p>
+<p>Talk about quartz crystals, resonators. <mathjax>$\pi \cdot 10^7$</mathjax>.</p>
+<p>So: before I let you go, parallel load, n bits in, serial out, etc.</p>
+<p><a name='11'></a></p>
+<h1>CS 150: Digital Design &amp; Computer Architecture</h1>
+<h2>September 25, 2012</h2></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
