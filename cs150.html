@@ -737,8 +737,157 @@ is valid.</p>
 <p>Talk about quartz crystals, resonators. <mathjax>$\pi \cdot 10^7$</mathjax>.</p>
 <p>So: before I let you go, parallel load, n bits in, serial out, etc.</p>
 <p><a name='11'></a></p>
-<h1>CS 150: Digital Design &amp; Computer Architecture</h1>
-<h2>September 25, 2012</h2></div><div class='pos'></div>
+<h1>UART, MIPS and Timing</h1>
+<h2>September 25, 2012</h2>
+<p>Timing: motivation for next lecture (pipelining). Lot of online resources
+(resources, period) on MIPS. Should have lived + breathed this thing during
+61C. For sure, you've got your 61C lecture notes and CS150 lecture notes
+(both from last semester). Also the green card (reference) and there's
+obviously the book. Should have tons of material on the MIPS processor out
+there.</p>
+<p>So, from last time: we talked about a universal asynchronous receiver
+transmitter. On your homework, I want you to draw a couple of boxes
+(control and datapath; they exchange signals). Datapath is mostly shift
+registers. May be transmitting and receiving at same time; one may be idle;
+any mix. Some serial IO lines going to some other system not synchronized
+with you. Talked about clock and how much clock accuracy you need. For
+eight-bit, you need a couple percent matching parity. In years past, we've
+used N64 game controllers as input for the project. All they had was an RC
+relaxation oscillator. Had same format: start bit, two data bits, and stop
+bit. Data was sent Manchester-coded (0 -&gt; 01; 1: 10). In principle, I can
+have a 33% error, which is something I can do with an RC oscillator.</p>
+<p>Also part of the datapath, 8-bit data going in and out. Whatever, going to
+be MIPS interface. Set of memory-mapped addresses on the MIPS, so you can
+read/write on the serial port. Also some ready/valid stuff up
+here. Parallel data to/from MIPS datapath.</p>
+<p>MIPS: invented by our own Dave Patterson and John Henessey from
+Stanford. Started company, Kris saw business plan. Was confidential, now
+probably safe to talk about. Started off and said they're going to end up
+getting venture capital, and VCs going to take equity, which is going to
+dilute their equity. Simple solution, don't take venture money. These guys
+have seen enough of this. By the time they're all done, it would be awesome
+if they each had 4% of the company. They set things up so that they started
+at 4%. Were going to allocate 20% for all of the employees, series A going
+to take half, series B, they'll give up a third, and C, 15%. Interesting
+bit about MIPS that you didn't learn in 61C.</p>
+<p>One of the resources, the green sheet, once you've got this thing, you know
+a whole bunch about the processor. You know you've got a program counter
+over here, and you've got a register file in here, and how big it
+is. Obviously you've got an ALU and some data memory over here, and you
+know the instruction format. You don't explicitly know that you've got a
+separate instruction memory (that's a choice you get to make as an
+implementor); you don't know how many cycles it'll be (or pipelined,
+etc). People tend to have separate data and instruction memory for embedded
+systems, and locally, it looks like separate memories (even on more
+powerful systems).</p>
+<p>We haven't talked yet about what a register file looks like inside. Not
+absolute requirement about register file, but it would be nice if your
+register file had two read and one write address.</p>
+<p>We go from a D-ff, and we know that sticking an enable line on there lets
+us turn this into a D-ff with enable. Then if I string 32 of these in
+parallel, I now have a register (clocked), with a write-enable on it.</p>
+<p>Not going to talk about ALU today: probably after midterm.</p>
+<p>So now, I've got a set of 32 registers. Considerations of cost. Costs on
+the order of a hundredth of a cent.</p>
+<p>Now I've made my register file. How big is that logic? NAND gates to
+implement a 5-&gt;32 bit decoder.</p>
+<p>Asynchronous reads. At the rising edge of the clock, synchronous write.</p>
+<p>So, now we get back to MIPS review. The MIPS instrctions, you've got
+R/I/J-type instructions. All start with opcode (same length: 6 bits). Tiny
+fraction of all 32-bit instructions.</p>
+<p>More constraints as we get more stuff. If we then want to constrain that
+this is a single-cycle processor, then you end up with a pretty clear
+picture of what you want. PC doesn't need 32 bits (two LSBs are always 0);
+can implement PC with a counter.</p>
+<p>PC goes into instruction memory, and out comes my instruction. If, for
+example, we want to execute <code>LW $s0 12(%s3)</code>, then we look at the green
+card, and it tells us the RTL.</p>
+<p>Adding R-type to the I-type datapath adds three muxes. Not too bad.</p>
+<p><a name='12'></a></p>
+<h1>Pipelining</h1>
+<h2>September 27, 2012</h2>
+<p>Last time, I just mentioned in passing that we will always be reading
+32-bit instruction words in this class, but ARM has both 32- and 16-bit
+instruction sets. MicroMIPS does the same thing.</p>
+<p>Optimized for size rather than speed; will run at 100 MHz (not very good
+compared to desktop microprocessors made in the same process, which run in
+the gigahertz range), but it burns 3 mW. <mathjax>$0.06 \text{mm}^2$</mathjax>. Questions
+about power monitor -- you've got a chip that's somehow hanging off of the
+power plug and manages one way or the other to get a voltage and current
+signal. You know the voltage is going to look like 155 amplitude.</p>
+<p>Serial! Your serial line, the thing I want you to play around with is the
+receiver. We give this to you in the lab, but the thing is I want you to
+design the basic architecture.</p>
+<p>Start, stop, some bits between. You've got a counter on here that's running
+at 1024 ticks per bit of input. Eye diagrams.</p>
+<p>Notion of factoring state machines. Or you can draw 10000 states if you
+want.</p>
+<p>Something about Kris + scanners, it always ends badly. Will be putting
+lectures on the course website (and announce on Piazza). High-level, look
+at pipelines.</p>
+<p>MIPS pipeline</p>
+<p>For sure, you should be reading 7.5, if you haven't already. H&amp;H do a great
+job. Slightly different way of looking at pipelines, which is probably
+inferior, but it's different.</p>
+<p>First off, suppose I've got something like my Golden Bear power monitor,
+and <mathjax>$f = (A+B)C + D$</mathjax>. It's going to give me this ALU that does addition, ALU
+that does multiplication, and then an ALU that does addition again, and
+that will end up in my output register.</p>
+<p>There is a critical path (how fast can I clock this thing?). For now,
+assume "perfect" fast registers. This, however, is a bad assumption.</p>
+<p>So let's talk about propagation delay in registers.</p>
+<h2>Timing &amp; Delay (H&amp;H 3.5; Fig 3.35,36)</h2>
+<p>Suppose I have a simple edge-triggered D flipflop, and these things come
+with some specs on the input and output, and in particular, there is a
+setup time (<mathjax>$t_{\mathrm{setup}}$</mathjax>) and a hold time (<mathjax>$t_{\mathrm{hold}}$</mathjax>).</p>
+<p>On the FPGA, these are each like 0.4 ns, whereas in 22nm, these are more
+like 10 ps.</p>
+<p>And then the output is not going to change immediately (going to remain
+constant for some period of time before it changes), <mathjax>$t_{ccq}$</mathjax> is the
+minimum time for clock to contamination (change) in Q. And then there's a
+maximum called <mathjax>$t_{pcq}$</mathjax>, the maximum (worst-case) for clock to stable
+Q. Just parameters that you can't control (aside from choosing a different
+flipflop).</p>
+<p>So what do we want to do? We want to combine these flipflops through some
+combinational logic with some propagation delay (<mathjax>$t_{pd}$</mathjax>) and see what our
+constraints are going to be on the timing.</p>
+<p>Once the output is stable (<mathjax>$t_{pcq}$</mathjax>), it has to go through my
+combinational logic (<mathjax>$t_{pd}$</mathjax>), and then counting backwards, I've got
+<mathjax>$t_{setup}$</mathjax>, and that overall has to be less than my cycle. Tells you how
+complex logic can be, and how many stages of pipelines you need. Part of
+the story of selling microprocessors was clock speed. Some of the people
+who got bachelors in EE cared, but people only really bought the higher
+clock speeds. So there'd be like 4 NAND gate delays, and that was it. One
+of the reasons why Intel machines have such incredibly deep pipelines:
+everything was cut into pieces so they could have these clock speeds.</p>
+<p>So. <mathjax>$t_{pd}$</mathjax> on your Xilinx FPGA for block RAM, which you care about, is
+something like 2 ns from clock to data. 32-bit adders are also on the order
+of 2 ns. What you're likely to end up with is a 50 MHz part. I also have to
+worry about fast combinational logic -- what happens as the rising edge
+goes high, my new input contaminates, and it messes up this register before
+the setup time? Therefore <mathjax>$t_{ccq} + t_{pd} &gt; t_{hold}$</mathjax>, necessarily, so we
+need <mathjax>$t_{ccq} &gt; t_{hold}$</mathjax> for a good flipflop (consider shift registers,
+where we have basically no propagation delay).</p>
+<p>Therefore <mathjax>$t_{pcq} + t_{setup} + t_{pd} &lt; t_{cycle}$</mathjax>.</p>
+<p>What does this have to do with the flipflop we know about? If we look at
+the flipflop that we've done in the past (with inverters, controlled
+buffers, etc), what is <mathjax>$t_{setup}$</mathjax>? We have several delays; <mathjax>$t_{setup}$</mathjax>
+should ideally have D propagate to X and Y. How long is the hold
+afterwards? You'd like <mathjax>$D$</mathjax> to be constant for an inverter delay (so that it
+can stop having an effect). That's pretty stable. <mathjax>$t_{hold}$</mathjax> is something
+like the delay of an inverter (if you want to be really safe, you'd say
+twice that number). <mathjax>$t_{pcq}$</mathjax>, assuming we have valid setup, the D value
+will be sitting on Y, and we've got two inverter delays, and <mathjax>$t_{ccq}$</mathjax> is
+also 2 inverter delays.</p>
+<p>Good midterm-like question for you: if I have a flipflop with some
+characteristic setup and hold time, and I put a delay of 1 ps on the input,
+and I called this a new flipflop, how does that change any of these things?
+Can make <mathjax>$t_{hold}$</mathjax> negative. How do I add more delay? Just add more
+inverters in the front. Hold time can in fact go negative. Lot of 141-style
+stuff in here that you can play with.</p>
+<p>Given that, you have to deal with the fact that you've got this propagation
+time and the setup time. Cost of pipelined registers.</p>
+<p>Critical path time, various calculations.</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {

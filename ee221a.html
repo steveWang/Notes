@@ -2,12 +2,12 @@
 <p><a name='1'></a></p>
 <h1>EE 221A: Linear System Theory</h1>
 <h2>August 23, 2012</h2>
-<p>Prof. Claire Tomlin (tomlin@eecs)
-721 Sutardja Dai Hall
-inst.eecs.berkeley.edu/~ee221a</p>
-<p>GSI: Insoon Yang (iyang@eecs)</p>
-<p>Somewhat tentative office hours on schedule: T 1-2, W 11-12.</p>
-<p>In Soon's office hours: M 1:30 - 2:30, θ 11-12.</p>
+<h2>Administrivia</h2>
+<p>Prof. Claire Tomlin (tomlin@eecs). 721 Sutardja Dai Hall. Somewhat
+tentative office hours on schedule: T 1-2, W 11-12.
+http://inst.eecs.berkeley.edu/~ee221a</p>
+<p>GSI: Insoon Yang (iyang@eecs). In Soon's office hours: M 1:30 - 2:30, θ
+11-12.</p>
 <p>Homeworks typically due on Thursday or Friday.</p>
 <h2>Intro</h2>
 <p>Bird's eye view of modeling in engineering + design vs. in science.</p>
@@ -119,7 +119,7 @@ to have: you have a proof that as long as the system adheres to the model,
 then your model will work as expected. Simulation gives you system behavior
 for a certain set of parameters. Very different, but they complement each
 other. Analyze simpler models, simulate more complex models.</p>
-<h1>Linear Algebra</h1>
+<h2>Linear Algebra</h2>
 <p>Functions and their properties.</p>
 <p>Fields, vector spaces, properties and subspaces.</p>
 <p>(note regarding notation: <mathjax>$\Re^+$</mathjax> means non-negative reals, as does
@@ -129,7 +129,7 @@ such that.</p>
 <p>Cartesian product: <mathjax>$\{(x,y) \vert x \in X \land y \in Y\}$</mathjax> (set of ordered
 n-tuples)</p>
 <p><a name='2'></a></p>
-<h1>EE 221A: Linear System Theory</h1>
+<h1>Functions and Vector Spaces</h1>
 <h2>August 28, 2012</h2>
 <p>OH: M/W 5-6, 258 Cory</p>
 <p>Today: beginning of the course: review of lin. alg topics needed for the
@@ -218,7 +218,7 @@ and we refer to the space as simply <mathjax>$V$</mathjax>.</p>
 the main things we're going to do is look at properties of linear functions
 and representation as multiplication by matrices.</p>
 <p><a name='3'></a></p>
-<h1>EE 221A: Linear System Theory</h1>
+<h1>Vector Spaces and Linearity</h1>
 <h2>August 30, 2012</h2>
 <h2>From last time</h2>
 <p>Subspaces, bases, linear dependence/independence, linearity. One of the
@@ -286,7 +286,7 @@ and nullspace.</p>
 <p>(if the nullspace only contains the zero vector, we say it is <strong>trivial</strong>)</p>
 <p><mathjax>$$\mathcal{A}(x_0) = \mathcal{A}(x_1) \iff x - x_0 \in N(\mathcal{A})$$</mathjax></p>
 <p><a name='4'></a></p>
-<h1>EE 221A: Linear System Theory</h1>
+<h1>Matrix Representation of Linear Maps</h1>
 <h2>September 4, 2012</h2>
 <h2>Today</h2>
 <p>Matrix multiplication as a representation of a linear map; change of basis
@@ -403,7 +403,7 @@ defined as</p>
 <p>From analysis: the <strong>supremum</strong> is the least upper bound (the smallest
 <mathjax>$\forall y \in S, x : x \ge y$</mathjax>).</p>
 <p><a name='5'></a></p>
-<h1>EE 221A: Linear System Theory</h1>
+<h1>Guest Lecture: Induced Norms and Inner Products</h1>
 <h2>September 6, 2012</h2>
 <h2>Induced norms of matrices</h2>
 <p>The reason that we're going to start talking about induced norms: today
@@ -595,7 +595,7 @@ renormalize).</p>
 <p>Basically, you get after all this computation that <mathjax>$b_2 = \frac{1}{12} t -
 \frac{1}{24}$</mathjax>. Same construction for <mathjax>$b_3$</mathjax>.</p>
 <p><a name='6'></a></p>
-<h1>EE 221A: Linear System Theory</h1>
+<h1>Singular Value Decomposition &amp; Introduction to Differential Equations</h1>
 <h2>September 11, 2012</h2>
 <p>Reviewing the adjoint, suppose we have two vector spaces <mathjax>$U, V$</mathjax>; like we
 have with norms, let us associated a field that is either <mathjax>$\Re$</mathjax> or
@@ -716,7 +716,7 @@ time. What I'm not allowing in this definition are functions with
 infinitely many points of discontinuity.</p>
 <p>Next time we'll talk about Lipschitz continuity.</p>
 <p><a name='7'></a></p>
-<h1>EE 221A: Linear System Theory</h1>
+<h1>Existence and Uniqueness of Solutions to Differential Equations</h1>
 <h2>September 13, 2012</h2>
 <p>Section this Friday only, 9:30 - 110:30, Cory 299.</p>
 <p>Today: existence and uniqueness of solutions to differential equations.</p>
@@ -854,7 +854,7 @@ necessarily in the space. Example: any continued fraction.</p>
 a Cauchy sequence in a Banach space. Interestingly, it matters what norm
 you choose.</p>
 <p><a name='8'></a></p>
-<h1>EE 221A: Linear System Theory</h1>
+<h1>Proof of Existence and Uniqueness Theorem</h1>
 <h2>September 18, 2012</h2>
 <p>Today:</p>
 <ul>
@@ -1023,13 +1023,13 @@ solution forward in time means existence of unique solution backward in
 time (and vice versa). You can't have solutions crossing themselves in
 time-invariant systems.</p>
 <p><a name='9'></a></p>
-<h1>EE 221A: Linear System Theory</h1>
+<h1>Introduction to dynamical systems</h1>
 <h2>September 20, 2012</h2>
-<p>Introduction to dynamical systems. Suppose we have equations <mathjax>$\dot{x} =
-f(x, u, t)$</mathjax>, <mathjax>$\fn{f}{\Re^n \times \Re^n \times \Re_+}{\Re^n}$</mathjax> and <mathjax>$y = h(x,
-u, t)$</mathjax>, <mathjax>$\fn{h}{\Re^n \times \Re^n \times \Re_+}{\Re^n}$</mathjax>. We define <mathjax>$n_i$</mathjax> as
-the dimension of the input space, <mathjax>$n_o$</mathjax> as dimension of the output space,
-and <mathjax>$n$</mathjax> as the dimension of the state space.</p>
+<p>Suppose we have equations <mathjax>$\dot{x} = f(x, u, t)$</mathjax>, <mathjax>$\fn{f}{\Re^n \times
+\Re^n \times \Re_+}{\Re^n}$</mathjax> and <mathjax>$y = h(x, u, t)$</mathjax>, <mathjax>$\fn{h}{\Re^n \times
+\Re^n \times \Re_+}{\Re^n}$</mathjax>. We define <mathjax>$n_i$</mathjax> as the dimension of the input
+space, <mathjax>$n_o$</mathjax> as dimension of the output space, and <mathjax>$n$</mathjax> as the dimension of
+the state space.</p>
 <p>We've looked at the form, and if we specify a particular <mathjax>$\bar{u}(t)$</mathjax> over some
 time interval of interest, then we can plug this into the right hand side
 of this differential equation. Typically we do not supply a particular
@@ -1046,31 +1046,31 @@ define the state <mathjax>$x$</mathjax> is as a vector of elements whose derivat
 our differential equation. Not formal, but practical for this example.</p>
 <p>Notions of discretizing.</p>
 <h2>What is a dynamical system?</h2>
-<p>As discussed in first lecture, we consider time <mathjax>$\Tau$</mathjax> to be a privileged
+<p>As discussed in first lecture, we consider time <mathjax>$\tau$</mathjax> to be a privileged
 variable. Based on our definition of time, the inputs and outputs are all
 functions of time.</p>
 <p>Now we're going to define a <strong>dynamical system</strong> as a 5-tuple: <mathjax>$(\mathcal{U},
 \Sigma, \mathcal{Y}, s, r)$</mathjax> (input space, state space, output space, state
 transition function, output map).</p>
 <p>We define the <strong>input space</strong> as the set of input functions over time to an
-input set <mathjax>$U$</mathjax> (i.e. <mathjax>$\mathcal{U} = \{\fn{u}{\Tau}{U}\}$</mathjax>. Typically, <mathjax>$U =
+input set <mathjax>$U$</mathjax> (i.e. <mathjax>$\mathcal{U} = \{\fn{u}{\tau}{U}\}$</mathjax>. Typically, <mathjax>$U =
 \Re^{n_i}$</mathjax>).</p>
 <p>We also define the <strong>output space</strong> as the set of output functions over time to
-an output set <mathjax>$Y$</mathjax> (i.e. <mathjax>$\mathcal{Y} = \{\fn{y}{\Tau}{Y}\}$</mathjax>). Typically, <mathjax>$Y
+an output set <mathjax>$Y$</mathjax> (i.e. <mathjax>$\mathcal{Y} = \{\fn{y}{\tau}{Y}\}$</mathjax>). Typically, <mathjax>$Y
 = \Re^{n_o}$</mathjax>.</p>
 <p><mathjax>$\Sigma$</mathjax> is our <strong>state space</strong>. Not defined as the function, but the actual
 state space. Typically, <mathjax>$\Sigma = \Re^n$</mathjax>, and we can go back and think
-about the function <mathjax>$x(t) \in \Sigma$</mathjax>. <mathjax>$\fn{x}{\Tau}{\Sigma}$</mathjax> is called the
+about the function <mathjax>$x(t) \in \Sigma$</mathjax>. <mathjax>$\fn{x}{\tau}{\Sigma}$</mathjax> is called the
 state trajectory.</p>
 <p><mathjax>$s$</mathjax> is called the <strong>state transition function</strong> because it defines how the
 state changes in response to time and the initial state and the
-input. <mathjax>$\fn{s}{\Tau \times \Tau \times \Sigma \times U }{\Sigma}$</mathjax>. Usually
+input. <mathjax>$\fn{s}{\tau \times \tau \times \Sigma \times U }{\Sigma}$</mathjax>. Usually
 we write this as <mathjax>$x(t_1) = s(t_1, t_0, x_0, u)$</mathjax>, where <mathjax>$u$</mathjax> is the function
 <mathjax>$u(\cdot) |_{t_0}^{t_1}$</mathjax>. This is important: coming towards how we define
 state. Only things you need to get to state at the new time are the initial
 state, inputs, and dynamics.</p>
 <p>Finally, we have this <strong>output map</strong> (sometimes called the readout map)
-<mathjax>$r$</mathjax>. <mathjax>$\fn{r}{\Tau \times \Sigma \times U}{Y}$</mathjax>. That is, we can think about
+<mathjax>$r$</mathjax>. <mathjax>$\fn{r}{\tau \times \Sigma \times U}{Y}$</mathjax>. That is, we can think about
 <mathjax>$y(t) = r(t, x(t), u(t))$</mathjax>. There's something fundamentally different
 between <mathjax>$r$</mathjax> and <mathjax>$s$</mathjax>. <mathjax>$s$</mathjax> depended on the function <mathjax>$u$</mathjax>, whereas <mathjax>$r$</mathjax> only
 depended on the current value of <mathjax>$u$</mathjax> at a particular time.</p>
@@ -1144,9 +1144,8 @@ property derived from the definition). Take two dynamical systems <mathjax>$D = 
 \ge t_0, \rho(t, t_0, x_0, u) = \tilde{\rho}(t, t_0, \tilde{x_0}, u)$</mathjax>
 <mathjax>$\forall x$</mathjax> and some <mathjax>$\tilde{x}$</mathjax>, the two systems are equivalent.</p>
 <p><a name='10'></a></p>
-<h1>EE 221A: Linear System Theory</h1>
+<h1>Linear time-varying systems</h1>
 <h2>September 25, 2012</h2>
-<h2>Linear time-varying systems</h2>
 <p>Recall the state transition function is given some function of the current
 time with initial state, initial time, and inputs, Suppose you have a
 differential equation; how do you acquire the state transition function?
@@ -1221,16 +1220,16 @@ solution to that differential equation has the following form: <mathjax>$x(t) =
 we can use the same machinery. If someone gives you a candidate solution,
 you can easily show that it is the solution.</p>
 <p>Recall the Leibniz rule, which we'll state in general as follows:
-<mathjax>$\pderiv{}{z} \int_{a(z)}^{b^z} f(x, z) dx = \int_{a(z)}^{b^z}
-\pderiv{}{x}f(x, z) dx + \pderiv{b}{z} f(b, z) - \pderiv{a}{z} f(a, z}$</mathjax>.</p>
+<mathjax>$\pderiv{}{z} \int_{a(z)}^{b(z)} f(x, z) dx = \int_{a(z)}^{b(z)}
+\pderiv{}{x}f(x, z) dx + \pderiv{b}{z} f(b, z) - \pderiv{a}{z} f(a, z)$</mathjax>.</p>
 <p><mathjax>$$
-\dot{x}(t) &amp; = A(t) \Phi(t, t_0) x_0 + \int_{t_0}^t
+\dot{x}(t) = A(t) \Phi(t, t_0) x_0 + \int_{t_0}^t
 \pderiv{}{t} \parens{\Phi(t, \tau)B(\tau)u(\tau)} d\tau +
 \pderiv{t}{t}\parens{\Phi(t, t)B(t)u(t)} - \pderiv{t_0}{t}\parens{...}
-\\ &amp; = A(t)\Phi(t, t_0)x_0 + \int_{t_0}^t A(t)\Phi(t,\tau)B(\tau)u(\tau)d\tau + B(t)u(t)
-\\ &amp; = A(\tau)\Phi(t, t_0) x_0 + A(t)\int_{t_0}^t \Phi(t, \tau)B(\tau)
+\\ = A(t)\Phi(t, t_0)x_0 + \int_{t_0}^t A(t)\Phi(t,\tau)B(\tau)u(\tau)d\tau + B(t)u(t)
+\\ = A(\tau)\Phi(t, t_0) x_0 + A(t)\int_{t_0}^t \Phi(t, \tau)B(\tau)
 u(\tau) d\tau + B(t) u(t)
-\\ &amp; = A(\tau)\parens{\Phi(t, t_0) x_0 + \int_{t_0}^t \Phi(t, \tau)B(\tau)
+\\ = A(\tau)\parens{\Phi(t, t_0) x_0 + \int_{t_0}^t \Phi(t, \tau)B(\tau)
 u(\tau) d\tau} + B(t) u(t)
 $$</mathjax></p>
 <p><mathjax>$x(t) = \Phi(t,t_0)x_0 + \int_{t_0}^t \Phi(t,\tau)B(\tau)u(\tau) d\tau$</mathjax> is
@@ -1243,7 +1242,198 @@ since the equation that defines its evolution is changing. You test
 time-invariance or time variance through the response map. But is it
 linear? You have the state transition function, so we can compute the
 response function (recall: readout map composed with the state transition
-function) and ask if this is a linear map.</p></div><div class='pos'></div>
+function) and ask if this is a linear map.</p>
+<p><a name='11'></a></p>
+<h1>Linear time-Invariant systems</h1>
+<h2>September 27, 2012</h2>
+<p>Last time, we talked about the time-varying differential equation, and we
+expressed <mathjax>$R(\cdot) = \bracks{A(\cdot), B(\cdot), C(\cdot),
+D(\cdot)}$</mathjax>. Used state transition matrix to show that the solution was
+given by <mathjax>$x(t) = \Phi(t, t_0) x_0 + \int_{t_0}^t B(\tau) u(\tau)
+d\tau$</mathjax>. Integral part is the state transition matrix, and we haven't
+talked about how we would compute this matrix. In general, computing the
+state transition matrix is hard. But there's one important class where
+computing that class becomes much simpler than usual. That is where the
+system does not depend on time.</p>
+<p>Linear time-invariant case: <mathjax>$\dot{x} = Ax + Bu, y = Cx + Du, x(t_0) =
+x_0$</mathjax>. Does not matter at what time we start. Typically, WLOG, we use <mathjax>$t_0 =
+0$</mathjax> (we can't do this in the time-varying case).</p>
+<h2>Aside: Jacobian linearization</h2>
+<p>In practice, generally the case that someone
+doesn't present you with a model that looks like this. Usually, you derive
+this (usually nonlinear) model through physics and whatnot. What can I do
+to come up with a linear representation of that system? What is typically
+done is an approximation technique called Jacobian linearization.</p>
+<p>So suppose someone gives you a nonlinear system and an output equation,
+and you want to come up with some linear representation of the system.</p>
+<p>Two points of view: we could look at the system, and suppose we applied a
+particular input to the system and solve the differential equation
+(<mathjax>$u^0(t) \mapsto x^0(t)$</mathjax>, the <strong>nominal input</strong> and <strong>nominal
+solution</strong>). That would result in a solution (<strong>state trajectory</strong>, in
+general). Now suppose that we for some reason want to perturb that input
+(<mathjax>$u^0(t) + \delta u(t)$</mathjax>, the <strong>perturbed input</strong>). Suppose in general
+that <mathjax>$\delta u$</mathjax> is a small perturbation. What this results in is a new
+state trajectory, that we'll define as <mathjax>$x^0(t) + \delta x(t)$</mathjax>, the
+<strong>perturbed solution</strong>.</p>
+<p>Now we can derive from that what we call the Jacobian linearization. That
+tells us that if we apply the input, the solution will be <mathjax>$x^0 =
+f(x^0, u^0, t)$</mathjax>, and I also have that <mathjax>$x^0(t_0) = x_0$</mathjax>.</p>
+<p><mathjax>$\dot{x}^0 + \dot{\delta}x = f(x^0 + \delta x, u^0 + \delta u, t)$</mathjax>, where
+<mathjax>$(x^0 + \delta x)(t_0) = x_0 + \delta x_0$</mathjax>. Now I'm going to look at these
+two and perform a Taylor expansion about the nominal input and
+solution. Thus <mathjax>$f(x^0 + \delta x, u^0 + \delta u, t) = f(x^0, u^0, t) +
+\pderiv{}{x} f(x, u, t)\vert_{(x^0, u^0)}\delta x +
+\pderiv{}{u}f(x,u,t)\vert_{(x^0, u^0)} \delta u + \text{higher order
+terms}$</mathjax> (recall that we also called <mathjax>$\pderiv{}{x}$</mathjax> <mathjax>$D_1$</mathjax>, i.e. the
+derivative with respect to the first argument).</p>
+<p>What I've done is expanded the right hand side of the differential
+equation. Thus <mathjax>$\delta x = \pderiv{}{x} f(x, u, t)\vert_{(x^0, u^0)} \delta
+x + \pderiv{}{u} f(...)\vert_{(x^0, y^0)}\delta u + ...$</mathjax>. If <mathjax>$\delta u,
+\delta x$</mathjax> small, then we can assume that they are approximately zero, which
+gives us an approximate first-order linear differential equation. This
+gives us a linear time-varying approximation of the dynamics of this
+perturbation vector, in response to a perturbation input. That's what the
+Jacobian linearization gives you: the perturbation away from the nominal
+(we linearized about a bias point).</p>
+<p>Consider A(t) to be the Jacobian matrix with respect to x, and B(t) to be
+the Jacobian matrix with respect to u. Remember that this is an
+approximation, and if your system is really nonlinear, and you perturb the
+system a lot (stray too far from the bias point), then this linearization
+may cease to hold.</p>
+<h2>Linear time-invariant systems</h2>
+<p>Motivated by the fact that we have a solution to the time-varying equation,
+it depends on the state transition matrix, which right now is an abstract
+thing which we don't have a way of solving. Let's go to a more specific
+class of systems: that where <mathjax>$A, B, C, D$</mathjax> do not depend on time. We know
+that this system is linear (we don't know yet that it is time-invariant; we
+have to find the response function and show that it satisfies the
+definition of a time-invariant system), so this still requires proof.</p>
+<p>Since these don't depend on time, we can use some familiar tools
+(e.g. Laplace transforms) and remember what taking the Laplace transform of
+a derivative is. Denote <mathjax>$\hat{x}(s)$</mathjax> to be the Laplace transform of
+<mathjax>$x(t)$</mathjax>. The Laplace transform is therefore <mathjax>$s\hat{x}(s) - x_0 = A\hat{x}(s)
++ B\hat{u}(s)$</mathjax>; <mathjax>$s\hat{y}(s) - y_0 = C\hat{x}(s) + D\hat{u}(s)$</mathjax>. The first
+equation becomes <mathjax>$(sI - A)\hat{x}(s) = x_0 + B\hat{u}(s)$</mathjax>, and we'll leave
+the second equation alone.</p>
+<p>Let's first consider <mathjax>$\hat{x} = Ax$</mathjax>, <mathjax>$x(0) = x_0$</mathjax>. I could have done the
+same thing, except my right hand side doesn't depend on B: <mathjax>$(sI -
+A)\hat{x}(s) = x_0$</mathjax>. Let's leave that for a second and come back to it, and
+make the following claim: the state transition matrix for <mathjax>$\hat{x} = Ax,
+x(t_0) = x_0$</mathjax> is <mathjax>$\Phi(t,t_0) = e^{A(t-t_0)}$</mathjax>, which is called the <strong>matrix
+exponential</strong>, defined as <mathjax>$e^{A(t-t_0)} = I + A(t-t_0) + \frac{A^2(t-t_0)^2}{2!}
++ ...$</mathjax> (Taylor expansion of the exponential function).</p>
+<p>We just need to show that the state transition matrix, using definitions we
+had last day, is indeed the state transition matrix for that system. We
+could go back to the definition of the state transition matrix for the
+system, or we could go back to the state transition function for the vector
+differential equation.</p>
+<p>From last time, we know that the solution to <mathjax>$\dot{x}A(t)x, x(t_0) = x_0$</mathjax>
+is given by <mathjax>$x(t) = \Phi(t, t_0)x_0$</mathjax>; here, we are claiming then that <mathjax>$x(t)
+= e^{A(t - t_0)} x_0$</mathjax>, where <mathjax>$x(t)$</mathjax> is the solution to <mathjax>$\dot{x} = Ax$</mathjax> with
+initial condition <mathjax>$x_0$</mathjax>.</p>
+<p>First show that it satisfies the vector differential equation: <mathjax>$\dot{x} =
+\pderiv{}{t}\exp\parens{A(t-t_0)} x_0 = (0 + A + A^2(t - t_0 + ...)x_0 =
+A(I + A(t-t_0) + \frac{A^2}{2}(t-t_0)^2 + ...) x_0 = Ae^{At} x_0 = Ax(t)$</mathjax>,
+so it satisfies the differential equation. Checking the initial condition,
+we get <mathjax>$e^{A \cdot 0}x_0 = I x_0 = x_0$</mathjax>. We've proven that this represents
+the solution to this time-invariant differential equation. By the existence
+and uniqueness theorem, this is the same solution.</p>
+<p>Through this proof, we've shown a couple of things: the derivative of the
+matrix exponential, and we evaluated it at <mathjax>$t-t_0=0$</mathjax>. So now let's go back
+and reconsider its infinite series representation and classify some of its
+other properties.</p>
+<h2>Properties of the matrix exponential</h2>
+<ul>
+<li><mathjax>$e^0 = I$</mathjax></li>
+<li><mathjax>$e^{A(t+s)} = e^{At}e^{As}$</mathjax></li>
+<li><mathjax>$e^{(A+B)t} = e^{At}e^{Bt}$</mathjax> iff <mathjax>$\comm{A}{B} = 0$</mathjax>.</li>
+<li><mathjax>$\parens{e^{At}}^{-1} = e^{-At}$</mathjax>, and these properties hold in general if
+  you're looking at <mathjax>$t$</mathjax> or <mathjax>$t - t_0$</mathjax>.</li>
+<li><mathjax>$\deriv{e^{At}}{t} = Ae^{At} = e^{At}A$</mathjax> (i.e. <mathjax>$\comm{e^At}{A} = 0$</mathjax>)</li>
+<li>Suppose <mathjax>$X(t) \in \Re^{n \times n}$</mathjax>, <mathjax>$\dot{X} = AX, X(0) = I$</mathjax>, then the
+  solution of this matrix differential equation and initial condition pair
+  is given by <mathjax>$X(t) = e^{At}$</mathjax>. Proof in the notes; very similar to what we
+  just did (more general proof, that the state transition matrix is just
+  given by the matrix exponential).</li>
+</ul>
+<h2>Calculating <mathjax>$e^{At}$</mathjax>, given <mathjax>$A$</mathjax></h2>
+<p>What this is now useful for is making more concrete this state transition
+concept. Still a little abstract, since we're still considering the
+exponential of a matrix.</p>
+<p>The first point is that using the infinite series representation to compute
+<mathjax>$e^{At}$</mathjax> is in general hard.</p>
+<p>Would be doable if you knew <mathjax>$A$</mathjax> were nilpotent (<mathjax>$A^k = 0$</mathjax> for some <mathjax>$k \in
+\mathbb{Z}$</mathjax>), but it's not always feasible. Would not be feasible if <mathjax>$k$</mathjax>
+large.</p>
+<p>The way one usually computes the state transition matrix <mathjax>$e^{At}$</mathjax> is as
+follows:</p>
+<p>Recall: <mathjax>$\dot{X}(t) = AX(t)$</mathjax>, with <mathjax>$X(0) = I$</mathjax>. We know from what we've done
+before (property 6) that we can easily prove <mathjax>$X(t) = e^{At}$</mathjax>. We also know
+that <mathjax>$(sI - A)\hat{X}(s) = I$</mathjax>, so <mathjax>$\hat{X}(s) = (sI - A)^{-1}$</mathjax>. That tells
+me that <mathjax>$e^{At} = \mathcal{L}^{-1}\parens{(sI - A)^{-1}}$</mathjax>. That gives us a
+way of computing <mathjax>$e^{At}$</mathjax>, assuming we have a way to compute a matrix's
+inverse and an inverse Laplace transform. This is what people usually do,
+and most algorithms approach the problem this way. Generally hard to
+compute the inverse and the inverse Laplace transform.</p>
+<p>Requires proof regarding why <mathjax>$sI - A$</mathjax> always has an inverse given by
+<mathjax>$e^{-At}$</mathjax>.</p>
+<p>Clive Moller started LINPACK (Linear algebra package; engine behind
+MATLAB). Famous in computational linear algebra. Paper: 19 dubious ways to
+compute the matrix exponential. Actually a hard problem in
+general. Factoring of <mathjax>$n$</mathjax>-degree polynomials.</p>
+<p>If we were to consider our simple nilpotent case, we'll compute <mathjax>$sI - A =
+\begin{bmatrix}s &amp; -1 \\ 0 &amp; s\end{bmatrix}$</mathjax>. We can immediately write down
+its inverse as <mathjax>$\begin{bmatrix}\frac{1}{s} &amp; \frac{1}{s^2} \\ 0 &amp;
+\frac{1}{s}\end{bmatrix}$</mathjax>. Inverse Laplace transform takes no work; it's
+simply <mathjax>$\begin{bmatrix}1 &amp; t \\ 0 &amp; 1\end{bmatrix}$</mathjax>.</p>
+<p>In the next lecture (and next series of lectures) we will be talking about
+the Jordan form of a matrix. We have a way to compute <mathjax>$e^{At}$</mathjax>. We'll write
+<mathjax>$A = TJT^{-1}$</mathjax>. In its simplest case, it's diagonal. Either way, all of the
+work is in exponentiating <mathjax>$J$</mathjax>. You still end up doing something that's the
+inverse Laplace transform of <mathjax>$sI - J$</mathjax>.</p>
+<p>We've shown that for a linear TI system, <mathjax>$\dot{x} = Ax + Bu$</mathjax>; <mathjax>$y = Cx + Du$</mathjax>
+(<mathjax>$x(0) = x_0$</mathjax>). <mathjax>$x(t) = e^{At}x_0 + \int_0^t e^{A(t-\tau)} Bu(\tau)
+d\tau$</mathjax>. We proved it last time, but you can check this satisfies the
+differential equation and initial condition.</p>
+<p>From that, you can compute the response function and show that it's
+time-invariant. Let's conclude today's class with a planar inverted
+pendulum. Let's call the angle of rotation away from the vertical <mathjax>$\theta$</mathjax>,
+mass <mathjax>$m$</mathjax>, length <mathjax>$\ell$</mathjax>, and torque <mathjax>$\tau$</mathjax>. Equations of motion: <mathjax>$m\ell^2
+\ddot{\theta} - mg\ell \sin \theta = \tau$</mathjax>. Perform Jacobian
+linearization; we'll define <mathjax>$\theta = 0$</mathjax> at <mathjax>$\pi/2$</mathjax>, and we're linearizing
+about the trivial trajectory that the pendulum is straight up. Therefore
+<mathjax>$\delta \theta = \theta \implies m\ell^2 \ddot{\theta} + mg\ell\theta
+= \tau$</mathjax>, where <mathjax>$u = \frac{\tau}{m\ell^2}$</mathjax>, and <mathjax>$\Omega^2 = \frac{g}{\ell}$</mathjax>,
+<mathjax>$\dot{x}_1 = x_2$</mathjax>, and <mathjax>$\dot{x}_2 = \Omega^2 x_1 + u$</mathjax>.</p>
+<p><mathjax>$y = \theta - x_1, \dot{x}_1 = x_2, \dot{x}_2 = \Omega^2 x_1 + u, y =
+x_1$</mathjax>. Stabilization of system via feedback by considering poles of Laplace
+transform, etc. <mathjax>$\frac{\hat{y}}{\hat{u}} = \frac{1}{s^2 - \Omega^2} =
+G(s)$</mathjax> (the plant).</p>
+<p>In general, not a good idea: canceling unstable pole, and then using
+feedback. In the notes, this is some controller <mathjax>$K(s)$</mathjax>. If we look at the
+open-loop transfer function (<mathjax>$K(s)G(s) = \frac{1}{s(s+\Omega)}$</mathjax>), <mathjax>$u =
+\frac{s-\Omega}{s}\bar{u}$</mathjax>, so <mathjax>$\dot{u} = \dot{\bar{u}} - \Omega\bar{u}$</mathjax>
+(assume zero initial conditions on <mathjax>$u, \bar{u}$</mathjax>). If we define a third
+state variable now, <mathjax>$x_3 = u - \bar{u}$</mathjax>, then that tells us that <mathjax>$\dot{x}_3
+= \Omega \bar{u}$</mathjax>. Here, I have <mathjax>$A = \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ \Omega^2
+&amp; 0 &amp; -1 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}$</mathjax>, <mathjax>$B = \begin{bmatrix}0 \\ 1 \\
+\Omega\end{bmatrix}$</mathjax>, <mathjax>$C = \begin{bmatrix}1 &amp; 0 &amp; 0\end{bmatrix}$</mathjax>, <mathjax>$D =
+0$</mathjax>. Out of time today, but we'll solve at the beginning of Tuesday's class.</p>
+<p>Solve for <mathjax>$x(t) = \begin{bmatrix}x_1, x_2, x_3\end{bmatrix}$</mathjax>. We have a few
+approaches:</p>
+<ul>
+<li>Using <mathjax>$A,B,C,D$</mathjax>: compute the following: <mathjax>$y(t) = Ce^{At} x_0 + C\int_0^t
+  e^{A(t - \tau)}Bu(\tau) d\tau$</mathjax>. In doing that, we'll need to compute
+  <mathjax>$e^{At}$</mathjax>, and then we have this expression for general <mathjax>$u$</mathjax>: suppose you
+  supply a step input.</li>
+<li>Suppose <mathjax>$\bar{u} = -y = -Cx$</mathjax>. Therefore <mathjax>$\dot{x} = Ax + B(-Cx) = (A -
+  BC)x$</mathjax>. We have a new <mathjax>$A_{CL} = A - BC$</mathjax>, and we can exponentiate this
+  instead.</li>
+</ul>
+<p>Foreshadows later, when we think about control. Introduces this standard
+notion of feedback for stabilizing systems. Using newfound knowledge of
+state transition matrix for TI systems (how to compute it), see how to
+compute. See what MATLAB is doing.</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
