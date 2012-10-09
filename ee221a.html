@@ -6,7 +6,7 @@
 <p>Prof. Claire Tomlin (tomlin@eecs). 721 Sutardja Dai Hall. Somewhat
 tentative office hours on schedule: T 1-2, W 11-12.
 http://inst.eecs.berkeley.edu/~ee221a</p>
-<p>GSI: Insoon Yang (iyang@eecs). In Soon's office hours: M 1:30 - 2:30, θ
+<p>GSI: Insoon Yang (iyang@eecs). Insoon's office hours: M 1:30 - 2:30, θ
 11-12.</p>
 <p>Homeworks typically due on Thursday or Friday.</p>
 <h2>Intro</h2>
@@ -1433,7 +1433,208 @@ approaches:</p>
 <p>Foreshadows later, when we think about control. Introduces this standard
 notion of feedback for stabilizing systems. Using newfound knowledge of
 state transition matrix for TI systems (how to compute it), see how to
-compute. See what MATLAB is doing.</p></div><div class='pos'></div>
+compute. See what MATLAB is doing.</p>
+<p><a name='12'></a></p>
+<h1>Computing the Matrix Exponential; Dyadic Expansion</h1>
+<h2>October 2, 2012</h2>
+<p>Today: example computing <mathjax>$x(t)$</mathjax> using <mathjax>$e^{At}$</mathjax>. Sastry guest lecturing on
+Thursday; LN11 is linear quadratic optimization.</p>
+<p>Date for midterm: in class, Tuesday Oct. 16 (two weeks from today). It's
+going to cover material up to and including what we cover in homework
+assignments (e.g. won't have anything on linear quadratic optimization;
+will probably be everything up to what we finish this week: up to lecture
+notes 13, not including lecture notes 11). Sample midterms, which will be
+posted; next Friday, Oct. 12, will be midterm review in section. On Monday,
+Oct. 15, Insoon will have extended office hours. One more homework: #4,
+posted tonight, due before midterm (so likely next Thursday).</p>
+<p>In general, you'll compute the matrix exponential via the inverse Laplace
+transform of <mathjax>$(SI - A)^{-1}$</mathjax>. Similarity transformation: <mathjax>$TJT^{-1}$</mathjax>. We
+don't in general talk about <mathjax>$e^{At}$</mathjax>, but rather functions of a matrix <mathjax>$A$</mathjax>
+which can be represented in its Jordan form.</p>
+<p>Continuation of example. We recall that we're working in the realm of LTI
+systems described by the matrices <mathjax>$\dot{x} = Ax + Bu, \dot{y} = Cx +
+D$</mathjax>. Remember the solution given by the convolution (so to speak) of the
+input with the matrix exponential.</p>
+<p>We set up this model with the inverted pendulum, and we considered the
+open-loop representation. We proposed a controller, <mathjax>$k(s)$</mathjax>, and then we
+wrote out the system dynamics. We then defined a new state variable to
+represent the dynamics of the controller, so we had three first-order
+differential equations where the right-hand side is just a function of the
+inputs.</p>
+<p>We then began to consider a closed-loop representation of the system. If we
+write the system in terms of the transfer functions, what we're doing is
+measuring the output and feeding it back through negative feedback to the
+input. If we look at the new state update equation and the output equation,
+we recognize that even though the matrices is different, they still have
+the same dimensions.</p>
+<p>Computed a few things in MATLAB: CL step response. What we see is that it
+has a step response indicative of a nice, stable system, but that's the
+closed loop zero-state response. If we consider the zero-input response, we
+find that the solution diverges.</p>
+<p>So what's going on here? We can go back and look at the system. At some
+times, we can compute <mathjax>$x_{CL}(t)$</mathjax>.</p>
+<p>Once we compute the matrix's inverse, we consider the partial fraction
+decomposition of the elements of the inverse. In general, you would have to
+do that for all nine terms (but in this case, there are repeated terms, so
+you'd have to do this just three times). You can perform this partial
+fraction expansion, and then you have to remember what the inverse Laplace
+transform is.</p>
+<p>In our problem, we're asking for less: we only need to compute the first
+column (which is actually still everything).</p>
+<p>One of the things you're tempted to do as an undergraduate in controls is
+attempt to cancel out your poles, but it is impossible to get perfect
+pole-zero cancellation.</p>
+<p>Back to the main point: we're in general faced with computing the matrix
+exponential, and taking the inverse Laplace transform is hard. The idea is
+to try to represent A in a canonical form to simply compute what that
+Laplace transform is, if possible.</p>
+<h2>General: Functions of a matrix <mathjax>$A \in \mathbb{C}^{n\times n}$</mathjax></h2>
+<p>(Goal: find simpler ways to compute <mathjax>$e^{At}$</mathjax>, but in general, functions of
+a matrix)</p>
+<p>We started with LTI systems; we know the solution in terms of the state
+transition matrix is given by <mathjax>$e^{At}x_0$</mathjax>. More for terminology more than
+anything, we're going to write the inverse of a matrix <mathjax>$sI - A$</mathjax> in the
+following form: the ratio of something called the adjugate of <mathjax>$SI - A$</mathjax> over
+the determinant, i.e. <mathjax>$\frac{\mathrm{adj} (sI - A)}{\det (sI - A)}$</mathjax>. I'm
+going to define the <strong>characteristic polynomial</strong> of <mathjax>$A$</mathjax> as
+<mathjax>$\hat{\chi}_A(s) \defequals \det (SI - A)$</mathjax> (so it will look like <mathjax>$s^n +
+\alpha_1 s^{n-1} + ... + \alpha_n$</mathjax>. The <strong>adjugate</strong> is given by a
+polynomial <mathjax>$B_0 s^{n-1} = B_1 s^{n-2} + ... + B_{n-2} s + B_{n-1}$</mathjax>, where
+<mathjax>$B_i \in \mathbb{C}^{n \times n}$</mathjax>. We define this matrix as follows:
+<mathjax>$\mathrm{adj} (sI - A) = C^T$</mathjax>, where <mathjax>$C_{ij} = )-1)^{i+j} M_{ij}$</mathjax> (where
+<mathjax>$M_{ij}$</mathjax> is the determinant of the <mathjax>$n-1\times n-1$</mathjax> matrix where row <mathjax>$i$</mathjax> and
+column <mathjax>$j$</mathjax> are eliminated).</p>
+<p>What we really want to do is define a notation here for understanding the
+Cayley-Hamilton theorem. If we had to, we could compute it, but let's go
+back and use the notation.</p>
+<p>The theorem we're going to state here is the <strong>Cayley-Hamilton theorem</strong>,
+which states that every <mathjax>$n \times n$</mathjax> matrix satisfies its own
+characteristic polynomial. What does that mean? If you set the
+characteristic polynomial of the matrix to 0, and everywhere you see <mathjax>$s$</mathjax>
+you plug in the matrix, that will sum up to 0.</p>
+<p>Given the setup here, we can easily prove this. With the definition of an
+inverse, let's multiply both sides (of our definition of the inverse) by
+<mathjax>$sI - A$</mathjax> and the characteristic polynomial. This will yield the equivalent
+expression that <mathjax>$\mathrm{adj}(sI - A)(sI - A) = \hat{\chi}_A(s) I$</mathjax>. Just
+matching coefficients, we can write out the <mathjax>$B_i$</mathjax>. From that, we can write
+out the polynomial and simply work through the math. All we used in the
+proof of that is just the general form of the matrix in terms of <mathjax>$sI - A$</mathjax>.</p>
+<p>Really important result, since we can use this to say general things. This
+tells us something immediately about polynomials of matrices. If you were
+looking at some polynomial and wanted to simplify that, we can relate
+higher powers of the matrix A which are less than or equal to <mathjax>$n$</mathjax>. If you
+had general k-degree polynomials in <mathjax>$s$</mathjax>, <mathjax>$\hat{p}_1, \hat{p}_2$</mathjax>, then if we
+divide <mathjax>$\hat{p}_1$</mathjax> by <mathjax>$\hat{\chi}_A$</mathjax>, then we can write these as <mathjax>$\hat{q}_1
+\chi_A + \hat{r}_1$</mathjax> and <mathjax>$\hat{q}_2 \chi_A + \hat{r}_2$</mathjax>. Even if the two are
+not equal, if the remainders are the same (i.e. <mathjax>$\hat{r}_1 = \hat{r}_2$</mathjax>),
+if you evaluate the two on the matrix A, <mathjax>$\hat{p}_1(A) = \hat{p}_2
+(A)$</mathjax>. Just a result of the Cayley-Hamilton theorem. That tells us that
+every polynomial function of <mathjax>$A$</mathjax> can be written as a function of <mathjax>$I, A,
+A^2, ..., A^{n-1}$</mathjax>.</p>
+<p>In general, interesting functions are not necessarily polynomials, and we
+have an infinite series representation. How do we compute functions of a
+matrix A? In order to do that, we're going to have to think about two
+cases: we're going to look at the matrix A and compute its eigenvalues and
+eigenvectors. We've mentioned that before; we'll have a quick review of
+computing eigenvalues and eigenvectors. We'll break this up into two cases:
+we have <mathjax>$n$</mathjax> linearly independent eigenvectors, and we have less than <mathjax>$n$</mathjax>
+linearly independent eigenvectors. In the first case, <mathjax>$A$</mathjax> is
+diagonalizable, meaning there exists a similarity transformation that can
+compute a diagonalization of the matrix where the diagonal elements are the
+eigenvalues, and in the latter case, <mathjax>$A$</mathjax> can be represented in Jordan form.</p>
+<p>If <mathjax>$A$</mathjax> has <mathjax>$n$</mathjax> distinct eigenvalues, that implies that <mathjax>$A$</mathjax> has <mathjax>$n$</mathjax> linearly
+independent eigenvectors (but the reverse implication is not true!).</p>
+<p>Next: Sastry will talk about diagonalizable case, and he'll probably get
+through part of lecture notes 13.</p>
+<p><a name='13'></a></p>
+<h1>Eigenvalues, etc.</h1>
+<h2>October 4, 2012</h2>
+<p>If <mathjax>$A$</mathjax> is real, then <mathjax>$d_1, ... d_n \in \Re$</mathjax>, which also tells us that roots
+appear in complex conjugate pairs. If the matrix is complex, all bets are
+off.</p>
+<p>Amazingly, the study of these eigenvalues and eigenvectors is actually a
+lot easier if the <mathjax>$\lambda_i$</mathjax> are <strong>distinct</strong>, i.e. <mathjax>$\lambda_i\lambda_j =
+\delta_{ij}$</mathjax>. The first thing to notice is that if you have <mathjax>$n$</mathjax> distinct
+eigenvalues, from the definition of eigenvectors, there's at least one
+eigenvector associated with every eigenvalue.</p>
+<p>First thing to prove is that the eigenvectors of distinct eigenvectors are
+linearly independent. Consider a solution to the homogeneous equation
+<mathjax>$\sum_i \alpha_i e_i$</mathjax>. Apply <mathjax>$A - \lambda_i I$</mathjax> for each <mathjax>$i$</mathjax> except for one;
+as a result, we have <mathjax>$\alpha_k (\lambda_k - \lambda_1)(\lambda_k -
+\lambda_2) ... (\lambda k - \lambda_n) e_k$</mathjax> for some <mathjax>$k$</mathjax>. Thus since the
+<mathjax>$\lambda_i$</mathjax> are all distinct, <mathjax>$\alpha_k$</mathjax> must be identically <mathjax>$0$</mathjax> for all
+<mathjax>$k$</mathjax>.</p>
+<h2>Jordan's Theorem</h2>
+<p>We have <mathjax>$A\begin{bmatrix}e_1 &amp; e_2 &amp; ... &amp; e_n \end{bmatrix} =
+\begin{bmatrix} \lambda_1 &amp; 0 &amp; ... &amp; 0 \\ 0 &amp; \lambda_2 &amp; ... &amp; 0 \\
+\vdots &amp; &amp; \ddots &amp; \\ 0 &amp; &amp; ... &amp; 0\end{bmatrix}\begin{bmatrix}e_1 &amp; e_2 &amp;
+... &amp; e_n\end{bmatrix} = T^{-1}\Lambda T$</mathjax>. If you look at <mathjax>$A$</mathjax> in a new
+basis given by the eigenvectors, <mathjax>$A$</mathjax> is a diagonal matrix, where the
+diagonal entries are given by the eigenvalues.</p>
+<p>Jordan (canonical) form of a matrix.</p>
+<p>Let's give a name to the inverse of <mathjax>$T^{-1} = \begin{bmatrix} v_1^T \\
+v_2^T \\ \vdots \\ v_n^T \end{bmatrix}$</mathjax>. Looks also like eigenvectors;
+these are called the left eigenvectors (<mathjax>$\{e_i\}$</mathjax> are the right
+eigenvectors) -- these are actually row vectors as opposed to column
+vectors.</p>
+<p>Notion of an outer product. The dyadic (outer) product of the right and
+left eigenvectors is sometimes called the residual product (basically, a
+projection matrix): <mathjax>$e_i v_i^T = R_i$</mathjax>. If you flipped the order of the
+arguments, that would also be the identity, and what that yields is a
+scalar: <mathjax>$v_i^T e_j = \delta_{ij}$</mathjax>. How would you normally define a function
+<mathjax>$f(A)$</mathjax>? <mathjax>$f(A) = \sum_i \lambda_i R_i$</mathjax>. <mathjax>$f$</mathjax> is required to be <strong>analytic</strong>
+at <mathjax>$\lambda_i$</mathjax>.</p>
+<p>Let's try to apply this to (single input, single output) linear
+systems. Assume that <mathjax>$A$</mathjax> has distinct eigenvalues. That means that there
+exists <mathjax>$T$</mathjax> such that <mathjax>$A = T^{-1}\Lambda T$</mathjax>. If I were to rewrite this with
+a change of basis with <mathjax>$z = Tx$</mathjax>, then <mathjax>$\dot{z} = \Lambda z + Tbu$</mathjax>, <mathjax>$y =
+cT^{-1}z$</mathjax>. If we consider the Laplace transform, we have poles
+corresponding to the eigenvalues. No coupling; cannot observe. By putting
+systems in modal form, you can actually see which inputs are influencing
+the overall transfer function. Just the transient response corresponding to
+the initial condition. The multi-input, multi-output matrix is identical,
+by linearity.</p>
+<p>Just to tell you that this kind of manipulation has some quite interesting
+other implications, let me lead you through another calculation and talk
+about some popular misconceptions about linear systems. In most
+undergraduate courses, you'll be told about the "eigenfunction property":
+if you put in an input at some frequency, you'll get an output at the same
+frequency. Two problems: is that always true for every frequency, and
+secondly, what about the role of the initial condition: what if the system
+is unstable?</p>
+<p>What I'm going to do is just an exercise in Laplace transforms,
+really. (end of lecture 12 notes)</p>
+<p>Output generally corresponds to the <strong>force response</strong>, the response to the
+input at the same frequency, (by the way, without further assumption, the
+eigenfunction property is immediately false if you force it at one of its
+<strong>natural modes</strong>, i.e. eigenvalues) and a second component, the
+contribution due to the initial condition. If <mathjax>$A$</mathjax> is stable, then the
+second component goes to 0. Is it possible to still use this response by
+clever choice of initial condition? Yes: regularization (unique choice of
+<mathjax>$x_0$</mathjax> once <mathjax>$u_0$</mathjax> is specified and <mathjax>$B$</mathjax> is given: <mathjax>$x_0 = = (\lambda I -
+A)^{-1}Bu_0$</mathjax>). Otherwise, we have a transient response, and if <mathjax>$A$</mathjax> is
+growing exponentially, then this will dominate the system.</p>
+<p>The other thing this calculation is good for is that it tells you something
+about the zeros of a linear system. The <strong>zeros</strong> are (1) <mathjax>$\exists u_0 \neq
+\theta \st H(\lambda) u_0 = \theta$</mathjax>. <mathjax>$\lambda$</mathjax> is a <strong>zero of
+transmission</strong> if at this value, <mathjax>$\hat{H}$</mathjax> has a nontrivial right
+nullspace. Here is a way to think about what a zero of transmission is: it
+blocks transmission at that value <mathjax>$\lambda$</mathjax>. If you've chosen the initial
+condition properly, you'll see nothing at the output.</p>
+<p>What you need to remember: distinct eigenvalues means distinct
+eigenvectors; you can decompose a matrix into its Jordan form; we can see
+which modes affect the output; and here is a definition of a zero of
+transmission: if there is a nontrivial choice of <mathjax>$u_0$</mathjax> and frequency
+<mathjax>$\lambda$</mathjax> where you can block transmission.</p>
+<h2>Lecture Notes 13</h2>
+<p>Repeated eigenvalue case. Invariant subspaces. If <mathjax>$\fn{A}{(U,
+\mathbb{C})}{(U, \mathbb{C})}$</mathjax>, <mathjax>$\mathcal{M} \subset V$</mathjax> is said to be an
+<strong>invariant subspace</strong> if <mathjax>$x \in \mathcal{M} \implies Ax \in
+\mathcal{M}$</mathjax>. Aside: <mathjax>$\mathcal{M}$</mathjax> is also invariant under any function of
+<mathjax>$A$</mathjax>. Examples of invariant subspaces: <mathjax>$\mathcal{N}(A)$</mathjax>, <mathjax>$\mathcal{R}(A)$</mathjax>,
+<mathjax>$\mathcal{N}(A - \lambda I)$</mathjax>, <mathjax>$m_1 \cap m_2$</mathjax> (with invariant subspaces
+<mathjax>$m_1, m_2$</mathjax>), <mathjax>$m_1 + m_2$</mathjax> (<mathjax>$+$</mathjax> is the <strong>sum</strong>). The reason why <mathjax>$m_1 \cup
+m_2$</mathjax> is not an invariant subspace is because it is not a subspace.n</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {

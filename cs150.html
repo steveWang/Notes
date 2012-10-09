@@ -212,7 +212,7 @@ drain or open collector: this sort of thing.</p>
 <p>Zero static power: CMOS inverter. Not longer true; power going down, but
 number goes up. Leakage current ends up being on the order of an amp. Also,
 increasingly, gates leak.</p>
-<p>switching current: charging and discharging capacitors. <mathjax>$\alpha C V%2 f$</mathjax></p>
+<p>switching current: charging and discharging capacitors. <mathjax>$\alpha C V2 f$</mathjax></p>
 <p>crowbar current: <mathjax>$I_{CC}$</mathjax>, While voltage is swinging from min to max or
 vice versa, this current exists. All of these things come together to limit
 performance of microprocessor.</p>
@@ -466,8 +466,8 @@ top. Turns out that you can actually put this thing in a scanning electron
 microscope and use undedicated logic and go in with a FIB (focused ion
 beam) and fix problems. "Metal spin".</p>
 <p>Back to chapter two: basic gates again. de Morgan's law: <mathjax>$\bar{AB} =
-\bar{A} + \bar{B}$</mathjax>: <mathjax>$\bar{\prod{A_i}} = \sum \bar{A_i}$</mathjax>. Similarly,
-<mathjax>$\bar{\sum{A_i}} = \prod \bar{A_i}$</mathjax>. Suppose you have a two-level NAND/NAND
+\bar{A} + \bar{B}$</mathjax>: <mathjax>$\widebar{\Pi A_i} = \sum \bar{A_i}$</mathjax>. Similarly,
+<mathjax>$\widebar{\Sigma A_i} = \prod \bar{A_i}$</mathjax>. Suppose you have a two-level NAND/NAND
 gate: that becomes a sum of products (SoP). Similarly, NOR/NOR is
 equivalent to a product of sums (PoS).</p>
 <p>Now, if I do NOR/NOR/INV, this is a sum of products, but the inputs are
@@ -887,7 +887,18 @@ inverters in the front. Hold time can in fact go negative. Lot of 141-style
 stuff in here that you can play with.</p>
 <p>Given that, you have to deal with the fact that you've got this propagation
 time and the setup time. Cost of pipelined registers.</p>
-<p>Critical path time, various calculations.</p></div><div class='pos'></div>
+<p>Critical path time, various calculations.</p>
+<p><a name='13'></a></p>
+<h1>Hazards, Stalls, Delay slots, Three-stage pipeline</h1>
+<h2>October 2, 2012</h2>
+<p>:)</p>
+<p>Let's look at some hazards on the five-stage and then talk about what they
+would look like in the three-stage. In the book, 7.51, this is where they
+go through and look at what happens with the load word.</p>
+<p>Must stall or use delay slot.</p>
+<p><a name='14'></a></p>
+<h1>Stuff</h1>
+<h2>October 4, 2012</h2></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
