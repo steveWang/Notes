@@ -70,6 +70,8 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
   TEX.Macro("comm", "\\bracks{#1 , #2\ }", 2);
   TEX.Macro("infsum", "\\sum_{#1 =-\\infty}^\\infty", 1);
   TEX.Macro("expfrac", "\\parens{\\frac{#1}{#2}}^{#3}", 3);
+  TEX.Macro("Oplus", "\\bigoplus", 0);
+  TEX.Macro("Otimes", "\\bigotimes", 0);
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/config/local/local.js");

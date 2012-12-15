@@ -498,7 +498,7 @@ orthogonality before we can start doing applications.</p>
 <p>Consider Hilbert spaces <mathjax>$(U, \mathbb{F}, \braket{}{}_u), V, \mathbb{F},
 \braket{}{}_v)$</mathjax>, and let <mathjax>$\fn{A}{U}{V}$</mathjax> be a continuous linear
 function. The <strong>adjoint</strong> of <mathjax>$A$</mathjax> is denoted <mathjax>$A^*$</mathjax> and is the map
-<mathjax>$\fn{A^*}{V}{U}$</mathjax> such that <mathjax>$\braket{x}{Ay}_v = \braket{A^*}{y}_u$</mathjax>.</p>
+<mathjax>$\fn{A^*}{V}{U}$</mathjax> such that <mathjax>$\braket{x}{Ay}_v = \braket{A^*x}{y}_u$</mathjax>.</p>
 <p>Reasoning? Sometimes you can simplify things. Suppose <mathjax>$A$</mathjax> maps an
 infinite-dimensional space to a finite-dimensional space (e.g. functions to
 numbers). In some sense, you can convert that function into something that
@@ -1634,7 +1634,1131 @@ transmission: if there is a nontrivial choice of <mathjax>$u_0$</mathjax> and fr
 <mathjax>$A$</mathjax>. Examples of invariant subspaces: <mathjax>$\mathcal{N}(A)$</mathjax>, <mathjax>$\mathcal{R}(A)$</mathjax>,
 <mathjax>$\mathcal{N}(A - \lambda I)$</mathjax>, <mathjax>$m_1 \cap m_2$</mathjax> (with invariant subspaces
 <mathjax>$m_1, m_2$</mathjax>), <mathjax>$m_1 + m_2$</mathjax> (<mathjax>$+$</mathjax> is the <strong>sum</strong>). The reason why <mathjax>$m_1 \cup
-m_2$</mathjax> is not an invariant subspace is because it is not a subspace.n</p></div><div class='pos'></div>
+m_2$</mathjax> is not an invariant subspace is because it is not a subspace.n</p>
+<p><a name='14'></a></p>
+<h1>Jordan Form</h1>
+<h2>October 9, 2012</h2>
+<p>We just started talking about invariant subspaces. Midterm will be up to
+and including lecture notes 12 (but we haven't gone through 11). Today I'd
+like to continue in this vein that we've been presenting for the past
+couple of lectures. What we've been doing is being motivated by our need to
+efficiently compute <mathjax>$e^{At}$</mathjax>, and we've been thinking more generally about
+how to compute functions of a square matrix <mathjax>$A$</mathjax>. What we've done in our
+presentation is divide that problem into two classes: case 1 (where <mathjax>$A$</mathjax> is
+diagonalizable) -- that is, <mathjax>$A$</mathjax> has <mathjax>$n$</mathjax> linearly independent eigenvectors,
+each of which is an element of <mathjax>$\mathbb{C}^n$</mathjax>. Remember that if <mathjax>$A$</mathjax> has <mathjax>$n$</mathjax>
+distinct eigenvalues, it is given that <mathjax>$A$</mathjax> has <mathjax>$n$</mathjax> eigenvectors. However,
+we don't need <mathjax>$n$</mathjax> distinct eigenvalues (consider degeneracy of quantum
+states).</p>
+<p>What we proved last time was a theorem that in this case, the eigenvectors
+form a basis for <mathjax>$\mathbb{C}^n$</mathjax>, and we went ahead and constructed a
+similarity transform which transforms <mathjax>$A$</mathjax> to a diagonal matrix. Consider
+<mathjax>$T^{-1}$</mathjax>, whose columns are the eigenvectors (since the columns form a
+basis, it is invertible, and <mathjax>$T$</mathjax> exists). <mathjax>$\Lambda = TAT^{-1}$</mathjax>, and
+<mathjax>$\Lambda$</mathjax>, a diagonal matrix containing the corresponding eigenvalues.</p>
+<p>Consider a function <mathjax>$\fn{f}{\mathbb{C}^{n\times n}}{\mathbb{C}^{n\times
+n}}$</mathjax>. We talked about polynomial functions of a matrix (recall
+Cayley-Hamilton theorem). Let us consider a more general case: <mathjax>$f$</mathjax> is
+<strong>analytic</strong>, that is, one that is locally given by a convergent power
+series. We have that <mathjax>$f(A) = f(T^{-1}\Lambda T) = T^{-1}f(\Lambda)T$</mathjax>. What
+does this mean? This is just <mathjax>$f$</mathjax> applied to the diagonal matrix.</p>
+<p>In general, <mathjax>$A$</mathjax> is not diagonalizable, and so we have to think about what a
+canonical form (a simple form for a general <mathjax>$n \times n$</mathjax> matrix). We now
+are considering case 2, where <mathjax>$A$</mathjax> is not diagonalizable, i.e. <mathjax>$A$</mathjax> has
+strictly less than <mathjax>$n$</mathjax> eigenvectors. This can only happen if <mathjax>$A$</mathjax> has
+repeated eigenvalues (note: not guaranteed!).</p>
+<p>We will present the "generalization" of the diagonal form, which is called
+Jordan form. Instead of using <mathjax>$\Lambda$</mathjax>, we'll use <mathjax>$J$</mathjax>. Basically, it'll be
+an upper triangular matrix with the eigenvalues on the diagonal, and on the
+off-diagonal, we'll have either ones or zeros (depending on how many
+eigenvectors we have for a given eigenvalue). We call this a canonical form
+(note that the diagonal form is a special case of the Jordan form when
+there are n eigenvectors).</p>
+<p>We're going to approach this today (by constructing a similarity
+transform). In order to do that, we need a little bit of background: we
+need to look in more detail at the eigenstructures of a matrix. We're going
+to do that through this concept of <mathjax>$\mathcal{A}$</mathjax>-invariant
+subspaces. Suppose you have a linear map <mathjax>$\fn{\mathcal{A}}{V}{V}$</mathjax>. <mathjax>$M$</mathjax>, a
+subspace of <mathjax>$V$</mathjax> is said to be <strong><mathjax>$\mathcal{A}$</mathjax>-invariant</strong> (or invariant under
+<mathjax>$\mathcal{A}$</mathjax>) if <mathjax>$\fn{\mathcal{A}}{M}{M}$</mathjax>.</p>
+<p>Example: the nullspace of <mathjax>$\mathcal{A}$</mathjax> is <mathjax>$\mathcal{A}$</mathjax>-invariant. Very
+easy to show that a subspace is <mathjax>$\mathcal{A}$</mathjax>-invariant, typically.</p>
+<p>Now consider <mathjax>$N(A - \lambda I)$</mathjax>, where <mathjax>$\lambda$</mathjax> is an eigenvalue of
+<mathjax>$A$</mathjax>. We know that this space contains the eigenvectors of <mathjax>$A$</mathjax> that
+correspond to <mathjax>$\lambda$</mathjax>; we can then show that this is also an invariant
+subspace. A few more examples: if you have a polynomial function of a
+matrix <mathjax>$A$</mathjax>, then the nullspace of this polynomial function is
+<mathjax>$A$</mathjax>-invariant. Further, given two <mathjax>$A$</mathjax>-invariant subspaces, the intersection
+of these subspaces is also <mathjax>$A$</mathjax>-invariant. Further, if you define sums of
+subspaces in the usual manner, the sum of two <mathjax>$A$</mathjax>-invariant subspaces is
+also <mathjax>$A$</mathjax>-invariant.</p>
+<h2>Dorect sum of subspaces</h2>
+<p>Again we have a vector space <mathjax>$X$</mathjax>, and we'll have <mathjax>$k$</mathjax> subspaces <mathjax>$M_1, M_2,
+..., M_K$</mathjax> of <mathjax>$X$</mathjax>. <mathjax>$V$</mathjax> is said to be a <strong>direct sum</strong> (i.e. <mathjax>$V = \Oplus
+M_i$</mathjax>) if <mathjax>$\forall v \in V, \exists! m_i \in M_i \st v = \sum a_i m_i$</mathjax>. In
+some sense, this is a generalization of linear independence.</p>
+<p>A direct result of the uniqueness constraint of the definition of the
+direct sum is that the intersection of any two of these subspaces contains
+only the zero vector.</p>
+<p>We need two more things before we consider the Jordan form of a matrix.</p>
+<p>One way we can relate <mathjax>$A$</mathjax>-invariance and direct sum is going back to the
+beginning of the class, if you look at <mathjax>$A \in \mathbb{C}^{n \times n}$</mathjax> with
+<mathjax>$n$</mathjax> distinct eigenvalues (or even just <mathjax>$n$</mathjax> linearly independent
+eigenvectors), then <mathjax>$\mathbb{C}^n = \Oplus N(A-\lambda_i)$</mathjax> (we proved last
+time that in this case, the eigenvectors form a basis for the space). This
+is a <strong>direct sum decomposition</strong> of <mathjax>$\mathbb{C}^n$</mathjax>.</p>
+<p>So now let's go on to something quite important, which we generally call
+the Second Representation Theorem. First, let's consider what
+representation means: we define <strong>representation</strong> as the representation of
+a linear map between finite-dimensional vector spaces as a matrix. Aside:
+the first representation theorem was that we could construct a matrix
+representation for any linear map between finite-dimensional vector
+spaces.</p>
+<p>Now we consider the case where <mathjax>$\fn{\mathcal{A}}{V}{V}$</mathjax>. Consider <mathjax>$V = M_1
+\oplus M_2$</mathjax>, where <mathjax>$V$</mathjax> has dimension <mathjax>$n$</mathjax>, <mathjax>$M_1$</mathjax> has dimension <mathjax>$k$</mathjax>, and
+<mathjax>$M_2$</mathjax> has dimension <mathjax>$n-k$</mathjax>. If <mathjax>$M_1$</mathjax> is <mathjax>$A$</mathjax>-invariant, we can say more about
+what this matrix <mathjax>$A$</mathjax> can look like: <mathjax>$\mathcal{A}$</mathjax> can be represented as a
+block matrix <mathjax>$A$</mathjax> in which the lower left block is the zero matrix. The
+upper left block is <mathjax>$k$</mathjax>-dimensional, and the remaining block sizes can be
+inferred from this.</p>
+<p>Easy to prove: can use first representation theorem. We'd like to prove
+that there exists a basis for <mathjax>$V$</mathjax> such that <mathjax>$A$</mathjax> has the stated form. Begin
+by constructing a basis for <mathjax>$M_1, M_2$</mathjax>. Let <mathjax>$\{b_1, ..., b_k\}$</mathjax> be a basis
+for <mathjax>$M_1$</mathjax> and <mathjax>$\{b_{k+1}, ..., b_n\}$</mathjax> be a basis for <mathjax>$M_2$</mathjax>. The image of
+<mathjax>$A$</mathjax> on the first <mathjax>$k$</mathjax> basis vectors can be written as linear combinations of
+the first <mathjax>$k$</mathjax> basis vectors (i.e. you don't need any components involving
+<mathjax>$b_{k+1}, ..., b_n$</mathjax>), and by uniqueness (guaranteed by this being a direct
+sum decomposition), any representation with respect to this basis will
+produce the lower-left block of zeros (by the first representation
+theorem).</p>
+<p>If <mathjax>$M_1, M_2$</mathjax> are both <mathjax>$A$</mathjax>-invariant, then the top-right block can also be
+zero (by symmetry); in fact, the basis we chose earlier will yield this
+result. The proof is identical.</p>
+<p>Example:</p>
+<ul>
+<li>
+<p>Suppose <mathjax>$A$</mathjax> has one eigenvector. I'm going to write then <mathjax>$\mathbb{C}^n
+  = N(A - \lambda_1 I)$</mathjax>. Let us just understand this example as we leave
+  today's class: <mathjax>$A$</mathjax> is no longer diagonalizable. Going back to our second
+  representation theorem and applying it to this case, we'll derive the
+  Jordan form (not on the midterm).</p>
+</li>
+<li>
+<p>Suppose <mathjax>$A$</mathjax> has <mathjax>$n$</mathjax> eigenvectors. <mathjax>$\mathbb{C}^n = \Oplus_i N(A -
+  \lambda_i I)$</mathjax>. By the second representation theorem, we are guaranteed that
+  this matrix is diagonalizable.</p>
+</li>
+</ul>
+<p><a name='15'></a></p>
+<h1>Jordan Form</h1>
+<h2>October 11, 2012</h2>
+<p>We're going to finish up talking about the case where we don't have <mathjax>$n$</mathjax>
+eigenvectors. Recall that if we have <mathjax>$n$</mathjax> distinct eigenvalues, we are
+guaranteed <mathjax>$n$</mathjax> eigenvectors, but this is not a necessary condition.</p>
+<p>We'll then start an example, the linear quadratic regulator.</p>
+<p>Recall: we defined the characteristic polynomial <mathjax>$\hat{\chi}_A(s)$</mathjax> as
+<mathjax>$\det(sI-A)$</mathjax>, which we rewrote as <mathjax>$\hat{\psi}_A(s) = \prod_i (s -
+\lambda_i)^{d_i}$</mathjax>. We're using <mathjax>$d_i$</mathjax> to represent the (algebraic)
+multiplicity of eigenvalue <mathjax>$\lambda_i$</mathjax>. The Cayley-Hamilton theorem tells
+us that the characteristic polynomial evaluated on the matrix <mathjax>$A$</mathjax> is the
+<mathjax>$n$</mathjax>-by-<mathjax>$n$</mathjax> zero matrix.</p>
+<p>Now we're going to define something new. We've been talking about the
+characteristic polynomial, and we know its properties. The roots of the
+characteristic polynomial are the eigenvalues of the matrix, and by
+Cayley-Hamilton, every matrix satisfies its characteristic polynomial.</p>
+<p>Let's now define something called the minimal polynomial of <mathjax>$A$</mathjax>, The
+<strong>minimal polynomial</strong> <mathjax>$\hat{\psi}_A(s)$</mathjax> is the polynomial of least-degree
+such that <mathjax>$\hat{\psi}_A(A) = \theta_{n \times n}$</mathjax>. The question is whether
+there is a polynomial of degree less than <mathjax>$n$</mathjax> such that this identity is
+satisfied. It is the structure of the characteristic polynomial and that of
+the minimal polynomial that allows us to explore the Jordan form.</p>
+<p>Just by definition, we have the result that <mathjax>$\hat{\psi}_A(s)$</mathjax> divides
+<mathjax>$\hat{\chi}_A(s)$</mathjax>. Proof: by the definition of "divides", we have a
+remainder term <mathjax>$\hat{r}$</mathjax>; by linearity, <mathjax>$\hat{r}(A) = 0$</mathjax>. <mathjax>$\hat{r}$</mathjax> must
+either be lesser degree than <mathjax>$\hat{\psi}$</mathjax> (which would violate our
+definition), or it is identically the zero polynomial.</p>
+<p>Thus, we can write <mathjax>$\hat{\psi}_A(s) = \prod_i (s - \lambda_i)^{m_i}$</mathjax>, <mathjax>$m_i
+\le d_i$</mathjax>.</p>
+<p>It turns out that the exponents <mathjax>$m_i$</mathjax> in the minimal polynomial are
+determined by the largest Jordan block associated with <mathjax>$\lambda_i$</mathjax>. (We
+define a <strong>Jordan block</strong> to be a block of the Jordan form that contains
+only ones as the super-diagonal elements.) In general, given <mathjax>$A$</mathjax>, how do we
+find its minimal polynomial?</p>
+<p>(thoughts: consider each Jordan block of <mathjax>$A - \lambda_i$</mathjax> to be analogous to
+a linear feedback shift register, with no new inputs; as such, it shows
+that the largest Jordan block has nilpotency corresponding to the number of
+registers, and all other Jordan blocks for the eigenvalue reach 0
+earlier. Alternately, repeat the above while considering raising and
+lowering operators)</p>
+<p><strong>Theorem</strong>: <mathjax>$\mathbb{C}^n = \Oplus_i N(A - \lambda_i I)^{m_i}$</mathjax>, where <mathjax>$N(A -
+\lambda_i I)^{m_i}$</mathjax> is of dimension <mathjax>$d_i$</mathjax>.</p>
+<p>Recall: if there were <mathjax>$d_i$</mathjax> eigenvectors associated to <mathjax>$\lambda_i$</mathjax> for all
+<mathjax>$i$</mathjax>, then the matrix would be diagonalizable. Generally, the things you add
+to this form are called generalized eigenvectors.</p>
+<p>Proof: We have the minimal polynomial <mathjax>$\hat{\psi}_A(s)$</mathjax>. Consider that
+<mathjax>$\hat{\psi}_A(s) = \frac{1}{\prod_i (s - \lambda_i)^{m_i}} = \sum_j
+\frac{\hat{n}_i(s)}{(s-\lambda_i)^{m_1}}}$</mathjax>. Now, multiplying both sides by
+the minimal polynomial, we end up with <mathjax>$1 = \sum \hat{n}_1(s)\hat{p}_i(s)$</mathjax>,
+as in the notes. Evaluating this polynomial at the matrix <mathjax>$A$</mathjax>, we get <mathjax>$I =
+\sum \hat{n}_i(A)\hat{p_i}(A)$</mathjax>. Multiplying by an arbitrary <mathjax>$x \in
+\mathbb{C}^n$</mathjax>, <mathjax>$x = \hat{n}_1(s)\hat{p}_i(s)x$</mathjax>, which we've written as the
+sum of <mathjax>$\sigma$</mathjax> terms.</p>
+<p>In general, <mathjax>$x_i = \hat{n}_i(A)\hat{p}_i(A)x$</mathjax>. Since <mathjax>$\hat{p}_i(s)
+=\frac{\hat{\psi}_A(s)}{(s - \lambda_i)^{m_i}}$</mathjax>, we know that <mathjax>$(A -
+\lambda_i I)^{m_i}x_i = \theta$</mathjax> since from the above, <mathjax>$x_i \in N(A -
+\lambda_i I)^{m_i}$</mathjax>.</p>
+<p>In order to prove the theorem, we must next show that this decomposition is
+<strong>unique</strong> (meaning that for any vector <mathjax>$x$</mathjax>, there is not another way you
+can break it up into <mathjax>$\sum x_i$</mathjax>; see notes), and that the nullity of <mathjax>$(A
+- \lambda_i I)^{m_i} = d_i$</mathjax>, which is the multiplicity of <mathjax>$(s - \lambda_i)$</mathjax> in
+the characteristic polynomial.</p>
+<p>As a concrete but slightly abstract example, we're going to look at the
+geometric structure of eigenspaces.</p>
+<h2>Geometric Structure of Eigenspaces</h2>
+<p>Consider <mathjax>$A$</mathjax> with just one eigenvalue, whose characteristic polynomial is
+given as defined above. In this case, <mathjax>$d_1 = n, 1 \le m_1 \le d_1$</mathjax>.</p>
+<p>Suppose <mathjax>$n=6, m=3$</mathjax>. One question is whether you can uniquely determine a
+Jordan form (no; we'll see this in a second). What we're saying from the
+theorem we just proved is that we can decompose <mathjax>$\mathbb{C}^6 = N(A -
+\lambda I)^3$</mathjax>. We don't have enough information yet to determine what the
+Jordan form looks like, and how the characteristic and minimal polynomials
+lead to the Jordan form.</p>
+<p>Suppose, in addition, that <mathjax>$N(A - \lambda I) = \mathrm{span}\{e_1, e_2,
+e_3\}$</mathjax> (where <mathjax>$e_i$</mathjax> is an eigenvector of <mathjax>$A$</mathjax> associated to the eigenvalue
+<mathjax>$\lambda$</mathjax>). Further, suppose that <mathjax>$N(A - \lambda I)^2 = N(A - \lambda I)
+\oplus v_1 \oplus v_2$</mathjax>, where <mathjax>$v_1, v_2$</mathjax> are linearly
+independent solutions of <mathjax>$(A - \lambda I)$</mathjax>.</p>
+<p>Then, suppose without loss of generality that <mathjax>$(A = \lambda I) v_1 = e_1$</mathjax>,
+and <mathjax>$(A = \lambda I) v_2 = e_2$</mathjax>.</p>
+<p>Finally, suppose <mathjax>$N(A - \lambda I)^3 = N(A - \lambda I)^2 \oplus w_1$</mathjax>,
+where <mathjax>$(A - \lambda I)w_1 = v_1$</mathjax> (without loss of generality, again).</p>
+<p>In this case (and in general), <mathjax>$e_1$</mathjax> is an eigenvector associated to
+<mathjax>$\lambda$</mathjax>, <mathjax>$v_i$</mathjax> is a generalized eigenvector (of degree 1) associated to
+<mathjax>$\lambda, e_1$</mathjax>, and <mathjax>$w_1$</mathjax> is a generalized eigenvector (of degree 2)
+associated to <mathjax>$\lambda, e_1, v_1$</mathjax>.</p>
+<p><mathjax>$e_2$</mathjax> is also an eigenvector associated to <mathjax>$\lambda$</mathjax>, and <mathjax>$v_2$</mathjax> is also a
+generalized eigenvector corresponding to <mathjax>$\lambda, e_1$</mathjax>.</p>
+<p>Finally, <mathjax>$e_3$</mathjax> is an eigenvector associated to <mathjax>$\lambda$</mathjax>.</p>
+<p>As such, through these definitions, we can construct a similarity
+transformation that gives us a canonical form for the matrix <mathjax>$A$</mathjax>, the
+Jordan form.</p>
+<h2>Constructing the Jordan Form</h2>
+<p><mathjax>$$
+   Ae_1 = \lambda e_1
+\\ Ae_2 = \lambda e_2
+\\ Ae_3 = \lambda e_3
+\\ Av_1 = \lambda v_1 + e_1
+\\ Av_2 = \lambda v_2 + e_2
+\\ Aw_1 = \lambda w_1 + v_1
+$$</mathjax></p>
+<p>I know I can always construct these (in a linearly independent
+fashion). Now, consider a similarity transform <mathjax>$J = TAT^{-1}$</mathjax>, where
+<mathjax>$T^{-1} = \begin{pmatrix} e_1 &amp; v_1 &amp; w_1 &amp; e_2 &amp; v_2 &amp; e_3
+\end{pmatrix}$</mathjax>. I'm putting my eigenvectors with their generalized
+eigenvectors. <mathjax>$J$</mathjax> is the Jordan form of <mathjax>$A$</mathjax>, which is effectively a
+diagonal matrix with some ones in the super-diagonal. This Jordan form
+might have been moved around, so it's not unique. However, the Jordan form
+is unique up to permutations of the Jordan blocks.</p>
+<p>Note: we can't have multiple generalized eigenvectors that correspond to
+the same (generalized) eigenvector, or else they are no longer linearly
+independent with the generalized eigenvectors established thus far; we
+require this chain structure.</p>
+<p>What we've done is define a construct called the generalized
+eigenvector. We'll start next Thursday's class with computing <mathjax>$e^{Jt}$</mathjax>.</p>
+<p><a name='16'></a></p>
+<h1>Functions of Jordan Form, Introduction to Optimal Control</h1>
+<h2>October 18, 2012</h2>
+<p>Alternative derivation of linear quadratic regulator; intro to optimal
+control via LQR (Dr. Jerry Ding).</p>
+<p>Today's a bit of a different lecture: finish up the last note we have in
+this functions of a matrix. If we want to compute an arbitrary analytic
+function of a matrix (which we showed we could generally transform to its
+Jordan canonical form), how do we do that? We'll then go on to optimal
+control.</p>
+<p>For the first five or ten minutes, let's talk about this Jordan form and
+where we ended last day.</p>
+<h2>Functions of a matrix (<mathjax>$n\times n$</mathjax>) in Jordan Form</h2>
+<p>From what we derived last day, we can write down a minimal polynomial, and
+recall that the exponent corresponds to the largest Jordan block for that
+polynomial. This Jordan form could have come (generally) from a matrix <mathjax>$A$</mathjax>,
+and we could have computed <mathjax>$J$</mathjax> through the similarity transform we
+discussed last day. We recall that the columns of <mathjax>$T^{-1}$</mathjax> are the
+eigenvectors and generalized eigenvectors. The number of Jordan blocks
+tells you the number of eigenvectors of the matrix.</p>
+<p><mathjax>$f(A) = f(T^{-1} J T) = T^{-1} f(J) T$</mathjax>. We claim that if you have an
+analytic function <mathjax>$f$</mathjax> (i.e. locally given by a convergent power series). If
+we have the Jordan form and an analytic function, we have the result that
+if we compute <mathjax>$f(J)$</mathjax> (which we can do by applying <mathjax>$f$</mathjax> to each of the Jordan
+blocks), we can use these results to compute <mathjax>$f(A)$</mathjax>.</p>
+<p>So we look at each Jordan block, and when we compute <mathjax>$f$</mathjax> of each Jordan
+block, the diagonal elements are just the function applied to the
+eigenvalues, they're all diagonal matrices, where all entries to the right
+of the diagonal are nth derivatives of <mathjax>$f$</mathjax>, evaluated at the eigenvalues.</p>
+<p>If in general you were looking at a Jordan block, the claim is as follows:
+the elements are of the following structure:</p>
+<p><mathjax>$$(T^{-1}_k)_{ij} = f^{[j - i]}(\lambda_k)\theta(j - i + \epsilon)$$</mathjax></p>
+<p>In the notes, we prove it -- this is a very interesting proof, but it's
+very involved and doesn't add much to our discussion. I'll refer you to the
+notes; we use the minimal polynomial structure and what's called the method
+of interpolating polynomials.</p>
+<p>This claim gives us an important theorem, which we can pull off from this
+result, the <strong>spectral mapping theorem</strong>, which tells us something about
+the eigenvalues of a function of a matrix. Recall we used <mathjax>$\sigma$</mathjax> to
+represent the spectrum (set of eigenvalues). This theorem says that
+<mathjax>$\sigma(f(J)) = f(\sigma(J))$</mathjax>. Specifically we see this from the Jordan
+form, and since we know that we can always construct this matrix, we can
+consider that this applies to all matrices.</p>
+<p>This is probably one of our most powerful tools: we can look at the
+eigenvalues of the matrix, and by the spectral mapping theorem, we can
+consider the effect of the function of the eigenvalues to figure something
+out about the matrix.</p>
+<p>Another thing: 10:18 is apparently the California shake-down day. We
+practice what we're supposed to do in the event of an earthquake.</p>
+<h2>Linear Quadratic Optimization</h2>
+<p>You have some linear time-varying system <mathjax>$x(t) = A(t)x(t) + B(t)u(t)$</mathjax> with
+initial condition <mathjax>$x(0) = x_0$</mathjax>. Consider our state to be in <mathjax>$\Re^n, u \in
+\Re^{n_i}, t \in [t_0, t_1]$</mathjax>. Our objective function in this case will be
+the integral of a penalty on control plus a penalty on state plus a
+terminal cost, i.e. <mathjax>$J(u) = \frac{1}{2}\bracks{\int_{t_0}^{t_1}
+(\mag{u(t)}^2_2 + \mag{C(t)x(t)}^2_2) dt + x^T(t_1)Sx(t_1)}$</mathjax>. In some
+sense, we want to penalize the deviation from the system.</p>
+<p>Our optimization space <mathjax>$U$</mathjax> here is a set of piecewise-continuous
+functions. Obviously not differentiable at points of discontinuity, so it
+satisfies the differential equation almost everywhere.</p>
+<p>The quadratic optimization problem is this: compute the optimal cost of our
+objective function, subject to LTV, i.e. <mathjax>$J^* = \min_{u \in U} J(u)$</mathjax>.</p>
+<p>What are the applications? e.g. stabilization and minimum energy control,
+set point tracking. More interestingly, you can do trajectory tracking (one
+slight problem is you also have some dynamics in the trajectory that you
+want to track; this changes the structure of the controller a little bit,
+but all the ideas are the same).</p>
+<p>Finally, an interesting problem is LQG (linear quadratic gaussian)
+control. Suppose you have a plant, which is linear, pluss some gaussian
+noise. With some input, we get some output (and in general you don't want
+to observe the full state vector). Estimate system's state based on
+measurements and compute control. With the LQG problem, you're minimizing
+the control. We have a Kalman filter fed directly into a LQR. This is one
+of the famous instances of the equivalence principle, i.e. you can do the
+control completely separately. This is one of the few cases in stochastic
+control where you actually have this equivalence principle.</p>
+<p>There are typically two types of solutions: either go by dynamic
+programming or optimality condition. So what does optimality condition
+mean?</p>
+<p>Suppose we have a continuously differentiable scalar function on Euclidean
+space, and we want to solve <mathjax>$\min_{x \in \Re^n} \phi(x)$</mathjax>. If <mathjax>$x$</mathjax> is
+optimal, then the gradient of the cause function is 0 (i.e. <mathjax>$\nabla \phi(x)
+= 0$</mathjax>. Your optimal point must be one of your critical points; you don't
+know which one you're working with. In a lot of numerical optimization
+problems, what you're trying to do is find the gradient; you're trying to
+proceed in the direction of least cost. However, you can get stuck in a
+local minimum.</p>
+<p>Equivalently, a similar condition should hold. Equivalent form: the
+directional derivative <mathjax>$\nabla_v\phi(x) = 0 \forall v \in \Re^n$</mathjax> (what
+we're doing is taking an <mathjax>$\epsilon$</mathjax> deviation along this direction and
+figuring out what the perturbation is). Ideally, you'd like to find a
+similar derivative for the cost function, but you've got a few problems:
+(1) perturbation in <mathjax>$u$</mathjax>. The nice thing about <mathjax>$U$</mathjax> is that it's a vector
+space. We can now define our perturbation as follows: <mathjax>$u_\epsilon = u +
+\epsilon\delta u, \delta u \in U$</mathjax>.</p>
+<p>Next question: how does the cause vector change as a result of control? The
+trajectory of the system with this input is <mathjax>$x_2(t) \Phi(t,t_0)\x_0 +
+\int_{t_0}^t \Phi(t, \tau) B(\tau)(u(\tau) + \epsilon\delta u(\tau))d\tau =
+x(t) + \epsilon \int_{t_0}^{t_1} \Phi(t,\tau)B(\tau) \delta u(\tau) d\tau$</mathjax>;
+we can call this second term <mathjax>$\delta x(t)$</mathjax>, which we then refer to as our
+perturbation of the state trajectory. Basically, this is the zero-state
+response.</p>
+<p><mathjax>$\delta \dot{x} = A(t) \delta x(t) + B(t) \delta u(t); \delta x(0) = 0$</mathjax>. </p>
+<p><mathjax>$$J(u + \epsilon\delta u = \frac{1}{2}\bracks{\int_{t_0}^{t_1}\mag{u +
+\epsilon \delta u}^2_2 + \mag{C(x + \epsilon \delta x)} dt + (x(t_1) +
+\epsilon \delta x(t_1))^T S (x(t_1) + \epsilon \delta x(t_1))} = J(u) +
+\epsilon F(u, \delta u) + \epsilon^2 Q(\delta u)$$</mathjax></p>
+<p>What you see is that if you introduce an <mathjax>$\epsilon$</mathjax> perturbation in your
+input, you get an <mathjax>$\epsilon$</mathjax> perturbation in your output. As such, the
+directional derivative is well-defined, and can be found explicitly as
+<mathjax>$F(u, \delta u)$</mathjax>. This is the first variation of <mathjax>$J$</mathjax>. This first variation
+we can write down in an analogous manner to the static analysis we talked
+about.</p>
+<p><mathjax>$u$</mathjax> is optimal <mathjax>$\iff \nabla_{\delta u}J(u) = 0, \forall \delta u \in U$</mathjax>
+(this is two-way because it is a convex optimization problem).</p>
+<p>Two parts: first assume <mathjax>$u$</mathjax> is optimal. This implies that <mathjax>$\forall \delta
+u, \epsilon, J(u + \epsilon\delta u) \ge J(u)$</mathjax>. which means that <mathjax>$J(u +
+\epsilon \delta u) - J(u) = \epsilon(F(u, \delta u) + \epsilon Q(\delta u))
+\ge 0$</mathjax>. Case 1: <mathjax>$\epsilon &gt; 0$</mathjax>, so <mathjax>$\nabla_{\delta u}J(u) + \epsilon
+Q(\delta u) \ge 0 \implies \nabla_{\delta u} J(u) \ge 0$</mathjax>. In case 2,
+<mathjax>$\epsilon &lt; 0 \implies \nabla_{\delta u} J(u) + \epsilon Q(\delta u) \le 0
+\implies \nabla_{\delta u} J(u) \le 0 \implies \nabla_{\delta u} J(u) = 0$</mathjax>.</p>
+<p>For the other direction, assume <mathjax>$\nabla_{\delta u} J(u) = 0, \forall \delta
+u$</mathjax>. <mathjax>$J(u + \epsilon \delta u) = J(u) + \epsilon \nabla_{\delta u}J(u) +
+\epsilon^2 Q(\delta u) \ge J(u)$</mathjax> (<mathjax>$\forall \delta u, \epsilon$</mathjax>), so <mathjax>$u$</mathjax> is
+optimal.</p>
+<p>This is where we deviate from the approach in Callier and Desoer. Because
+of this result, what we're really interested in is this first
+variation. Now I'll write down more explicitly what that cross-term
+is. <mathjax>$\nabla_{\delta u} J(u) = \int_{t_0}^{t_1} \bracks{u(t)^T \delta u(t) +
+x(t)^T C(t)^TC(t)\delta x(t)} dt + x(t_1)^T S\delta x(t_1)$</mathjax>.</p>
+<p>We'll begin by introducing a quantity that we call the control Hamiltonian:
+<mathjax>$H(x, p, u, t) = p^T(A(t)x + B(t)u) + t_2(u^Tu + x^TC(t)^T C(t)x)$</mathjax>. <mathjax>$p$</mathjax> is
+basically your costate. The thing to note here is that your original system
+equation came from <mathjax>$\dot{x} = \nabla_p H(x, p, u, t)$</mathjax>. The costate is
+basically if you took the negative gradient with respect to <mathjax>$x$</mathjax>, i.e. <mathjax>$p =
+-\nabla _x H(x, p, u, t)$</mathjax>. This comes from classical mechanics and
+conservation of energy. It's sort of intuitive as an optimal control
+problem that there's a coupling relationship between your dynamics and your
+system, and you're trying to descend to the state of lowest cost
+(minimizing the action). Instead of solving the dynamic optimization
+problem, all we're going to minimize is our Hamiltonian.</p>
+<p>I'll try to give an informal derivation for now. Here, <mathjax>$\dot{p}(t) =
+-A^T(t) p(t) - C(t)^TC(t) x(t)$</mathjax>; <mathjax>$p(t_1) = \nabla_x \parens{\frac{1}{2}
+x^T(t_1) S(x(t_1))} = Sx(t_1)$</mathjax>. What we do now is take a time derivative of
+<mathjax>$p(t)^T \delta x(t)$</mathjax>. When you evaluate this derivative, something magical
+sort of happens: you get <mathjax>$p(t)^T \delta x(t) + p(t)^T\delta x(t)$</mathjax>. What you
+can show from this is if you just plug this in, <mathjax>$= -x(t)^T C(t)^T C(t)
+\delta x(t) + p(t)^T B(t) \delta u(t)$</mathjax>. If you integrate both sides of this
+expression from <mathjax>$t_0$</mathjax> to <mathjax>$t_1$</mathjax>, you get <mathjax>$p(t_1)^T \delta x(t_1) - p(t_0)^T
+\delta x(t_0) = \int_{t_0}^{t_1} {p(t)^T B(t) \delta u(t) - x(t)^T C(t)^T
+C(t) \delta x(t)} dt$</mathjax>.</p>
+<p>Rearranging terms, this basically becomes <mathjax>$x(t_1)^T S x(t_1) +
+\int_{t_0}^{t_1} x(t)^T C(t)^T C(t) \delta x(t) dt = \int{t_0}^{t_1} p(t)^T
+B(t) \delta u(t) dt$</mathjax>. Essentially, we can rewrite the first variation as
+<mathjax>$\nabla_{\delta u} J(u) = \int_{t_0}^{t_1} \parens{u(t)^T + p(t)^T B(t)}
+\delta u(t) dt$</mathjax>. If <mathjax>$u$</mathjax> is optimal, then <mathjax>$\int_{t_0}^{t_1} \mag{u(t)^T +
+p(t)^T B(t)}^2_2 dt = 0$</mathjax>, namely <mathjax>$\nabla_u H(x, p, u, t) = 0$</mathjax>. This
+informal proof doesn't tell you what the critical points are.</p>
+<p>If you go through a more formal proof, we'd apply Pontryagin's minimum
+principle: if <mathjax>$u$</mathjax> is optimal, let <mathjax>$(x,p)$</mathjax> be corresponding state and
+costate trajectories. Along this trajectory, <mathjax>$H(x(t), p(t), u(t), t) =
+\min_{u \in \Re^{n_i}} H(x(t), p(t), u,t)$</mathjax>. Basically, you get a feedback
+function in terms of <mathjax>$x$</mathjax>. However, this is only a necessary condition,
+so you only have a set of possible solutions.</p>
+<p>Applying the minimum principle, the unique solution to this problem <mathjax>$\min_u
+H(x, p, u, t)$</mathjax> is <mathjax>$U^* = -B^T p$</mathjax>. Basically, what this says is by the
+minimum principle, if <mathjax>$u$</mathjax> is optimal, then it must have this form. If you
+knew nothing about optimal control, and you just wrote down the
+Hamiltonian, this gives you the form, if it exists at all.</p>
+<p>You then have to go back and see which value works, and then going back to
+the other problem (which is both necessary and sufficient, since this is a
+convex optimization problem), then you can verify the solution.</p>
+<p>This is basically the main result for this linear quadratic optimization
+problem. Theorem 2.1.157 from Callier and Desoer: </p>
+<p><strong>The optimal solution to (LQ) is <mathjax>$u(t) = -B(t)^Tp(t)$</mathjax>, for almost every <mathjax>$t
+  \in [t_0, t_1]$</mathjax>, where (x,p) is the solution of <mathjax>$\dot{x} = A(t)x(t) +
+  B(t)B(t)^Tp(t), x(t_0) = x_0$</mathjax> and <mathjax>$\dot{p} = C(t)^TC(t)x(t) - A(t)^T
+  p(t), p(t_1) = Sx(t_1)$</mathjax>. So this is basically the structure of the
+  controller.</strong></p>
+<p>The rest of the proof tries to find a more tractable form that you can
+compute. Because in general this two-point boundary problem is hard to
+solve, you want to turn this into an initial value or terminal condition
+problem. You can represent your co-state as a linear function of your state
+<mathjax>$p(t) = P(t)x(t)$</mathjax>; what you get out is a linear state feedback law: <mathjax>$u(t) =
+-B(t)^TP(t) x(t)$</mathjax>. This matrix then evolves as follows: <mathjax>$-\dot{P}(t) =
+A(t)^T P(t) + P(t) A(t) - P(t)B(t)B(t)^T P(t) + C(t)^T C(t), P(t_1) =
+S$</mathjax>.</p>
+<p>The thing to note is that this equation is derived from the theorem.</p>
+<p><a name='17'></a></p>
+<h1>Linear Quadratic Optimization</h1>
+<h2>October 23, 2012</h2>
+<p>How old is control theory? As old as Troy. Legend goes that Aeneas, when in
+Carthage met Queen Dido and discovered the following legend: local
+chieftains of Carthage gave her a piece of oxhide and told her she could be
+the queen of whatever she could cover with the oxhide. Legend says that she
+took the oxhide, cut it into a long thin strip, and she solved the
+corresponding isoparametric optimization problem.</p>
+<p>Mechanics is a special case of optimal control. Part of what we're not
+trying to do is drag you through thousands of years of thinking, but rather
+to encapsulate so many years of human thought into two lectures.</p>
+<p>Jerry gave you one version of this; different way, to get to where optimal
+control is going.</p>
+<p>Start by writing down a linear system: <mathjax>$\dot{x} = A(t)x + B(t)u, y(t) =
+C(t)x + D(t) u$</mathjax>. Associated with this linear system, one defines the dual
+system (also known as the costate) -- last time we represented this with
+<mathjax>$p$</mathjax>. Following from the notes, <mathjax>$-\dot{\tilde{x}} = A^*\tilde{x} + C^*(t)
+\tilde{u}, \y = B^*\tilde{x} + D^*\tilde{u}$</mathjax>. Recall that these are linear
+maps between continuous functions. This is the adjoint (or dual) system,
+which plays a large role in optimal control.</p>
+<p>In circuit theory or mechanical systems, you might find the dual of a
+circuit by replacing capacitors with inductors, series with parallel, etc,
+or you might see mass-damper spring systems. And so that's the relationship
+between them.</p>
+<p>A pretty interesting equality that goes into them is so-called the pairing
+lemma, which is a way to associate the initial conditions and final
+state. The pairing lemma states that <mathjax>$\braket{\tilde{x}(t)}{x(t)} +
+\int_{t_0}^t \braket{\tilde{u}(\tau)}{y(\tau)}d\tau = \braket
+{\tilde{x}(t_0)}{x(t_0)} + \int_{t_0}^t \braket{\tilde{y}(\tau)} {u(\tau)}
+d\tau$</mathjax>. The proof is not very involved: start with <mathjax>$\braket{\dot{\tilde{x}}
++ A^*\tilde{x} + C^*\tilde{u}}{x} + \braket{-y + B^*\tilde{x} +
+D^*\tilde{u}}{u} = 0$</mathjax>; work through algebra. Think of this as a little
+algebraic fact; it has some meaning in terms of the language of the
+adjoint, but let's not get too sidetracked yet.</p>
+<p>Using the pairing lemma, there's a more algebraic proof, compared to the
+one on Thursday. In these notes, we set up the optimal control problem.</p>
+<p>The optimal control problem that you give yourself is stated for the given
+system: minimize, for a certain choice of <mathjax>$u$</mathjax>, the cost function as defined
+last time: <mathjax>$J(u) = \frac{1}{2}\bracks{\int_{t_0}^{t_1} (\mag{u(t)}^2_2 +
+\mag{C(t)x(t)}^2_2) dt + x^T(t_1)Sx(t_1)}$</mathjax> (note that <mathjax>$S &gt; 0$</mathjax>, so it's a
+Hermitian positive semi-definite matrix). Note: there's a cost on the final
+state, cost associated with regulation of state, and in fact, this whole
+thing doesn't need you to define an output <mathjax>$y$</mathjax>. Optimal control says that
+given some dynamics, maximize this.</p>
+<p>The reason you talk about Newton and Calculus of variations is that Newton
+considered this. Newton's laws were a consequence of the particles
+minimizing the total action (<mathjax>$(\mag{u(t)}^2_2 + \mag{C(t)x(t)}^2_2)$</mathjax> is the
+Lagrangian).</p>
+<p>The way you do this is via calculus of variations: <mathjax>$J(u + \epsilon\delta
+u(t)) = J(u) + \epsilon\delta J(\delta u) + O(\epsilon)$</mathjax>. If <mathjax>$u$</mathjax> were the
+best choice, <mathjax>$\forall \delta u$</mathjax> (in some class), <mathjax>$\delta(\delta u) = 0$</mathjax>.</p>
+<p>Newton invented calculus to solve these calculus of variations problems
+because he wanted to describe how things moved.</p>
+<p>So what you get from this is that <mathjax>$\delta u$</mathjax> causes a <mathjax>$\delta x$</mathjax>, and as
+last time, you get <mathjax>$\delta \dot{x} = A\delta x + B \delta u, \delta x(t_0)
+= 0$</mathjax>. From this (when you do the first variation), we saw that you get
+<mathjax>$\int_{t_0}^{t_1} \braket{u}{\delta u} dt + \int_{t_0}^{t_1}\braket{C^*Cx}
+{\delta x}dt + \braket{Sx}{\delta x_1}$</mathjax>. This is a necessary condition for
+optimality, but it isn't so explicit. The reason to use this pairing lemma
+is to simplify the differential equation. I'm going to associate with the
+system <mathjax>$\delta\dot{x} = A\delta x + B\delta u$</mathjax> a dummy output, i.e. <mathjax>$y =
+\delta x$</mathjax>. The dual of this system is simply <mathjax>$-\dot{\tilde{x}} =
+A^*\tilde{x} + \tilde{u}, \tilde{y} = B^*\tilde{x}$</mathjax>.</p>
+<p>Using the pairing lemma and working through a bit of algebra, we get that
+<mathjax>$\int_{t_0}^{t_1} \bracks{\braket{u}{\delta u} + \braket{B^* \tilde{u}}
+{\delta u}}dt = 0$</mathjax>, so <mathjax>$\int_{t_0}^{t_1} \bracks{\braket{u +
+B^*\tilde{x}}{\delta u}dt = 0$</mathjax>.</p>
+<p>(aside: Kalman filtering is the dual of optimal control)</p>
+<p>The Hamiltonian system: <mathjax>$\begin{bmatrix}\dot{x} \\ \dot{\tilde{x}}
+\end{bmatrix} = \begin{bmatrix}A &amp; -BB^* \\ -C^*C &amp; -A^* \end{bmatrix}
+\begin{bmatrix}x \\ \tilde{x} \end{bmatrix}$</mathjax>, <mathjax>$x(t_0) = x_0, \tilde{x}(t_1)
+= Sx(t_1)$</mathjax>. In mathematics, we call this a two-point boundary equation. Not
+fun to solve, generally.</p>
+<p>However, the theorem (of Linear Quadratic Optimal Control) is as follows:
+<mathjax>$U = B^*(t) P(t) x(t)$</mathjax>; we have <mathjax>$-\dot{P} = A^*P + PA - PBB^*P + C^*C$</mathjax>,
+<mathjax>$P(t_1) = -S$</mathjax>. This has a very famous name associated with it:
+Ricatti.</p>
+<p>Ricatti did the following: given <mathjax>$x$</mathjax> and <mathjax>$y$</mathjax> which were both linear
+equations in terms of each other, and you defined the new state variable <mathjax>$z
+= y/x$</mathjax>, what differential equation would <mathjax>$z$</mathjax> satisfy? <mathjax>$\dot{z} = a + bz -
+cz + dz^2$</mathjax>. Further, the reason that the original equation looks quadratic
+is because <mathjax>$P(t) = \tilde{x} X^{-1} $</mathjax>, where the matrices satisfy the
+Hamiltonian system we had before. Amazingly, the answer to this problem is
+simply a state feedback law, <mathjax>$u = F(t)x(t)$</mathjax>, where <mathjax>$F(t) =
+B^*(t)P(t)$</mathjax>.</p>
+<p>If we consider the matrix differential equation <mathjax>$\deriv{}{t}
+\begin{bmatrix}X \\ \tilde{X} \end{bmatrix} = \begin{bmatrix}A &amp; -BB^* \\
+-C^*C &amp; -A^* \end{bmatrix} \begin{bmatrix}X \\ \tilde{X} \end{bmatrix}$</mathjax>,
+<mathjax>$x(t_0) = x_0, \tilde{x}(t_1) = Sx(t_1)$</mathjax> where <mathjax>$X(t_1) = I, \tilde{X}(t_1)
+= S$</mathjax>,</p>
+<p>What we want to show is that <mathjax>$u(t) = -B^*\tilde{X}X^{-1}x(t)$</mathjax>. One part of
+this proof is to show that <mathjax>$X(t)$</mathjax> is invertible (page 36 of C&amp;D, so we'll
+skip this).</p>
+<p>Begin by choosing k such that <mathjax>$X(t_0)k = x_0$</mathjax>, then define <mathjax>$x(t) = X(t) k,
+\tilde{x}(t) = \tilde{X}(t) k$</mathjax>. As an artifact of defining this, <mathjax>$x,
+\tilde{x}$</mathjax> satisfy the same expressions, and by the initial conditions,
+<mathjax>$x(t_1) = k$</mathjax>, so <mathjax>$\tilde{x}(t_1) = Sx(t_1)$</mathjax>. This shows now that <mathjax>$u(t) =
+-B^* \tilde{X} X^{-1} x(t)$</mathjax>, which is our linear feedback system, so we
+must show that <mathjax>$\tilde{X} X^{-1} = P$</mathjax>, which is more algebra.</p>
+<p>Note: we can find the derivative of <mathjax>$\deriv{}{t}X^{-1}$</mathjax> by differentiating
+<mathjax>$X^{-1} X = I$</mathjax>.</p>
+<p>If you take the ratio of two quantities in a differential equation, then
+this ratio satisfies the Ricatti equation. People say that the Ricatti
+equation is the simplest linear differential equation because it's just a
+linear differential equation in disguise.</p>
+<p>The person we should really credit for finishing off optimal control
+(coming up with this composite story) was R. E. Kalman. This paper (1961)
+was rejected by most journals, including IEEE.</p>
+<p>There had been a Russian called Pontryagin, who came up with a version of
+optimal control: in classical mechanics, it's Hamilton's principle of
+minimized action; Pontryagin said that given <mathjax>$\int_{t_0}^{t_1} L(x, u)dt +
+V(x(t_1))$</mathjax> (Pontryagin's maximum principle). Zadeh and Desoer rewrote
+Pontryagin's maximum principle. Kalman, of course, to his credit, made
+everything quadratic.</p>
+<p>Algebraic Ricatti equation: <mathjax>$C^*C + A^*\bar{P} + \bar{P}A^* - \bar{P}BB^*
+\bar{P} = 0$</mathjax>, in time-invariant case. To do this right, you'll have to
+cover notions of stability, then controllability and observability. in
+undergraduate classes, you heard about root-locus, in which you tweak a
+parameter and make sure that poles don't end up in the right-half plane.</p>
+<p><a name='18'></a></p>
+<h1>Input-Output Stability</h1>
+<h2>October 25, 2012</h2>
+<p>Think back to LTI systems: consider a system specified by <mathjax>$A, B, C, D$</mathjax>;
+assume single-input, single-output; and <mathjax>$D = 0$</mathjax>; <mathjax>$A$</mathjax> is a diagonal
+matrix. We've got a keen idea as to what the solution should look like;
+we've seen examples like this before. We've got our system model, and we
+have a keen sense as to what the solution is.</p>
+<p>IO stability refers to the stability of the system from the point of view
+of the input/output relation. If we call the input/output response <mathjax>$H(s)$</mathjax>,
+we know that <mathjax>$H(s) = Y(s) / U(s)$</mathjax>, and we know from our Laplace transform
+when we were looking at solutions to the time-invariant equation, that this
+is equal to <mathjax>$C(sI-A)^{-1}B$</mathjax>. We can write <mathjax>$(sI-A)^{-1}$</mathjax> by inspection,
+since this is a diagonal matrix.</p>
+<p>For a multi-input, multi-output system, with <mathjax>$A$</mathjax> as the same as before, we
+still take the Laplace transform; and we now can't just take the same
+ratio. The same formulation is still used to compute <mathjax>$H(s)$</mathjax>, which is now a
+2-dimensional matrix.</p>
+<p>When looking at an I/O relationship, you may not have all of the information
+available in <mathjax>$A$</mathjax> in the I/O relationship because of either how you're
+controlling <mathjax>$B$</mathjax> or how you're sensing: notion of <em>hidden modes</em>.</p>
+<p>Important when we start thinking about I/O stability.</p>
+<p>Consider a system whose output <mathjax>$y(t)$</mathjax> is characterized by <mathjax>$\int_{-\infty}^t
+H(t,\tau) u(\tau) d\tau$</mathjax>. We define <mathjax>$H(t,\tau)$</mathjax> (the weighting pattern /
+function of the system; a matrix for each <mathjax>$(t,\tau)$</mathjax>) and <mathjax>$u(\tau)$</mathjax>, which
+are piecewise continuous in <mathjax>$\tau$</mathjax>; require that the integral of the norm
+of <mathjax>$H(t,\tau)u(\tau)$</mathjax> is finite.</p>
+<p>For linear time-varying systems, <mathjax>$H(t,\tau)$</mathjax> is given by the following
+matrix: <mathjax>$C(\tau)\Phi(t,\tau)B(\tau) + D(t)\delta(t-\tau)$</mathjax> (<mathjax>$\delta(t)$</mathjax> here
+is the delta function).</p>
+<p>For linear time-invariant systems, it's a little easier: we can do the same
+thing, but it simplifies: it only depends (unsurprisingly) on the
+difference of <mathjax>$t$</mathjax> and <mathjax>$\tau$</mathjax>, so we can write it as <mathjax>$H(t-\tau) =
+C\exp(A(t-\tau))B + D$</mathjax> (abusing our notation a bit: to be more precise, we
+would then multiply this by a delta centered at <mathjax>$t - \tau$</mathjax>). Then take the
+unilateral Laplace transform.</p>
+<p>If we have a vector in <mathjax>$\Re^n$</mathjax>, we know that the infinity norm is simply
+the max element of a vector. Recall that the corresponding induced norm is
+simply the max row sum.</p>
+<p>Suppose we have a function <mathjax>$u$</mathjax>; the infinity norm is simply the supremum of
+the infinity norm of the resulting vectors. <mathjax>$L_{\infty}^{n_i}$</mathjax> is simply
+the set of functions that are finite over the infinity-norm.</p>
+<p>We'll consider a particular case of I/O stability, called bounded input,
+bounded output stability.</p>
+<h2>Bounded Input, Bounded Output Stability (BIBO)</h2>
+<p>A system (<mathjax>$L$</mathjax>) is said to be BIBO stable very generally if <mathjax>$u \in
+L_\infty^{n_i} \implies y(u) \in L_\infty^{n_o}$</mathjax>, or equivalently, <mathjax>$\exists
+K &lt; \infty \st \forall u \in L_\infty^{n_i}, \mag{y(\cdot)}_\infty \le
+\mag{u(\cdot)}_\infty$</mathjax>.</p>
+<p>Equivalently, a system is not BIBO stable if no k exists for this
+condition; that is, <mathjax>$\forall k &lt; \infinity, \exists u \st \mag{u}_\infty &gt;
+k\mag{u}\infty$</mathjax>.</p>
+<h2>BIBO stability theorem:</h2>
+<p>(L) is BIBO stable iff <mathjax>$\sup \int_{-\infty}^t \mag{H(t,\tau)}_{i,\infty}
+d\tau &lt; \infty$</mathjax>.</p>
+<p><a name='19'></a></p>
+<h1>Infinite Horizon, BIBO for LTI systems, State space stability</h1>
+<h2>October 30, 2012</h2>
+<p>We want to write a function that minimizes the cost function (with <mathjax>$t_0=0$</mathjax>)
+<mathjax>$J = \int_0^\infty (y^TQy + u^TRu) dt$</mathjax>. We could consider the first term as
+the norm of <mathjax>$\mag{Cx}^2$</mathjax> and the second term as the norm as <mathjax>$\mag{u}^2$</mathjax>;
+<mathjax>$Q, R$</mathjax> specified by designer; only rule we have to follow here is that <mathjax>$Q$</mathjax>
+is positive semi-definite (all eigenvalues are in closed right half plane)
+and <mathjax>$R$</mathjax> is a positive-definite matrix (all eigenvalues are strictly
+positive). Typically, Q, R are chosen to be diagonal, since we generally
+like to penalize components of the input and output relative to each other.</p>
+<p>Penalty on an eigenvector <mathjax>$y_i$</mathjax> being nonzero is simply the associated
+eigenvalue. What's typically important is the ratio of the penalties.</p>
+<p>Optimization problem whose constraints are defined by a dynamical
+system. It turns out that the optimal input is given by linear state
+feedback where the state is multiplied by a matrix <mathjax>$F$</mathjax> determined by the
+system model and the matrices of the cost function: (as seen before): <mathjax>$u =
+-Fx, F = R^{-1}B^T P$</mathjax>, where <mathjax>$P$</mathjax> is the positive-definite solution to the
+algebraic Ricatti equation: <mathjax>$PA + A^TP - PBR^{-1}B^TP + C^TQC = 0$</mathjax>. <mathjax>$P \in
+\Re^{n \times n}$</mathjax>. Out of all possible inputs, the best one is given by
+linear state feedback.</p>
+<p>We have some intuition given the linear time-varying case, which is more
+complicated; easy to justify through completing the square. Intuition as to
+what cost means; now we just need to solve this equation (there's a MATLAB
+routine for this, ARE).</p>
+<p>If we were to take the derivative of <mathjax>$x^TPx$</mathjax> (<mathjax>$\dot{x}^TPx + x^TP\dot{x}$</mathjax>)
+and integrate it, we get <mathjax>$(x^TPx)(\infty) - (x^TPx)(0)$</mathjax>. Since we defined
+<mathjax>$J = \int_0^\infty (y^TQy + u^TRu)dt$</mathjax>, <mathjax>$J - (x^TPx)(0) = -(x^TPx)(\infty) +
+\int_0^\infty (y^TQy + u^TRu)dt + \int_0^\infty (\deriv{}{t}(x^TPx)
+dt$</mathjax>. From the definition of <mathjax>$\dot{x}$</mathjax>, we can rewrite the derivative. After
+some tweaking, <mathjax>$J - (x^TPx)(0) = -(x^TPx)(\infty) + \int_0^\infty (u +
+R^{-1}B^TPx)^TR(u + R^{-1}B^TPx)dt$</mathjax></p>
+<p>By our hypothesis, we are assuming that <mathjax>$P$</mathjax> solves the algebraic Ricatti
+equation. We can use that to simplify the equation. If the system under
+this control law is stable (exponential, internal stability), then
+<mathjax>$x^TPx(\infty) = 0$</mathjax>. If we choose <mathjax>$u = -R^{-1}B^TPx$</mathjax>, then the term under
+the integral is 0, and so <mathjax>$J$</mathjax> is minimized -- cost depends only on initial
+state, which you can't affect.</p>
+<p>The other thing we talked about was the positive semi-definite solution to
+this equation. Has only one positive semi-definite solution (symmetric). We
+can also prove that if you choose this control input, then it will
+stabilize the system: not only optimal control law, but also stabilizing
+control law.</p>
+<p>We defined BIBO stability as describing a system in which all bounded
+inputs provide bounded outputs.</p>
+<p>We get the following theorem: if we write out the transfer function of the
+weighting pattern of the system, <mathjax>$\hat{H} = C(sI - A)^{-1}B + D$</mathjax>, which is
+a proper matrix, <mathjax>$R = [A,B,C,D]$</mathjax> is BIBO stable, then the poles are all in
+the open left half of the complex plane (<mathjax>$\mathbb{C}^0_-$</mathjax>).</p>
+<p>We can ignore <mathjax>$D$</mathjax> because it's a constant, and so it does not generate (or
+cancel) any poles.</p>
+<p><a name='20'></a></p>
+<h1>State space stability</h1>
+<h2>November 1, 2012</h2>
+<p>overslept :/</p>
+<p><a name='21'></a></p>
+<h1>Internal stability, Lyapunov condition for LTI systems, Controllability / Observability</h1>
+<h2>November 6, 2012</h2>
+<p>LTI case: <mathjax>$\dot{x} = Ax$</mathjax>. Asymptotic / exponential stability iff all
+eigenvalues of A in <mathjax>$C_-^o$</mathjax>. Stability iff all eigenvalues in <mathjax>$C_-$</mathjax> and
+each eigenvalue on <mathjax>$j\omega$</mathjax> axis has J-block of size 1.</p>
+<h2>Connections between internal stability and BIBO stability</h2>
+<p>Go back to general linear time-varying case. If we have the result that
+equilibrium at 0 (WLOG) is equal to 0 (zero-input case) is exponentially
+stable, then assuming (which we do) that <mathjax>$B,C,D$</mathjax> are boudned matrices, then
+the system is BIBO stable.</p>
+<p>We just need to show, now, that given that this is exponentially stable,
+the condition (with weighting patterns and all) for BIBO stability holds.</p>
+<p>(show, as an exercise, that given those bounds, and given our knowledge
+that this is an exponentially stable system and we can develop a bound on
+the norm, that this is BIBO).</p>
+<p>What if <mathjax>$\dot{x} A$</mathjax> is just asymptotically stable? Do we have BIBO
+stability? Something to think about.</p>
+<p>We know from our examples that a system may be BIBO stable but not
+internally stable (notion of modes being blocked by <mathjax>$B$</mathjax> or not exposed by
+<mathjax>$C$</mathjax>) due to the possibility of what we call <strong>hidden modes</strong>,
+i.e. eigenvalues of <mathjax>$A$</mathjax> may be not accessible through the input or
+invisible at the output.</p>
+<p>So when can you relate BIBO stability to internal stability? Foreshadowing
+of what we'll start in a minute.</p>
+<p>If we have an LTI system, we say that if the (A,B) pair is completely
+controllable, and the (A,C) pair is completely observable, then we call the
+system (A,B,C) minimal. If this is the case, then it's true that BIBO
+stability is equivalent to internal exponential stability.</p>
+<p>For linear time-variant systems, I'll make one remark. Often tempting to
+look at eigenvalues of A(t). In general there is no connection between the
+spectrum of A(t) (<mathjax>$\sigma(A(t))$</mathjax>) and the stability of the system.</p>
+<p>There are two cases in which the eigenvalues tell us something about the
+stability:</p>
+<ul>
+<li>
+<p>A is symmetric (or more generally, <mathjax>$\comm{A^\dag A}{AA^\dag} = 0$</mathjax>): A can
+  be decomposed into an orthonormal basis of eigenvectors corresponding to
+  real eigenvalues. If <mathjax>$\sigma(A(t)) \le -\mu$</mathjax> (<mathjax>$\mu &gt; 0$</mathjax>), then we have
+  that equilibrium at 0 is exponentially stable.</p>
+</li>
+<li>
+<p>Proof: Consider <mathjax>$V(x) = x^Tx$</mathjax>. Its time derivative (actually a special
+    kind of derivative) is <mathjax>$\dot{x}^Tx + x^T\dot{x} = 2x^TAx$</mathjax>. Rewrite <mathjax>$A =
+    T^{-1} \Lambda T$</mathjax>, and we have <mathjax>$x^TAx = x^{-1}T \Lambda T x$</mathjax> (we have
+    that <mathjax>$T^{-1} = T^T$</mathjax>). Our initial assumption gives us an upper bound on
+    the product <mathjax>$x^T A x$</mathjax>, which tells us that <mathjax>$\dot{V} \le -2\mu V$</mathjax>. We can
+    integrate this inequality and come up with the following equation:
+    <mathjax>$V(x(t)) \le V(x(0))\exp(-2\mu t)$</mathjax>. Note that <mathjax>$V$</mathjax> is a norm of <mathjax>$x$</mathjax>, so
+    using this norm, we have that <mathjax>$\mag{x(t)}^2 = \mag{x(0)}^2\exp(-2\mu t)$</mathjax>,
+    so <mathjax>$\mag{x(t)} = \mag{x(0)}\exp(-\mu t)$</mathjax>.</p>
+</li>
+<li>
+<p>The reason why this proof is interesting is that it invokes a technique
+    common to control theory: we bring in this function and use the
+    derivative to establish the stability of the system. This is a special
+    case of what we call a Lyapunov function. Lyapunov theory is the most
+    popular tool for assessing stability.</p>
+</li>
+<li>
+<p><mathjax>$Re(A(t)) &lt; -\lambda and \mag{A(t)} \le \epsilon$</mathjax>, with <mathjax>$\epsilon$</mathjax> small
+  enough, then you can show that <mathjax>$x = A(t)x$</mathjax> is exponentially stable
+  (beyond the scope of this course).</p>
+</li>
+</ul>
+<p>Today we'll be looking just at Lyapunov as it applies to the time-invariant
+case. We spend a third of EE 222 studying Lyapunov theory and its
+variations and how to construct Lyapunov functions. Most exportable: use of
+external functions to avoid needing to integrate the system itself.</p>
+<p>This leads us to our last test: a taste of what Lyapunov theory
+is.</p>
+<h2>Theorem (Lyapunov condition for exponential stability of <mathjax>$\dot{x} = Ax$</mathjax>)</h2>
+<p>We consider the following matrix equation (the <strong>Lyapunov equation</strong>) <mathjax>$A^TP
++ PA = -Q$</mathjax>, where <mathjax>$P,Q$</mathjax> are square matrices. Theorem: the system is
+exponentially stable iff <mathjax>$\forall Q = Q^T &gt; 0$</mathjax> the Lyapunov equation has a
+unique solution <mathjax>$P = P^T &gt; 0$</mathjax>.</p>
+<p>Consider <mathjax>$\fn{V}{\Re^n}{\Re^n} = x^TPx$</mathjax>, where for <mathjax>$Q = Q^T &gt; 0$</mathjax>, $P = P^T</p>
+<blockquote>
+<p>0$ is the solution to the Lyapunov equation.</p>
+</blockquote>
+<p>We're going to look at <mathjax>$\dot{V}$</mathjax> (this is the same derivative as before,
+the <strong>Lie derivative</strong>: wherever we see the time derivative of the state,
+we apply the dynamics of the system). This derivative gives a measure of
+how much <mathjax>$V(x)$</mathjax> is changing along the trajectories of the system. It
+suffices to say that <mathjax>$\dot{x}$</mathjax> represents the dynamics of the system.</p>
+<p>So <mathjax>$\dot{V} = x^TA^TPx + x^TPax = x^T(A^TP + PA)x = -x^TQx$</mathjax>. What we want
+to do is relate the changes in <mathjax>$V$</mathjax> back to the changes in <mathjax>$x$</mathjax>. As before,
+<mathjax>$\dot{V}(x) = -x^TQx  \ge -\lambda_{\min}(Q)\mag{x}^2$</mathjax>. Note that <mathjax>$-\mag{x}^2
+\le -\frac{V(x}{\lambda_{\max}(P)}$</mathjax>, and so we can proceed as before.</p>
+<p>This in itself is an important result. More of a technique for analysis
+than something that you'd use for assessing stability. The introduction of
+a Lyapunov function with a specific form (a positive definite function
+whose Lie derivative is a negative definite function) is what's useful.</p>
+<p>Often the work in using Lyapunov theory is to construct such functions. In
+linear system it's easy because it's just given to you.</p>
+<p>(four equivalent statements, proven in Callier and Desoer -- one of these
+is that if one Q exists such that this holds, then it holds for all Q)</p>
+<h2>Controllability / Observability</h2>
+<p>Motivation: designing and manipulating the system so you can get it to do
+a host of things. What we're going to launch into in the last part of the
+class: understanding what controllability of a system means. Part of that
+question is whether or not we can sufficiently observe the dynamics of the
+system through the output. That tells us how well we can control the
+system. Given that, we go on to ponder how to design controllers; we'll use
+the feedback topology we've seen twice already.</p>
+<p>Two parts: assessment of controllability of systems, controller design.</p>
+<p>In the last ten minutes: intuitive discussion about what controllability
+and observability mean. These are general to dynamic systems (not specific
+to linear systems).</p>
+<p>Recall our definition of dynamical systems: five-tuple representation <mathjax>$D =
+(\mathcal{U}, \Sigma, \mathcal{Y}, s,r)$</mathjax>, semigroup and state transition
+axioms hold. The input is said to <strong>steer</strong> the initial condition <mathjax>$x_0$</mathjax> @
+<mathjax>$t_0$</mathjax> to <mathjax>$x_1$</mathjax> @ <mathjax>$t_1$</mathjax> if <mathjax>$x_1 = s(t_1, t_0, x_0, u)$</mathjax>.</p>
+<p>We say that D is <strong>controllable</strong> on some time interval if <mathjax>$\forall x_0, x_1
+\in \Sigma \exists u \in \mathcal{U}$</mathjax> such that <mathjax>$u$</mathjax> steers <mathjax>$x_0$</mathjax> @ <mathjax>$t_0$</mathjax> to
+<mathjax>$x_1$</mathjax> @ <mathjax>$t_1$</mathjax>.</p>
+<p>We define controllability to be specific on a time interval. <strong>completely
+controllable</strong> (cc) denotes that the system is controllable on all time (if
+controllability is not indicated with an interval, it usually denotes
+complete controllability). Controllability of the system corresponds to
+surjectivity of the state transition function, i.e. <mathjax>$\forall x_0 \in
+\Sigma, \fn{s(t_1, t_0, x_0, \cdot)}{U}{\Sigma}$</mathjax> is surjective.</p>
+<p>We'll start next day by talking about observability and thinking about more
+specific tests.</p>
+<p><a name='22'></a></p>
+<h1>Controllability and Observability</h1>
+<h2>November 8, 2012</h2>
+<p>Difference between dynamical system and its representation. Instantiating
+it with the representation is simply our model of the system; the system
+itself is just the five-tuple. Same system with different representations;
+notion of a minimal representation. Controllability and observability are
+properties of a representation.</p>
+<p>The computational tests for controllability and observability -- these
+grammians -- are dependent on the system representations.</p>
+<p>We can define it more basically with the properties of the state transition
+function and the readout map (rather, recall that the composition of the
+two yields the response function).</p>
+<p>note: cc = completely controllable, co = completely observable.</p>
+<p>We discussed what it meant for an input to steer the system, and then we
+defined controllability to be surjectivity of the state transition
+function. In other words, a dynamic system <mathjax>$D$</mathjax> is controllable on
+<mathjax>$\bracks{t_0, T_1}$</mathjax> if the response map (from inputs to states, given some
+initial conditions) is surjective.</p>
+<p>We'll now define observability as follows: <mathjax>$D$</mathjax> is said to be observable on
+<mathjax>$\bracks{t_0, t_1}$</mathjax> if for all valid input functions and all valid output
+functions, the initial state <mathjax>$x_0$</mathjax> at <mathjax>$t_0$</mathjax> is uniquely determined. In
+other words, the response map <mathjax>$\rho(t_1, t_0, \cdot, u)$</mathjax> is injective.</p>
+<p>What happens with controllability and observability under feedback? We're
+going to talk about feedback and one feed-forward topology. What can we say
+about the composite system? Is controllability / observability preserved
+with feedback? We're going to look at two kinds of feedback: state feedback
+and output feedback.</p>
+<h2>Memoryless feedback</h2>
+<p>No memory; static. Recall that the solution to LQR was just linear state
+feedback. That's memoryless: takes the state and multiplies by a constant
+gain matrix.</p>
+<p>State feedback takes states and gives us inputs; output feedback takes
+outputs and gives us inputs.</p>
+<p>Suppose you have a dynamical system <mathjax>$D$</mathjax>. We can actually measure the state
+and feed it back through this function <mathjax>$F_s$</mathjax> to construct a new input.</p>
+<p>Negative state feedback -- subtract this from our input. Initial input is
+the <strong>auxiliary input</strong>.</p>
+<p>The output feedback case is typically more popular because we don't usually
+have the state to measure. We can no longer measure the state, but we can
+take the output.</p>
+<p>With these feedback forms, we're going to make the <strong>well-posedness
+assumption</strong>: for all auxiliary inputs <mathjax>$v$</mathjax> and all initial states and
+times, when you look at the algebraic relationships of those forms, there
+exists unique trajectories <mathjax>$x(t), y(t)$</mathjax> over that time interval.</p>
+<p>If you don't have well-posedness, you can come up with problems: consider
+<mathjax>$A=B=C=0, D=1, u = v+y$</mathjax>. The only <mathjax>$v$</mathjax> that works is 0.</p>
+<p>If we have that the systems are well-posed, we can make some nice
+observations about the observability of the feedback forms.</p>
+<p>The first theorem states the following: suppose you have a well-posed
+system. <mathjax>$D$</mathjax> is controllable on the interval iff <mathjax>$D_s$</mathjax> is controllable on
+the same interval, and iff <mathjax>$D_o$</mathjax> is controllable on the same interval.</p>
+<p>Namely, controllability is preserved under static state feedback.</p>
+<p>Formally rests on the fact that <mathjax>$F_s, F_o$</mathjax> are known maps. We have all
+information to be able to compute one input from the other uniquely (by
+well-posedness assumption).</p>
+<h2>Observability</h2>
+<p>Still considering memoryless output feedback, but now we're also going to
+consider input feed-forward.</p>
+<p>We have another system: D is observable on <mathjax>$\bracks{t_0, t_1}$</mathjax> iff <mathjax>$D_o$</mathjax> is
+observable and iff <mathjax>$D_f$</mathjax> is observable.</p>
+<p><mathjax>$D$</mathjax> is observable on interval given all valid inputs and outputs over
+the time interval if there exists a unique initial condition.</p>
+<p>We've talked about preservation of controllability over state and output
+feedback; we've talked about preservation of observability of output
+feedback and feedforward. But the case we've missed is state feedback. Is
+observability preserved by state feedback? The answer, in general, is
+no. We can explain this in a couple of ways.</p>
+<p>Observability is not necessarily preserved over state feedback -- consider
+nullspace of <mathjax>$F_f$</mathjax>.</p>
+<p>Dynamic feedback. More assumptions that have to be made. Up to now, we've
+been assuming that all of these feedback / feedforward functions are
+memoryless. What if they actually have dynamics associated to them? A lot
+of control design involves using dynamic controllers.</p>
+<p>In general these properties we've talked about (preservation of
+controllability / observability) hold for the memoryless case. If we now
+consider that the feedback and feedforward systems themselves are dynamical
+systems (and have memory), we have to be careful in what we mean by
+controllability and observability of the resulting system.</p>
+<p>The input space of a state feedback function is the space of state
+trajectories of <mathjax>$D$</mathjax>, and the output space is the input space of <mathjax>$D$</mathjax>.</p>
+<p>In order to talk about preservation of controllability and observability,
+we must now about the controllability and observability of the feedback
+system (i.e. the "loop").</p>
+<p>We're going to actually approach that later. For now, skip over
+preservation of controllability and observability under dynamic (state and
+output) feedback until later. We'll discuss different topologies under
+which these are preserved. We'll return to it under the pretext of
+controllability and observability of linear systems.</p>
+<h2>Grammians</h2>
+<p>Given a system representation, how do we construct tests for
+controllability and observability? We have a test for the linear
+time-varying case, which is in general hard to compute, and tests for the
+linear time-invariant case, which are easier. In both cases, they're both
+matrix-rank conditions.</p>
+<h2>Controllability Grammians</h2>
+<p>Let us look at our linear system representation and focus on the
+time-varying case. When we talk about controllability of a linear system,
+we care about controllability of <mathjax>$(A, B)$</mathjax> -- we know that controllability
+on <mathjax>$\bracks{t_0, t_1}$</mathjax> is the same as surjectivity of the state transition
+function, which is defined only in terms of <mathjax>$A, B$</mathjax>: recall that <mathjax>$s(t_1,
+t_0, x_0, u_{[t_0,t_1]}(\cdot)) = \Phi(t_1,t_0)x_0 + \int_{t_0}^{t_1}
+\Phi(t, \tau)B(\tau) u(\tau) d\tau$</mathjax>. Let us refer to the integral as
+<mathjax>$\mathcal{L}_c(u)$</mathjax>, which maps input functions to states. Now we can
+characterize controllability in the following manner: we say that <mathjax>$(A,B)$</mathjax>
+(or generally <mathjax>$R$</mathjax>) is completely controllable on <mathjax>$[t_0, t_1]$</mathjax> iff
+<mathjax>$R(\mathcal{L}_c) = \Re^n$</mathjax>, which is equivalent to saying <mathjax>$\forall x_0 \in
+\Re^n \exists u_{[t_0,t_1]}$</mathjax> that steers <mathjax>$(x_0, t_0)$</mathjax> to <mathjax>$(\theta_m, t_1)$</mathjax>
+(steering to origin), which is further equivalent to saying that you can
+steer <mathjax>$\theta_m$</mathjax> to any state (reaching from origin).</p>
+<p>What is initially unintuitive is that saying either of the two later
+statements is equivalent to saying the first statement. Notion of equating
+this to any vector in <mathjax>$\Re^n$</mathjax>. Because the first piece of the state
+transition function does not depend on <mathjax>$u$</mathjax>, it all boils down to
+surjectivity to <mathjax>$\mathcal{L}_c(u)$</mathjax> (since this is the only part that
+depends on <mathjax>$u$</mathjax>). Thus surjectivity of <mathjax>$s(u)$</mathjax> is equivalent to surjectivity
+of <mathjax>$\mathcal{L}_c(u)$</mathjax>.</p>
+<p><a name='23'></a></p>
+<h1>Controllability and Observability: Grammians and tools</h1>
+<h2>November 13, 2012</h2>
+<h2>Controllability of <mathjax>$[A, B]$</mathjax></h2>
+<p><mathjax>$s(t_1, t_0, x_0, u_{[t_0, t_1]}) = \Phi(t_1, t_0) x_0 + \int_{t_0}^{t_1}
+\Phi(t_1,\tau)B(\tau)u(\tau)d\tau$</mathjax></p>
+<p>We refer to the term with the integral as <mathjax>$\mathcal(L)_c(u)$</mathjax> (<strong>L</strong>inear
+<strong>c</strong>ontroller map). Recall that we showed that controllability of <mathjax>$[A,B]$</mathjax>
+on <mathjax>$[t_0, t_1]$</mathjax> is equivalent to surjectivity of <mathjax>$\mathcal{L}_c$</mathjax>.</p>
+<p>Grammians: matrix tests for controllability and observability for
+time-varying systems, and end up being something quite nice in the LTI
+case.</p>
+<p>Recall: a system is said to be controllable if for any pair of states,
+there exists an input that takes you from the initial state to the terminal
+state over this time interval. We further discussed that this was
+equivalent to saying that we could reach any final state from 0, which was
+further equivalent to saying that we could reach 0 from any initial
+state. (reachability from the origin, steering to the origin)</p>
+<p>Let us pair this, now, with</p>
+<h2>Observability</h2>
+<p>You have your model, final state, and some defined time interval, and from
+that information, you can uniquely determine the initial state of the
+system. For now we'll assume we know the input, but that turns out to be
+extraneous information.</p>
+<p>Response map is the readout map composed with state transition function: in
+particular, it has memory.</p>
+<p>Given the output and the input, observability relates to uniquely
+determining the initial state. Just as we isolated the term that depended
+on input in the controllability case, in observability, we isolate the
+dependence on the initial state.</p>
+<p>We've turned injectivity of <mathjax>$\rho$</mathjax> to injectivity of the linear operator
+<mathjax>$\fn{\mathcal{L}_o}{\Sigma}{Y} \defequals C(t_1)\Phi(t_1, t_0)x_0$</mathjax>
+(<strong>L</strong>inear <strong>o</strong>bservability map).</p>
+<p>Theorem: complete observability of the system <mathjax>$A, C$</mathjax> on the interval
+<mathjax>$[t_0, t_1]$</mathjax> is equivalent to saying that <mathjax>$\mathcal{N}(\mathcal{L}_o) =
+{\theta_n}$</mathjax> (injectivity of the observability map; saying that nullspace is
+trivial)</p>
+<p>Controllability and Observability grammians; named after the same Gram of
+Gram-Schmidt. Recall work in adjoints: we'll turn these tests into matrix
+tests through our knowledge of adjoint maps.</p>
+<p>Recall: adjoint of linear maps. Take two inner product spaces and a map
+that goes from one space to the other. The map's adjoint is defined in
+terms of the inner product.</p>
+<p>We can show that the adjoint of the linear controller map is simply
+<mathjax>$B^*(\cdot)\Phi^(t_1, \cdot)*$</mathjax>: just consider the inner product; bring
+<mathjax>$v^T$</mathjax> under the integral.</p>
+<p>Given <mathjax>$\fn{\mathcal{A}}{\mathcal{U}{V}}$</mathjax>, we have the following
+propositions:</p>
+<h1><mathjax>$V = R(A) \perp\over\oplus N(A^*)$</mathjax></h1>
+<h1><mathjax>$U = R(A^*) \perp\over\oplus N(A)$</mathjax></h1>
+<p>What we'd want to show is one pair; you'd prove this by showing that the
+nullspace of <mathjax>$A^*$</mathjax> is perpendicular to the range of <mathjax>$A$</mathjax>.</p>
+<p>You'll often see this as bubble diagrams: the space <mathjax>$U$</mathjax> is often drawn as
+two bubbles that intersect only at the zero vector.</p>
+<p>More important propositions:</p>
+<h1><mathjax>$N(AA^*) = N(A^*)$</mathjax></h1>
+<h1><mathjax>$R(AA^*) = R(A)$</mathjax></h1>
+<h1><mathjax>$N(A^*A) = N(A)$</mathjax></h1>
+<h1><mathjax>$R(A^*A) = R(A^*)$</mathjax></h1>
+<p>These are very important. Quick sketch of proof of (1): show that the norm
+induced by the adjoint map of anything in <mathjax>$N(AA^*)$</mathjax> is the zero vector;
+this is adequate.</p>
+<p>Sketch of proof of (2): use decomposition from above propositions (<mathjax>$u_1 \in
+R(A^*), u_2 \in N(A)$</mathjax>; apply <mathjax>$A$</mathjax> to this.</p>
+<p>We've deviated a little. Started with tests for controllability and
+observability; did adjoints, showed decomposition of domain and codomain
+spaces when mapping through <mathjax>$A$</mathjax> and its adjoint, we showed how to break
+down these spaces.</p>
+<p>We can now relate these to our observability and controllability tests.</p>
+<h2>Controllability</h2>
+<p><mathjax>$\fn{\mathcal{L}_c}{\mathcal{U}_{[t_0, t_1]}}{\Re^n} = \int_{t_0}^{t_1}
+\Phi(t_1, \tau)B(\tau)u(\tau)$</mathjax>. Recall that we just computed that
+<mathjax>$\mathcal{L}_c^*(x) = B^*(\cdot)\Phi(t_1, \cdot)x$</mathjax>. Complete
+controllability on this interval, using a proposition from above, is
+equivalent to the following: <mathjax>$R(\mathcal{L}_v) = \Re^n =
+R(\mathcal{L}_c\mathcal{L}_c^*)$</mathjax>. This is often easier to
+compute. Composition of <mathjax>$\mathcal{L}_c$</mathjax> with <mathjax>$\mathcal{L}_c^*$</mathjax> yields
+<mathjax>$\int_{t_0}^{t_1}\Phi(t_1, \tau) B(\tau)B^*(\tau)\Phi^*(t_1, \tau) d\tau$</mathjax>,
+which is an <mathjax>$n\times n$</mathjax> matrix. The system is completely controllable on
+this interval iff <mathjax>$W_c$</mathjax> (the <strong>controllability grammian</strong>) has full rank.</p>
+<p>If you look at the integrand, this matrix is a (symmetric) positive
+semidefinite matrix (just write it in terms of the norm). If completely
+controllable, it is positive definite.</p>
+<p>exercise. hint: look at quadratic form, e.g. <mathjax>$x^* W_c x$</mathjax>, and show, using
+that quadratic form for any <mathjax>$x$</mathjax>, that it's positive semi-definite. Our
+controllability test is that <mathjax>$\text{rank } W_c = n$</mathjax>.</p>
+<h2>Observability</h2>
+<p>Recall this involved looking at the nullspace of the map. <mathjax>$\mathcal{L}_o^*
+\mathcal{L}_o y(\cdot) = \int_{t_0}^{t_1} \Phi^*(\tau, t_0) C^*(\tau)
+C(\tau) \Phi(\tau, t_0) y(\tau) d\tau$</mathjax>. Complete observability claims that
+this composition of maps has full rank. This is called <mathjax>$W_o$</mathjax>, the
+observability grammian. Turned some fairly abstract tests into something
+that's more concrete; matrix that involves computing state transition
+matrix. Main theme is to get at simple tests for the time-invariant
+case. Todo: show how these grammians simplify to very simple grammians for
+the time-invariant case.</p>
+<p>Last five minutes: talk about the controller and observability maps, what
+they mean in terms of grammians.</p>
+<h2>Kalman filters; some thoughts about observability</h2>
+<p>Kalman filter: the way we tend to reconstruct state from measurements given
+our understanding of the system.</p>
+<p>We started today by talking about the nullspace of the observability map
+being trivial. So how do we solve for <mathjax>$x_0$</mathjax>? Use the left-inverse, if this
+is completely observable. Let's take that equation and pre-multiply both
+sides by <mathjax>$\mathcal{L}_o^*$</mathjax>. We know that this product (<mathjax>$\mathcal{L}_o^*
+\mathcal{L}_o$</mathjax>) is bijective, so we can invert it. Not actually done in
+Kalman filters; keep a running estimate.</p>
+<p><a name='24'></a></p>
+<h1>Controllability and Observability of LTI systems</h1>
+<h2>November 15, 2012</h2>
+<p>What does it mean in terms of controlling the state and observing the
+system? Controllable and observable subspaces.</p>
+<p>Recall: the injectivity of <mathjax>$\mathcal{L}_o$</mathjax> corresponds to observability,
+which relates to the bijectivity of what we called the observability
+grammian, <mathjax>$\mathcal{L}_o^*\mathcal{L}_o$</mathjax>,  in our time interval. Suppose
+that this is injective. How do we solve for the initial state? What we came
+up with last day as finding the inverse of the grammian, i.e. <mathjax>$x_0 =
+W_o^{-1} \int_{t_0}^{t_1}\Phi^*(\tau, t_0)C^*y(\tau) d\tau$</mathjax>.</p>
+<p>Suppose <mathjax>$y$</mathjax> is not in the range of this grammian, but our grammian is
+injective. What is the "best" estimate of <mathjax>$x_0$</mathjax>? Claim: our computation
+from before still gives us the best estimate. What do we mean by best?
+We'll explore this.</p>
+<p>We've got this map <mathjax>$\mathcal{L}_o$</mathjax>. We can write <mathjax>$y$</mathjax> to be the sum of two
+components, one being in the range of <mathjax>$\mathcal{L}_o$</mathjax>, and the other being
+in the nullspace of <mathjax>$\mathcal{L}_o^*$</mathjax> (recall that we showed that these two
+spaces are orthogonal). Therefore we minimize the distance between the
+actual initial state and our estimate.</p>
+<p>Our third case is that <mathjax>$\mathcal{L}_o$</mathjax> is not injective, but it is
+surjective. <mathjax>$\mathcal{L}_o\mathcal{L}_o^*$</mathjax> is bijective, therefore. Even
+though this is a map between infinite-dimensional spaces, we can define an
+inverse because it is bijective.</p>
+<p>Our fourth case is that <mathjax>$\mathcal{L}_o$</mathjax> is neither injective nor
+surjective. You can compute how you would find the least-squares estimate
+or least norm.</p>
+<p>This formulation leads us to the idea of gathering all of the information
+about the input and output, and then compute exactly or estimate the
+state. Typically, you update your best estimate with some online algorithm.</p>
+<p>(derivation of recursive formula, which yields Kalman filter; information
+form of the Kalman filter.)</p>
+<h2>LTI case</h2>
+<p>Our representation is simply <mathjax>$[A,B,C,D]$</mathjax>. Let's start with
+controllability. </p>
+<p><a name='25'></a></p>
+<h1>Controllability and Observability of LTI systems</h1>
+<h2>November 20, 2012</h2>
+<p><mathjax>$\{A,B,C,D\}$</mathjax> is completely observable (note that again, time interval
+irrelevant for LTI because integrand of grammian does not depend on <mathjax>$t$</mathjax>)
+<mathjax>$\iff$</mathjax> rank of <mathjax>$\begin{bmatrix} C \\ CA \\ \vdots \\ CA^{n-1}\end{bmatrix}
+= n$</mathjax> <mathjax>$\iff$</mathjax> rank <mathjax>$\begin{bmatrix} sI - A \\ C\begin{bmatrix} = n \forall s
+\in \sigma(A)$</mathjax>.</p>
+<p>Same proofs as controllability theorem: instead of considering <mathjax>$\{A, B\}$</mathjax>,
+consider matrix pair <mathjax>$\{A^T, C^T\}$</mathjax>.</p>
+<p>We call <mathjax>$Q = \begin{bmatrix}B &amp; AB &amp; \hdots &amp; A^{n-1} B \end{bmatrix}$</mathjax> the
+controllability matrix; might also use <mathjax>$\mathcal{C}$</mathjax>. Similarly, we call
+<mathjax>$\mathcal{O} = \begin{bmatrix} C \\ CA \\ \vdots \\ CA^{n-1}\end{bmatrix}$</mathjax>
+the observability matrix.</p>
+<p>We can easily prove the following, but we'll state it as a theorem:</p>
+<p>The range of the controllability grammian (does not matter which time
+interval, so again we'll consider <mathjax>$[0, \Delta]$</mathjax>) is equal to the range of
+the controllability map, wihch is further equal to the range of the
+controllability matrix. We haven't shown this directly; however, it is a
+direct extension of the proof of the theorems in the controllability matrix
+or just a direct extension of the Cayley-Hamilton theorem.</p>
+<p>Similarly, the nullspace of the observability grammian is equal to the
+nullspace of the observability map (already shown), but that's equal to the
+nullspace of the observability matrix. That's in general some subset of
+<mathjax>$\Re^n$</mathjax>. If the system is completely observable, the nullspace of these
+maps is trivial.</p>
+<p>The range of the controllability matrix is the set of all states reachable
+from <mathjax>$\theta$</mathjax>; The nullspace of the observability matrix is the set of
+unobservable states.</p>
+<p>A few definitions:</p>
+<ul>
+<li>
+<p><mathjax>$R$</mathjax> is stabilizable if all of its uncontrollable states are stable.</p>
+</li>
+<li>
+<p><mathjax>$R$</mathjax> is detectable if all of its unobservable states are stable.</p>
+</li>
+<li>
+<p><mathjax>$R$</mathjax> is stabilizable <mathjax>$\iff \text{rk}\begin{bmatrix} sI - A &amp; B \end{bmatrix} =
+  n \forall s \in \sigma(A) \cap \mathbb{C}_+$</mathjax>.</p>
+</li>
+<li>
+<p><mathjax>$R$</mathjax> is detectable <mathjax>$\iff \text{rk}\begin{bmatrix} sI - A \\ C
+  \end{bmatrix} = n \forall s \in \sigma(A) \cap \mathbb{C}_+$</mathjax>.</p>
+</li>
+</ul>
+<h2>Intro to control design via pole placement</h2>
+<p>Using state feedback, when can we place the eigenvalues of the closed loop
+system anywhere in <mathjax>$\mathbb{C}$</mathjax>? System must be controllable.</p>
+<p><a name='26'></a></p>
+<h1>Control design using eigenvalue placement</h1>
+<h2>November 27, 2012</h2>
+<p>Observer design. Final exam Tues Dec. 11, 9-12, 293 Cory.</p>
+<p>Theorem: Let <mathjax>$(A, b)$</mathjax> be completely controllable. Let <mathjax>$\hat{\pi}(s)$</mathjax> be any
+monic polynomial of degree <mathjax>$n$</mathjax> with real coefficients. Then <mathjax>$\exists! f^T
+\in \Re^n$</mathjax> such that <mathjax>$\hat{X}_{A + bf}(s) = \hat{\pi}(s)$</mathjax>, where <mathjax>$f^T =
+-\begin{bmatrix} 0 &amp; 0 &amp; ... &amp; 1\end{bmatrix}\begin{bmatrix}b &amp; Ab &amp; ... &amp;
+A^{n-1} b\end{bmatrix} \hat{\pi}(A)$</mathjax>.</p>
+<p>Proposition: Complete controllability is equivalent to saying <mathjax>$\exists T
+\in \Re^{n\times n}$</mathjax> s.t. <mathjax>$\tilde{A} = T^{-1}AT = \begin{bmatrix}0 &amp; 1 &amp; 0
+&amp; ... &amp; 0\\ 0 &amp; 0 &amp; 1 &amp; ... &amp; 0\\ vdots &amp; \ddots &amp; &amp; \\ -\alpha_n &amp; ... &amp;
+... &amp; -\alpha_1\end{bmatrix}$</mathjax>.</p>
+<p>This result is basically changing the basis; we define a new state <mathjax>$z =
+T^{-1}$</mathjax>. That's why we're interested in this particular similarity
+transform.</p>
+<p>Recall what it means to be completely controllable. For LTI systems, we
+have our tests for controllability, which are easy to check.</p>
+<p>Controllable canonical form. Canonical means that once you get a general
+matrix and you can transform it, the coefficients are all the same. In
+fact, as we saw last time, these are the coefficients of the characteristic
+polynomial.</p>
+<p><a name='27'></a></p>
+<h1>Multiple-input, multiple output; Observer design</h1>
+<h2>November 29, 2012</h2>
+<p>The closed-loop matrix is the same; we always have the same structure:
+we're feeding back an input equal to <mathjax>$Fx + z$</mathjax>.</p>
+<p>Algorithm in LN 21; how to simplify problem by considering it as a
+single-input system. Basically asks the problem "does there exist a
+feedback gain matrix <mathjax>$F$</mathjax> such that <mathjax>$(A + bF, b), b \in R(B)$</mathjax>?</p>
+<p>State estimation: whether or not <mathjax>$\hat{z}$</mathjax> is a good estimate of the
+state. Measure error, which tells you how good your estimate is. Luenberger
+model.</p>
+<p>Theorem: if <mathjax>$A, C$</mathjax> is completely observable, <mathjax>$\exists T \in \Re^{n \times
+n_o}$</mathjax> such that <mathjax>$\sigma(A - TC)$</mathjax> can be placed arbitrarily in <mathjax>$\mathbb{C}$</mathjax>.</p>
+<p>We can think about this problem by relating it back to the complete
+controllability and placement of spectrum of <mathjax>$A - BF$</mathjax>.</p>
+<p>If we look at the transpose of <mathjax>$A - TC$</mathjax> (eigenvalues are preserved under
+transposition), then we're back to the complete controllability case.</p>
+<p>Don't typically move observer eigenvalues much farther than
+needed. Stipulates that gain matrix is large; you'd have large gain in
+feedback loop, which is typically undesirable.</p>
+<p>Want observer to converge faster than estimate.</p></div><div class='pos'></div>
 <script src='mathjax/unpacked/MathJax.js?config=default'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
